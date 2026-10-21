@@ -1,6 +1,6 @@
 ---
 type: adr
-status: accepted
+status: superseded
 date: 2026-10-21
 tags:
 - adr
@@ -20,3 +20,6 @@ Device sync uses the existing Supabase backend (free tier) with email login. iCl
 - Sync works on free sideloaded builds, and later for the iPad and the PWA.
 - Needs an account (email + password or magic link). Sign in with Apple only once there is a paid account.
 - Remote push isn't possible on the free account; all reminders are local notifications.
+
+## Update 2026-10-21: superseded
+The owner decided **not** to use Supabase. Sync is deferred until they have the paid Apple Developer Program account; then it will be **iCloud (CloudKit)**. Until then Meldo stays fully local on each device. The Supabase schema in `supabase/` stays in the repo unused. No Supabase project was created for Meldo.

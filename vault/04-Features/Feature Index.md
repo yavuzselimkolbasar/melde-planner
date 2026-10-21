@@ -26,7 +26,7 @@ Status: `not started` · `in progress` · `implemented (unverified)` · `verifie
 | 13 | Meine Ziele | 3 | not started |
 | 14 | Themes | 5 | in progress: 6 themes, Meldo accent, 3 app icons (indigo/orange/night), mascot on/off, haptics, home card order; accessibility review pending |
 | 15 | Languages | 5 | in progress: de/tr/en catalog (126 strings) with in-app switching; native-speaker review of Turkish pending |
-| 16 | Cloud Sync | 5 | in progress: Supabase schema, RLS and pgTAP tests written; no client sync |
+| 16 | Cloud Sync | 5 | deferred: waits for the paid Apple Developer account, then iCloud (ADR-0006 update) |
 | 17 | Benutzerkonto | 2 | not started |
 | 18 | Multiple Users | 2 | in progress: RLS isolation + ownership triggers + tests (server side) |
 | 19 | PWA | later | not started |
