@@ -4687,24 +4687,24 @@
         }
       }
     },
-    "Meldo aktualisiert Ausfälle und Vertretungen automatisch, wenn du die App öffnest (höchstens alle drei Stunden).": {
+    "Meldo aktualisiert Stundenplan, Ausfälle und Vertretungen automatisch: beim Öffnen, alle 30 Minuten und im Hintergrund.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Meldo aktualisiert Ausfälle und Vertretungen automatisch, wenn du die App öffnest (höchstens alle drei Stunden)."
+            "value": "Meldo aktualisiert Stundenplan, Ausfälle und Vertretungen automatisch: beim Öffnen, alle 30 Minuten und im Hintergrund."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Meldo, uygulamayı açtığında iptalleri ve yerine dersleri otomatik günceller (en fazla üç saatte bir)."
+            "value": "Meldo ders programını, iptalleri ve vekaletleri otomatik günceller: açılışta, her 30 dakikada ve arka planda."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Meldo updates cancellations and substitutions automatically when you open the app (at most every three hours)."
+            "value": "Meldo updates the timetable, cancellations and substitutions automatically: on opening, every 30 minutes and in the background."
           }
         }
       }

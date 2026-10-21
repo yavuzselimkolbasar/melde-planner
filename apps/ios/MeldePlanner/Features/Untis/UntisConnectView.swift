@@ -252,7 +252,7 @@ private struct UntisStatusView: View {
                     }
                 }
             } footer: {
-                Text(L("Meldo aktualisiert Ausfälle und Vertretungen automatisch, wenn du die App öffnest (höchstens alle drei Stunden)."))
+                Text(L("Meldo aktualisiert Stundenplan, Ausfälle und Vertretungen automatisch: beim Öffnen, alle 30 Minuten und im Hintergrund."))
             }
             if let message {
                 Text(message).foregroundStyle(.secondary)

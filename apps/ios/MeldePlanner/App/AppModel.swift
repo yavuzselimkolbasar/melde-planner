@@ -10,6 +10,8 @@ final class AppModel {
     private(set) var data: AppData
     /// User-facing problem with loading or saving, shown as a banner.
     var storageProblem: String?
+    /// A WebUntis update is running; automatic updates don't start a second one.
+    var isRefreshingUntis = false
 
     private let store: LocalStore?
     let calendar: Calendar

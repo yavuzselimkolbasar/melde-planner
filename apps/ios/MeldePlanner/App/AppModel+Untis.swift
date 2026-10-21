@@ -61,9 +61,16 @@ extension AppModel {
             .map { String($0.dropFirst("JSESSIONID=".count)) }
     }
 
-    /// Refreshes at most every three hours, e.g. when the app comes to the foreground.
+    /// How old WebUntis data may get before an automatic update.
+    static let untisRefreshInterval: TimeInterval = 30 * 60
+
+    /// Automatic update: when the app opens, every 30 minutes while it's open
+    /// and in the background (Background App Refresh). Silent on failure.
     func refreshUntisIfStale() async {
-        guard let last = data.untis?.lastSync, currentDate.timeIntervalSince(last) > 3 * 3600 else { return }
+        guard !isRefreshingUntis, let link = data.untis else { return }
+        if let last = link.lastSync, currentDate.timeIntervalSince(last) < Self.untisRefreshInterval { return }
+        isRefreshingUntis = true
+        defer { isRefreshingUntis = false }
         _ = try? await refreshUntis()
     }
 

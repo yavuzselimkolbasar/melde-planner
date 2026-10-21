@@ -51,6 +51,9 @@ targets:
             CFBundleURLSchemes: [meldeplanner]
         # AltStore rewrites this to the App Group names it registered for the user's team.
         ALTAppGroups: [group.app.meldeplanner.ios]
+        # WebUntis updates in the background (Background App Refresh).
+        UIBackgroundModes: [fetch]
+        BGTaskSchedulerPermittedIdentifiers: [app.meldeplanner.ios.refresh]
         # Prüfungen (Documents/Prüfungen) appear in the Files app.
         UIFileSharingEnabled: true
         LSSupportsOpeningDocumentsInPlace: true

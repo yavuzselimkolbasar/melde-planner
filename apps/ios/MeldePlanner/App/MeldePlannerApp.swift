@@ -1,5 +1,30 @@
+import BackgroundTasks
 import SwiftUI
 import UserNotifications
+
+/// Background App Refresh task that keeps WebUntis data current.
+enum BackgroundRefresh {
+    static let identifier = "app.meldeplanner.ios.refresh"
+    /// The app's model once its window exists; a pure background launch loads its own.
+    static weak var model: AppModel?
+
+    /// Runs when iOS wakes Meldo: plan the next wake-up, then update WebUntis
+    /// and Teams if they're due.
+    static func run() async {
+        schedule()
+        let target = Self.model ?? AppModel.makeForLaunch()
+        target.reloadFromDisk()
+        await target.refreshUntisIfStale()
+        await target.refreshTeamsIfStale()
+    }
+
+    /// Asks iOS to wake Meldo in about 30 minutes; iOS decides the exact time.
+    static func schedule() {
+        let request = BGAppRefreshTaskRequest(identifier: identifier)
+        request.earliestBeginDate = Date(timeIntervalSinceNow: AppModel.untisRefreshInterval)
+        try? BGTaskScheduler.shared.submit(request)
+    }
+}
 
 @main
 struct MeldePlannerApp: App {
@@ -19,8 +44,20 @@ struct MeldePlannerApp: App {
                 .onReceive(NotificationCenter.default.publisher(for: .meldeDataChanged)) { _ in
                     model.reloadFromDisk()
                 }
+                // While the app is open: check every few minutes, update when 30 minutes old.
+                .task {
+                    BackgroundRefresh.model = model
+                    while !Task.isCancelled {
+                        try? await Task.sleep(for: .seconds(5 * 60))
+                        await model.refreshUntisIfStale()
+                    }
+                }
+        }
+        .backgroundTask(.appRefresh(BackgroundRefresh.identifier)) {
+            await BackgroundRefresh.run()
         }
         .onChange(of: scenePhase) { _, phase in
+            if phase == .background { BackgroundRefresh.schedule() }
             // Pick up Meldungen logged from widgets or the Lock Screen and re-plan reminders.
             guard phase == .active else { return }
             model.reloadFromDisk()
