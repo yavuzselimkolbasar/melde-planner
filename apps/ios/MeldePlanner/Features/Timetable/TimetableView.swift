@@ -15,6 +15,8 @@ struct TimetableView: View {
     @State private var creating = false
     @State private var managingSubjects = false
     @State private var homeworkFor: HomeworkPrefill?
+    @State private var forward = true
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     /// Pages before and after today that can be swiped to.
     private let weekRange = -26...52
@@ -25,25 +27,30 @@ struct TimetableView: View {
             header
                 .padding(.horizontal, DS.spacingL)
                 .padding(.bottom, DS.spacingS)
-            Group {
+            ZStack {
                 switch mode {
                 case .week:
-                    TabView(selection: $weekPage) {
-                        ForEach(weekRange, id: \.self) { offset in
-                            TimetableWeekPage(monday: monday(weekOffset: offset), onSelect: { selected = $0 })
-                                .tag(offset)
-                        }
-                    }
+                    TimetableWeekPage(monday: monday(weekOffset: weekPage), onSelect: { selected = $0 })
+                        .id("week-\(weekPage)")
+                        .transition(pageTransition)
                 case .day:
-                    TabView(selection: $dayPage) {
-                        ForEach(dayRange, id: \.self) { offset in
-                            TimetableDayPage(date: schoolDay(offset: offset), onSelect: { selected = $0 })
-                                .tag(offset)
-                        }
-                    }
+                    TimetableDayPage(date: schoolDay(offset: dayPage), onSelect: { selected = $0 })
+                        .id("day-\(dayPage)")
+                        .transition(pageTransition)
                 }
             }
-            .tabViewStyle(.page(indexDisplayMode: .never))
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+            .clipped()
+            .contentShape(.rect)
+            .simultaneousGesture(
+                DragGesture(minimumDistance: 30)
+                    .onEnded { value in
+                        // Horizontal swipes only, so vertical scrolling stays untouched.
+                        guard abs(value.translation.width) > abs(value.translation.height) * 1.5,
+                              abs(value.translation.width) > 60 else { return }
+                        step(value.translation.width < 0 ? 1 : -1)
+                    }
+            )
             .overlay {
                 if model.lessons.isEmpty && model.data.untisTimetable == nil {
                     emptyState
@@ -130,7 +137,8 @@ struct TimetableView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .contentTransition(.numericText())
             Button(L("Heute")) {
-                withAnimation { weekPage = 0; dayPage = 0 }
+                forward = weekPage < 0 || dayPage < 0
+                withAnimation(reduceMotion ? nil : .snappy(duration: 0.3)) { weekPage = 0; dayPage = 0 }
             }
             .buttonStyle(.glass)
             .disabled(weekPage == 0 && dayPage == 0)
@@ -140,8 +148,19 @@ struct TimetableView: View {
         }
     }
 
+    /// Slides in from the side the student swiped towards.
+    private var pageTransition: AnyTransition {
+        reduceMotion
+            ? .opacity
+            : .asymmetric(
+                insertion: .move(edge: forward ? .trailing : .leading).combined(with: .opacity),
+                removal: .move(edge: forward ? .leading : .trailing).combined(with: .opacity)
+            )
+    }
+
     private func step(_ delta: Int) {
-        withAnimation {
+        forward = delta > 0
+        withAnimation(reduceMotion ? nil : .snappy(duration: 0.3)) {
             switch mode {
             case .week: weekPage = min(max(weekPage + delta, weekRange.lowerBound), weekRange.upperBound)
             case .day: dayPage = min(max(dayPage + delta, dayRange.lowerBound), dayRange.upperBound)
@@ -387,12 +406,19 @@ private struct DayGrid: View {
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .topLeading) {
-                RoundedRectangle(cornerRadius: 8, style: .continuous)
-                    .fill(Color.secondary.opacity(0.05))
-                ForEach(breaks, id: \.self) { gap in
-                    BreakBand(minutes: gap.end - gap.start, showLabel: detail == .full)
-                        .frame(height: metrics.y(gap.end) - metrics.y(gap.start))
-                        .offset(y: metrics.y(gap.start))
+                Color.clear
+                ForEach(gridLines, id: \.self) { minute in
+                    Rectangle()
+                        .fill(Color.secondary.opacity(0.18))
+                        .frame(height: 0.5)
+                        .offset(y: metrics.y(minute))
+                }
+                if detail == .full {
+                    ForEach(breaks, id: \.self) { gap in
+                        BreakBand(minutes: gap.end - gap.start, showLabel: true)
+                            .frame(height: metrics.y(gap.end) - metrics.y(gap.start))
+                            .offset(y: metrics.y(gap.start))
+                    }
                 }
                 if let holiday = model.holiday(on: date) {
                     HolidayColumn(holiday: holiday, detail: detail)
@@ -425,6 +451,12 @@ private struct DayGrid: View {
         .frame(maxWidth: .infinity)
     }
 
+    /// A line at every period start and end inside the shown range.
+    private var gridLines: [Int] {
+        let minutes = model.bellSchedule.flatMap { [$0.startMinute, $0.endMinute] }
+        return Array(Set(minutes)).filter { $0 >= metrics.start && $0 <= metrics.end }.sorted()
+    }
+
     struct Gap: Hashable {
         var start: Int
         var end: Int
@@ -447,8 +479,7 @@ private struct BreakBand: View {
     let showLabel: Bool
 
     var body: some View {
-        Rectangle()
-            .fill(Color.secondary.opacity(0.08))
+        Color.clear
             .overlay {
                 if showLabel {
                     Text(L("Pause · \(minutes) min"))
