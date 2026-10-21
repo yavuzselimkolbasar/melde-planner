@@ -24,7 +24,7 @@ INT_EXPRESSIONS = {
     "todayCount(for: current.subjectId)", "exam.pageCount",
     "entry.weekTotal", "entry.lessonCount", "entry.homeworkDue", "context.state.count",
     "context.state.weekTotal", "unassigned.count",
-    "s.lessons", "s.changes", "code", "week", "minutes", "homework", "open", "more", "days", "added", "entry.streak", "lessonCount",
+    "s.lessons", "s.changes", "code", "week", "minutes", "homework", "open", "more", "days", "added", "entry.streak", "lessonCount", "count",
 }
 
 # Keys used outside L(…): widget gallery and App Intents metadata.

@@ -42,8 +42,12 @@ private struct UITestLaunch {
         if let language = value("-uitest-language").flatMap(AppLanguage.init(rawValue:)) {
             model.setLanguage(language)
         }
-        if let theme = value("-uitest-theme").flatMap(AppTheme.init(rawValue:)) {
-            model.setTheme(theme)
+        if let raw = value("-uitest-theme") {
+            if let appearance = AppearanceChoice(rawValue: raw) {
+                model.setAppearance(appearance)
+            } else {
+                model.setTheme(AppTheme.migrating(raw))
+            }
         }
         if arguments.contains("-uitest-seed") {
             SampleData.seed(model, now: fixed)

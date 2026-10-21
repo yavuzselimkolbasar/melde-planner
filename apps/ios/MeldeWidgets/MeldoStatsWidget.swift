@@ -26,6 +26,7 @@ struct StatsEntry: TimelineEntry {
     var streak: Int
     var topSubject: String?
     var topColor: Color
+    var tint: Color = .meldoOrange
 
     static let placeholder = StatsEntry(
         date: .now, isAvailable: true, perDay: [3, 1, 4, 2, 0], total: 10, goal: 12,
@@ -68,7 +69,8 @@ struct StatsProvider: TimelineProvider {
             goal: data.preferences.weeklyGoal,
             streak: Int(streak),
             topSubject: (top?.count ?? 0) > 0 ? subject?.name : nil,
-            topColor: subject?.color.color ?? .gray
+            topColor: subject?.color.color ?? .gray,
+            tint: data.preferences.theme.tint
         )
     }
 }
@@ -99,7 +101,7 @@ struct StatsWidgetView: View {
         VStack(alignment: .leading, spacing: 6) {
             Label(L("Meldungen"), systemImage: "hand.raised.fill")
                 .font(.caption.weight(.semibold))
-                .foregroundStyle(Color.meldoIndigo)
+                .foregroundStyle(entry.tint)
                 .widgetAccentable()
             Spacer(minLength: 0)
             HStack(alignment: .firstTextBaseline, spacing: 4) {
@@ -114,7 +116,7 @@ struct StatsWidgetView: View {
             }
             if let goal = entry.goal {
                 ProgressView(value: Double(min(entry.total, goal)), total: Double(max(goal, 1)))
-                    .tint(Color.meldoIndigo)
+                    .tint(entry.tint)
             }
             Label(L("\(entry.streak) Schultage in Folge"), systemImage: "flame.fill")
                 .font(.caption2)
@@ -132,7 +134,7 @@ struct StatsWidgetView: View {
                     x: .value(L("Tag"), weekday(item.offset)),
                     y: .value(L("Meldungen"), item.element)
                 )
-                .foregroundStyle(Color.meldoIndigo.gradient)
+                .foregroundStyle(entry.tint.gradient)
                 .cornerRadius(4)
             }
             .chartYAxis(.hidden)

@@ -22,14 +22,16 @@ struct ExamListView: View {
     @Environment(\.horizontalSizeClass) private var sizeClass
     /// iPad: the exam shown next to the list.
     @State private var selected: UUID?
+    @State private var filter: DocumentCategory?
 
     private var groups: [(subject: Subject?, exams: [ExamDocument])] {
-        let bySubject = Dictionary(grouping: model.exams, by: \.subjectID)
+        let shown = model.exams.filter { filter == nil || $0.kind == filter }
+        let bySubject = Dictionary(grouping: shown, by: \.subjectID)
         var result: [(subject: Subject?, exams: [ExamDocument])] = []
         for subject in model.subjects {
             if let exams = bySubject[subject.id] { result.append((subject: subject, exams: exams)) }
         }
-        let orphans = model.exams.filter { exam in exam.subjectID.flatMap { model.subject($0) } == nil }
+        let orphans = shown.filter { exam in exam.subjectID.flatMap { model.subject($0) } == nil }
         if !orphans.isEmpty { result.append((subject: nil, exams: orphans)) }
         return result
     }
@@ -53,6 +55,15 @@ struct ExamListView: View {
         List {
             if let problem {
                 Label(problem, systemImage: "exclamationmark.triangle.fill").foregroundStyle(.red)
+            }
+            if !model.exams.isEmpty {
+                Picker(L("Art"), selection: $filter) {
+                    Text(L("Alle")).tag(DocumentCategory?.none)
+                    ForEach(DocumentCategory.allCases) { Text(DocumentCategoryText.plural($0)).tag(DocumentCategory?.some($0)) }
+                }
+                .pickerStyle(.segmented)
+                .listRowBackground(Color.clear)
+                .listRowInsets(EdgeInsets())
             }
             let upcoming = model.upcomingUntisExams(from: model.currentDate)
             if !upcoming.isEmpty {
@@ -102,7 +113,8 @@ struct ExamListView: View {
                 }
             }
         }
-        .navigationTitle(L("Prüfungen & Scans"))
+        .navigationTitle(L("Dokumente"))
+        .onAppear { model.organizeDocuments() }
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Menu(L("Hinzufügen"), systemImage: "plus") { actionButtons }
@@ -236,12 +248,17 @@ struct ExamEditorView: View {
     @State private var date = Date.now
     @State private var grade = ""
     @State private var notes = ""
+    @State private var category: DocumentCategory = .exam
     @State private var problem: String?
 
     var body: some View {
         NavigationStack {
             Form {
                 Section {
+                    Picker(L("Art"), selection: $category) {
+                        ForEach(DocumentCategory.allCases) { Text(DocumentCategoryText.name($0)).tag($0) }
+                    }
+                    .pickerStyle(.segmented)
                     TextField(L("Titel, z. B. 2. Klassenarbeit"), text: $title)
                     Picker(L("Fach"), selection: $subjectID) {
                         Text(L("Kein Fach")).tag(UUID?.none)
@@ -298,13 +315,14 @@ struct ExamEditorView: View {
         date = exam.date
         grade = exam.grade
         notes = exam.notes
+        category = exam.kind
     }
 
     private func save() {
         switch mode {
         case .new(let pending):
             do {
-                try model.addExam(pdf: pending.pdf, title: title, subjectID: subjectID, date: date, grade: grade, notes: notes)
+                try model.addExam(pdf: pending.pdf, title: title, subjectID: subjectID, date: date, grade: grade, notes: notes, category: category)
                 dismiss()
             } catch {
                 problem = L("Die Prüfung konnte nicht gespeichert werden.")
@@ -315,6 +333,7 @@ struct ExamEditorView: View {
             exam.date = date
             exam.grade = grade
             exam.notes = notes
+            exam.category = category
             model.update(exam)
             dismiss()
         }
@@ -335,10 +354,10 @@ private struct ExamsWelcome: View {
                     .font(.system(size: 44, weight: .light))
                     .foregroundStyle(.tint)
                     .symbolEffect(.pulse, options: .nonRepeating)
-                Text(L("Deine Arbeiten an einem Ort"))
+                Text(L("Deine Unterlagen an einem Ort"))
                     .font(.title2.weight(.bold))
                     .multilineTextAlignment(.center)
-                Text(L("Scanne zurückgegebene Klassenarbeiten oder lade Fotos und PDFs. Alles bleibt auf deinem Gerät und erscheint auch in der Dateien-App."))
+                Text(L("Scanne Klassenarbeiten, Arbeitsblätter und Dokumente oder lade Fotos und PDFs. Meldo sortiert sie nach Fach, auch in der Dateien-App."))
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
@@ -351,7 +370,7 @@ private struct ExamsWelcome: View {
                 tile(L("Aus Fotos"), L("Bilder aus deiner Mediathek"), "photo.on.rectangle", prominent: !canScan, action: photos)
                 tile(L("PDF importieren"), L("Aus Dateien, iCloud Drive oder Mail"), "square.and.arrow.down", prominent: false, action: files)
             }
-            Label(L("Dateien › Auf meinem iPhone › Meldo › Prüfungen"), systemImage: "folder")
+            Label(L("Dateien › Auf meinem iPhone › Meldo › Scans"), systemImage: "folder")
                 .font(.caption)
                 .foregroundStyle(.secondary)
         }
@@ -379,5 +398,24 @@ private struct ExamsWelcome: View {
             .background(prominent ? Color.accentColor : Color(.secondarySystemGroupedBackground), in: .rect(cornerRadius: DS.rowRadius))
         }
         .buttonStyle(.plain)
+    }
+}
+
+/// German labels for document categories (the folders keep English names).
+enum DocumentCategoryText {
+    static func name(_ category: DocumentCategory) -> String {
+        switch category {
+        case .exam: L("Prüfung")
+        case .worksheet: L("Arbeitsblatt")
+        case .document: L("Dokument")
+        }
+    }
+
+    static func plural(_ category: DocumentCategory) -> String {
+        switch category {
+        case .exam: L("Prüfungen")
+        case .worksheet: L("Arbeitsblätter")
+        case .document: L("Dokumente")
+        }
     }
 }

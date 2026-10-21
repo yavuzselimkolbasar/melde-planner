@@ -2,7 +2,7 @@ import SwiftUI
 
 enum AppTab: Hashable {
     case home, timetable, calendar, tasks, exams, statistics, more
-    case absences, holidays, untis, teams, subjects, settings, status, about
+    case absences, holidays, untis, teams, subjects, settings, status, about, grades
 }
 
 /// Main navigation. iPhone shows five tabs (the rest lives under Mehr); the
@@ -23,10 +23,12 @@ struct RootView: View {
                     Tab(value: AppTab.home) { screen(DashboardView(), melden: true) } label: { Label(L("Start"), systemImage: "house") }
                     Tab(value: AppTab.timetable) { screen(TimetableView(), melden: true) } label: { Label(L("Stundenplan"), systemImage: "tablecells") }
                     Tab(value: AppTab.tasks) { screen(TaskListView()) } label: { Label(L("Aufgaben"), systemImage: "checklist") }
-                    Tab(value: AppTab.exams) { screen(ExamListView()) } label: { Label(L("Prüfungen"), systemImage: "doc.viewfinder") }
+                    Tab(value: AppTab.exams) { screen(ExamListView()) } label: { Label(L("Dokumente"), systemImage: "doc.on.doc") }
                     Tab(value: AppTab.calendar) { screen(CalendarView()) } label: { Label(L("Kalender"), systemImage: "calendar") }
                     Tab(value: AppTab.statistics) { screen(StatisticsView()) } label: { Label(L("Statistik"), systemImage: "chart.bar") }
                     TabSection(L("Schule")) {
+                        Tab(value: AppTab.grades) { screen(GradesView()) } label: { Label(L("Noten"), systemImage: "graduationcap") }
+                            .tabPlacement(.sidebarOnly)
                         Tab(value: AppTab.absences) { screen(AbsencesView()) } label: { Label(L("Abwesenheiten"), systemImage: "person.crop.circle.badge.clock") }
                             .tabPlacement(.sidebarOnly)
                         Tab(value: AppTab.holidays) { screen(HolidayListView()) } label: { Label(L("Ferien"), systemImage: "sun.horizon") }
@@ -54,7 +56,7 @@ struct RootView: View {
                     Tab(value: AppTab.home) { screen(DashboardView(), melden: true) } label: { Label(L("Start"), systemImage: "house") }
                     Tab(value: AppTab.timetable) { screen(TimetableView(), melden: true) } label: { Label(L("Stundenplan"), systemImage: "tablecells") }
                     Tab(value: AppTab.tasks) { screen(TaskListView()) } label: { Label(L("Aufgaben"), systemImage: "checklist") }
-                    Tab(value: AppTab.exams) { screen(ExamListView()) } label: { Label(L("Prüfungen"), systemImage: "doc.viewfinder") }
+                    Tab(value: AppTab.exams) { screen(ExamListView()) } label: { Label(L("Dokumente"), systemImage: "doc.on.doc") }
                     Tab(value: AppTab.more) { screen(MoreView()) } label: { Label(L("Mehr"), systemImage: "ellipsis.circle") }
                 }
                 .tabBarMinimizeBehavior(.onScrollDown)

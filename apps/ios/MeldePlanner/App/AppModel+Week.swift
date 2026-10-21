@@ -27,6 +27,8 @@ struct TimetableBlock: Identifiable, Hashable {
     /// Side-by-side layout when blocks overlap (e.g. a course and an event).
     var lane = 0
     var lanes = 1
+    /// Parallel courses at the same time; the student picks theirs.
+    var alternatives: [TimetableBlock] = []
 }
 
 extension AppModel {
@@ -58,7 +60,50 @@ extension AppModel {
             }
         }
         blocks.sort { ($0.startMinute, $0.endMinute) < ($1.startMinute, $1.endMinute) }
-        return assignLanes(mergeDoublePeriods(blocks))
+        return assignLanes(pickCourses(mergeDoublePeriods(blocks)))
+    }
+
+    /// Key for a parallel course in its weekly slot.
+    func courseKey(_ block: TimetableBlock) -> String {
+        "\(calendar.mondayIndex(of: block.date))|\(block.startMinute)|\(block.subjectName)"
+    }
+
+    /// The student attends `chosen`; the other parallel courses in that slot are hidden every week.
+    func chooseCourse(_ chosen: TimetableBlock, among options: [TimetableBlock]) {
+        let hide = options.filter { $0.subjectName != chosen.subjectName }.map(courseKey)
+        let show = courseKey(chosen)
+        mutate { data in
+            var keys = Set(data.preferences.hiddenCourses)
+            keys.formUnion(hide)
+            keys.remove(show)
+            data.preferences.hiddenCourses = keys.sorted()
+        }
+    }
+
+    /// Regular lessons of different subjects starting together are parallel
+    /// courses (Kurse): show one, with the others to switch to. Changes
+    /// (cancelled, substitutions) stay side by side so nothing is hidden.
+    private func pickCourses(_ blocks: [TimetableBlock]) -> [TimetableBlock] {
+        let hidden = Set(data.preferences.hiddenCourses)
+        var result: [TimetableBlock] = []
+        var index = 0
+        while index < blocks.count {
+            let start = blocks[index].startMinute
+            var group: [TimetableBlock] = []
+            while index < blocks.count, blocks[index].startMinute == start {
+                group.append(blocks[index])
+                index += 1
+            }
+            let subjects = Set(group.map(\.subjectName))
+            guard group.count > 1, subjects.count == group.count, group.allSatisfy({ $0.kind == .regular }) else {
+                result.append(contentsOf: group)
+                continue
+            }
+            var pick = group.first { !hidden.contains(courseKey($0)) } ?? group[0]
+            pick.alternatives = group.filter { $0.id != pick.id }
+            result.append(pick)
+        }
+        return result
     }
 
     /// Whether WebUntis data covers `day` (school look-ahead limits end earlier).

@@ -136,7 +136,7 @@ final class MeldoUITests: XCTestCase {
         shot(app, "17-task-editor")
         tap(app.buttons["Abbrechen"], "Abbrechen (task)")
 
-        tab(app, "Prüfungen")
+        tab(app, "Dokumente")
         shot(app, "18-exams-empty")
 
         if device == "ipad" {
@@ -271,7 +271,7 @@ final class MeldoUITests: XCTestCase {
         tab(app, "Aufgaben")
         shot(app, "82-landscape-tasks")
         if device == "ipad" {
-            tab(app, "Prüfungen")
+            tab(app, "Dokumente")
             shot(app, "83-landscape-exams")
             tab(app, "Statistik")
             shot(app, "84-landscape-statistics")

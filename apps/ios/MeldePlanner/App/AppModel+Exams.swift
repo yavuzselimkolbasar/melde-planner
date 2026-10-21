@@ -2,8 +2,8 @@ import Foundation
 import PDFKit
 import UIKit
 
-/// Prüfungen & Scans: PDFs in Documents/Prüfungen (visible in the Files app
-/// under "Auf meinem iPhone › Meldo"), metadata in AppData.
+/// Dokumente: PDFs in Documents/Scans/<Fach>/<Exams|Worksheets|Documents>,
+/// visible in the Files app under "Auf meinem iPhone › Meldo"; metadata in AppData.
 extension AppModel {
     enum ExamError: Error {
         case unreadablePDF
@@ -21,12 +21,15 @@ extension AppModel {
 
     /// Stores the PDF and records the exam.
     @discardableResult
-    func addExam(pdf: Data, title: String, subjectID: UUID?, date: Date, grade: String, notes: String) throws(ExamError) -> ExamDocument {
+    func addExam(pdf: Data, title: String, subjectID: UUID?, date: Date, grade: String, notes: String,
+                 category: DocumentCategory = .exam) throws(ExamError) -> ExamDocument {
         guard let document = PDFDocument(data: pdf) else { throw .unreadablePDF }
         let id = UUID()
         let subjectName = subjectID.flatMap { subject($0)?.name }
-        let fileName = ExamFiles.readableName(title: title, subject: subjectName, date: date, id: id)
+        let folder = ExamFiles.relativeFolder(subject: subjectName, category: category)
+        let fileName = folder + "/" + ExamFiles.readableName(title: title, subject: nil, date: date, id: id, in: folder)
         guard let url = ExamFiles.folder()?.appending(path: fileName) else { throw .storage }
+        try? FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
         do {
             try pdf.write(to: url, options: [.atomic, .completeFileProtectionUntilFirstUserAuthentication])
         } catch {
@@ -36,7 +39,7 @@ extension AppModel {
             id: id,
             title: title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? L("Prüfung") : title,
             subjectID: subjectID, date: date, fileName: fileName,
-            pageCount: document.pageCount, grade: grade, notes: notes
+            pageCount: document.pageCount, grade: grade, notes: notes, category: category
         )
         mutate { $0.exams.append(exam) }
         return exam
@@ -47,6 +50,33 @@ extension AppModel {
         exam.updatedAt = currentDate
         mutate { data in
             if let i = data.exams.firstIndex(where: { $0.id == exam.id }) { data.exams[i] = exam }
+        }
+        organizeDocuments()
+    }
+
+    /// Moves every PDF into Scans/<Fach>/<Kategorie> (after a subject or
+    /// category change, a renamed subject, or files from older versions).
+    func organizeDocuments() {
+        let manager = FileManager.default
+        guard let root = ExamFiles.folder() else { return }
+        var moved: [UUID: String] = [:]
+        for exam in data.exams {
+            let folder = ExamFiles.relativeFolder(subject: exam.subjectID.flatMap { subject($0)?.name }, category: exam.kind)
+            let current = (exam.fileName as NSString).deletingLastPathComponent
+            guard current != folder, let source = ExamFiles.locate(exam.fileName),
+                  manager.fileExists(atPath: source.path(percentEncoded: false)) else { continue }
+            let name = ExamFiles.readableName(title: exam.title, subject: nil, date: exam.date, id: exam.id, in: folder)
+            let target = root.appending(path: folder + "/" + name)
+            try? manager.createDirectory(at: target.deletingLastPathComponent(), withIntermediateDirectories: true)
+            if (try? manager.moveItem(at: source, to: target)) != nil {
+                moved[exam.id] = folder + "/" + name
+            }
+        }
+        guard !moved.isEmpty else { return }
+        mutate { data in
+            for i in data.exams.indices {
+                if let path = moved[data.exams[i].id] { data.exams[i].fileName = path }
+            }
         }
     }
 
@@ -59,14 +89,30 @@ extension AppModel {
 }
 
 enum ExamFiles {
-    /// Documents/Prüfungen: the app shares its Documents folder with the Files app.
+    /// Documents/Scans: the app shares its Documents folder with the Files app.
     static func folder() -> URL? {
-        guard let base = try? FileManager.default.url(
-            for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true
-        ) else { return nil }
-        let folder = base.appending(path: "Prüfungen", directoryHint: .isDirectory)
+        guard let base = documents() else { return nil }
+        let folder = base.appending(path: "Scans", directoryHint: .isDirectory)
         try? FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
         return folder
+    }
+
+    private static func documents() -> URL? {
+        try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+    }
+
+    /// "Mathematik/Exams"; documents without a subject go to "Other".
+    static func relativeFolder(subject: String?, category: DocumentCategory) -> String {
+        let name = safe(subject ?? "").isEmpty ? "Other" : safe(subject ?? "")
+        return name + "/" + category.folderName
+    }
+
+    /// No characters the Files app can't take, no leading dot.
+    private static func safe(_ text: String) -> String {
+        let unsafe = CharacterSet(charactersIn: "/\\:?%*|\"<>").union(.newlines)
+        var result = text.components(separatedBy: unsafe).joined(separator: "-").trimmingCharacters(in: .whitespaces)
+        while result.hasPrefix(".") { result.removeFirst() }
+        return result
     }
 
     /// Version 0.2 kept PDFs hidden in Application Support.
@@ -75,21 +121,21 @@ enum ExamFiles {
             .appending(path: "MeldePlanner/Exams", directoryHint: .isDirectory)
     }
 
-    /// The PDF's location; a file from an older version is moved into the
-    /// Files-visible folder the first time it's opened.
+    /// Where the PDF is now: in Scans, or still in an older location
+    /// (Documents/Prüfungen, or Application Support in version 0.2).
+    /// `organizeDocuments()` then moves it into place.
     static func locate(_ fileName: String) -> URL? {
-        guard let target = folder()?.appending(path: fileName) else { return nil }
         let manager = FileManager.default
-        if !manager.fileExists(atPath: target.path(percentEncoded: false)),
-           let old = legacyFolder()?.appending(path: fileName),
-           manager.fileExists(atPath: old.path(percentEncoded: false)) {
-            try? manager.moveItem(at: old, to: target)
-        }
-        return target
+        let candidates = [
+            folder()?.appending(path: fileName),
+            documents()?.appending(path: "Prüfungen/" + fileName),
+            legacyFolder()?.appending(path: fileName),
+        ].compactMap { $0 }
+        return candidates.first { manager.fileExists(atPath: $0.path(percentEncoded: false)) } ?? candidates.first
     }
 
-    /// "Mathematik – 2. Klassenarbeit (12.10.2026).pdf", unique per exam.
-    static func readableName(title: String, subject: String?, date: Date, id: UUID) -> String {
+    /// "2. Klassenarbeit (12.10.2026).pdf", unique in its folder.
+    static func readableName(title: String, subject: String?, date: Date, id: UUID, in relativeFolder: String = "") -> String {
         let day = date.formatted(.dateTime.day(.twoDigits).month(.twoDigits).year().locale(Localization.locale))
         let parts = [subject, title.trimmingCharacters(in: .whitespacesAndNewlines)].compactMap { $0 }.filter { !$0.isEmpty }
         let base = (parts.isEmpty ? L("Prüfung") : parts.joined(separator: " – ")) + " (\(day))"
@@ -97,7 +143,8 @@ enum ExamFiles {
         var safe = base.components(separatedBy: unsafe).joined(separator: "-")
         while safe.hasPrefix(".") { safe.removeFirst() }
         var name = "\(safe).pdf"
-        if let folder = folder(), FileManager.default.fileExists(atPath: folder.appending(path: name).path(percentEncoded: false)) {
+        if let folder = folder()?.appending(path: relativeFolder),
+           FileManager.default.fileExists(atPath: folder.appending(path: name).path(percentEncoded: false)) {
             name = "\(safe) \(id.uuidString.prefix(4)).pdf"
         }
         return name

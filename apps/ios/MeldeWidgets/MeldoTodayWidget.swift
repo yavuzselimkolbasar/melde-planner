@@ -35,6 +35,8 @@ struct TodayEntry: TimelineEntry {
     let goal: Int?
     let homeworkDue: Int
     let laterToday: [LessonInfo]
+    /// The accent the student picked in Meldo (orange by default).
+    var tint: Color = .meldoOrange
 
     static let placeholder = TodayEntry(
         date: .now, isAvailable: true,
@@ -112,7 +114,8 @@ struct TodayProvider: TimelineProvider {
             weekTotal: Int(MeldeEngine.weekSummary(data, containing: date, calendar: calendar)?.total ?? 0),
             goal: data.preferences.weeklyGoal,
             homeworkDue: homework,
-            laterToday: Array(later)
+            laterToday: Array(later),
+            tint: data.preferences.theme.tint
         )
     }
 }
@@ -142,7 +145,7 @@ struct TodayWidgetView: View {
 private struct UnavailableView: View {
     var body: some View {
         VStack(spacing: 6) {
-            Image(systemName: "hand.raised.fill").foregroundStyle(Color.meldoIndigo)
+            Image(systemName: "hand.raised.fill").foregroundStyle(Color.meldoOrange)
             Text(L("Öffne Meldo einmal, um das Widget zu verbinden."))
                 .font(.caption)
                 .multilineTextAlignment(.center)
@@ -170,7 +173,7 @@ private struct MeldenButton: View {
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 8)
                     .background(
-                        accented ? AnyShapeStyle(.white.opacity(0.22)) : AnyShapeStyle(Color.meldoIndigo),
+                        accented ? AnyShapeStyle(.white.opacity(0.22)) : AnyShapeStyle(entry.tint),
                         in: .capsule
                     )
             }
@@ -181,7 +184,7 @@ private struct MeldenButton: View {
                     .font(.subheadline.weight(.semibold))
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 6)
-                    .background(Color.meldoIndigo.opacity(0.15), in: .capsule)
+                    .background(entry.tint.opacity(0.15), in: .capsule)
             }
         }
     }

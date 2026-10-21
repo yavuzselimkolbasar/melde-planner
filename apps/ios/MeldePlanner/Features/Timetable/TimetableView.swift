@@ -265,12 +265,14 @@ private struct TimetableWeekPage: View {
         let metrics = GridMetrics.make(model: model, days: days, pointsPerMinute: sizeClass == .regular ? 1.5 : 1.25)
         VStack(spacing: 0) {
             HStack(spacing: 2) {
-                Color.clear.frame(width: TimeAxis.width)
+                // Fixed height: a bare Color.clear takes all free height and pushed the grid down.
+                Color.clear.frame(width: TimeAxis.width, height: 1)
                 ForEach(days, id: \.self) { day in
                     DayHeader(date: day, compact: sizeClass != .regular)
                         .frame(maxWidth: .infinity)
                 }
             }
+            .fixedSize(horizontal: false, vertical: true)
             .padding(.bottom, DS.spacingXS)
             ScrollView {
                 HStack(alignment: .top, spacing: 2) {
@@ -564,7 +566,15 @@ private struct TimetableBlockView: View {
             .padding(.horizontal, detail == .compact ? 3 : 6)
             .padding(.vertical, 3)
             Spacer(minLength: 0)
-            if block.info != nil, detail != .full {
+            if !block.alternatives.isEmpty {
+                // Parallel courses: tap to choose yours.
+                Image(systemName: "square.stack.fill")
+                    .font(.caption2)
+                    .foregroundStyle(Color.accentColor)
+                    .padding(3)
+                    .frame(maxHeight: .infinity, alignment: .top)
+                    .accessibilityHidden(true)
+            } else if block.info != nil, detail != .full {
                 Image(systemName: "info.circle")
                     .font(.caption2)
                     .foregroundStyle(.secondary)
@@ -588,6 +598,7 @@ private struct TimetableBlockView: View {
         if !block.teacher.isEmpty { parts.append(block.teacher) }
         if let room = block.room { parts.append(room) }
         if let status = BlockStyle.label(for: block.kind) { parts.append(status) }
+        if !block.alternatives.isEmpty { parts.append(L("Parallele Kurse zur Auswahl")) }
         return parts.joined(separator: ", ")
     }
 }
@@ -709,6 +720,33 @@ private struct TimetableBlockSheet: View {
                     }
                     if let info = block.info {
                         Text(info)
+                    }
+                }
+                if !block.alternatives.isEmpty {
+                    Section {
+                        ForEach([block] + block.alternatives) { option in
+                            Button {
+                                model.chooseCourse(option, among: [block] + block.alternatives)
+                                dismiss()
+                            } label: {
+                                HStack {
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text(option.subjectName).foregroundStyle(.primary)
+                                        Text([option.teacher, option.room ?? ""].filter { !$0.isEmpty }.joined(separator: " · "))
+                                            .font(.caption)
+                                            .foregroundStyle(.secondary)
+                                    }
+                                    Spacer()
+                                    if option.id == block.id {
+                                        Image(systemName: "checkmark").foregroundStyle(Color.accentColor)
+                                    }
+                                }
+                            }
+                        }
+                    } header: {
+                        Text(L("Parallele Kurse"))
+                    } footer: {
+                        Text(L("Wähle deinen Kurs. Meldo zeigt ihn ab jetzt jede Woche zu dieser Zeit."))
                     }
                 }
                 Section {

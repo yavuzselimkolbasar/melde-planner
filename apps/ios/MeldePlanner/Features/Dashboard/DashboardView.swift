@@ -63,6 +63,7 @@ struct DashboardView: View {
         case .weekChart: WeekChartMiniCard(now: now, size: size)
         case .nextHoliday: NextHolidayCard(now: now, size: size)
         case .todos: TodosCard(now: now, size: size)
+        case .grades: GradesCard(size: size)
         }
     }
 
@@ -80,6 +81,7 @@ struct DashboardView: View {
         case .weekChart: L("Wochenverlauf")
         case .nextHoliday: L("Nächste Ferien")
         case .todos: L("To-dos")
+        case .grades: L("Notenschnitt")
         }
     }
 
@@ -97,6 +99,7 @@ struct DashboardView: View {
         case .weekChart: "chart.bar.xaxis"
         case .nextHoliday: "sun.horizon"
         case .todos: "checklist"
+        case .grades: "graduationcap"
         }
     }
 

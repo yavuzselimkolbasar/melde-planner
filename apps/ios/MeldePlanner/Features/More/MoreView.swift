@@ -19,6 +19,9 @@ struct MoreView: View {
                 }
             }
             Section(L("Schule")) {
+                NavigationLink { GradesView() } label: {
+                    Label(L("Noten"), systemImage: "graduationcap")
+                }
                 NavigationLink { AbsencesView() } label: {
                     Label(L("Abwesenheiten"), systemImage: "person.crop.circle.badge.clock")
                 }
@@ -76,17 +79,36 @@ struct SettingsView: View {
                 }
             }
             Section(L("Design")) {
-                Picker(L("Design"), selection: Binding(get: { model.preferences.theme }, set: { model.setTheme($0) })) {
+                HStack(spacing: DS.spacingM) {
+                    Text(L("Farbe"))
+                    Spacer()
                     ForEach(AppTheme.allCases) { theme in
-                        Label {
-                            Text(theme.localizedName)
-                        } icon: {
-                            Circle().fill(theme.wash ?? .secondary).frame(width: 14, height: 14)
+                        let selected = model.preferences.theme == theme
+                        Button {
+                            model.setTheme(theme)
+                        } label: {
+                            Circle()
+                                .fill(theme.tint)
+                                .frame(width: 28, height: 28)
+                                .overlay {
+                                    if selected {
+                                        Image(systemName: "checkmark")
+                                            .font(.caption.weight(.bold))
+                                            .foregroundStyle(.white)
+                                    }
+                                }
+                                .padding(3)
+                                .overlay(Circle().strokeBorder(selected ? theme.tint : .clear, lineWidth: 2))
                         }
-                        .tag(theme)
+                        .buttonStyle(.plain)
+                        .accessibilityLabel(theme.localizedName)
+                        .accessibilityAddTraits(selected ? .isSelected : [])
                     }
                 }
-                .pickerStyle(.navigationLink)
+                Picker(L("Darstellung"), selection: Binding(get: { model.preferences.appearance }, set: { model.setAppearance($0) })) {
+                    ForEach(AppearanceChoice.allCases) { Text($0.localizedName).tag($0) }
+                }
+                .pickerStyle(.segmented)
             }
             Section {
                 Toggle(L("A/B-Wochen verwenden"), isOn: Binding(

@@ -85,6 +85,10 @@ final class AppModel {
         mutate { $0.preferences.language = language }
     }
 
+    func setAppearance(_ appearance: AppearanceChoice) {
+        mutate { $0.preferences.appearance = appearance }
+    }
+
     func setTheme(_ theme: AppTheme) {
         mutate { $0.preferences.theme = theme }
     }

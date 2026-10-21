@@ -1,6 +1,28 @@
 {
   "sourceLanguage": "de",
   "strings": {
+    "%@ P.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ P."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ P."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ pts"
+          }
+        }
+      }
+    },
     "%@ ist vorbei": {
       "localizations": {
         "tr": {
@@ -173,6 +195,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld Meldungen von heute haben noch kein Fach."
+          }
+        }
+      }
+    },
+    "%lld Noten": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Noten"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld not"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld grades"
           }
         }
       }
@@ -705,6 +749,28 @@
         }
       }
     },
+    "Alles erledigt.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alles erledigt."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hepsi tamam."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All done."
+          }
+        }
+      }
+    },
     "Als Nächstes": {
       "localizations": {
         "tr": {
@@ -815,6 +881,28 @@
         }
       }
     },
+    "Angaben": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Angaben"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bilgiler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Details"
+          }
+        }
+      }
+    },
     "Angemeldet. Stundenplan wird geladen …": {
       "localizations": {
         "de": {
@@ -899,6 +987,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Customize"
+          }
+        }
+      }
+    },
+    "Anrede": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anrede"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hitap"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salutation"
           }
         }
       }
@@ -1009,6 +1119,50 @@
           "stringUnit": {
             "state": "translated",
             "value": "App icon"
+          }
+        }
+      }
+    },
+    "Arbeitsblatt": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arbeitsblatt"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çalışma kağıdı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Worksheet"
+          }
+        }
+      }
+    },
+    "Arbeitsblätter": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arbeitsblätter"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çalışma kağıtları"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Worksheets"
           }
         }
       }
@@ -1563,24 +1717,24 @@
         }
       }
     },
-    "Blau": {
+    "Darstellung": {
       "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Darstellung"
+          }
+        },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mavi"
+            "value": "Görünüm"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Blue"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Blau"
+            "value": "Appearance"
           }
         }
       }
@@ -1629,6 +1783,50 @@
         }
       }
     },
+    "Das PDF konnte nicht gespeichert werden.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das PDF konnte nicht gespeichert werden."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PDF kaydedilemedi."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The PDF couldn't be saved."
+          }
+        }
+      }
+    },
+    "Das Ziel hast du sicher, egal wie die nächste Arbeit läuft.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Ziel hast du sicher, egal wie die nächste Arbeit läuft."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir sonraki sınav nasıl geçerse geçsin hedefine ulaştın."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You've secured the goal, however the next test goes."
+          }
+        }
+      }
+    },
     "Das iPad zeigt keine Live-Aktivitäten an. Sie erscheinen auf dem iPhone.": {
       "localizations": {
         "de": {
@@ -1651,24 +1849,24 @@
         }
       }
     },
-    "Dateien › Auf meinem iPhone › Meldo › Prüfungen": {
+    "Dateien › Auf meinem iPhone › Meldo › Scans": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dateien › Auf meinem iPhone › Meldo › Prüfungen"
+            "value": "Dateien › Auf meinem iPhone › Meldo › Scans"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dosyalar › iPhone'umda › Meldo › Prüfungen"
+            "value": "Dosyalar › iPhone'umda › Meldo › Scans"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Files › On My iPhone › Meldo › Prüfungen"
+            "value": "Files › On My iPhone › Meldo › Scans"
           }
         }
       }
@@ -1717,6 +1915,28 @@
         }
       }
     },
+    "Dein Name": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dein Name"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adın"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your name"
+          }
+        }
+      }
+    },
     "Dein Stundenplan bleibt erhalten, wird aber nicht mehr aktualisiert. Das Passwort wird gelöscht.": {
       "localizations": {
         "de": {
@@ -1735,28 +1955,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Your timetable stays but is no longer updated. The password is deleted."
-          }
-        }
-      }
-    },
-    "Deine Arbeiten an einem Ort": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Deine Arbeiten an einem Ort"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sınav kağıtların tek bir yerde"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your papers in one place"
           }
         }
       }
@@ -1849,6 +2047,28 @@
         }
       }
     },
+    "Deine Unterlagen an einem Ort": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deine Unterlagen an einem Ort"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belgelerin tek bir yerde"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your papers in one place"
+          }
+        }
+      }
+    },
     "Deine WebUntis-Anmeldung ist abgelaufen. Melde dich erneut an.": {
       "localizations": {
         "de": {
@@ -1867,6 +2087,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Your WebUntis sign-in has expired. Please sign in again."
+          }
+        }
+      }
+    },
+    "Deine eigene Rechnung aus den Noten, die du einträgst. Die Zeugnisnote legt deine Schule fest.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deine eigene Rechnung aus den Noten, die du einträgst. Die Zeugnisnote legt deine Schule fest."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Girdiğin notlardan kendi hesaplaman. Karne notunu okulun belirler."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your own calculation from the grades you enter. Your school sets the report grade."
           }
         }
       }
@@ -2179,6 +2421,116 @@
         }
       }
     },
+    "Dokument": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dokument"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belge"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Document"
+          }
+        }
+      }
+    },
+    "Dokumente": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dokumente"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belgeler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Documents"
+          }
+        }
+      }
+    },
+    "Drucken oder teilen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drucken oder teilen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yazdır veya paylaş"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Print or share"
+          }
+        }
+      }
+    },
+    "Du brauchst mindestens %@.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Du brauchst mindestens %@."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En az %@ alman gerekiyor."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You need at least %@."
+          }
+        }
+      }
+    },
+    "Du unterschreibst die Entschuldigung selbst.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Du unterschreibst die Entschuldigung selbst."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mazeret belgesini kendin imzalarsın."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You sign the note yourself."
+          }
+        }
+      }
+    },
     "Dunkel": {
       "localizations": {
         "tr": {
@@ -2285,6 +2637,50 @@
           "stringUnit": {
             "state": "translated",
             "value": "Entfällt"
+          }
+        }
+      }
+    },
+    "Entschuldigung": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entschuldigung"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mazeret dilekçesi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Excuse note"
+          }
+        }
+      }
+    },
+    "Entschuldigung erstellen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entschuldigung erstellen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mazeret dilekçesi oluştur"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create excuse note"
           }
         }
       }
@@ -2575,6 +2971,28 @@
         }
       }
     },
+    "Fehlzeit": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fehlzeit"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Devamsızlık"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Absence"
+          }
+        }
+      }
+    },
     "Ferien": {
       "localizations": {
         "de": {
@@ -2615,6 +3033,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Fertig"
+          }
+        }
+      }
+    },
+    "Frag deine Lehrkraft, wie sie schriftlich und mündlich gewichtet.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Frag deine Lehrkraft, wie sie schriftlich und mündlich gewichtet."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öğretmenine yazılı ve sözlüyü nasıl ağırlıklandırdığını sor."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ask your teacher how written and oral grades are weighted."
           }
         }
       }
@@ -2817,6 +3257,28 @@
         }
       }
     },
+    "Für die nächste schriftliche Note, mit deiner Gewichtung.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Für die nächste schriftliche Note, mit deiner Gewichtung."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir sonraki yazılı not için, senin ağırlıklandırmanla."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "For the next written grade, with your weighting."
+          }
+        }
+      }
+    },
     "Für heute und morgen ist alles erledigt.": {
       "localizations": {
         "tr": {
@@ -2971,6 +3433,72 @@
         }
       }
     },
+    "Geschätzter Schnitt": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geschätzter Schnitt"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tahmini ortalama"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estimated average"
+          }
+        }
+      }
+    },
+    "Gewicht": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gewicht"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ağırlık"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weight"
+          }
+        }
+      }
+    },
+    "Gewichtung": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gewichtung"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ağırlıklandırma"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weighting"
+          }
+        }
+      }
+    },
     "Gib den Namen deiner Schule zusammen mit dem Ort ein, zum Beispiel „Gymnasium Köln-Pesch“. Bei zu allgemeinen Suchen zeigt WebUntis keine Liste an.": {
       "localizations": {
         "de": {
@@ -3011,6 +3539,50 @@
           "stringUnit": {
             "state": "translated",
             "value": "Large"
+          }
+        }
+      }
+    },
+    "Grund für das Fehlen: %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grund für das Fehlen: %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Devamsızlık nedeni: %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reason for the absence: %@"
+          }
+        }
+      }
+    },
+    "Grund, z. B. Krankheit": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grund, z. B. Krankheit"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neden, örn. hastalık"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reason, e.g. illness"
           }
         }
       }
@@ -3521,6 +4093,50 @@
         }
       }
     },
+    "Ich bin volljährig": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ich bin volljährig"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reşidim"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I'm an adult"
+          }
+        }
+      }
+    },
+    "Ich bitte um Verständnis.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ich bitte um Verständnis."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anlayışınız için teşekkür ederim."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thank you for your understanding."
+          }
+        }
+      }
+    },
     "Importiert": {
       "localizations": {
         "de": {
@@ -3583,6 +4199,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Turned off for Meldo in iOS Settings."
+          }
+        }
+      }
+    },
+    "Indigo": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Indigo"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çivit mavisi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Indigo"
           }
         }
       }
@@ -3939,6 +4577,28 @@
         }
       }
     },
+    "Keine Noten": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Noten"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not yok"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No grades"
+          }
+        }
+      }
+    },
     "Keine Prüfungen eingetragen.": {
       "localizations": {
         "de": {
@@ -4111,6 +4771,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Keins"
+          }
+        }
+      }
+    },
+    "Klasse": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Klasse"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sınıf"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Class"
           }
         }
       }
@@ -4419,28 +5101,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Letzte Woche"
-          }
-        }
-      }
-    },
-    "Lila": {
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mor"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Purple"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lila"
           }
         }
       }
@@ -5127,6 +5787,50 @@
         }
       }
     },
+    "Mit einer Arbeit nicht erreichbar. Bestenfalls %@.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mit einer Arbeit nicht erreichbar. Bestenfalls %@."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tek sınavla ulaşılamaz. En iyi ihtimalle %@."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not reachable with one test. At best %@."
+          }
+        }
+      }
+    },
+    "Mit freundlichen Grüßen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mit freundlichen Grüßen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saygılarımla"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kind regards"
+          }
+        }
+      }
+    },
     "Mitteilungen": {
       "localizations": {
         "tr": {
@@ -5233,6 +5937,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Morgen"
+          }
+        }
+      }
+    },
+    "Mündlich": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mündlich"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sözlü"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oral"
           }
         }
       }
@@ -5413,6 +6139,28 @@
         }
       }
     },
+    "Name und Klasse merkt sich Meldo für das nächste Mal.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name und Klasse merkt sich Meldo für das nächste Mal."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo adını ve sınıfını bir dahaki sefere hatırlar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo remembers your name and class for next time."
+          }
+        }
+      }
+    },
     "Name, z. B. Mathematik": {
       "localizations": {
         "tr": {
@@ -5497,6 +6245,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "New subjects"
+          }
+        }
+      }
+    },
+    "Neue Note": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neue Note"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni not"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New grade"
           }
         }
       }
@@ -5721,6 +6491,28 @@
         }
       }
     },
+    "Noch keine Noten": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noch keine Noten"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Henüz not yok"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No grades yet"
+          }
+        }
+      }
+    },
     "Noch keine Stunden im Stundenplan.": {
       "localizations": {
         "tr": {
@@ -5853,6 +6645,94 @@
         }
       }
     },
+    "Note": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Note"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grade"
+          }
+        }
+      }
+    },
+    "Note bearbeiten": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Note bearbeiten"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notu düzenle"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit grade"
+          }
+        }
+      }
+    },
+    "Note hinzufügen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Note hinzufügen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not ekle"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add grade"
+          }
+        }
+      }
+    },
+    "Note löschen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Note löschen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notu sil"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete grade"
+          }
+        }
+      }
+    },
     "Note, z. B. 2- oder 11 P.": {
       "localizations": {
         "tr": {
@@ -5871,6 +6751,116 @@
           "stringUnit": {
             "state": "translated",
             "value": "Note, z. B. 2- oder 11 P."
+          }
+        }
+      }
+    },
+    "Noten": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noten"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notlar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grades"
+          }
+        }
+      }
+    },
+    "Noten 1–6": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noten 1–6"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notlar 1–6"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grades 1–6"
+          }
+        }
+      }
+    },
+    "Notenrechner": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notenrechner"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not hesaplayıcı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grade calculator"
+          }
+        }
+      }
+    },
+    "Notenschnitt": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notenschnitt"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not ortalaması"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grade average"
+          }
+        }
+      }
+    },
+    "Notensystem": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notensystem"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not sistemi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grading system"
           }
         }
       }
@@ -6183,6 +7173,50 @@
         }
       }
     },
+    "Ort, Datum": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ort, Datum"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yer, tarih"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Place, date"
+          }
+        }
+      }
+    },
+    "PDF erstellen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PDF erstellen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PDF oluştur"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create PDF"
+          }
+        }
+      }
+    },
     "PDF importieren": {
       "localizations": {
         "tr": {
@@ -6201,6 +7235,50 @@
           "stringUnit": {
             "state": "translated",
             "value": "PDF importieren"
+          }
+        }
+      }
+    },
+    "Parallele Kurse": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parallele Kurse"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paralel dersler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parallel courses"
+          }
+        }
+      }
+    },
+    "Parallele Kurse zur Auswahl": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parallele Kurse zur Auswahl"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seçilebilir paralel dersler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parallel courses to choose from"
           }
         }
       }
@@ -6245,6 +7323,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Break · %lld min"
+          }
+        }
+      }
+    },
+    "Plus und Minus": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Plus und Minus"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Artı ve eksi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Plus and minus"
           }
         }
       }
@@ -6381,24 +7481,46 @@
         }
       }
     },
-    "Prüfungen & Scans": {
+    "Punkte": {
       "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Punkte"
+          }
+        },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sınavlar ve taramalar"
+            "value": "Puan"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Exams & scans"
+            "value": "Points"
           }
-        },
+        }
+      }
+    },
+    "Punkte 0–15": {
+      "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Prüfungen & Scans"
+            "value": "Punkte 0–15"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puan 0–15"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Points 0–15"
           }
         }
       }
@@ -6513,24 +7635,24 @@
         }
       }
     },
-    "Scanne zurückgegebene Klassenarbeiten oder lade Fotos und PDFs. Alles bleibt auf deinem Gerät und erscheint auch in der Dateien-App.": {
+    "Scanne Klassenarbeiten, Arbeitsblätter und Dokumente oder lade Fotos und PDFs. Meldo sortiert sie nach Fach, auch in der Dateien-App.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Scanne zurückgegebene Klassenarbeiten oder lade Fotos und PDFs. Alles bleibt auf deinem Gerät und erscheint auch in der Dateien-App."
+            "value": "Scanne Klassenarbeiten, Arbeitsblätter und Dokumente oder lade Fotos und PDFs. Meldo sortiert sie nach Fach, auch in der Dateien-App."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Geri verilen sınav kağıtlarını tara veya fotoğraf ve PDF ekle. Her şey cihazında kalır ve Dosyalar uygulamasında da görünür."
+            "value": "Sınav kağıtlarını, çalışma kağıtlarını ve belgeleri tara ya da fotoğraf ve PDF ekle. Meldo onları derse göre sıralar, Dosyalar uygulamasında da."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Scan returned tests or add photos and PDFs. Everything stays on your device and also shows up in the Files app."
+            "value": "Scan tests, worksheets and documents or add photos and PDFs. Meldo sorts them by subject, also in the Files app."
           }
         }
       }
@@ -6575,6 +7697,72 @@
           "stringUnit": {
             "state": "translated",
             "value": "Check your Lock Screen."
+          }
+        }
+      }
+    },
+    "Schließen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schließen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kapat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Close"
+          }
+        }
+      }
+    },
+    "Schnitt": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schnitt"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ortalama"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Average"
+          }
+        }
+      }
+    },
+    "Schriftlich": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schriftlich"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yazılı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Written"
           }
         }
       }
@@ -6733,6 +7921,28 @@
         }
       }
     },
+    "Sehr geehrte Damen und Herren,": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sehr geehrte Damen und Herren,"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sayın ilgililer,"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dear Sir or Madam,"
+          }
+        }
+      }
+    },
     "Seite, Aufgabe, Details …": {
       "localizations": {
         "tr": {
@@ -6817,6 +8027,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Visible"
+          }
+        }
+      }
+    },
+    "So viel zählt ein Plus oder Minus, z. B. 2− = 2,33.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "So viel zählt ein Plus oder Minus, z. B. 2− = 2,33."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Artı veya eksinin değeri, örn. 2− = 2,33."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What a plus or minus counts, e.g. 2− = 2.33."
           }
         }
       }
@@ -7415,6 +8647,28 @@
         }
       }
     },
+    "Tendenz": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tendenz"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eğilim"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tendency"
+          }
+        }
+      }
+    },
     "Termine aus WebUntis. Zurückgegebene Arbeiten scannst du unten ein.": {
       "localizations": {
         "de": {
@@ -7477,6 +8731,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tippe im Unterricht auf „Melden“. Hier siehst du dann deine Entwicklung."
+          }
+        }
+      }
+    },
+    "Titel, z. B. 1. Klausur": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Titel, z. B. 1. Klausur"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başlık, örn. 1. sınav"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Title, e.g. 1st test"
           }
         }
       }
@@ -7591,6 +8867,28 @@
         }
       }
     },
+    "Trag deine Noten ein, dann rechnet Meldo deinen Schnitt aus.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trag deine Noten ein, dann rechnet Meldo deinen Schnitt aus."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notlarını gir, Meldo ortalamanı hesaplasın."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter your grades and Meldo works out your average."
+          }
+        }
+      }
+    },
     "Trennen": {
       "localizations": {
         "de": {
@@ -7697,6 +8995,72 @@
           "stringUnit": {
             "state": "translated",
             "value": "Unterricht"
+          }
+        }
+      }
+    },
+    "Unterschreiben muss eine erziehungsberechtigte Person.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unterschreiben muss eine erziehungsberechtigte Person."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir veli imzalamalıdır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A parent or guardian has to sign."
+          }
+        }
+      }
+    },
+    "Unterschrift": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unterschrift"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İmza"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Signature"
+          }
+        }
+      }
+    },
+    "Unterschrift der/des Erziehungsberechtigten": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unterschrift der/des Erziehungsberechtigten"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Velinin imzası"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Signature of parent or guardian"
           }
         }
       }
@@ -7965,6 +9329,28 @@
         }
       }
     },
+    "Vorschau": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vorschau"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Önizleme"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preview"
+          }
+        }
+      }
+    },
     "Vorschau anzeigen": {
       "localizations": {
         "de": {
@@ -8027,6 +9413,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Vorschlag übernehmen"
+          }
+        }
+      }
+    },
+    "Was brauche ich?": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Was brauche ich?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ne kadar almam gerek?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What do I need?"
           }
         }
       }
@@ -8247,6 +9655,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "More cards"
+          }
+        }
+      }
+    },
+    "Wert": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wert"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Değer"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Value"
           }
         }
       }
@@ -8537,6 +9967,28 @@
         }
       }
     },
+    "Wähle deinen Kurs. Meldo zeigt ihn ab jetzt jede Woche zu dieser Zeit.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wähle deinen Kurs. Meldo zeigt ihn ab jetzt jede Woche zu dieser Zeit."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dersini seç. Meldo bundan sonra her hafta bu saatte onu gösterir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose your course. Meldo shows it at this time every week from now on."
+          }
+        }
+      }
+    },
     "Wöchentlich": {
       "localizations": {
         "tr": {
@@ -8599,6 +10051,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Drag to sort. Tip: on the home screen you can also move cards with “Customize”."
+          }
+        }
+      }
+    },
+    "Ziel": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ziel"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hedef"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Goal"
           }
         }
       }
@@ -8735,6 +10209,50 @@
         }
       }
     },
+    "Zwei Exemplare pro Seite": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zwei Exemplare pro Seite"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sayfa başına iki kopya"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Two copies per page"
+          }
+        }
+      }
+    },
+    "am %@ (%@ Uhr)": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "am %@ (%@ Uhr)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ tarihinde (%@)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "on %@ (%@)"
+          }
+        }
+      }
+    },
     "bald fällig": {
       "localizations": {
         "de": {
@@ -8845,6 +10363,28 @@
         }
       }
     },
+    "geschätzt": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "geschätzt"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "tahmini"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "estimated"
+          }
+        }
+      }
+    },
     "gestern": {
       "localizations": {
         "tr": {
@@ -8885,6 +10425,50 @@
           "stringUnit": {
             "state": "translated",
             "value": "heute"
+          }
+        }
+      }
+    },
+    "hiermit bitte ich darum, das Fehlen meines Kindes %@ %@ zu entschuldigen.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "hiermit bitte ich darum, das Fehlen meines Kindes %@ %@ zu entschuldigen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "çocuğum %@ adına %@ devamsızlığının mazur görülmesini rica ederim."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I hereby ask you to excuse the absence of my child %@ %@."
+          }
+        }
+      }
+    },
+    "hiermit bitte ich darum, mein Fehlen %@ zu entschuldigen.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "hiermit bitte ich darum, mein Fehlen %@ zu entschuldigen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ devamsızlığımın mazur görülmesini rica ederim."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I hereby ask you to excuse my absence %@."
           }
         }
       }
@@ -8977,6 +10561,28 @@
         }
       }
     },
+    "noch %lld Tage Ferien": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "noch %lld Tage Ferien"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld gün tatil kaldı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld days of holidays left"
+          }
+        }
+      }
+    },
     "noch keine Sitzung": {
       "localizations": {
         "de": {
@@ -9017,6 +10623,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "open"
+          }
+        }
+      }
+    },
+    "vom %@ bis %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "vom %@ bis %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ ile %@ arasında"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "from %@ to %@"
           }
         }
       }

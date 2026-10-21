@@ -12,7 +12,7 @@ struct LessonLiveActivity: Widget {
                 .activityBackgroundTint(Color(.secondarySystemBackground))
                 .activitySystemActionForegroundColor(.primary)
         } dynamicIsland: { context in
-            let color = SubjectColor(rawValue: context.attributes.colorKey)?.color ?? .meldoIndigo
+            let color = SubjectColor(rawValue: context.attributes.colorKey)?.color ?? .meldoOrange
             return DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
                     Label(context.attributes.subjectName, systemImage: context.attributes.symbolName)
@@ -34,7 +34,7 @@ struct LessonLiveActivity: Widget {
                         Button(intent: LogParticipationIntent()) {
                             Label(L("Melden"), systemImage: "hand.raised.fill")
                         }
-                        .tint(Color.meldoIndigo)
+                        .tint(Color.meldoOrange)
                     }
                 }
             } compactLeading: {
@@ -52,7 +52,7 @@ private struct LessonActivityView: View {
     let context: ActivityViewContext<LessonActivityAttributes>
 
     var body: some View {
-        let color = SubjectColor(rawValue: context.attributes.colorKey)?.color ?? .meldoIndigo
+        let color = SubjectColor(rawValue: context.attributes.colorKey)?.color ?? .meldoOrange
         HStack(spacing: 14) {
             Image(systemName: context.attributes.symbolName)
                 .font(.title2.weight(.semibold))
@@ -90,7 +90,7 @@ private struct LessonActivityView: View {
             }
             .buttonStyle(.borderedProminent)
             .buttonBorderShape(.circle)
-            .tint(Color.meldoIndigo)
+            .tint(Color.meldoOrange)
             .accessibilityLabel(L("Meldung erfassen"))
         }
     }

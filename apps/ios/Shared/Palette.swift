@@ -1,36 +1,52 @@
 import SwiftUI
 
-/// App themes. Light/Dark/System control appearance; the colored themes keep
-/// the system appearance and change the accent (tint) plus a faint backdrop wash.
-/// Glass controls pick up the tint automatically, so Liquid Glass stays native.
+/// Accent color. Few, deliberate choices; Meldo orange is the default.
+/// Light/dark is a separate setting (`AppearanceChoice`).
 nonisolated enum AppTheme: String, Codable, CaseIterable, Identifiable {
-    case system, light, dark, purple, blue, green, orange
+    case orange, indigo, green
+
+    var id: String { rawValue }
+
+    var tint: Color {
+        switch self {
+        case .orange: .meldoOrange
+        case .indigo: .meldoIndigo
+        case .green: .green
+        }
+    }
+
+    /// Clean system backgrounds; the accent carries the color.
+    var wash: Color? { nil }
+
+    var localizedName: String {
+        switch self {
+        case .orange: L("Orange")
+        case .indigo: L("Indigo")
+        case .green: L("Grün")
+        }
+    }
+
+    /// Themes from version 0.2 (system, light, dark, purple, blue, green, orange).
+    static func migrating(_ raw: String) -> AppTheme {
+        switch raw {
+        case "purple", "blue", "indigo": .indigo
+        case "green": .green
+        default: .orange
+        }
+    }
+}
+
+/// Light, dark or following the system.
+nonisolated enum AppearanceChoice: String, Codable, CaseIterable, Identifiable {
+    case system, light, dark
 
     var id: String { rawValue }
 
     var colorScheme: ColorScheme? {
         switch self {
+        case .system: nil
         case .light: .light
         case .dark: .dark
-        default: nil
-        }
-    }
-
-    var tint: Color {
-        switch self {
-        case .system, .light, .dark: .accentColor
-        case .purple: .purple
-        case .blue: .blue
-        case .green: .green
-        case .orange: .orange
-        }
-    }
-
-    /// Very low-opacity wash behind content; nil for neutral themes.
-    var wash: Color? {
-        switch self {
-        case .purple, .blue, .green, .orange: tint
-        default: nil
         }
     }
 
@@ -39,10 +55,6 @@ nonisolated enum AppTheme: String, Codable, CaseIterable, Identifiable {
         case .system: L("System")
         case .light: L("Hell")
         case .dark: L("Dunkel")
-        case .purple: L("Lila")
-        case .blue: L("Blau")
-        case .green: L("Grün")
-        case .orange: L("Orange")
         }
     }
 }

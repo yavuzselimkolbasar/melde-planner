@@ -140,19 +140,37 @@ nonisolated struct ExamDocument: Identifiable, Codable, Hashable {
     var title: String
     var subjectID: UUID?
     var date: Date
-    /// File name inside the app's exam folder.
+    /// Path inside Documents/Scans, e.g. "Mathematik/Exams/1. Klausur (12.10.2026).pdf".
     var fileName: String
     var pageCount: Int
     /// The grade as written by the teacher (e.g. "2-" or "11 P."), shown as-is.
     var grade: String = ""
     var notes: String = ""
     var updatedAt = Date()
+    /// `nil` in files from version 0.2, which only had exams.
+    var category: DocumentCategory?
+
+    var kind: DocumentCategory { category ?? .exam }
+}
+
+/// What a scan is; also its folder in the Files app (English names, as shown there).
+nonisolated enum DocumentCategory: String, Codable, CaseIterable, Identifiable {
+    case exam, worksheet, document
+    var id: String { rawValue }
+
+    var folderName: String {
+        switch self {
+        case .exam: "Exams"
+        case .worksheet: "Worksheets"
+        case .document: "Documents"
+        }
+    }
 }
 
 /// Cards on the home screen; order and visibility are customizable.
 nonisolated enum DashboardCard: String, Codable, CaseIterable, Identifiable, Sendable {
     case today, weekPreview, participation, streak, homework, exams, news, absences
-    case nextLesson, weekChart, nextHoliday, todos
+    case nextLesson, weekChart, nextHoliday, todos, grades
     var id: String { rawValue }
 }
 
@@ -211,7 +229,8 @@ nonisolated enum AppIconChoice: String, Codable, CaseIterable, Identifiable {
 
 nonisolated struct Preferences: Codable, Hashable {
     var language: AppLanguage = .german
-    var theme: AppTheme = .system
+    var theme: AppTheme = .orange
+    var appearance: AppearanceChoice = .system
     /// Weekly Melde target; `nil` until the student sets or accepts one.
     var weeklyGoal: Int?
     /// Any date in an A week; enables A/B-week lessons.
@@ -226,6 +245,18 @@ nonisolated struct Preferences: Codable, Hashable {
     var homeLayout: [CardSlot<DashboardCard>] = CardSlot<DashboardCard>.defaultHome
     /// Statistik cards with their sizes.
     var statsLayout: [CardSlot<StatsCard>] = CardSlot<StatsCard>.defaultStats
+    /// Parallel courses the student doesn't attend, as "weekday|start|subject".
+    var hiddenCourses: [String] = []
+    var gradeScale: GradeScaleChoice = .traditional
+    /// Share of written grades in a subject average (the rest is oral).
+    var writtenWeight: Double = 0.5
+    /// What + and − add or subtract on the 1–6 scale (e.g. 0.33 or 0.25).
+    var tendencyStep: Double = 0.33
+    /// For the excuse note (Entschuldigung).
+    var studentName: String = ""
+    var className: String = ""
+    var excuseSalutation: String = ""
+    var adultStudent: Bool = false
     var appIcon: AppIconChoice = .standard
     /// The start screen stops suggesting after-lesson check-ins once answered.
     var checkInPromptDismissed = false
@@ -233,8 +264,9 @@ nonisolated struct Preferences: Codable, Hashable {
     init() {}
 
     enum CodingKeys: String, CodingKey {
-        case language, theme, weeklyGoal, weekAReference, askAfterLesson, liveActivities
-        case showMascot, haptics, homeLayout, statsLayout, appIcon, checkInPromptDismissed
+        case language, theme, appearance, weeklyGoal, weekAReference, askAfterLesson, liveActivities
+        case showMascot, haptics, homeLayout, statsLayout, appIcon, checkInPromptDismissed, hiddenCourses
+        case gradeScale, writtenWeight, tendencyStep, studentName, className, excuseSalutation, adultStudent
         /// Read only, to migrate layouts from version 0.2.
         case dashboardCards
     }
@@ -243,7 +275,11 @@ nonisolated struct Preferences: Codable, Hashable {
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
         language = try c.decodeIfPresent(AppLanguage.self, forKey: .language) ?? .german
-        theme = try c.decodeIfPresent(AppTheme.self, forKey: .theme) ?? .system
+        // Older versions mixed appearance into the theme ("light", "dark", "purple", …).
+        let rawTheme = try c.decodeIfPresent(String.self, forKey: .theme) ?? AppTheme.orange.rawValue
+        theme = AppTheme(rawValue: rawTheme) ?? AppTheme.migrating(rawTheme)
+        appearance = try c.decodeIfPresent(AppearanceChoice.self, forKey: .appearance)
+            ?? AppearanceChoice(rawValue: rawTheme) ?? .system
         weeklyGoal = try c.decodeIfPresent(Int.self, forKey: .weeklyGoal)
         weekAReference = try c.decodeIfPresent(Date.self, forKey: .weekAReference)
         askAfterLesson = try c.decodeIfPresent(Bool.self, forKey: .askAfterLesson) ?? false
@@ -262,6 +298,14 @@ nonisolated struct Preferences: Codable, Hashable {
             homeLayout = keptSlots + added
         }
         statsLayout = try c.decodeIfPresent([CardSlot<StatsCard>].self, forKey: .statsLayout) ?? CardSlot<StatsCard>.defaultStats
+        hiddenCourses = try c.decodeIfPresent([String].self, forKey: .hiddenCourses) ?? []
+        gradeScale = try c.decodeIfPresent(GradeScaleChoice.self, forKey: .gradeScale) ?? .traditional
+        writtenWeight = try c.decodeIfPresent(Double.self, forKey: .writtenWeight) ?? 0.5
+        tendencyStep = try c.decodeIfPresent(Double.self, forKey: .tendencyStep) ?? 0.33
+        studentName = try c.decodeIfPresent(String.self, forKey: .studentName) ?? ""
+        className = try c.decodeIfPresent(String.self, forKey: .className) ?? ""
+        excuseSalutation = try c.decodeIfPresent(String.self, forKey: .excuseSalutation) ?? ""
+        adultStudent = try c.decodeIfPresent(Bool.self, forKey: .adultStudent) ?? false
         appIcon = try c.decodeIfPresent(AppIconChoice.self, forKey: .appIcon) ?? .standard
         checkInPromptDismissed = try c.decodeIfPresent(Bool.self, forKey: .checkInPromptDismissed) ?? false
     }
@@ -270,6 +314,7 @@ nonisolated struct Preferences: Codable, Hashable {
         var c = encoder.container(keyedBy: CodingKeys.self)
         try c.encode(language, forKey: .language)
         try c.encode(theme, forKey: .theme)
+        try c.encode(appearance, forKey: .appearance)
         try c.encodeIfPresent(weeklyGoal, forKey: .weeklyGoal)
         try c.encodeIfPresent(weekAReference, forKey: .weekAReference)
         try c.encode(askAfterLesson, forKey: .askAfterLesson)
@@ -278,6 +323,14 @@ nonisolated struct Preferences: Codable, Hashable {
         try c.encode(haptics, forKey: .haptics)
         try c.encode(homeLayout, forKey: .homeLayout)
         try c.encode(statsLayout, forKey: .statsLayout)
+        try c.encode(hiddenCourses, forKey: .hiddenCourses)
+        try c.encode(gradeScale, forKey: .gradeScale)
+        try c.encode(writtenWeight, forKey: .writtenWeight)
+        try c.encode(tendencyStep, forKey: .tendencyStep)
+        try c.encode(studentName, forKey: .studentName)
+        try c.encode(className, forKey: .className)
+        try c.encode(excuseSalutation, forKey: .excuseSalutation)
+        try c.encode(adultStudent, forKey: .adultStudent)
         try c.encode(appIcon, forKey: .appIcon)
         try c.encode(checkInPromptDismissed, forKey: .checkInPromptDismissed)
     }
@@ -363,6 +416,28 @@ nonisolated struct UntisExtras: Codable, Hashable {
     var updated: Date
 }
 
+/// One grade the student enters (Klausur, Test, mündliche Note). Grades are
+/// the student's own record for estimating averages, never official.
+nonisolated struct GradeEntry: Identifiable, Codable, Hashable {
+    var id = UUID()
+    var subjectID: UUID
+    /// 1.0–6.0 (traditional, tendency already applied) or 0–15 points.
+    var value: Double
+    var written: Bool
+    var weight: Double = 1
+    var title: String = ""
+    var date: Date
+}
+
+/// How grades are entered and averaged. Configuration, not constants: schools differ.
+nonisolated enum GradeScaleChoice: String, Codable, CaseIterable, Identifiable {
+    /// 1 (best) to 6.
+    case traditional
+    /// 15 (best) to 0, Oberstufe.
+    case points
+    var id: String { rawValue }
+}
+
 /// The Microsoft Teams connection. The refresh token lives in the Keychain.
 nonisolated struct TeamsLink: Codable, Hashable {
     var account: String
@@ -387,6 +462,7 @@ nonisolated struct AppData: Codable {
     var untisTimetable: UntisTimetable?
     var untisExtras: UntisExtras?
     var teams: TeamsLink?
+    var grades: [GradeEntry] = []
     var preferences = Preferences()
 
     init() {}
@@ -406,6 +482,7 @@ nonisolated struct AppData: Codable {
         untisTimetable = try c.decodeIfPresent(UntisTimetable.self, forKey: .untisTimetable)
         untisExtras = try c.decodeIfPresent(UntisExtras.self, forKey: .untisExtras)
         teams = try c.decodeIfPresent(TeamsLink.self, forKey: .teams)
+        grades = try c.decodeIfPresent([GradeEntry].self, forKey: .grades) ?? []
         preferences = try c.decodeIfPresent(Preferences.self, forKey: .preferences) ?? Preferences()
     }
 }

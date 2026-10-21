@@ -63,8 +63,17 @@ struct AbsencesView: View {
 
 struct AbsenceRow: View {
     let absence: UntisAbsenceRecord
+    @State private var writingExcuse = false
 
     var body: some View {
+        row
+            .contextMenu {
+                Button(L("Entschuldigung erstellen"), systemImage: "doc.text") { writingExcuse = true }
+            }
+            .sheet(isPresented: $writingExcuse) { ExcuseNoteView(absence: absence) }
+    }
+
+    private var row: some View {
         HStack(alignment: .top, spacing: DS.spacingM) {
             Image(systemName: absence.excused ? "checkmark.circle.fill" : "circle")
                 .foregroundStyle(absence.excused ? Color.green : Color.red)

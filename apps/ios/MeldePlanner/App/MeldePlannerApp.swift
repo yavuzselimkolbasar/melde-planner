@@ -37,7 +37,7 @@ struct MeldePlannerApp: App {
             RootView()
                 .environment(model)
                 .tint(model.preferences.theme.tint)
-                .preferredColorScheme(model.preferences.theme.colorScheme)
+                .preferredColorScheme(model.preferences.appearance.colorScheme)
                 .environment(\.locale, Localization.locale)
                 // Rebuild the hierarchy when the language changes so every string re-resolves.
                 .id(model.preferences.language)
