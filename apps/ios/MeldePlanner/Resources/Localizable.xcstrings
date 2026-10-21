@@ -2179,6 +2179,28 @@
         }
       }
     },
+    "Gib oben den Namen oder Ort deiner Schule ein.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gib oben den Namen oder Ort deiner Schule ein."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yukarıya okulunun adını veya bulunduğu şehri yaz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Type your school's name or town above."
+          }
+        }
+      }
+    },
     "Grün": {
       "localizations": {
         "tr": {

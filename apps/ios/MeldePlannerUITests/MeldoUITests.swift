@@ -97,8 +97,9 @@ final class MeldoUITests: XCTestCase {
         shot(app, "05-timetable-one-lesson")
 
         tap(app.buttons["Meldung erfassen"].firstMatch, "Melden button")
-        shot(app, "06-after-melden")
+        // Undo is offered for four seconds only, so check it before the screenshot.
         XCTAssertTrue(app.buttons["Rückgängig"].waitForExistence(timeout: 3), "undo should appear after Melden")
+        shot(app, "06-after-melden")
         tab(app, "Start")
         shot(app, "07-start-with-meldung")
     }
@@ -175,7 +176,7 @@ final class MeldoUITests: XCTestCase {
         let app = launch(seed: true)
         let melden = app.buttons["Meldung erfassen"].firstMatch
         tap(melden, "Melden")
-        shot(app, "30-melden-recorded")
+        // Undo first: it disappears after four seconds, longer than a slow simulator's screenshot.
         tap(app.buttons["Rückgängig"], "Rückgängig")
         shot(app, "31-melden-undone")
     }
@@ -212,6 +213,28 @@ final class MeldoUITests: XCTestCase {
         shot(app, "71-subject-picker")
         if tap(app.buttons.containing(NSPredicate(format: "label CONTAINS 'Biologie'")).firstMatch, "Biologie in picker") {
             shot(app, "72-after-picking-subject")
+        }
+    }
+
+    /// Finds a real school through the public WebUntis school search and opens
+    /// its login form. No credentials are entered.
+    func test09_webUntisSchoolSearch() {
+        let app = launch(seed: true)
+        tab(app, "Mehr")
+        tap(app.buttons["WebUntis"].firstMatch, "WebUntis")
+        shot(app, "90-webuntis-empty")
+        let field = app.searchFields.firstMatch
+        if tap(field, "school search field") {
+            field.typeText("Köln")
+            let school = app.buttons.containing(NSPredicate(format: "label CONTAINS[c] 'Köln'")).firstMatch
+            if school.waitForExistence(timeout: 15) {
+                shot(app, "91-webuntis-results")
+                school.tap()
+                shot(app, "92-webuntis-login")
+            } else {
+                shot(app, "91-webuntis-no-results")
+                XCTFail("no school found for Köln")
+            }
         }
     }
 

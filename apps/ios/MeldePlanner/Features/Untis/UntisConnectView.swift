@@ -28,6 +28,10 @@ private struct UntisSchoolSearchView: View {
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
+            if query.trimmingCharacters(in: .whitespaces).count < 3 {
+                Label(L("Gib oben den Namen oder Ort deiner Schule ein."), systemImage: "magnifyingglass")
+                    .foregroundStyle(.secondary)
+            }
             if searching {
                 ProgressView()
             }
@@ -48,7 +52,7 @@ private struct UntisSchoolSearchView: View {
             }
         }
         .navigationTitle(L("WebUntis"))
-        .searchable(text: $query, prompt: L("Schule oder Ort suchen"))
+        .searchable(text: $query, placement: .navigationBarDrawer(displayMode: .always), prompt: L("Schule oder Ort suchen"))
         .task(id: query) { await search() }
     }
 

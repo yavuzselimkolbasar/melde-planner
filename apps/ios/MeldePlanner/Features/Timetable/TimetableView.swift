@@ -155,6 +155,8 @@ private struct LessonCard: View {
     @Environment(AppModel.self) private var model
     let lesson: Lesson
     let isCurrent: Bool
+    /// Stacked layout for the narrow day columns of the iPad week grid.
+    var stacked = false
 
     var body: some View {
         let subject = model.subject(lesson.subjectID)
@@ -163,22 +165,33 @@ private struct LessonCard: View {
             RoundedRectangle(cornerRadius: 3, style: .continuous)
                 .fill(color)
                 .frame(width: 5)
-            VStack(alignment: .leading, spacing: 2) {
-                Text(subject?.name ?? L("Unbekanntes Fach"))
-                    .font(.headline)
-                HStack(spacing: DS.spacingS) {
-                    Text(TimeText.range(lesson.startMinute, lesson.endMinute)).monospacedDigit()
-                    if !lesson.room.isEmpty { Text(verbatim: "· \(lesson.room)") }
-                    if lesson.parity != .every {
-                        Badge(text: lesson.parity == .a ? L("A-Woche") : L("B-Woche"), color: .secondary)
+            if stacked {
+                VStack(alignment: .leading, spacing: 4) {
+                    HStack {
+                        SubjectIcon(subject: subject, size: 26)
+                        Spacer(minLength: 0)
+                        if isCurrent { Badge(text: L("Jetzt"), color: color) }
                     }
+                    Text(subject?.name ?? L("Unbekanntes Fach"))
+                        .font(.headline)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.75)
+                    Group {
+                        Text(TimeText.range(lesson.startMinute, lesson.endMinute)).monospacedDigit()
+                        if !lesson.room.isEmpty { Text(verbatim: lesson.room) }
+                        if lesson.parity != .every {
+                            Badge(text: lesson.parity == .a ? L("A-Woche") : L("B-Woche"), color: .secondary)
+                        }
+                    }
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
                 }
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            } else {
+                row(subject: subject, color: color)
             }
-            Spacer()
-            if isCurrent { Badge(text: L("Jetzt"), color: color) }
-            SubjectIcon(subject: subject, size: 32)
         }
         .padding(DS.spacingM)
         .background(
@@ -193,6 +206,26 @@ private struct LessonCard: View {
         }
         .accessibilityElement(children: .combine)
         .accessibilityHint(L("Zum Bearbeiten tippen"))
+    }
+
+    @ViewBuilder
+    private func row(subject: Subject?, color: Color) -> some View {
+        VStack(alignment: .leading, spacing: 2) {
+            Text(subject?.name ?? L("Unbekanntes Fach"))
+                .font(.headline)
+            HStack(spacing: DS.spacingS) {
+                Text(TimeText.range(lesson.startMinute, lesson.endMinute)).monospacedDigit()
+                if !lesson.room.isEmpty { Text(verbatim: "· \(lesson.room)") }
+                if lesson.parity != .every {
+                    Badge(text: lesson.parity == .a ? L("A-Woche") : L("B-Woche"), color: .secondary)
+                }
+            }
+            .font(.subheadline)
+            .foregroundStyle(.secondary)
+        }
+        Spacer()
+        if isCurrent { Badge(text: L("Jetzt"), color: color) }
+        SubjectIcon(subject: subject, size: 32)
     }
 }
 
@@ -224,7 +257,7 @@ private struct WeekGrid: View {
                             .padding(.horizontal, DS.spacingXS)
                             ForEach(model.lessons(onWeekday: day)) { lesson in
                                 Button { onSelect(lesson) } label: {
-                                    LessonCard(lesson: lesson, isCurrent: day == today && current?.lessonId == lesson.id.uuidString)
+                                    LessonCard(lesson: lesson, isCurrent: day == today && current?.lessonId == lesson.id.uuidString, stacked: true)
                                 }
                                 .buttonStyle(.plain)
                                 .contextMenu {

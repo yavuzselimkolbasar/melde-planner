@@ -21,9 +21,9 @@ struct RootView: View {
                 TabView(selection: $tab) {
                     Tab(value: AppTab.home) { screen(DashboardView()) } label: { Label(L("Start"), systemImage: "house") }
                     Tab(value: AppTab.timetable) { screen(TimetableView()) } label: { Label(L("Stundenplan"), systemImage: "tablecells") }
-                    Tab(value: AppTab.calendar) { screen(CalendarView()) } label: { Label(L("Kalender"), systemImage: "calendar") }
                     Tab(value: AppTab.tasks) { screen(TaskListView()) } label: { Label(L("Aufgaben"), systemImage: "checklist") }
                     Tab(value: AppTab.exams) { screen(ExamListView()) } label: { Label(L("Prüfungen"), systemImage: "doc.viewfinder") }
+                    Tab(value: AppTab.calendar) { screen(CalendarView()) } label: { Label(L("Kalender"), systemImage: "calendar") }
                     Tab(value: AppTab.statistics) { screen(StatisticsView()) } label: { Label(L("Statistik"), systemImage: "chart.bar") }
                     Tab(value: AppTab.more) { screen(MoreView()) } label: { Label(L("Mehr"), systemImage: "ellipsis.circle") }
                 }
