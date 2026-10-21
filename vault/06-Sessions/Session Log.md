@@ -9,4 +9,6 @@ permalink: melde-planner/06-sessions/session-log
 
 Newest first. One line per working session: date — what changed — what's left. Details go in `06-Sessions/YYYY-MM-DD topic.md` from [[Templates/Session]].
 
+- 2026-10-21 — Phase 1 foundation: architecture doc + ADR-0002..0004, Rust workspace (44 tests), UniFFI bridge, Supabase schema/RLS/pgTAP, SwiftUI shell (5 tabs, Melde accessory, dashboard, timetable, calendar, statistics, settings, de/tr/en), CI workflows. Left: first macOS CI run, onboarding, auth, grades UI.
+
 - 2026-10-21 — Dev environment set up: skills, claude-mem, graphify, this vault, SkillSpector scan. No app code yet.

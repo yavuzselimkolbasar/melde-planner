@@ -107,13 +107,13 @@ Tool: NVIDIA SkillSpector 2.12.0, static mode (`--no-llm`), one scan per skill d
 
 ### claude-mem plugin skills — 27 targets — CRITICAL: 2, HIGH: 2, LOW: 22, MEDIUM: 1
 
-## Addendum — Ponytail and RTK (2026-10-21)
+## Addendum — Ponytail, RTK and LLM Council (2026-10-21)
 
 | Target | Score | Verdict |
 |---|---|---|
 | Ponytail plugin (DietrichGebert/ponytail) | 100 CRITICAL | **Benign.** All HIGH/CRITICAL hits are in `benchmarks/` and `tests/` (API keys read by benchmark judges, injection test fixtures). Runtime hooks only run `node` and `git` locally; no network. Hooks: SessionStart, SubagentStart, UserPromptSubmit (inject the "lazy senior dev" mode). Default level set to `lite` via `PONYTAIL_DEFAULT_MODE` because the spec forbids unnecessary simplification. |
 | RTK hooks (rtk-ai/rtk) | 100 CRITICAL | **Benign.** Hits are in hook test files (`rewrite` test cases containing `curl`/`wget`). Tested `rtk hook claude` directly: read-only and build commands get `allow`; `git push` is rewritten *without* auto-approval and `git reset --hard` / `rm -rf` are passed through untouched, so Claude Code's permission prompts still apply. |
 | RTK plugin crate | 0 LOW | Clean. |
+| LLM Council skill (aiwithremy/claude-skills-llm-council) | 0 LOW | **Clean.** Prompt-only skill (no scripts): five advisor subagents, anonymous peer review, chairman verdict. Reads workspace context files; writes a transcript only on request. Installed to `.claude/skills/llm-council`. |
 
 RTK's own `.claude/skills` (filter TDD, RTK PR triage, …) are tooling for developing RTK itself and were not installed. RTK is installed as the `rtk` binary (winget `rtk-ai.rtk` 1.0.1) and registered as a **project** hook instead of `rtk init -g`, so other projects are unaffected.
-| LLM Council skill (aiwithremy/claude-skills-llm-council) | 0 LOW | **Clean.** Prompt-only skill (no scripts): five advisor subagents, anonymous peer review, chairman verdict. Reads workspace context files; writes a transcript only on request. Installed to `.claude/skills/llm-council`. |

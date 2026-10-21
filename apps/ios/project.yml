@@ -1,0 +1,78 @@
+# XcodeGen spec. The .xcodeproj is generated on macOS (`xcodegen generate`) and not committed,
+# so the project can be edited from Windows without merge-hostile pbxproj files.
+name: MeldePlanner
+
+options:
+  bundleIdPrefix: app.meldeplanner
+  deploymentTarget:
+    iOS: "26.0"
+  createIntermediateGroups: true
+  developmentLanguage: de
+
+settings:
+  base:
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    # Set MELDE_TEAM_ID in the environment for device/TestFlight builds.
+    DEVELOPMENT_TEAM: ${MELDE_TEAM_ID}
+    SWIFT_VERSION: "6.0"
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+
+packages:
+  MeldeCore:
+    path: MeldeCore
+
+targets:
+  MeldePlanner:
+    type: application
+    platform: iOS
+    sources:
+      - path: MeldePlanner
+    dependencies:
+      - package: MeldeCore
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.meldeplanner.ios
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
+        SWIFT_APPROACHABLE_CONCURRENCY: YES
+        SWIFT_STRICT_CONCURRENCY: complete
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Melde Planner
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+        SWIFT_EMIT_LOC_STRINGS: YES
+        CODE_SIGN_STYLE: Automatic
+
+  MeldePlannerTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: MeldePlannerTests
+    dependencies:
+      - target: MeldePlanner
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.meldeplanner.ios.tests
+        GENERATE_INFOPLIST_FILE: YES
+        SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
+        SWIFT_APPROACHABLE_CONCURRENCY: YES
+
+schemes:
+  MeldePlanner:
+    build:
+      targets:
+        MeldePlanner: all
+    test:
+      targets:
+        - MeldePlannerTests
+      gatherCoverageData: true
+    run:
+      config: Debug
+    archive:
+      config: Release

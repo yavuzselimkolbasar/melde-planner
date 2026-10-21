@@ -1,0 +1,88 @@
+"""Checks that every L("…") key in the iOS sources exists in Localizable.xcstrings
+with German, Turkish and English values.
+
+Interpolations are converted the way Swift's String.LocalizationValue does:
+Int → %lld, everything else → %@. The type is decided by a small hint table,
+since this script does not type-check Swift.
+
+Usage: python -I scripts/check_strings.py [--list]
+"""
+import json
+import pathlib
+import re
+import sys
+
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+SOURCES = ROOT / "apps/ios/MeldePlanner"
+CATALOG = SOURCES / "Resources/Localizable.xcstrings"
+LANGUAGES = ("de", "tr", "en")
+
+# Interpolated expressions that are integers (→ %lld); all others are strings (→ %@).
+INT_EXPRESSIONS = {
+    "goal", "remaining", "streak", "suggestion", "-weekOffset",
+    "todayCount(for: current.subjectId)",
+}
+
+CALL = re.compile(r'\bL\("((?:[^"\\]|\\.)*)"\)')
+INTERP = re.compile(r"\\\((.*?)\)(?=[^)]*(?:\\\(|$))")
+
+
+def to_key(raw: str) -> str:
+    out, i = [], 0
+    while i < len(raw):
+        if raw.startswith("\\(", i):
+            depth, j = 1, i + 2
+            while depth:
+                depth += {"(": 1, ")": -1}.get(raw[j], 0)
+                j += 1
+            expr = raw[i + 2 : j - 1]
+            out.append("%lld" if expr in INT_EXPRESSIONS else "%@")
+            i = j
+        else:
+            out.append(raw[i])
+            i += 1
+    return "".join(out)
+
+
+def source_keys() -> dict[str, set[str]]:
+    keys: dict[str, set[str]] = {}
+    for path in SOURCES.rglob("*.swift"):
+        text = path.read_text(encoding="utf-8")
+        for match in CALL.finditer(text):
+            keys.setdefault(to_key(match.group(1)), set()).add(path.name)
+    return keys
+
+
+def main() -> int:
+    keys = source_keys()
+    if "--list" in sys.argv:
+        for key in sorted(keys):
+            print(key)
+        return 0
+    catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
+    strings = catalog["strings"]
+    problems = []
+    for key, files in sorted(keys.items()):
+        entry = strings.get(key)
+        if entry is None:
+            problems.append(f"missing key: {key!r} ({', '.join(sorted(files))})")
+            continue
+        for lang in LANGUAGES:
+            if lang == catalog["sourceLanguage"]:
+                continue
+            unit = entry.get("localizations", {}).get(lang, {}).get("stringUnit")
+            if not unit or not unit.get("value"):
+                problems.append(f"no {lang} translation: {key!r}")
+            elif unit["value"].count("%") != key.count("%"):
+                problems.append(f"placeholder mismatch in {lang}: {key!r}")
+    unused = sorted(set(strings) - set(keys))
+    for key in unused:
+        problems.append(f"unused key: {key!r}")
+    for p in problems:
+        print(p)
+    print(f"{len(keys)} keys checked, {len(problems)} problems")
+    return 1 if problems else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

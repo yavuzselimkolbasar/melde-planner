@@ -1,0 +1,434 @@
+{
+  "Cargo.toml": {
+    "mtime": 1792583679.757117,
+    "seen": 1792584539.6402166,
+    "ast_hash": "02e3c8f19083815181e353fcb493e6ac",
+    "semantic_hash": ""
+  },
+  "crates/melde-core/Cargo.toml": {
+    "mtime": 1792583679.8118591,
+    "seen": 1792584539.6402175,
+    "ast_hash": "5e890ef693d2ff5e4f5b1c3c3ae3eed7",
+    "semantic_hash": ""
+  },
+  "crates/melde-core/src/lib.rs": {
+    "mtime": 1792583679.868089,
+    "seen": 1792584539.6402187,
+    "ast_hash": "e2a37529f5ae7f894ecf4fe401fbc993",
+    "semantic_hash": ""
+  },
+  "crates/melde-core/src/time.rs": {
+    "mtime": 1792583679.9232993,
+    "seen": 1792584539.6402194,
+    "ast_hash": "37629b2f095395090a0a0f083e980549",
+    "semantic_hash": ""
+  },
+  "crates/melde-ffi/Cargo.toml": {
+    "mtime": 1792583948.8318572,
+    "seen": 1792584539.6402204,
+    "ast_hash": "3f0fa49f881d07a28824fabce4c412d8",
+    "semantic_hash": ""
+  },
+  "crates/melde-ffi/src/grades.rs": {
+    "mtime": 1792584198.2490318,
+    "seen": 1792584539.6402223,
+    "ast_hash": "0e97bd73d818383602d17cd13a082436",
+    "semantic_hash": ""
+  },
+  "crates/melde-ffi/src/lib.rs": {
+    "mtime": 1792584198.2505386,
+    "seen": 1792584539.640223,
+    "ast_hash": "56eda3074d34224937835c81c8173bd6",
+    "semantic_hash": ""
+  },
+  "crates/melde-ffi/src/participation.rs": {
+    "mtime": 1792584198.2515502,
+    "seen": 1792584539.6402237,
+    "ast_hash": "72f8570c6212a0579e4b35979a15110c",
+    "semantic_hash": ""
+  },
+  "crates/melde-ffi/src/timetable.rs": {
+    "mtime": 1792584198.25355,
+    "seen": 1792584539.6402245,
+    "ast_hash": "720328e5c427e36690a7b580f064728a",
+    "semantic_hash": ""
+  },
+  "crates/melde-grades/Cargo.toml": {
+    "mtime": 1792583708.3241496,
+    "seen": 1792584539.6402252,
+    "ast_hash": "24ef3b01308c22dd97bd79b01b5299e3",
+    "semantic_hash": ""
+  },
+  "crates/melde-grades/src/average.rs": {
+    "mtime": 1792584198.258062,
+    "seen": 1792584539.6402264,
+    "ast_hash": "af8c8015fae6e0317fecbde47120f15d",
+    "semantic_hash": ""
+  },
+  "crates/melde-grades/src/forecast.rs": {
+    "mtime": 1792584216.887858,
+    "seen": 1792584539.6402273,
+    "ast_hash": "f7abed51f05e2ca560fdb6b5cfb9439e",
+    "semantic_hash": ""
+  },
+  "crates/melde-grades/src/lib.rs": {
+    "mtime": 1792583800.7557962,
+    "seen": 1792584539.640228,
+    "ast_hash": "8834dd3357a19faf4ef182c58103a312",
+    "semantic_hash": ""
+  },
+  "crates/melde-grades/src/scale.rs": {
+    "mtime": 1792584216.8407888,
+    "seen": 1792584539.6402287,
+    "ast_hash": "dfcc1ea4d5f8685d480bf96cce6a3ffe",
+    "semantic_hash": ""
+  },
+  "crates/melde-grades/tests/properties.rs": {
+    "mtime": 1792584236.5051317,
+    "seen": 1792584539.6402304,
+    "ast_hash": "20e481acc1e8d357c617f3890e653199",
+    "semantic_hash": ""
+  },
+  "crates/melde-scheduling/Cargo.toml": {
+    "mtime": 1792583845.5627198,
+    "seen": 1792584539.6402314,
+    "ast_hash": "4496ae787eb663c25ac41e0e88c898bd",
+    "semantic_hash": ""
+  },
+  "crates/melde-scheduling/src/lib.rs": {
+    "mtime": 1792584198.2695959,
+    "seen": 1792584539.6402328,
+    "ast_hash": "dc1cb423c70ac9db9fd43c066df489b8",
+    "semantic_hash": ""
+  },
+  "crates/melde-statistics/Cargo.toml": {
+    "mtime": 1792583880.049142,
+    "seen": 1792584539.640234,
+    "ast_hash": "a2d22913d5d97d5c0870cef69d51b6bb",
+    "semantic_hash": ""
+  },
+  "crates/melde-statistics/src/lib.rs": {
+    "mtime": 1792584198.2731225,
+    "seen": 1792584539.640235,
+    "ast_hash": "361b7a6ccecd69490b511978861bf05b",
+    "semantic_hash": ""
+  },
+  "scripts/scan-skills.sh": {
+    "mtime": 1792583343.770626,
+    "seen": 1792584539.6402364,
+    "ast_hash": "4607adf3e8d806bfb3a93ecad5b194d7",
+    "semantic_hash": ""
+  },
+  "tools/uniffi-bindgen/Cargo.toml": {
+    "mtime": 1792583990.7192786,
+    "seen": 1792584539.6402376,
+    "ast_hash": "ac67d06d9826f83903c958bd62b53bc9",
+    "semantic_hash": ""
+  },
+  "tools/uniffi-bindgen/src/main.rs": {
+    "mtime": 1792583990.741606,
+    "seen": 1792584539.6402385,
+    "ast_hash": "b1736e46e3195b6d5f35e3a2ee20a121",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1792584532.3243058,
+    "seen": 1792584539.64052,
+    "ast_hash": "c1207b341e50c6a6b9c06b4a6c2cccf4",
+    "semantic_hash": ""
+  },
+  "vault/00-Inbox/Open Questions.md": {
+    "mtime": 1792585315.5137024,
+    "seen": 1792585342.7312803,
+    "ast_hash": "634e5cef509e0cf6e28d83f0abefba98",
+    "semantic_hash": ""
+  },
+  "vault/01-Spec/Melde Planner Spec.md": {
+    "mtime": 1792582956.3694935,
+    "seen": 1792584539.640522,
+    "ast_hash": "b85a24c02ea4f2effa65520bc55cad3e",
+    "semantic_hash": ""
+  },
+  "vault/02-Decisions/ADR-0001 AI tooling and project memory.md": {
+    "mtime": 1792582956.3985872,
+    "seen": 1792584539.6405227,
+    "ast_hash": "88a6635c29f1513d246328dd95120950",
+    "semantic_hash": ""
+  },
+  "vault/02-Decisions/Decision Log.md": {
+    "mtime": 1792585315.5095615,
+    "seen": 1792585342.7314463,
+    "ast_hash": "5c708bdfead9c50f1695f46e835a43e3",
+    "semantic_hash": ""
+  },
+  "vault/03-Architecture/Architecture Overview.md": {
+    "mtime": 1792585283.9727423,
+    "seen": 1792585342.7314477,
+    "ast_hash": "0137d5cf6d52cdcf75cf5683884b8435",
+    "semantic_hash": ""
+  },
+  "vault/03-Architecture/Skill Security Scan.md": {
+    "mtime": 1792584651.2360678,
+    "seen": 1792585342.7314491,
+    "ast_hash": "0e3df2572127aea351079162a1cd03a8",
+    "semantic_hash": ""
+  },
+  "vault/04-Features/Feature Index.md": {
+    "mtime": 1792585315.5137024,
+    "seen": 1792585342.7314513,
+    "ast_hash": "c6c5881fe2cccde416f43e8485e94fff",
+    "semantic_hash": ""
+  },
+  "vault/05-Glossary/Glossary.md": {
+    "mtime": 1792582956.5126953,
+    "seen": 1792584539.6405263,
+    "ast_hash": "74e9e40f4417c2d91d264fe3b5bbf1ac",
+    "semantic_hash": ""
+  },
+  "vault/06-Sessions/Session Log.md": {
+    "mtime": 1792585315.5147107,
+    "seen": 1792585342.7315254,
+    "ast_hash": "3db4227a9e967b22807a547bd09675a4",
+    "semantic_hash": ""
+  },
+  "vault/Home.md": {
+    "mtime": 1792582956.568461,
+    "seen": 1792584539.6405282,
+    "ast_hash": "db5daa9756c43e1f5f9aa0ab60aa85b9",
+    "semantic_hash": ""
+  },
+  "vault/Templates/ADR.md": {
+    "mtime": 1792582951.5069478,
+    "seen": 1792584539.640529,
+    "ast_hash": "70e854156f3fb8af6f2c796603c91bbf",
+    "semantic_hash": ""
+  },
+  "vault/Templates/Feature.md": {
+    "mtime": 1792582956.6086416,
+    "seen": 1792584539.6405296,
+    "ast_hash": "d5f8ce4d7a62fd4f4cf70d556f11fab9",
+    "semantic_hash": ""
+  },
+  "vault/Templates/Session.md": {
+    "mtime": 1792582951.5525925,
+    "seen": 1792584539.6405303,
+    "ast_hash": "8977d38fba852ab2885dc9e06ede3f16",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/20261021120000_initial_schema.sql": {
+    "mtime": 1792584613.2476974,
+    "seen": 1792584647.3612468,
+    "ast_hash": "",
+    "semantic_hash": ""
+  },
+  "supabase/tests/database/rls_isolation.test.sql": {
+    "mtime": 1792584621.8890479,
+    "seen": 1792584647.3612487,
+    "ast_hash": "",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldeCore/Package.swift": {
+    "mtime": 1792584783.617077,
+    "seen": 1792585342.7042227,
+    "ast_hash": "2504b93c81ef0f4e867c3d9e105625b6",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldeCore/Sources/MeldeCore/CalendarBridge.swift": {
+    "mtime": 1792584783.668376,
+    "seen": 1792585342.704225,
+    "ast_hash": "5236f325689daa5673cd9fcc89e65b5f",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldeCore/Tests/MeldeCoreTests/BridgeTests.swift": {
+    "mtime": 1792584783.7120926,
+    "seen": 1792585342.7042263,
+    "ast_hash": "cb4efa8253c74e00c118f7f6604c8329",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlannerTests/AppModelTests.swift": {
+    "mtime": 1792585143.1690793,
+    "seen": 1792585342.7042272,
+    "ast_hash": "1d3ab08a67a0709fc2d69299c9a7cb6d",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/App/AppModel.swift": {
+    "mtime": 1792585241.4575727,
+    "seen": 1792585342.7042286,
+    "ast_hash": "ca08ab479444730ad07b0e694c4c6ee0",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/App/MeldePlannerApp.swift": {
+    "mtime": 1792584890.1451058,
+    "seen": 1792585342.7042294,
+    "ast_hash": "0144490fef42c717435522a5aa8678db",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/Data/LocalStore.swift": {
+    "mtime": 1792585242.298637,
+    "seen": 1792585342.7042305,
+    "ast_hash": "07f76203e533e7e6e1032f1ac2d48599",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/Data/Models.swift": {
+    "mtime": 1792585242.2650118,
+    "seen": 1792585342.7042315,
+    "ast_hash": "0222307669ef8665fef56371e89fb940",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/DesignSystem/Components.swift": {
+    "mtime": 1792585022.989938,
+    "seen": 1792585342.7042327,
+    "ast_hash": "fb85e4321a6211d098c4e359d04bb2ce",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/DesignSystem/Localization.swift": {
+    "mtime": 1792584872.013053,
+    "seen": 1792585342.7042334,
+    "ast_hash": "bacad2dab0c52d1a40c565477d97af87",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/DesignSystem/Theme.swift": {
+    "mtime": 1792585242.3307493,
+    "seen": 1792585342.7042346,
+    "ast_hash": "770907230019c70b26d783258a5d2a6a",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/Features/Calendar/CalendarView.swift": {
+    "mtime": 1792585023.0315728,
+    "seen": 1792585342.7042353,
+    "ast_hash": "ebed8bc04dd0c14f3b016253994a4c08",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/Features/Dashboard/DashboardView.swift": {
+    "mtime": 1792585125.4045784,
+    "seen": 1792585342.704236,
+    "ast_hash": "392432d0fc4ad437948cbb63e8ca7d59",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/Features/More/MoreView.swift": {
+    "mtime": 1792585241.541824,
+    "seen": 1792585342.704237,
+    "ast_hash": "5af62512f2444d0f33774b799a3b9e8a",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/Features/Participation/MeldeAccessory.swift": {
+    "mtime": 1792584936.1573186,
+    "seen": 1792585342.704238,
+    "ast_hash": "d275e6faaa5559fa0e81bee68ff39405",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/Features/Statistics/StatisticsView.swift": {
+    "mtime": 1792585023.084322,
+    "seen": 1792585342.704239,
+    "ast_hash": "e83ba66115f02b59be2fe949fae9c44b",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/Features/Subjects/SubjectViews.swift": {
+    "mtime": 1792584989.3752346,
+    "seen": 1792585342.7042398,
+    "ast_hash": "f4873fd786d37990ce68cec7d80f2e72",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/Features/Timetable/LessonEditorView.swift": {
+    "mtime": 1792584989.3345802,
+    "seen": 1792585342.7042406,
+    "ast_hash": "ea4f34bbc584c921913c01557c0f1f6d",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/Features/Timetable/TimetableView.swift": {
+    "mtime": 1792585022.9402075,
+    "seen": 1792585342.7042415,
+    "ast_hash": "e423b059eec318722b90774e3254729e",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/Navigation/RootView.swift": {
+    "mtime": 1792584890.1852505,
+    "seen": 1792585342.7042422,
+    "ast_hash": "e5db2c1b137f73481feb9dd632713d80",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/Resources/Assets.xcassets/AccentColor.colorset/Contents.json": {
+    "mtime": 1792585056.2181728,
+    "seen": 1792585342.7042432,
+    "ast_hash": "f067706c112fdf7dee67af189d2618f8",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/Resources/Assets.xcassets/AppIcon.appiconset/Contents.json": {
+    "mtime": 1792585056.2010703,
+    "seen": 1792585342.704244,
+    "ast_hash": "e8109d828266729de43946bec1558488",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/Resources/Assets.xcassets/Contents.json": {
+    "mtime": 1792585056.1829765,
+    "seen": 1792585342.7042453,
+    "ast_hash": "6f266f38436c1b8465f1c0b241ffd07e",
+    "semantic_hash": ""
+  },
+  "scripts/build-rust-ios.sh": {
+    "mtime": 1792584783.7557893,
+    "seen": 1792585342.7056272,
+    "ast_hash": "c91b22434b854bd09f845295cef9a5e1",
+    "semantic_hash": ""
+  },
+  "scripts/check_strings.py": {
+    "mtime": 1792585075.3947284,
+    "seen": 1792585342.705629,
+    "ast_hash": "2c80aad1f548f2ab0ad2940d9231e919",
+    "semantic_hash": ""
+  },
+  ".github/workflows/core.yml": {
+    "mtime": 1792585178.4179864,
+    "seen": 1792585342.7311974,
+    "ast_hash": "955ecc3b256fece3cf29cb72bd933866",
+    "semantic_hash": ""
+  },
+  ".github/workflows/ios.yml": {
+    "mtime": 1792585186.601089,
+    "seen": 1792585342.7311993,
+    "ast_hash": "eaa94a86a06f906c026216871c97283e",
+    "semantic_hash": ""
+  },
+  ".github/workflows/testflight.yml": {
+    "mtime": 1792585178.5023012,
+    "seen": 1792585342.7312005,
+    "ast_hash": "b39471004ed77b13a2dbed43854da518",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1792585326.031011,
+    "seen": 1792585342.731278,
+    "ast_hash": "9c488c1c38e718e9aa1c09864b257641",
+    "semantic_hash": ""
+  },
+  "apps/ios/project.yml": {
+    "mtime": 1792584783.8004413,
+    "seen": 1792585342.7312791,
+    "ast_hash": "16b7fa15129a2e1329f1818138cc48a0",
+    "semantic_hash": ""
+  },
+  "vault/02-Decisions/ADR-0002 Rust core with UniFFI and a MeldeCore package.md": {
+    "mtime": 1792585315.4909875,
+    "seen": 1792585342.7314427,
+    "ast_hash": "781a6ac1f92f82cb3d900a3c5c69d964",
+    "semantic_hash": ""
+  },
+  "vault/02-Decisions/ADR-0003 Offline-first persistence and sync model.md": {
+    "mtime": 1792585316.3754337,
+    "seen": 1792585342.731444,
+    "ast_hash": "a3798abbbcf6395a00adf31244cf8876",
+    "semantic_hash": ""
+  },
+  "vault/02-Decisions/ADR-0004 Windows-first development with macOS CI.md": {
+    "mtime": 1792585317.106141,
+    "seen": 1792585342.731445,
+    "ast_hash": "fe99f731894e2cdfcf8702cce9422d34",
+    "semantic_hash": ""
+  },
+  "vault/03-Architecture/Windows Dev Workflow.md": {
+    "mtime": 1792585286.5773928,
+    "seen": 1792585342.73145,
+    "ast_hash": "b6fba2e13587d832ff2750d2a3cce7fa",
+    "semantic_hash": ""
+  }
+}

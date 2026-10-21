@@ -1,0 +1,8 @@
+# Third-party agent tooling and generated output are not part of the project graph.
+.claude/
+.rtk/
+graphify-out/
+vault/07-Graph/
+vault/.obsidian/
+target/
+apps/ios/MeldeCore/Generated/
