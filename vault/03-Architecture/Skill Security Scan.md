@@ -116,3 +116,4 @@ Tool: NVIDIA SkillSpector 2.12.0, static mode (`--no-llm`), one scan per skill d
 | RTK plugin crate | 0 LOW | Clean. |
 
 RTK's own `.claude/skills` (filter TDD, RTK PR triage, …) are tooling for developing RTK itself and were not installed. RTK is installed as the `rtk` binary (winget `rtk-ai.rtk` 1.0.1) and registered as a **project** hook instead of `rtk init -g`, so other projects are unaffected.
+| LLM Council skill (aiwithremy/claude-skills-llm-council) | 0 LOW | **Clean.** Prompt-only skill (no scripts): five advisor subagents, anonymous peer review, chairman verdict. Reads workspace context files; writes a transcript only on request. Installed to `.claude/skills/llm-council`. |
