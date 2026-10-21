@@ -20,3 +20,9 @@ An optional import that the student turns on, using their own WebUntis login, ta
 ## Consequences
 - No cost for the owner. Risk: it may break if Untis changes the API or a school blocks access, so the UI must fail clearly and keep local data.
 - No Untis data goes through our servers.
+
+## Update 2026-10-21: school login (SSO) and search
+- Schools that sign in through Microsoft 365, IServ or another page have no WebUntis password. Meldo shows the school's real WebUntis login page in a WebKit view; the student signs in there. Meldo reads only the WebUntis session cookies for that server, asks `GET /WebUntis/api/app/config` for the logged-in person (`loginServiceConfig.user.personId`, person `type`), then calls `getTimetable` with that session. This mirrors the open-source `webuntis` npm library. The cookies, not a password, go to the Keychain; when the session runs out the student signs in again (the Microsoft sign-in is usually remembered).
+- The school search (`schoolquery2`) answers `-6003 "too many results"` for broad queries such as "Köln" (verified live). That is shown as a calm hint, not an error code.
+- Not verified with a real SSO account yet: needs a student of an SSO school to try it.
+

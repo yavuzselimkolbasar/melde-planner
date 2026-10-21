@@ -25,11 +25,38 @@ extension AppModel {
         return summary
     }
 
-    /// Re-imports with the stored password. Silent no-op when not connected.
+    /// Imports with a session the student logged in to on the school's own login
+    /// page (Microsoft 365, IServ, …) inside Meldo. `cookies` is the `Cookie`
+    /// header for the WebUntis server; Meldo never sees the school password.
+    func connectUntisWithBrowser(school: FfiUntisSchool, cookies: String, sessionID: String) async throws(UntisClient.Failure) -> UntisImportSummary {
+        let link = UntisLink(server: school.server, loginName: school.loginName, schoolName: school.displayName,
+                             user: "", browserLogin: true)
+        let client = UntisClient(browserCookies: cookies)
+        let auth = try await client.browserAuth(server: link.server, sessionID: sessionID)
+        let summary = try await importFromUntis(link: link, client: client, auth: auth, logout: false)
+        _ = Keychain.save(cookies, account: Self.keychainAccount(link))
+        return summary
+    }
+
+    /// Re-imports with the stored password or school-login session. Returns nil
+    /// when not connected; a school-login session that ran out throws `.sessionExpired`.
     @discardableResult
     func refreshUntis() async throws(UntisClient.Failure) -> UntisImportSummary? {
-        guard let link = data.untis, let password = Keychain.read(account: Self.keychainAccount(link)) else { return nil }
-        return try await importFromUntis(link: link, password: password)
+        guard let link = data.untis, let secret = Keychain.read(account: Self.keychainAccount(link)) else { return nil }
+        if link.browserLogin == true {
+            let client = UntisClient(browserCookies: secret)
+            let auth = try await client.browserAuth(server: link.server, sessionID: Self.sessionID(in: secret) ?? "")
+            return try await importFromUntis(link: link, client: client, auth: auth, logout: false)
+        }
+        return try await importFromUntis(link: link, password: secret)
+    }
+
+    /// The `JSESSIONID` value in a `Cookie` header.
+    static func sessionID(in cookies: String) -> String? {
+        cookies.split(separator: ";")
+            .map { $0.trimmingCharacters(in: .whitespaces) }
+            .first { $0.hasPrefix("JSESSIONID=") }
+            .map { String($0.dropFirst("JSESSIONID=".count)) }
     }
 
     /// Refreshes at most every three hours, e.g. when the app comes to the foreground.
@@ -51,6 +78,12 @@ extension AppModel {
     private func importFromUntis(link: UntisLink, password: String) async throws(UntisClient.Failure) -> UntisImportSummary {
         let client = UntisClient()
         let auth = try await client.login(server: link.server, loginName: link.loginName, user: link.user, password: password)
+        return try await importFromUntis(link: link, client: client, auth: auth, logout: true)
+    }
+
+    /// `logout` ends password sessions; school-login sessions stay open so the
+    /// next refresh can reuse them.
+    private func importFromUntis(link: UntisLink, client: UntisClient, auth: FfiUntisAuth, logout: Bool) async throws(UntisClient.Failure) -> UntisImportSummary {
         let today = FfiDate(currentDate, calendar: calendar)
         guard let weekStart = try? untisWeekStart(date: today),
               let monday = weekStart.date(in: calendar),
@@ -59,7 +92,7 @@ extension AppModel {
             server: link.server, loginName: link.loginName, auth: auth,
             first: weekStart, last: FfiDate(lastDay, calendar: calendar)
         )
-        await client.logout(server: link.server, loginName: link.loginName)
+        if logout { await client.logout(server: link.server, loginName: link.loginName) }
         let schedule: FfiUntisSchedule
         do {
             schedule = try untisDeriveSchedule(timetableBody: body, weekAStart: weekStart)

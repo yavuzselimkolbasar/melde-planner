@@ -13,8 +13,8 @@ pub use derive::{
     derive_schedule, monday_of,
 };
 pub use rpc::{
-    Auth, Period, School, authenticate_request, logout_request, parse_auth, parse_school_search,
-    parse_timetable, school_search_request, timetable_request,
+    Auth, Period, School, authenticate_request, logout_request, parse_app_config, parse_auth,
+    parse_school_search, parse_timetable, school_search_request, timetable_request,
 };
 
 /// Errors from Untis responses.

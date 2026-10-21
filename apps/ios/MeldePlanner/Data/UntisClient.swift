@@ -10,16 +10,23 @@ import MeldeCore
 nonisolated struct UntisClient: Sendable {
     enum Failure: Error, Equatable {
         case wrongCredentials
+        /// The school search matched too many schools; WebUntis then returns none.
+        case tooManyResults
         case noAccess(String)
         case server(code: Int64, message: String)
         case network
+        /// A browser (SSO) session that has expired or was never logged in.
+        case sessionExpired
     }
 
     private static let searchURL = URL(string: "https://mobile.webuntis.com/ms/schoolquery2")!
     /// Own cookie store per client, so the Untis session never mixes with anything else.
     private let session: URLSession
+    /// `Cookie` header of a session that was logged in in the browser (school SSO).
+    private let browserCookies: String?
 
-    init() {
+    init(browserCookies: String? = nil) {
+        self.browserCookies = browserCookies
         let config = URLSessionConfiguration.ephemeral
         config.httpCookieStorage = HTTPCookieStorage()
         config.httpShouldSetCookies = true
@@ -29,12 +36,34 @@ nonisolated struct UntisClient: Sendable {
 
     func searchSchools(_ query: String) async throws(Failure) -> [FfiUntisSchool] {
         let body = try await post(Self.searchURL, body: untisSchoolSearchRequest(query: query))
-        return try map { try untisParseSchoolSearch(body: body) }
+        do {
+            return try map { try untisParseSchoolSearch(body: body) }
+        } catch .server(code: -6003, _) {
+            throw .tooManyResults
+        }
     }
 
     func login(server: String, loginName: String, user: String, password: String) async throws(Failure) -> FfiUntisAuth {
         let body = try await post(endpoint(server, loginName), body: untisAuthenticateRequest(user: user, password: password))
         return try map { try untisParseAuth(body: body) }
+    }
+
+    /// Who is logged in, for a session that started in the browser (Microsoft 365 or
+    /// another school login) instead of `authenticate`.
+    func browserAuth(server: String, sessionID: String) async throws(Failure) -> FfiUntisAuth {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = server
+        components.path = "/WebUntis/api/app/config"
+        guard let url = components.url else { throw .sessionExpired }
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        let body = try await send(request)
+        do {
+            return try untisParseAppConfig(body: body, sessionId: sessionID)
+        } catch {
+            throw .sessionExpired
+        }
     }
 
     /// Raw `getTimetable` JSON for `first...last`, parsed later by Rust.
@@ -61,6 +90,12 @@ nonisolated struct UntisClient: Sendable {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = Data(body.utf8)
+        return try await send(request)
+    }
+
+    private func send(_ request: URLRequest) async throws(Failure) -> String {
+        var request = request
+        if let browserCookies { request.setValue(browserCookies, forHTTPHeaderField: "Cookie") }
         do {
             let (data, _) = try await session.data(for: request)
             return String(decoding: data, as: UTF8.self)

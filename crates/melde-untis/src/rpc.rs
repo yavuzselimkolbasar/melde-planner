@@ -167,6 +167,61 @@ pub fn parse_auth(body: &str) -> Result<Auth, UntisError> {
     })
 }
 
+/// The logged-in person from `GET /WebUntis/api/app/config`, for sessions that
+/// started in the browser (school SSO such as Microsoft 365) instead of
+/// `authenticate`. `session_id` is the browser's `JSESSIONID` cookie.
+pub fn parse_app_config(body: &str, session_id: &str) -> Result<Auth, UntisError> {
+    #[derive(Deserialize)]
+    struct Person {
+        id: i64,
+        #[serde(rename = "type")]
+        kind: i64,
+    }
+    #[derive(Deserialize)]
+    #[serde(rename_all = "camelCase")]
+    struct User {
+        person_id: Option<i64>,
+        #[serde(default)]
+        persons: Vec<Person>,
+    }
+    #[derive(Deserialize)]
+    #[serde(rename_all = "camelCase")]
+    struct LoginServiceConfig {
+        user: Option<User>,
+    }
+    #[derive(Deserialize)]
+    #[serde(rename_all = "camelCase")]
+    struct Data {
+        login_service_config: Option<LoginServiceConfig>,
+    }
+    #[derive(Deserialize)]
+    struct Envelope {
+        data: Data,
+    }
+    // A logged-out session gets the login page (HTML) instead of JSON.
+    let envelope: Envelope =
+        serde_json::from_str(body).map_err(|e| UntisError::Malformed(e.to_string()))?;
+    let user = envelope
+        .data
+        .login_service_config
+        .and_then(|c| c.user)
+        .ok_or_else(|| UntisError::Malformed("not logged in".into()))?;
+    let person_id = user
+        .person_id
+        .ok_or_else(|| UntisError::Malformed("no person".into()))?;
+    let person = user
+        .persons
+        .iter()
+        .find(|p| p.id == person_id)
+        .ok_or_else(|| UntisError::Malformed("person not listed".into()))?;
+    Ok(Auth {
+        session_id: session_id.to_owned(),
+        person_id,
+        person_type: person.kind,
+        klasse_id: None,
+    })
+}
+
 pub fn parse_timetable(body: &str) -> Result<Vec<Period>, UntisError> {
     #[derive(Deserialize)]
     struct Named {
@@ -294,5 +349,27 @@ mod tests {
         assert!(periods[0].cancelled);
         assert_eq!(periods[1].room.as_deref(), Some("A12"));
         assert_eq!(periods[1].start, LocalTime::from_hm(8, 50).expect("time"));
+    }
+
+    #[test]
+    fn parses_app_config_of_a_browser_session() {
+        let body = r#"{"data":{"loginServiceConfig":{"user":{"personId":4711,"name":"max.muster",
+            "persons":[{"id":12,"type":12,"displayName":"Elternteil"},{"id":4711,"type":5,"displayName":"Max Muster"}]}}}}"#;
+        let auth = parse_app_config(body, "ABC123").expect("logged in");
+        assert_eq!(auth.person_id, 4711);
+        assert_eq!(auth.person_type, 5);
+        assert_eq!(auth.session_id, "ABC123");
+    }
+
+    #[test]
+    fn app_config_without_user_means_logged_out() {
+        assert!(matches!(
+            parse_app_config(r#"{"data":{"loginServiceConfig":{"user":null}}}"#, "x"),
+            Err(UntisError::Malformed(_))
+        ));
+        assert!(matches!(
+            parse_app_config("<!DOCTYPE html>", "x"),
+            Err(UntisError::Malformed(_))
+        ));
     }
 }

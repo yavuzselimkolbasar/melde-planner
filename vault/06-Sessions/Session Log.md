@@ -14,3 +14,5 @@ Newest first. One line per working session: date — what changed — what's lef
 - 2026-10-21 — Phase 1 foundation: architecture doc + ADR-0002..0004, Rust workspace (44 tests), UniFFI bridge, Supabase schema/RLS/pgTAP, SwiftUI shell (5 tabs, Melde accessory, dashboard, timetable, calendar, statistics, settings, de/tr/en), CI workflows. Left: first macOS CI run, onboarding, auth, grades UI.
 
 - 2026-10-21 — Dev environment set up: skills, claude-mem, graphify, this vault, SkillSpector scan. No app code yet.
+
+- 2026-10-21 — UI review on iPhone/iPad simulators (3 runs): app clock fix, iPad week grid and tab order, widget button in tinted/clear mode, WebUntis search hint for -6003, Microsoft 365 / school login (SSO) via in-app WebUntis page. SSO not yet tried with a real account.

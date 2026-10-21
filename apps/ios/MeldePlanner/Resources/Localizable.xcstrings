@@ -331,6 +331,50 @@
         }
       }
     },
+    "1. Schule finden": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1. Schule finden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1. Okulunu bul"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1. Find your school"
+          }
+        }
+      }
+    },
+    "2. Anmelden": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2. Anmelden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2. Giriş yap"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2. Sign in"
+          }
+        }
+      }
+    },
     "A-Woche": {
       "localizations": {
         "tr": {
@@ -1189,28 +1233,6 @@
         }
       }
     },
-    "Dein WebUntis-Login der Schule. Er wird nur im Schlüsselbund dieses iPhones gespeichert. Schulen mit eigener Anmeldeseite (SSO) werden noch nicht unterstützt.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dein WebUntis-Login der Schule. Er wird nur im Schlüsselbund dieses iPhones gespeichert. Schulen mit eigener Anmeldeseite (SSO) werden noch nicht unterstützt."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Okulunun WebUntis girişi. Yalnızca bu iPhone'un anahtar zincirinde saklanır. Kendi giriş sayfası olan okullar (SSO) henüz desteklenmiyor."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your school's WebUntis login. It's stored only in this iPhone's Keychain. Schools with their own sign-in page (SSO) aren't supported yet."
-          }
-        }
-      }
-    },
     "Deine Daten bleiben auf diesem Gerät. Es gibt keine Werbung und kein Tracking. Die Synchronisierung mit einem Konto folgt in einer späteren Version und ist freiwillig.": {
       "localizations": {
         "tr": {
@@ -1255,6 +1277,28 @@
         }
       }
     },
+    "Deine WebUntis-Anmeldung ist abgelaufen. Melde dich erneut an.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deine WebUntis-Anmeldung ist abgelaufen. Melde dich erneut an."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis oturumunun süresi doldu. Tekrar giriş yap."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your WebUntis sign-in has expired. Please sign in again."
+          }
+        }
+      }
+    },
     "Deine gespeicherten Daten konnten nicht gelesen werden. Eine Sicherungskopie wurde behalten.": {
       "localizations": {
         "tr": {
@@ -1295,6 +1339,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Der Scan konnte nicht als PDF gespeichert werden."
+          }
+        }
+      }
+    },
+    "Derselbe Benutzername und dasselbe Passwort wie auf der WebUntis-Seite oder in der Untis-App deiner Schule. Das Passwort wird nur im Schlüsselbund dieses iPhones gespeichert.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Derselbe Benutzername und dasselbe Passwort wie auf der WebUntis-Seite oder in der Untis-App deiner Schule. Das Passwort wird nur im Schlüsselbund dieses iPhones gespeichert."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Okulunun WebUntis sitesindeki veya Untis uygulamasındaki kullanıcı adı ve şifrenin aynısı. Şifre yalnızca bu iPhone'un anahtar zincirinde saklanır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The same username and password as on your school's WebUntis page or in the Untis app. The password is stored only in this iPhone's keychain."
           }
         }
       }
@@ -1695,6 +1761,28 @@
         }
       }
     },
+    "Erneut mit Schul-Login anmelden": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erneut mit Schul-Login anmelden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Okul girişiyle tekrar oturum aç"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign in again with school login"
+          }
+        }
+      }
+    },
     "Erscheinen während einer Stunde, wenn du Meldo öffnest oder meldest.": {
       "localizations": {
         "de": {
@@ -2025,6 +2113,28 @@
         }
       }
     },
+    "Für Schulen, bei denen du dich bei WebUntis mit Microsoft 365, IServ oder einer anderen Seite anmeldest. Du meldest dich auf der echten Seite deiner Schule an; Meldo sieht dein Passwort nie.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Für Schulen, bei denen du dich bei WebUntis mit Microsoft 365, IServ oder einer anderen Seite anmeldest. Du meldest dich auf der echten Seite deiner Schule an; Meldo sieht dein Passwort nie."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis'e Microsoft 365, IServ veya başka bir sayfa ile giriş yaptığın okullar için. Okulunun gerçek sayfasında giriş yaparsın; Meldo şifreni asla görmez."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "For schools where you sign in to WebUntis with Microsoft 365, IServ or another page. You sign in on your school's real page; Meldo never sees your password."
+          }
+        }
+      }
+    },
     "Für Stunden, die nur jede zweite Woche stattfinden.": {
       "localizations": {
         "tr": {
@@ -2179,24 +2289,24 @@
         }
       }
     },
-    "Gib oben den Namen oder Ort deiner Schule ein.": {
+    "Gib den Namen deiner Schule zusammen mit dem Ort ein, zum Beispiel „Gymnasium Köln-Pesch“. Bei zu allgemeinen Suchen zeigt WebUntis keine Liste an.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gib oben den Namen oder Ort deiner Schule ein."
+            "value": "Gib den Namen deiner Schule zusammen mit dem Ort ein, zum Beispiel „Gymnasium Köln-Pesch“. Bei zu allgemeinen Suchen zeigt WebUntis keine Liste an."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Yukarıya okulunun adını veya bulunduğu şehri yaz."
+            "value": "Okulunun adını şehirle birlikte yaz, örneğin „Gymnasium Köln-Pesch“. Çok genel aramalarda WebUntis liste göstermez."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Type your school's name or town above."
+            "value": "Enter your school's name together with the town, for example “Gymnasium Köln-Pesch”. WebUntis shows no list for searches that are too general."
           }
         }
       }
@@ -2883,24 +2993,24 @@
         }
       }
     },
-    "Keine Schule gefunden. Versuche den Ort oder einen Teil des Namens.": {
+    "Keine Schule gefunden. Prüfe die Schreibweise oder versuche nur Schulart und Ort.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Keine Schule gefunden. Versuche den Ort oder einen Teil des Namens."
+            "value": "Keine Schule gefunden. Prüfe die Schreibweise oder versuche nur Schulart und Ort."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Okul bulunamadı. Şehri veya adın bir kısmını dene."
+            "value": "Okul bulunamadı. Yazımı kontrol et veya sadece okul türü ve şehri dene."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "No school found. Try the town or part of the name."
+            "value": "No school found. Check the spelling or try just the school type and town."
           }
         }
       }
@@ -3411,6 +3521,28 @@
         }
       }
     },
+    "Melde dich so an, wie du es von WebUntis kennst, z. B. mit Microsoft 365. Meldo erkennt die Anmeldung automatisch.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Melde dich so an, wie du es von WebUntis kennst, z. B. mit Microsoft 365. Meldo erkennt die Anmeldung automatisch."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis'te alıştığın şekilde giriş yap, örneğin Microsoft 365 ile. Meldo girişi otomatik olarak algılar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign in the way you know from WebUntis, for example with Microsoft 365. Meldo detects the sign-in automatically."
+          }
+        }
+      }
+    },
     "Melden": {
       "localizations": {
         "tr": {
@@ -3495,6 +3627,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Show Meldo"
+          }
+        }
+      }
+    },
+    "Meldo importiert deinen Stundenplan": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo importiert deinen Stundenplan"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo ders programını aktarır"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo imports your timetable"
           }
         }
       }
@@ -3649,6 +3803,50 @@
           "stringUnit": {
             "state": "translated",
             "value": "Meldungen zählen deine Beteiligung. Die mündliche Note vergibt deine Lehrkraft."
+          }
+        }
+      }
+    },
+    "Mit Microsoft 365 oder Schul-Login anmelden": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mit Microsoft 365 oder Schul-Login anmelden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Microsoft 365 veya okul girişiyle oturum aç"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign in with Microsoft 365 or school login"
+          }
+        }
+      }
+    },
+    "Mit deinem WebUntis-Login anmelden": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mit deinem WebUntis-Login anmelden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis girişinle oturum aç"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign in with your WebUntis login"
           }
         }
       }
@@ -4379,6 +4577,28 @@
         }
       }
     },
+    "Oder mit WebUntis-Benutzername": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oder mit WebUntis-Benutzername"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ya da WebUntis kullanıcı adıyla"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Or with your WebUntis username"
+          }
+        }
+      }
+    },
     "Ohne Datum": {
       "localizations": {
         "tr": {
@@ -4775,6 +4995,28 @@
         }
       }
     },
+    "Schul-Login": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schul-Login"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Okul girişi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "School login"
+          }
+        }
+      }
+    },
     "Schule": {
       "localizations": {
         "de": {
@@ -4797,24 +5039,46 @@
         }
       }
     },
-    "Schule oder Ort suchen": {
+    "Schule suchen und antippen": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Schule oder Ort suchen"
+            "value": "Schule suchen und antippen"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Okul veya şehir ara"
+            "value": "Okulunu ara ve seç"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Search school or town"
+            "value": "Search for your school and tap it"
+          }
+        }
+      }
+    },
+    "Schulname und Ort": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schulname und Ort"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Okul adı ve şehir"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "School name and town"
           }
         }
       }
@@ -5277,6 +5541,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Stundenplan"
+          }
+        }
+      }
+    },
+    "Stundenplan aus WebUntis übernehmen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stundenplan aus WebUntis übernehmen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis'ten ders programını al"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import your timetable from WebUntis"
           }
         }
       }
@@ -6267,6 +6553,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ziel ändern"
+          }
+        }
+      }
+    },
+    "Zu viele Schulen gefunden. Gib mehr vom Namen und den Ort ein, zum Beispiel „Gymnasium Köln-Pesch“.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zu viele Schulen gefunden. Gib mehr vom Namen und den Ort ein, zum Beispiel „Gymnasium Köln-Pesch“."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çok fazla okul bulundu. Adın daha fazlasını ve şehri yaz, örneğin „Gymnasium Köln-Pesch“."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Too many schools found. Type more of the name and the town, for example “Gymnasium Köln-Pesch”."
           }
         }
       }

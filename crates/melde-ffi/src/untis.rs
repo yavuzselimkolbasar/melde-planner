@@ -100,6 +100,21 @@ pub fn untis_parse_auth(body: String) -> Result<FfiUntisAuth, MeldeError> {
     })
 }
 
+/// The logged-in person of a browser (SSO) session, from `/WebUntis/api/app/config`.
+#[uniffi::export]
+pub fn untis_parse_app_config(
+    body: String,
+    session_id: String,
+) -> Result<FfiUntisAuth, MeldeError> {
+    let a = u::parse_app_config(&body, &session_id)?;
+    Ok(FfiUntisAuth {
+        session_id: a.session_id,
+        person_id: a.person_id,
+        person_type: a.person_type,
+        klasse_id: a.klasse_id,
+    })
+}
+
 #[uniffi::export]
 pub fn untis_logout_request() -> String {
     u::logout_request()

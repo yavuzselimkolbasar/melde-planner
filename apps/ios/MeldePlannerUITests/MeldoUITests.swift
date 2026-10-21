@@ -223,17 +223,27 @@ final class MeldoUITests: XCTestCase {
         tab(app, "Mehr")
         tap(app.buttons["WebUntis"].firstMatch, "WebUntis")
         shot(app, "90-webuntis-empty")
-        let field = app.searchFields.firstMatch
+        // Too general: WebUntis refuses it (-6003) and Meldo must explain why.
+        let field = app.textFields["untis-school-search"]
         if tap(field, "school search field") {
             field.typeText("Köln")
-            let school = app.buttons.containing(NSPredicate(format: "label CONTAINS[c] 'Köln'")).firstMatch
+            _ = app.staticTexts.containing(NSPredicate(format: "label BEGINSWITH 'Zu viele Schulen'")).firstMatch.waitForExistence(timeout: 15)
+            shot(app, "91a-webuntis-too-many")
+            field.typeText("-Pesch")
+            let school = app.buttons.containing(NSPredicate(format: "label CONTAINS[c] 'Pesch'")).firstMatch
             if school.waitForExistence(timeout: 15) {
                 shot(app, "91-webuntis-results")
                 school.tap()
                 shot(app, "92-webuntis-login")
+                // Opens the school's real WebUntis page; nothing is typed there.
+                if tap(app.buttons["Mit Microsoft 365 oder Schul-Login anmelden"], "school login button") {
+                    RunLoop.current.run(until: Date().addingTimeInterval(6))
+                    shot(app, "93-webuntis-school-login-page")
+                    tap(app.buttons["Abbrechen"], "Abbrechen (school login)")
+                }
             } else {
                 shot(app, "91-webuntis-no-results")
-                XCTFail("no school found for Köln")
+                XCTFail("no school found for Köln-Pesch")
             }
         }
     }

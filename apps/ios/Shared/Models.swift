@@ -58,6 +58,9 @@ nonisolated struct UntisLink: Codable, Hashable {
     var schoolName: String
     var user: String
     var lastSync: Date?
+    /// Logged in through the school's own login page (e.g. Microsoft 365). The
+    /// Keychain then holds the WebUntis session cookies instead of a password.
+    var browserLogin: Bool?
 }
 
 nonisolated struct Holiday: Identifiable, Codable, Hashable {
