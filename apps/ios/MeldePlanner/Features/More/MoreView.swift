@@ -31,6 +31,7 @@ struct MoreView: View {
 struct SettingsView: View {
     @Environment(AppModel.self) private var model
     @State private var editingGoal = false
+    @State private var notificationsDenied = false
 
     var body: some View {
         Form {
@@ -80,6 +81,37 @@ struct SettingsView: View {
                     LabeledContent(L("Wochenziel"), value: model.preferences.weeklyGoal.map { "\($0)" } ?? L("Keins"))
                 }
                 .foregroundStyle(.primary)
+            }
+            Section {
+                Toggle(L("Nach jeder Stunde nachfragen"), isOn: Binding(
+                    get: { model.preferences.askAfterLesson },
+                    set: { on in
+                        guard on else { return model.setAskAfterLesson(false) }
+                        Task {
+                            let allowed = await Reminders.requestAuthorization()
+                            notificationsDenied = !allowed
+                            model.setAskAfterLesson(allowed)
+                        }
+                    }
+                ))
+                Toggle(L("Live-Aktivität während der Stunde"), isOn: Binding(
+                    get: { model.preferences.liveActivities },
+                    set: { model.setLiveActivities($0) }
+                ))
+            } header: {
+                Text(L("Mitteilungen"))
+            } footer: {
+                if notificationsDenied {
+                    Text(L("Mitteilungen sind aus. Erlaube sie in den Einstellungen, damit Erinnerungen ankommen."))
+                } else {
+                    Text(L("Fragt kurz nach dem Klingeln „Hast du dich gemeldet?“. Antworte direkt in der Mitteilung. Stunden mit Meldung werden übersprungen."))
+                }
+            }
+            if !model.isSharedWithWidgets {
+                Section(L("Widgets")) {
+                    Label(L("Widgets und der Melden-Knopf brauchen eine App-Gruppe. Installiere Meldo mit AltStore, damit sie deine Daten sehen."), systemImage: "info.circle")
+                        .font(.subheadline)
+                }
             }
         }
         .navigationTitle(L("Einstellungen"))

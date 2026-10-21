@@ -1,8 +1,8 @@
 {
   "Cargo.toml": {
-    "mtime": 1792583679.757117,
-    "seen": 1792584539.6402166,
-    "ast_hash": "02e3c8f19083815181e353fcb493e6ac",
+    "mtime": 1792589800.0751565,
+    "seen": 1792590314.6613622,
+    "ast_hash": "a6c4dd8ecc1d6c1480aa513d81459e58",
     "semantic_hash": ""
   },
   "crates/melde-core/Cargo.toml": {
@@ -24,9 +24,9 @@
     "semantic_hash": ""
   },
   "crates/melde-ffi/Cargo.toml": {
-    "mtime": 1792583948.8318572,
-    "seen": 1792584539.6402204,
-    "ast_hash": "3f0fa49f881d07a28824fabce4c412d8",
+    "mtime": 1792589800.0751565,
+    "seen": 1792590314.6614053,
+    "ast_hash": "a52a55ab985be1a26e40b3e70bb4b9a6",
     "semantic_hash": ""
   },
   "crates/melde-ffi/src/grades.rs": {
@@ -36,9 +36,9 @@
     "semantic_hash": ""
   },
   "crates/melde-ffi/src/lib.rs": {
-    "mtime": 1792584198.2505386,
-    "seen": 1792584539.640223,
-    "ast_hash": "56eda3074d34224937835c81c8173bd6",
+    "mtime": 1792589800.0751565,
+    "seen": 1792590314.6614072,
+    "ast_hash": "629608280e19d884f827c696acccc4ce",
     "semantic_hash": ""
   },
   "crates/melde-ffi/src/participation.rs": {
@@ -156,9 +156,9 @@
     "semantic_hash": ""
   },
   "vault/02-Decisions/Decision Log.md": {
-    "mtime": 1792585315.5095615,
-    "seen": 1792585342.7314463,
-    "ast_hash": "5c708bdfead9c50f1695f46e835a43e3",
+    "mtime": 1792589718.6670568,
+    "seen": 1792590314.6614444,
+    "ast_hash": "8eeb69d89b8d9526b5378e95faa076c0",
     "semantic_hash": ""
   },
   "vault/03-Architecture/Architecture Overview.md": {
@@ -174,9 +174,9 @@
     "semantic_hash": ""
   },
   "vault/04-Features/Feature Index.md": {
-    "mtime": 1792585315.5137024,
-    "seen": 1792585342.7314513,
-    "ast_hash": "c6c5881fe2cccde416f43e8485e94fff",
+    "mtime": 1792590298.4737213,
+    "seen": 1792590314.661448,
+    "ast_hash": "bdc92e8584bb807bbf5cdb1f743afb7a",
     "semantic_hash": ""
   },
   "vault/05-Glossary/Glossary.md": {
@@ -186,9 +186,9 @@
     "semantic_hash": ""
   },
   "vault/06-Sessions/Session Log.md": {
-    "mtime": 1792585315.5147107,
-    "seen": 1792585342.7315254,
-    "ast_hash": "3db4227a9e967b22807a547bd09675a4",
+    "mtime": 1792590298.4792554,
+    "seen": 1792590314.6614497,
+    "ast_hash": "9963310cc2b02376669849ff18a4fcbd",
     "semantic_hash": ""
   },
   "vault/Home.md": {
@@ -240,9 +240,9 @@
     "semantic_hash": ""
   },
   "apps/ios/MeldeCore/Tests/MeldeCoreTests/BridgeTests.swift": {
-    "mtime": 1792584783.7120926,
-    "seen": 1792585342.7042263,
-    "ast_hash": "cb4efa8253c74e00c118f7f6604c8329",
+    "mtime": 1792590262.553716,
+    "seen": 1792590314.661373,
+    "ast_hash": "fc7014e6de3fe50996accdbf62652374",
     "semantic_hash": ""
   },
   "apps/ios/MeldePlannerTests/AppModelTests.swift": {
@@ -252,9 +252,9 @@
     "semantic_hash": ""
   },
   "apps/ios/MeldePlanner/App/AppModel.swift": {
-    "mtime": 1792585241.4575727,
-    "seen": 1792585342.7042286,
-    "ast_hash": "ca08ab479444730ad07b0e694c4c6ee0",
+    "mtime": 1792589932.4972198,
+    "seen": 1792590314.6613793,
+    "ast_hash": "0b87cec9a5e032514cbcca92d4dbefb6",
     "semantic_hash": ""
   },
   "apps/ios/MeldePlanner/App/MeldePlannerApp.swift": {
@@ -264,15 +264,15 @@
     "semantic_hash": ""
   },
   "apps/ios/MeldePlanner/Data/LocalStore.swift": {
-    "mtime": 1792585242.298637,
-    "seen": 1792585342.7042305,
-    "ast_hash": "07f76203e533e7e6e1032f1ac2d48599",
+    "mtime": 1792589932.4962287,
+    "seen": 1792590314.6613815,
+    "ast_hash": "c2daeed466f5a6b4e3d47b70b4ebfdfe",
     "semantic_hash": ""
   },
   "apps/ios/MeldePlanner/Data/Models.swift": {
-    "mtime": 1792585242.2650118,
-    "seen": 1792585342.7042315,
-    "ast_hash": "0222307669ef8665fef56371e89fb940",
+    "mtime": 1792590262.5527115,
+    "seen": 1792590314.6613822,
+    "ast_hash": "cfe76b5bbe6b81d17a3beeb1ec7f4af2",
     "semantic_hash": ""
   },
   "apps/ios/MeldePlanner/DesignSystem/Components.swift": {
@@ -294,21 +294,21 @@
     "semantic_hash": ""
   },
   "apps/ios/MeldePlanner/Features/Calendar/CalendarView.swift": {
-    "mtime": 1792585023.0315728,
-    "seen": 1792585342.7042353,
-    "ast_hash": "ebed8bc04dd0c14f3b016253994a4c08",
+    "mtime": 1792590065.160554,
+    "seen": 1792590314.661387,
+    "ast_hash": "5e718751fe32177195e77b9ff09f3eb9",
     "semantic_hash": ""
   },
   "apps/ios/MeldePlanner/Features/Dashboard/DashboardView.swift": {
-    "mtime": 1792585125.4045784,
-    "seen": 1792585342.704236,
-    "ast_hash": "392432d0fc4ad437948cbb63e8ca7d59",
+    "mtime": 1792590041.9516573,
+    "seen": 1792590314.661388,
+    "ast_hash": "ab6174bc5d50859e46338552aee7574f",
     "semantic_hash": ""
   },
   "apps/ios/MeldePlanner/Features/More/MoreView.swift": {
-    "mtime": 1792585241.541824,
-    "seen": 1792585342.704237,
-    "ast_hash": "5af62512f2444d0f33774b799a3b9e8a",
+    "mtime": 1792590065.160554,
+    "seen": 1792590314.661391,
+    "ast_hash": "2232dbc88187d811e4a2d472a51cf589",
     "semantic_hash": ""
   },
   "apps/ios/MeldePlanner/Features/Participation/MeldeAccessory.swift": {
@@ -336,9 +336,9 @@
     "semantic_hash": ""
   },
   "apps/ios/MeldePlanner/Features/Timetable/TimetableView.swift": {
-    "mtime": 1792585022.9402075,
-    "seen": 1792585342.7042415,
-    "ast_hash": "e423b059eec318722b90774e3254729e",
+    "mtime": 1792590079.947611,
+    "seen": 1792590314.6613977,
+    "ast_hash": "ad09acd23961dfb0506ba71ee67dff31",
     "semantic_hash": ""
   },
   "apps/ios/MeldePlanner/Navigation/RootView.swift": {
@@ -372,9 +372,9 @@
     "semantic_hash": ""
   },
   "scripts/check_strings.py": {
-    "mtime": 1792585075.3947284,
-    "seen": 1792585342.705629,
-    "ast_hash": "2c80aad1f548f2ab0ad2940d9231e919",
+    "mtime": 1792590162.8936067,
+    "seen": 1792590314.6614223,
+    "ast_hash": "b117e33040d0e1bd48f9bd21641e0559",
     "semantic_hash": ""
   },
   ".github/workflows/core.yml": {
@@ -384,9 +384,9 @@
     "semantic_hash": ""
   },
   ".github/workflows/ios.yml": {
-    "mtime": 1792585956.1935344,
-    "seen": 1792585958.7952144,
-    "ast_hash": "f58356e42a558555903c2a8a4fae2ca8",
+    "mtime": 1792590206.701714,
+    "seen": 1792590314.6614292,
+    "ast_hash": "3b4589250a0b16c6d92c4cde83a8a261",
     "semantic_hash": ""
   },
   ".github/workflows/testflight.yml": {
@@ -402,9 +402,9 @@
     "semantic_hash": ""
   },
   "apps/ios/project.yml": {
-    "mtime": 1792584783.8004413,
-    "seen": 1792585342.7312791,
-    "ast_hash": "16b7fa15129a2e1329f1818138cc48a0",
+    "mtime": 1792590231.0247667,
+    "seen": 1792590314.6614344,
+    "ast_hash": "41074a3d9faa0191f66adfb7f235c5c8",
     "semantic_hash": ""
   },
   "vault/02-Decisions/ADR-0002 Rust core with UniFFI and a MeldeCore package.md": {
@@ -429,6 +429,102 @@
     "mtime": 1792585286.5773928,
     "seen": 1792585342.73145,
     "ast_hash": "b6fba2e13587d832ff2750d2a3cce7fa",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlannerTests/TaskAndExamTests.swift": {
+    "mtime": 1792590242.9724252,
+    "seen": 1792590314.661376,
+    "ast_hash": "0bcedc70bb096ea4b66b80d72012d3f1",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/App/AppModel+Exams.swift": {
+    "mtime": 1792590161.775773,
+    "seen": 1792590314.6613772,
+    "ast_hash": "d9430825c2e3d0884f0703994b9c4a6e",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/App/AppModel+Tasks.swift": {
+    "mtime": 1792590262.5527115,
+    "seen": 1792590314.6613784,
+    "ast_hash": "2043c21ddbf037aa67306b7ab6b23258",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/Data/Reminders.swift": {
+    "mtime": 1792589965.5974824,
+    "seen": 1792590314.6613832,
+    "ast_hash": "a0d3011fd56741e78e6d6f9a2f104097",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/Features/Dashboard/HomeworkCard.swift": {
+    "mtime": 1792590042.0012546,
+    "seen": 1792590314.6613889,
+    "ast_hash": "3a980c0b81bd3a87f8e8aa7bb4e9c9ea",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/Features/Exams/DocumentViews.swift": {
+    "mtime": 1792590136.44353,
+    "seen": 1792590314.6613896,
+    "ast_hash": "f10613b8dd73e2273649be792080abc7",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/Features/Exams/ExamListView.swift": {
+    "mtime": 1792590161.8279471,
+    "seen": 1792590314.6613903,
+    "ast_hash": "bef8449041d718c55b0c11e73e238830",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/Features/Tasks/TaskEditorView.swift": {
+    "mtime": 1792590262.553716,
+    "seen": 1792590314.6613948,
+    "ast_hash": "6628f307144c15fd9f492d0eb41188c0",
+    "semantic_hash": ""
+  },
+  "apps/ios/MeldePlanner/Features/Tasks/TaskListView.swift": {
+    "mtime": 1792590262.5527115,
+    "seen": 1792590314.661396,
+    "ast_hash": "4eb5faa2b81fd09c140f4de55ae9ed35",
+    "semantic_hash": ""
+  },
+  "crates/melde-ffi/src/tasks.rs": {
+    "mtime": 1792590262.5522072,
+    "seen": 1792590314.6614091,
+    "ast_hash": "a47c38a7664add9fedcd400c379ff1e0",
+    "semantic_hash": ""
+  },
+  "crates/melde-tasks/Cargo.toml": {
+    "mtime": 1792589768.9234357,
+    "seen": 1792590314.6614199,
+    "ast_hash": "b238a5699ac802983e2e88ef162f8f4d",
+    "semantic_hash": ""
+  },
+  "crates/melde-tasks/src/lib.rs": {
+    "mtime": 1792589842.6013558,
+    "seen": 1792590314.6614206,
+    "ast_hash": "d1735309d2f2d841fca8ed7773f48ac9",
+    "semantic_hash": ""
+  },
+  ".serena/project.yml": {
+    "mtime": 1792587489.5849454,
+    "seen": 1792590314.6614313,
+    "ast_hash": "f37e360fe1cafb7b8646c00c9958871f",
+    "semantic_hash": ""
+  },
+  "vault/02-Decisions/ADR-0005 Brand Meldo.md": {
+    "mtime": 1792589718.6123502,
+    "seen": 1792590314.6614408,
+    "ast_hash": "bb8b71a9f8b194756c94df68cd236c51",
+    "semantic_hash": ""
+  },
+  "vault/02-Decisions/ADR-0006 Sync with Supabase instead of iCloud.md": {
+    "mtime": 1792589722.4903843,
+    "seen": 1792590314.6614425,
+    "ast_hash": "9ad0508139425129e47cae13b0199d83",
+    "semantic_hash": ""
+  },
+  "vault/02-Decisions/ADR-0007 WebUntis import.md": {
+    "mtime": 1792589723.1296778,
+    "seen": 1792590314.6614435,
+    "ast_hash": "8dd2c622ca04399b50023bad016fbffd",
     "semantic_hash": ""
   }
 }

@@ -89,6 +89,12 @@ jobs:
             CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" | xcbeautify || exit ${PIPESTATUS[0]}
           app="$RUNNER_TEMP/device/Build/Products/Release-iphoneos/MeldePlanner.app"
           mkdir -p "$RUNNER_TEMP/ipa/Payload"
+          # Ad-hoc sign so the App Group entitlement travels with the IPA; sideloading
+          # tools re-sign it with the user's Apple ID and keep the entitlements.
+          codesign --force --sign - --entitlements MeldeWidgets/MeldeWidgets.entitlements "$app/PlugIns/MeldeWidgets.appex"
+          codesign --force --sign - --entitlements MeldePlanner/MeldePlanner.entitlements "$app"
+          codesign -d --entitlements - "$app" | grep -q "group.app.meldeplanner.ios" || { echo "::error::App Group entitlement missing"; exit 1; }
+          test -d "$app/PlugIns/MeldeWidgets.appex" || { echo "::error::widget extension missing"; exit 1; }
           cp -R "$app" "$RUNNER_TEMP/ipa/Payload/"
           # Every supported language must ship, German included (it is the source language).
           for lang in de tr en; do

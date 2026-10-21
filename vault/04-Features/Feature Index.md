@@ -30,7 +30,8 @@ Status: `not started` · `in progress` · `implemented (unverified)` · `verifie
 | 17 | Benutzerkonto | 2 | not started |
 | 18 | Multiple Users | 2 | in progress: RLS isolation + ownership triggers + tests (server side) |
 | 19 | PWA | later | not started |
-| 20 | Benachrichtigungen | 4 | not started |
+| 20 | Benachrichtigungen | 4 | in progress: after-lesson check-ins with quick answers (local), task reminders; exam/study-session reminders missing |
 
 Create a note per feature from [[Templates/Feature]] when work starts.
 **Verification (2026-10-21):** Rust has 44 tests passing locally. The Swift app, Swift tests and pgTAP tests are written but have **not run yet** (no macOS CI run so far). Nothing is marked `verified`.
+| — | Widgets, Control, Live Activity (extra) | 4 | in progress: Home/Lock Screen widget with interactive Melden, Control Center/Lock Screen control, lesson Live Activity; needs App Group at install |

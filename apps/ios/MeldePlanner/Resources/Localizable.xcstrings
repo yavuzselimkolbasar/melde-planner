@@ -1,6 +1,28 @@
 {
   "sourceLanguage": "de",
   "strings": {
+    "%@ ist vorbei": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ bitti"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ is over"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ ist vorbei"
+          }
+        }
+      }
+    },
     "%@ · %lld Seiten": {
       "localizations": {
         "tr": {
@@ -45,6 +67,50 @@
         }
       }
     },
+    "%lld Hausaufgaben bald fällig": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld ödev yakında teslim"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld homework due soon"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Hausaufgaben bald fällig"
+          }
+        }
+      }
+    },
+    "%lld Meldungen diese Woche": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu hafta %lld parmak kaldırma"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld contributions this week"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Meldungen diese Woche"
+          }
+        }
+      }
+    },
     "%lld Meldungen pro Woche": {
       "localizations": {
         "tr": {
@@ -63,6 +129,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld Meldungen pro Woche"
+          }
+        }
+      }
+    },
+    "%lld Meldungen von heute haben noch kein Fach.": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugünkü %lld parmak kaldırmanın henüz dersi yok."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld of today's contributions have no subject yet."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Meldungen von heute haben noch kein Fach."
           }
         }
       }
@@ -111,6 +199,28 @@
         }
       }
     },
+    "%lld diese Woche": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "bu hafta %lld"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld this week"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld diese Woche"
+          }
+        }
+      }
+    },
     "%lld heute": {
       "localizations": {
         "tr": {
@@ -129,6 +239,116 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld heute"
+          }
+        }
+      }
+    },
+    "%lld von %lld": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld / %lld"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld of %lld"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld von %lld"
+          }
+        }
+      }
+    },
+    "%lld×": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld×"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld×"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld×"
+          }
+        }
+      }
+    },
+    "%lld× gemeldet": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld× parmak kaldırdın"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld× raised"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld× gemeldet"
+          }
+        }
+      }
+    },
+    "%lld× gemeldet · %lld diese Woche": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld× parmak kaldırdın · bu hafta %lld"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld× raised · %lld this week"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld× gemeldet · %lld diese Woche"
+          }
+        }
+      }
+    },
+    "%lld× gemeldet · bis %@": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld× parmak kaldırdın · %@ kadar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld× raised · until %@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld× gemeldet · bis %@"
           }
         }
       }
@@ -239,6 +459,50 @@
           "stringUnit": {
             "state": "translated",
             "value": "Alle zwei Wochen"
+          }
+        }
+      }
+    },
+    "Als Nächstes": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sıradaki"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Up next"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Als Nächstes"
+          }
+        }
+      }
+    },
+    "Als Nächstes · %@": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sıradaki · %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Up next · %@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Als Nächstes · %@"
           }
         }
       }
@@ -749,6 +1013,28 @@
         }
       }
     },
+    "Die Stunde": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ders"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The lesson"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Stunde"
+          }
+        }
+      }
+    },
     "Diese Datei ist kein lesbares PDF.": {
       "localizations": {
         "tr": {
@@ -837,6 +1123,28 @@
         }
       }
     },
+    "Diesmal nicht": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu sefer değil"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not this time"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diesmal nicht"
+          }
+        }
+      }
+    },
     "Dunkel": {
       "localizations": {
         "tr": {
@@ -921,6 +1229,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Entfällt"
+          }
+        }
+      }
+    },
+    "Erfasst eine Meldung für die laufende Stunde.": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şu anki ders için bir parmak kaldırma kaydeder."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Logs a contribution for the current lesson."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erfasst eine Meldung für die laufende Stunde."
           }
         }
       }
@@ -1079,6 +1409,28 @@
         }
       }
     },
+    "Fach zuordnen": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ders ata"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Assign subject"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fach zuordnen"
+          }
+        }
+      }
+    },
     "Farbe": {
       "localizations": {
         "tr": {
@@ -1119,6 +1471,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Fertig"
+          }
+        }
+      }
+    },
+    "Fragt kurz nach dem Klingeln „Hast du dich gemeldet?“. Antworte direkt in der Mitteilung. Stunden mit Meldung werden übersprungen.": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zil çaldıktan hemen sonra „Parmak kaldırdın mı?“ diye sorar. Doğrudan bildirimden yanıtla. Parmak kaldırdığın dersler atlanır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asks “Did you raise your hand?” right after the bell. Answer straight from the notification. Lessons you already logged are skipped."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fragt kurz nach dem Klingeln „Hast du dich gemeldet?“. Antworte direkt in der Mitteilung. Stunden mit Meldung werden übersprungen."
           }
         }
       }
@@ -1321,6 +1695,50 @@
         }
       }
     },
+    "Gemeldet in %@.": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ dersinde kaydedildi."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Logged in %@."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gemeldet in %@."
+          }
+        }
+      }
+    },
+    "Gemeldet, ohne Fach. Ordne es in der App zu.": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Derssiz kaydedildi. Uygulamada bir derse ata."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Logged without a subject. Assign it in the app."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gemeldet, ohne Fach. Ordne es in der App zu."
+          }
+        }
+      }
+    },
     "Gerade keine Stunde": {
       "localizations": {
         "tr": {
@@ -1449,6 +1867,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hallo"
+          }
+        }
+      }
+    },
+    "Hast du dich gemeldet?": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parmak kaldırdın mı?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Did you raise your hand?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hast du dich gemeldet?"
           }
         }
       }
@@ -1651,6 +2091,50 @@
         }
       }
     },
+    "Ja, einmal": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Evet, bir kez"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yes, once"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ja, einmal"
+          }
+        }
+      }
+    },
+    "Ja, zweimal": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Evet, iki kez"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yes, twice"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ja, zweimal"
+          }
+        }
+      }
+    },
     "Jede Woche": {
       "localizations": {
         "tr": {
@@ -1805,6 +2289,28 @@
         }
       }
     },
+    "Keine weiteren Stunden.": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başka ders yok."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No more lessons."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine weiteren Stunden."
+          }
+        }
+      }
+    },
     "Keins": {
       "localizations": {
         "tr": {
@@ -1845,6 +2351,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kürzel, z. B. M"
+          }
+        }
+      }
+    },
+    "Laufende Stunde, Meldungen dieser Woche und Melden mit einem Tipp.": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şu anki ders, bu haftaki parmak kaldırmalar ve tek dokunuşla kayıt."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Current lesson, this week's contributions and one-tap logging."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Laufende Stunde, Meldungen dieser Woche und Melden mit einem Tipp."
           }
         }
       }
@@ -2021,6 +2549,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Lila"
+          }
+        }
+      }
+    },
+    "Live-Aktivität während der Stunde": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ders sırasında Canlı Etkinlik"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Live Activity during lessons"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Live-Aktivität während der Stunde"
           }
         }
       }
@@ -2267,6 +2817,28 @@
         }
       }
     },
+    "Mitteilungen": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildirimler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notifications"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mitteilungen"
+          }
+        }
+      }
+    },
     "Mitteilungen sind aus. Erlaube sie in den Einstellungen, damit Erinnerungen ankommen.": {
       "localizations": {
         "tr": {
@@ -2351,6 +2923,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Nach einer Woche mit Meldungen schlagen wir dir ein realistisches Ziel vor."
+          }
+        }
+      }
+    },
+    "Nach jeder Stunde nachfragen": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Her dersten sonra sor"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ask after every lesson"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nach jeder Stunde nachfragen"
           }
         }
       }
@@ -3279,6 +3873,28 @@
         }
       }
     },
+    "Später heute": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugün daha sonra"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Later today"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Später heute"
+          }
+        }
+      }
+    },
     "Start": {
       "localizations": {
         "tr": {
@@ -3407,6 +4023,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Stunde löschen?"
+          }
+        }
+      }
+    },
+    "Stunde vorbei": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ders bitti"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lesson over"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stunde vorbei"
           }
         }
       }
@@ -3675,6 +4313,28 @@
         }
       }
     },
+    "Unterricht": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ders"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Class"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unterricht"
+          }
+        }
+      }
+    },
     "Version": {
       "localizations": {
         "tr": {
@@ -3891,6 +4551,50 @@
           "stringUnit": {
             "state": "translated",
             "value": "Wichtigkeit"
+          }
+        }
+      }
+    },
+    "Widgets": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widget'lar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widgets"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widgets"
+          }
+        }
+      }
+    },
+    "Widgets und der Melden-Knopf brauchen eine App-Gruppe. Installiere Meldo mit AltStore, damit sie deine Daten sehen.": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widget'lar ve parmak kaldır düğmesi bir uygulama grubuna ihtiyaç duyar. Verilerini görebilmeleri için Meldo'yu AltStore ile yükle."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widgets and the Raise hand button need an App Group. Install Meldo with AltStore so they can see your data."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widgets und der Melden-Knopf brauchen eine App-Gruppe. Installiere Meldo mit AltStore, damit sie deine Daten sehen."
           }
         }
       }
@@ -4243,6 +4947,50 @@
           "stringUnit": {
             "state": "translated",
             "value": "Änderungen konnten nicht gespeichert werden. Prüfe den freien Speicher."
+          }
+        }
+      }
+    },
+    "Öffne Meldo einmal, damit Melden hier funktioniert.": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Burada çalışması için Meldo'yu bir kez aç."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Meldo once so this works here."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öffne Meldo einmal, damit Melden hier funktioniert."
+          }
+        }
+      }
+    },
+    "Öffne Meldo einmal, um das Widget zu verbinden.": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widget'ı bağlamak için Meldo'yu bir kez aç."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Meldo once to connect the widget."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öffne Meldo einmal, um das Widget zu verbinden."
           }
         }
       }

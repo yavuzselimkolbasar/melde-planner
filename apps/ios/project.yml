@@ -11,12 +11,16 @@ options:
 
 settings:
   base:
-    MARKETING_VERSION: "0.1.0"
+    MARKETING_VERSION: "0.2.0"
     CURRENT_PROJECT_VERSION: "1"
     # Set MELDE_TEAM_ID in the environment for device/TestFlight builds.
     DEVELOPMENT_TEAM: ${MELDE_TEAM_ID}
     SWIFT_VERSION: "6.0"
+    SWIFT_APPROACHABLE_CONCURRENCY: YES
+    SWIFT_STRICT_CONCURRENCY: complete
     ENABLE_USER_SCRIPT_SANDBOXING: YES
+    LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+    CODE_SIGN_STYLE: Automatic
 
 packages:
   MeldeCore:
@@ -28,27 +32,66 @@ targets:
     platform: iOS
     sources:
       - path: MeldePlanner
+      # Shared with the widget extension: models, store, engine, intents.
+      - path: Shared
     dependencies:
       - package: MeldeCore
+      - target: MeldeWidgets
+    entitlements:
+      path: MeldePlanner/MeldePlanner.entitlements
+      properties:
+        # App Groups are available to free Apple IDs (Apple capability table, checked 2026-10-21).
+        com.apple.security.application-groups:
+          - group.app.meldeplanner.ios
+    info:
+      path: MeldePlanner/Info.plist
+      properties:
+        CFBundleURLTypes:
+          - CFBundleURLName: app.meldeplanner.ios
+            CFBundleURLSchemes: [meldeplanner]
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: app.meldeplanner.ios
         TARGETED_DEVICE_FAMILY: "1,2"
         SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
-        SWIFT_APPROACHABLE_CONCURRENCY: YES
-        SWIFT_STRICT_CONCURRENCY: complete
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_CFBundleDisplayName: Melde Planner
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_NSSupportsLiveActivities: YES
         INFOPLIST_KEY_NSCameraUsageDescription: "Die Kamera wird genutzt, um Klassenarbeiten als PDF zu scannen. Die Scans bleiben auf deinem Gerät."
         INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
-        LOCALIZATION_PREFERS_STRING_CATALOGS: YES
         SWIFT_EMIT_LOC_STRINGS: YES
-        CODE_SIGN_STYLE: Automatic
+
+  MeldeWidgets:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: MeldeWidgets
+      - path: Shared
+      - path: MeldePlanner/Resources/Localizable.xcstrings
+    dependencies:
+      - package: MeldeCore
+    entitlements:
+      path: MeldeWidgets/MeldeWidgets.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.app.meldeplanner.ios
+    info:
+      path: MeldeWidgets/Info.plist
+      properties:
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.meldeplanner.ios.widgets
+        TARGETED_DEVICE_FAMILY: "1,2"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Meldo
+        SWIFT_EMIT_LOC_STRINGS: YES
 
   MeldePlannerTests:
     type: bundle.unit-test
@@ -62,13 +105,13 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: app.meldeplanner.ios.tests
         GENERATE_INFOPLIST_FILE: YES
         SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
-        SWIFT_APPROACHABLE_CONCURRENCY: YES
 
 schemes:
   MeldePlanner:
     build:
       targets:
         MeldePlanner: all
+        MeldeWidgets: all
     test:
       targets:
         - MeldePlannerTests

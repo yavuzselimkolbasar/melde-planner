@@ -14,7 +14,7 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SOURCES = ROOT / "apps/ios/MeldePlanner"
-SOURCE_DIRS = [SOURCES]
+SOURCE_DIRS = [SOURCES, ROOT / "apps/ios/Shared", ROOT / "apps/ios/MeldeWidgets"]
 CATALOG = SOURCES / "Resources/Localizable.xcstrings"
 LANGUAGES = ("de", "tr", "en")
 
@@ -22,6 +22,15 @@ LANGUAGES = ("de", "tr", "en")
 INT_EXPRESSIONS = {
     "goal", "remaining", "streak", "suggestion", "-weekOffset",
     "todayCount(for: current.subjectId)", "exam.pageCount",
+    "entry.weekTotal", "entry.lessonCount", "entry.homeworkDue", "context.state.count",
+    "context.state.weekTotal", "unassigned.count",
+}
+
+# Keys used outside L(…): widget gallery and App Intents metadata.
+EXTRA_KEYS = {
+    "Melden",
+    "Laufende Stunde, Meldungen dieser Woche und Melden mit einem Tipp.",
+    "Erfasst eine Meldung für die laufende Stunde.",
 }
 
 CALL = re.compile(r'\bL\("((?:[^"\\]|\\.)*)"\)')
@@ -76,7 +85,7 @@ def main() -> int:
                 problems.append(f"no {lang} translation: {key!r}")
             elif unit["value"].count("%") != key.count("%"):
                 problems.append(f"placeholder mismatch in {lang}: {key!r}")
-    unused = sorted(set(strings) - set(keys))
+    unused = sorted(set(strings) - set(keys) - EXTRA_KEYS)
     for key in unused:
         problems.append(f"unused key: {key!r}")
     for p in problems:

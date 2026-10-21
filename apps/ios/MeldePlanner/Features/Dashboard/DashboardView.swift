@@ -14,6 +14,7 @@ struct DashboardView: View {
                     if model.subjects.isEmpty {
                         GettingStartedCard(addSubject: { addingSubject = true })
                     } else {
+                        UnassignedCard(now: context.date)
                         TodayCard(now: context.date, addLesson: { addingLesson = true })
                         WeekParticipationCard(now: context.date)
                         HomeworkCard(now: context.date)

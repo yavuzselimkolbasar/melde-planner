@@ -3,8 +3,8 @@ import MeldeCore
 import Observation
 
 /// Single source of truth for the UI. Business rules (current lesson, streaks,
-/// targets, validation) are delegated to the Rust core; this type owns state,
-/// persistence and the mapping between Swift models and FFI records.
+/// targets, validation) are delegated to the Rust core via `MeldeEngine`; this
+/// type owns state, persistence and the mapping between Swift models and FFI records.
 @Observable
 final class AppModel {
     private(set) var data: AppData
@@ -15,8 +15,7 @@ final class AppModel {
     let calendar: Calendar
     private let now: () -> Date
 
-    /// Minutes after the bell in which a Meldung still counts for the lesson that just ended.
-    static let participationGraceMinutes: UInt16 = 5
+    static var participationGraceMinutes: UInt16 { MeldeEngine.participationGraceMinutes }
 
     init(store: LocalStore?, calendar: Calendar = .current, now: @escaping () -> Date = Date.init) {
         self.store = store
@@ -33,22 +32,46 @@ final class AppModel {
 
     var currentDate: Date { now() }
 
+    /// Whether widgets and the Melden control can see this data (App Group available).
+    var isSharedWithWidgets: Bool { store?.isShared ?? false }
+
     // MARK: - Persistence
 
-    /// Applies a change and saves it. Feature extensions change data only through this.
+    /// Applies a change to the latest stored data and saves it, so entries
+    /// written meanwhile by a widget or notification action are kept.
+    /// Feature extensions change data only through this.
     func mutate(_ change: (inout AppData) -> Void) {
-        change(&data)
-        persist()
-    }
-
-    private func persist() {
-        guard let store else { return }
+        guard let store else {
+            change(&data)
+            return
+        }
         do {
-            try store.save(data)
+            data = try store.update(change)
             storageProblem = nil
         } catch {
+            change(&data)
             storageProblem = L("Änderungen konnten nicht gespeichert werden. Prüfe den freien Speicher.")
         }
+        Surfaces.reload()
+        refreshSchedules()
+    }
+
+    /// Re-plans after-lesson check-ins and the Live Activity for the latest data.
+    func refreshSchedules() {
+        let snapshot = data
+        let calendar = calendar
+        let now = now()
+        Task.detached {
+            await LessonCheckIns.reschedule(snapshot, calendar: calendar, now: now)
+            await LessonActivity.refresh(snapshot, at: now, calendar: calendar)
+        }
+    }
+
+    /// Picks up changes made outside the app (widgets, Lock Screen, notification actions).
+    func reloadFromDisk() {
+        guard let store, let fresh = try? store.load() else { return }
+        data = fresh
+        Localization.apply(fresh.preferences.language)
     }
 
     // MARK: - Preferences
@@ -56,24 +79,29 @@ final class AppModel {
     var preferences: Preferences { data.preferences }
 
     func setLanguage(_ language: AppLanguage) {
-        data.preferences.language = language
         Localization.apply(language)
-        persist()
+        mutate { $0.preferences.language = language }
     }
 
     func setTheme(_ theme: AppTheme) {
-        data.preferences.theme = theme
-        persist()
+        mutate { $0.preferences.theme = theme }
     }
 
     func setWeeklyGoal(_ goal: Int?) {
-        data.preferences.weeklyGoal = goal.map { max(1, min($0, 200)) }
-        persist()
+        let clamped = goal.map { max(1, min($0, 200)) }
+        mutate { $0.preferences.weeklyGoal = clamped }
+    }
+
+    func setAskAfterLesson(_ on: Bool) {
+        mutate { $0.preferences.askAfterLesson = on }
+    }
+
+    func setLiveActivities(_ on: Bool) {
+        mutate { $0.preferences.liveActivities = on }
     }
 
     func setWeekAReference(_ date: Date?) {
-        data.preferences.weekAReference = date
-        persist()
+        mutate { $0.preferences.weekAReference = date }
     }
 
     /// Marks the week containing today as an A week (or B week).
@@ -105,26 +133,28 @@ final class AppModel {
         subject.name = subject.name.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !subject.name.isEmpty else { return }
         subject.updatedAt = now()
-        if let i = data.subjects.firstIndex(where: { $0.id == subject.id }) {
-            data.subjects[i] = subject
-        } else {
-            data.subjects.append(subject)
+        mutate { data in
+            if let i = data.subjects.firstIndex(where: { $0.id == subject.id }) {
+                data.subjects[i] = subject
+            } else {
+                data.subjects.append(subject)
+            }
         }
-        persist()
     }
 
     /// Deletes a subject and its lessons. Past Meldungen are kept without a subject.
     func deleteSubject(_ id: UUID) {
-        let lessonIDs = Set(data.lessons.filter { $0.subjectID == id }.map(\.id))
-        data.subjects.removeAll { $0.id == id }
-        data.lessons.removeAll { $0.subjectID == id }
-        for i in data.participation.indices where data.participation[i].subjectID == id {
-            data.participation[i].subjectID = nil
+        mutate { data in
+            let lessonIDs = Set(data.lessons.filter { $0.subjectID == id }.map(\.id))
+            data.subjects.removeAll { $0.id == id }
+            data.lessons.removeAll { $0.subjectID == id }
+            for i in data.participation.indices {
+                if data.participation[i].subjectID == id { data.participation[i].subjectID = nil }
+                if let lesson = data.participation[i].lessonID, lessonIDs.contains(lesson) {
+                    data.participation[i].lessonID = nil
+                }
+            }
         }
-        for i in data.participation.indices where data.participation[i].lessonID.map(lessonIDs.contains) == true {
-            data.participation[i].lessonID = nil
-        }
-        persist()
     }
 
     // MARK: - Timetable
@@ -137,73 +167,45 @@ final class AppModel {
 
     /// Validates with the Rust core and saves when there is no conflict.
     func save(_ lesson: Lesson) -> [FfiTimetableIssue] {
-        var candidate = data.lessons.filter { $0.id != lesson.id }
         var updated = lesson
         updated.updatedAt = now()
-        candidate.append(updated)
+        let candidate = data.lessons.filter { $0.id != lesson.id } + [updated]
         let issues = validate(lessons: candidate)
         guard issues.isEmpty else { return issues }
-        data.lessons = candidate
-        persist()
+        mutate { data in
+            data.lessons.removeAll { $0.id == updated.id }
+            data.lessons.append(updated)
+        }
         return []
     }
 
     func deleteLesson(_ id: UUID) {
-        data.lessons.removeAll { $0.id == id }
-        for i in data.participation.indices where data.participation[i].lessonID == id {
-            data.participation[i].lessonID = nil
+        mutate { data in
+            data.lessons.removeAll { $0.id == id }
+            for i in data.participation.indices where data.participation[i].lessonID == id {
+                data.participation[i].lessonID = nil
+            }
         }
-        persist()
     }
 
     func validate(lessons: [Lesson]) -> [FfiTimetableIssue] {
         var timetable = ffiTimetable
-        timetable.lessons = lessons.map(Self.ffiLesson)
+        timetable.lessons = lessons.map(MeldeEngine.ffiLesson)
         return (try? timetableValidate(timetable: timetable)) ?? []
     }
 
-    var ffiTimetable: FfiTimetable {
-        FfiTimetable(
-            lessons: data.lessons.map(Self.ffiLesson),
-            holidays: data.holidays.map {
-                FfiHoliday(
-                    name: $0.name,
-                    firstDay: FfiDate($0.firstDay, calendar: calendar),
-                    lastDay: FfiDate($0.lastDay, calendar: calendar)
-                )
-            },
-            changes: [],
-            weekAReference: data.preferences.weekAReference.map { FfiDate($0, calendar: calendar) }
-        )
-    }
-
-    private static func ffiLesson(_ l: Lesson) -> FfiLesson {
-        let parity: FfiWeekParity = switch l.parity {
-        case .every: .every
-        case .a: .a
-        case .b: .b
-        }
-        return FfiLesson(
-            id: l.id.uuidString,
-            subjectId: l.subjectID.uuidString,
-            weekday: FfiWeekday(mondayIndex: l.weekday),
-            startMinute: UInt16(clamping: l.startMinute),
-            endMinute: UInt16(clamping: l.endMinute),
-            parity: parity,
-            room: l.room.isEmpty ? nil : l.room
-        )
-    }
+    var ffiTimetable: FfiTimetable { MeldeEngine.timetable(data, calendar: calendar) }
 
     func occurrences(on date: Date) -> [FfiOccurrence] {
         (try? timetableOccurrencesOn(timetable: ffiTimetable, date: FfiDate(date, calendar: calendar))) ?? []
     }
 
     func currentLesson(at date: Date) -> FfiOccurrence? {
-        try? timetableCurrent(timetable: ffiTimetable, at: FfiDateTime(date, calendar: calendar))
+        MeldeEngine.currentLesson(data, at: date, calendar: calendar)
     }
 
     func nextLesson(after date: Date) -> FfiOccurrence? {
-        try? timetableNext(timetable: ffiTimetable, at: FfiDateTime(date, calendar: calendar), horizonDays: 14)
+        MeldeEngine.nextLesson(data, after: date, calendar: calendar)
     }
 
     func subject(for occurrence: FfiOccurrence) -> Subject? {
@@ -221,54 +223,42 @@ final class AppModel {
     /// One-tap recording, auto-assigned to the current lesson when possible.
     func recordParticipation(at date: Date? = nil) -> RecordOutcome {
         let at = date ?? now()
-        let lesson = try? timetableParticipationLesson(
-            timetable: ffiTimetable,
-            at: FfiDateTime(at, calendar: calendar),
-            graceMinutes: Self.participationGraceMinutes
-        )
-        guard let lesson else { return .needsSubject }
-        let entry = ParticipationEntry(
-            subjectID: UUID(uuidString: lesson.subjectId),
-            lessonID: UUID(uuidString: lesson.lessonId),
-            recordedAt: at
-        )
-        data.participation.append(entry)
-        persist()
+        guard MeldeEngine.participationLesson(data, at: at, calendar: calendar) != nil else { return .needsSubject }
+        var entry: ParticipationEntry?
+        mutate { entry = MeldeEngine.recordForLesson(in: &$0, at: at, calendar: calendar) }
+        guard let entry else { return .needsSubject }
+        LessonCheckIns.didRecord(entry, calendar: calendar)
         return .recorded(entry)
     }
 
     @discardableResult
     func recordParticipation(subjectID: UUID?, at date: Date? = nil) -> ParticipationEntry {
         let entry = ParticipationEntry(subjectID: subjectID, lessonID: nil, recordedAt: date ?? now())
-        data.participation.append(entry)
-        persist()
+        mutate { $0.participation.append(entry) }
         return entry
     }
 
     func deleteParticipation(_ id: UUID) {
-        data.participation.removeAll { $0.id == id }
-        persist()
+        mutate { $0.participation.removeAll { $0.id == id } }
     }
 
     func reassignParticipation(_ id: UUID, to subjectID: UUID?) {
-        guard let i = data.participation.firstIndex(where: { $0.id == id }) else { return }
-        data.participation[i].subjectID = subjectID
-        data.participation[i].lessonID = nil
-        persist()
-    }
-
-    private var ffiEntries: [FfiParticipationEntry] {
-        data.participation.map {
-            FfiParticipationEntry(
-                id: $0.id.uuidString,
-                subjectId: $0.subjectID?.uuidString,
-                at: FfiDateTime($0.recordedAt, calendar: calendar)
-            )
+        mutate { data in
+            guard let i = data.participation.firstIndex(where: { $0.id == id }) else { return }
+            data.participation[i].subjectID = subjectID
+            data.participation[i].lessonID = nil
         }
     }
 
+    /// Today's Meldungen logged without a subject (e.g. from the Control Center outside a lesson).
+    func unassignedEntries(on date: Date) -> [ParticipationEntry] {
+        entries(on: date).filter { $0.subjectID == nil }
+    }
+
+    private var ffiEntries: [FfiParticipationEntry] { MeldeEngine.entries(data, calendar: calendar) }
+
     func weekSummary(containing date: Date) -> FfiWeekSummary? {
-        try? participationWeekSummary(entries: ffiEntries, anyDayInWeek: FfiDate(date, calendar: calendar))
+        MeldeEngine.weekSummary(data, containing: date, calendar: calendar)
     }
 
     func streak(asOf date: Date) -> Int {

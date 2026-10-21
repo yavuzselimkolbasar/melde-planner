@@ -120,6 +120,10 @@ nonisolated struct Preferences: Codable, Hashable {
     var weeklyGoal: Int?
     /// Any date in an A week; enables A/B-week lessons.
     var weekAReference: Date?
+    /// Ask "Hast du dich gemeldet?" after each lesson (local notification).
+    var askAfterLesson = false
+    /// Show a Live Activity during lessons.
+    var liveActivities = true
 
     init() {}
 
@@ -130,6 +134,8 @@ nonisolated struct Preferences: Codable, Hashable {
         theme = try c.decodeIfPresent(AppTheme.self, forKey: .theme) ?? .system
         weeklyGoal = try c.decodeIfPresent(Int.self, forKey: .weeklyGoal)
         weekAReference = try c.decodeIfPresent(Date.self, forKey: .weekAReference)
+        askAfterLesson = try c.decodeIfPresent(Bool.self, forKey: .askAfterLesson) ?? false
+        liveActivities = try c.decodeIfPresent(Bool.self, forKey: .liveActivities) ?? true
     }
 }
 

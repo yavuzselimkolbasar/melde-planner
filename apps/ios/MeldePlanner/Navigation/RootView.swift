@@ -9,6 +9,8 @@ enum AppTab: Hashable {
 struct RootView: View {
     @Environment(AppModel.self) private var model
     @State private var tab: AppTab = .home
+    /// Opened by the widget's Melden link outside lessons.
+    @State private var pickingSubject = false
 
     var body: some View {
         TabView(selection: $tab) {
@@ -46,6 +48,25 @@ struct RootView: View {
             if let problem = model.storageProblem {
                 StorageBanner(message: problem)
             }
+        }
+        .onOpenURL(perform: open)
+        .sheet(isPresented: $pickingSubject) {
+            SubjectPickerSheet { subjectID in
+                model.recordParticipation(subjectID: subjectID)
+            }
+        }
+    }
+
+    private func open(_ url: URL) {
+        guard url.scheme == DeepLink.scheme else { return }
+        switch url.host() {
+        case "melden":
+            tab = .home
+            if case .needsSubject = model.recordParticipation() { pickingSubject = true }
+        case "hausaufgaben":
+            tab = .more
+        default:
+            break
         }
     }
 }
