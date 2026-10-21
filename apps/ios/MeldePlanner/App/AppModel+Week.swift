@@ -27,19 +27,28 @@ struct TimetableBlock: Identifiable, Hashable {
     /// Side-by-side layout when blocks overlap (e.g. a course and an event).
     var lane = 0
     var lanes = 1
-    /// Parallel courses at the same time; the student picks theirs.
+    /// Parallel groups at the same time (e.g. FPR with DH or HU); the student picks theirs.
     var alternatives: [TimetableBlock] = []
+    /// Homework is due in this lesson.
+    var hasHomework = false
+
+    /// Untis shows a changed room in green, independent of other changes (e.g. an exam in another room).
+    var roomChanged: Bool { originalRoom != nil }
+    /// A Vertretung: the teacher changed.
+    var teacherChanged: Bool { kind == .substitution }
 }
 
 extension AppModel {
-    /// Blocks for one day, double periods merged and overlaps given lanes.
+    /// Blocks for one day: double periods merged per course, parallel groups
+    /// folded into one block, exams from the WebUntis exam list, overlaps in lanes.
     func timetableBlocks(on date: Date) -> [TimetableBlock] {
         let day = calendar.startOfDay(for: date)
         var blocks: [TimetableBlock]
         if let untis = data.untisTimetable, untisCovers(day, untis) {
+            let exams = (data.untisExtras?.exams ?? []).filter { calendar.isDate($0.date, inSameDayAs: day) }
             blocks = untis.periods
                 .filter { calendar.isDate($0.date, inSameDayAs: day) }
-                .map(block(from:))
+                .map { block(from: $0, exams: exams) }
         } else {
             blocks = occurrences(on: day).map { o in
                 let subject = subject(for: o)
@@ -59,19 +68,27 @@ extension AppModel {
                 )
             }
         }
+        // Homework due on this day in a subject marks that subject's lessons.
+        let homeworkSubjects = Set(data.tasks.filter {
+            $0.kind == .homework && !$0.isDone && ($0.dueDate.map { calendar.isDate($0, inSameDayAs: day) } ?? false)
+        }.compactMap(\.subjectID))
+        for i in blocks.indices {
+            if let id = blocks[i].subjectID, homeworkSubjects.contains(id) { blocks[i].hasHomework = true }
+        }
         blocks.sort { ($0.startMinute, $0.endMinute) < ($1.startMinute, $1.endMinute) }
         return assignLanes(pickCourses(mergeDoublePeriods(blocks)))
     }
 
-    /// Key for a parallel course in its weekly slot.
+    /// Key for a parallel group in its weekly slot: subject and teacher, because
+    /// groups often share the subject (FPR with DH, FPR with HU).
     func courseKey(_ block: TimetableBlock) -> String {
-        "\(calendar.mondayIndex(of: block.date))|\(block.startMinute)|\(block.subjectName)"
+        "\(calendar.mondayIndex(of: block.date))|\(block.startMinute)|\(block.subjectName)|\(block.teacher)"
     }
 
-    /// The student attends `chosen`; the other parallel courses in that slot are hidden every week.
+    /// The student attends `chosen`; the other groups in that slot are hidden every week.
     func chooseCourse(_ chosen: TimetableBlock, among options: [TimetableBlock]) {
-        let hide = options.filter { $0.subjectName != chosen.subjectName }.map(courseKey)
         let show = courseKey(chosen)
+        let hide = options.map(courseKey).filter { $0 != show }
         mutate { data in
             var keys = Set(data.preferences.hiddenCourses)
             keys.formUnion(hide)
@@ -80,30 +97,38 @@ extension AppModel {
         }
     }
 
-    /// Regular lessons of different subjects starting together are parallel
-    /// courses (Kurse): show one, with the others to switch to. Changes
-    /// (cancelled, substitutions) stay side by side so nothing is hidden.
+    /// Lessons that start and end together are parallel groups (Kurse, split
+    /// classes): one block shows the student's group, the others are a tap
+    /// away, like WebUntis. Cancellations and substitutions stay visible side
+    /// by side so no change is hidden.
     private func pickCourses(_ blocks: [TimetableBlock]) -> [TimetableBlock] {
         let hidden = Set(data.preferences.hiddenCourses)
         var result: [TimetableBlock] = []
-        var index = 0
-        while index < blocks.count {
-            let start = blocks[index].startMinute
-            var group: [TimetableBlock] = []
-            while index < blocks.count, blocks[index].startMinute == start {
-                group.append(blocks[index])
-                index += 1
+        var used = Set<String>()
+        for block in blocks where !used.contains(block.id) {
+            let group = blocks.filter {
+                !used.contains($0.id) && $0.startMinute == block.startMinute && $0.endMinute == block.endMinute
             }
-            let subjects = Set(group.map(\.subjectName))
-            guard group.count > 1, subjects.count == group.count, group.allSatisfy({ $0.kind == .regular }) else {
-                result.append(contentsOf: group)
+            let foldable = group.count > 1 && group.allSatisfy { $0.kind != .cancelled && $0.kind != .substitution }
+            guard foldable else {
+                result.append(block)
+                used.insert(block.id)
                 continue
             }
-            var pick = group.first { !hidden.contains(courseKey($0)) } ?? group[0]
+            // Without a choice yet, an exam is shown first so it can't hide behind the count.
+            let visible = group.filter { !hidden.contains(courseKey($0)) }
+            var pick = visible.first { $0.kind == .exam } ?? visible.first ?? group[0]
             pick.alternatives = group.filter { $0.id != pick.id }
             result.append(pick)
+            used.formUnion(group.map(\.id))
         }
         return result
+    }
+
+    /// Saturday school: own lessons or WebUntis periods on a Saturday.
+    var hasSaturdayLessons: Bool {
+        data.lessons.contains { $0.weekday == 5 }
+            || (data.untisTimetable?.periods.contains { calendar.mondayIndex(of: $0.date) == 5 } ?? false)
     }
 
     /// Whether WebUntis data covers `day` (school look-ahead limits end earlier).
@@ -128,13 +153,21 @@ extension AppModel {
         return slots.enumerated().map { BellPeriod(name: "\($0.offset + 1)", startMinute: $0.element[0], endMinute: $0.element[1]) }
     }
 
-    private func block(from p: UntisPeriodRecord) -> TimetableBlock {
+    /// An exam is either marked in the timetable or listed in WebUntis' exam
+    /// list for the same day, time and subject (many schools only do the latter).
+    private func block(from p: UntisPeriodRecord, exams: [UntisExamRecord]) -> TimetableBlock {
         let subject = data.subjects.first { $0.untisKey == p.subjectKey }
+        let names = [p.subjectShort, p.subjectLong, p.subjectKey].filter { !$0.isEmpty }
+        let listed = exams.contains { e in
+            let sameTime = e.startMinute < p.endMinute && p.startMinute < e.endMinute
+            let sameSubject = e.subject.isEmpty || names.contains { $0.caseInsensitiveCompare(e.subject) == .orderedSame }
+            return sameTime && sameSubject
+        }
         let kind: TimetableBlock.Kind =
             p.cancelled ? .cancelled
-            : p.exam ? .exam
-            : p.originalRoom != nil ? .roomChange
+            : (p.exam || listed) ? .exam
             : p.irregular ? .substitution
+            : p.originalRoom != nil ? .roomChange
             : .regular
         return TimetableBlock(
             id: "untis-\(p.id)",
@@ -152,21 +185,23 @@ extension AppModel {
         )
     }
 
-    /// Joins back-to-back periods of the same course (as Untis draws them).
+    /// Joins back-to-back periods of the same course (as Untis draws them),
+    /// also when parallel groups are interleaved in time order.
     private func mergeDoublePeriods(_ blocks: [TimetableBlock]) -> [TimetableBlock] {
         var merged: [TimetableBlock] = []
         for block in blocks {
-            if var last = merged.last,
-               last.subjectName == block.subjectName, last.teacher == block.teacher,
-               last.room == block.room, last.kind == block.kind, last.info == block.info,
-               block.startMinute >= last.endMinute, block.startMinute - last.endMinute <= 25 {
-                last.endMinute = block.endMinute
-                merged[merged.count - 1] = last
+            if let i = merged.lastIndex(where: { last in
+                last.subjectName == block.subjectName && last.teacher == block.teacher
+                    && last.room == block.room && last.kind == block.kind && last.info == block.info
+                    && block.startMinute >= last.endMinute && block.startMinute - last.endMinute <= 25
+            }) {
+                merged[i].endMinute = block.endMinute
+                merged[i].hasHomework = merged[i].hasHomework || block.hasHomework
             } else {
                 merged.append(block)
             }
         }
-        return merged
+        return merged.sorted { ($0.startMinute, $0.endMinute) < ($1.startMinute, $1.endMinute) }
     }
 
     /// Overlapping blocks share the column width.

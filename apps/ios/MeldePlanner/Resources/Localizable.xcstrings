@@ -287,6 +287,28 @@
         }
       }
     },
+    "%lld diese Woche · %lld in Folge": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld diese Woche · %lld in Folge"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "bu hafta %lld · %lld gün seri"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld this week · %lld in a row"
+          }
+        }
+      }
+    },
     "%lld nicht entschuldigt": {
       "localizations": {
         "de": {
@@ -327,6 +349,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld von %lld"
+          }
+        }
+      }
+    },
+    "%lld von %lld diese Woche": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld von %lld diese Woche"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "bu hafta %lld / %lld"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld of %lld this week"
           }
         }
       }
@@ -485,6 +529,28 @@
         }
       }
     },
+    "2 Tage": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2 Tage"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2 gün"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2 days"
+          }
+        }
+      }
+    },
     "2. Anmelden": {
       "localizations": {
         "de": {
@@ -503,6 +569,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "2. Sign in"
+          }
+        }
+      }
+    },
+    "3 Tage": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3 Tage"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3 gün"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3 days"
           }
         }
       }
@@ -1849,6 +1937,28 @@
         }
       }
     },
+    "Das ist mein Kurs": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das ist mein Kurs"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu benim dersim"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This is my course"
+          }
+        }
+      }
+    },
     "Dateien › Auf meinem iPhone › Meldo › Scans": {
       "localizations": {
         "de": {
@@ -1911,6 +2021,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Datum"
+          }
+        }
+      }
+    },
+    "Dein Kurs": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dein Kurs"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senin dersin"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your course"
           }
         }
       }
@@ -3297,6 +3429,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Für heute und morgen ist alles erledigt."
+          }
+        }
+      }
+    },
+    "Gehe zu Datum": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gehe zu Datum"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarihe git"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Go to date"
           }
         }
       }
@@ -4863,6 +5017,28 @@
         }
       }
     },
+    "Kurs": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kurs"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ders"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Course"
+          }
+        }
+      }
+    },
     "Kürzel, z. B. M": {
       "localizations": {
         "tr": {
@@ -5431,6 +5607,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Meldo imports your timetable"
+          }
+        }
+      }
+    },
+    "Meldo zeigt deinen Kurs ab jetzt jede Woche zu dieser Zeit.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo zeigt deinen Kurs ab jetzt jede Woche zu dieser Zeit."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo bundan sonra her hafta bu saatte senin dersini gösterir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo shows your course at this time every week from now on."
           }
         }
       }
@@ -7239,28 +7437,6 @@
         }
       }
     },
-    "Parallele Kurse": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Parallele Kurse"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Paralel dersler"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Parallel courses"
-          }
-        }
-      }
-    },
     "Parallele Kurse zur Auswahl": {
       "localizations": {
         "de": {
@@ -8735,6 +8911,28 @@
         }
       }
     },
+    "Tippen, um deinen Kurs zu wählen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tippen, um deinen Kurs zu wählen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dersini seçmek için dokun"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap to choose your course"
+          }
+        }
+      }
+    },
     "Titel, z. B. 1. Klausur": {
       "localizations": {
         "de": {
@@ -9963,28 +10161,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Wochenziel: %lld"
-          }
-        }
-      }
-    },
-    "Wähle deinen Kurs. Meldo zeigt ihn ab jetzt jede Woche zu dieser Zeit.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wähle deinen Kurs. Meldo zeigt ihn ab jetzt jede Woche zu dieser Zeit."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dersini seç. Meldo bundan sonra her hafta bu saatte onu gösterir."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Choose your course. Meldo shows it at this time every week from now on."
           }
         }
       }

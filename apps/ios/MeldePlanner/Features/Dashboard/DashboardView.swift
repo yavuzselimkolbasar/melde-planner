@@ -265,7 +265,7 @@ struct BlockRow: View {
             if isCurrent {
                 Badge(text: L("Jetzt"), color: .accentColor)
             } else if let label = BlockStyle.label(for: block.kind), !compact {
-                Badge(text: label, color: style.border ?? .secondary)
+                Badge(text: label, color: style.accent)
             }
         }
         .padding(.vertical, 2)
@@ -334,7 +334,7 @@ private struct WeekPreviewCard: View {
         if count > 0 {
             let style = BlockStyle(kind: kind, subjectColor: .gray)
             HStack(spacing: DS.spacingXS) {
-                Circle().fill(style.border ?? .gray).frame(width: 8, height: 8)
+                Circle().fill(style.accent).frame(width: 8, height: 8)
                 Text(verbatim: "\(count) \(label)").font(.subheadline)
             }
         }
@@ -379,7 +379,7 @@ private struct WeekPreviewCard: View {
                             }
                     } else {
                         RoundedRectangle(cornerRadius: 3)
-                            .fill(style.border ?? style.stripe)
+                            .fill(style.accent)
                             .frame(height: 8)
                     }
                 }

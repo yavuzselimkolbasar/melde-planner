@@ -12,7 +12,7 @@ struct MeldoStatsWidget: Widget {
         }
         .configurationDisplayName("Meldo Statistik")
         .description("Deine Meldungen diese Woche.")
-        .supportedFamilies([.systemSmall, .systemMedium])
+        .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular, .accessoryRectangular, .accessoryInline])
     }
 }
 
@@ -85,6 +85,29 @@ struct StatsWidgetView: View {
                 Text(L("Öffne Meldo einmal, um das Widget zu verbinden."))
                     .font(.caption)
                     .multilineTextAlignment(.center)
+            } else if family == .accessoryCircular {
+                Gauge(value: Double(min(entry.total, entry.goal ?? max(entry.total, 1))), in: 0...Double(max(entry.goal ?? max(entry.total, 1), 1))) {
+                    Image(systemName: "hand.raised.fill")
+                } currentValueLabel: {
+                    Text(entry.total, format: .number)
+                }
+                .gaugeStyle(.accessoryCircular)
+            } else if family == .accessoryRectangular {
+                VStack(alignment: .leading, spacing: 1) {
+                    Label(L("Meldungen"), systemImage: "hand.raised.fill")
+                        .font(.headline)
+                        .widgetAccentable()
+                    if let goal = entry.goal {
+                        Text(L("\(entry.total) von \(goal) diese Woche"))
+                    } else {
+                        Text(L("\(entry.total) diese Woche"))
+                    }
+                    Label(L("\(entry.streak) Schultage in Folge"), systemImage: "flame.fill")
+                }
+                .font(.caption)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            } else if family == .accessoryInline {
+                Label(L("\(entry.total) diese Woche · \(entry.streak) in Folge"), systemImage: "flame.fill")
             } else if family == .systemMedium {
                 HStack(spacing: 16) {
                     summary
