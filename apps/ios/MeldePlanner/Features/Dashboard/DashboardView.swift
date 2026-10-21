@@ -16,7 +16,7 @@ struct DashboardView: View {
     }
 
     var body: some View {
-        TimelineView(.everyMinute) { context in
+        TimelineView(.everyMinute) { _ in
             ScrollView {
                 if model.subjects.isEmpty {
                     GettingStartedCard(addSubject: { addingSubject = true })
@@ -24,14 +24,14 @@ struct DashboardView: View {
                         .padding(DS.spacingL)
                 } else {
                     VStack(spacing: DS.spacingL) {
-                        UnassignedCard(now: context.date)
+                        UnassignedCard(now: model.currentDate)
                         CheckInPromptCard()
                         LazyVGrid(columns: columns, alignment: .leading, spacing: DS.spacingL) {
                             ForEach(model.preferences.dashboardCards) { card in
                                 switch card {
-                                case .today: TodayCard(now: context.date, addLesson: { addingLesson = true })
-                                case .participation: WeekParticipationCard(now: context.date)
-                                case .homework: HomeworkCard(now: context.date)
+                                case .today: TodayCard(now: model.currentDate, addLesson: { addingLesson = true })
+                                case .participation: WeekParticipationCard(now: model.currentDate)
+                                case .homework: HomeworkCard(now: model.currentDate)
                                 }
                             }
                         }
@@ -42,7 +42,7 @@ struct DashboardView: View {
                 }
             }
             .background(ThemedBackground())
-            .navigationTitle(greeting(for: context.date))
+            .navigationTitle(greeting(for: model.currentDate))
         }
         .sheet(isPresented: $addingSubject) { SubjectEditorView(subject: nil) }
         .sheet(isPresented: $addingLesson) { LessonEditorView(lesson: nil, weekday: model.calendar.mondayIndex(of: model.currentDate)) }

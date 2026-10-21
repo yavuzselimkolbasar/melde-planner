@@ -10,10 +10,10 @@ struct TaskListView: View {
     @State private var creating = false
 
     var body: some View {
-        TimelineView(.everyMinute) { context in
-            let sections = model.taskSections(today: context.date, kind: filter)
+        TimelineView(.everyMinute) { _ in
+            let sections = model.taskSections(today: model.currentDate, kind: filter)
             if sizeClass == .regular && !sections.isEmpty {
-                TaskBoard(sections: sections, today: context.date, filter: $filter) { editing = $0 }
+                TaskBoard(sections: sections, today: model.currentDate, filter: $filter) { editing = $0 }
             } else {
             List {
                 Section {
@@ -40,7 +40,7 @@ struct TaskListView: View {
                 ForEach(sections) { section in
                     Section(Self.title(for: section.group)) {
                         ForEach(section.tasks) { task in
-                            TaskRow(task: task, today: context.date) { editing = task }
+                            TaskRow(task: task, today: model.currentDate) { editing = task }
                                 .swipeActions {
                                     Button(L("Löschen"), systemImage: "trash", role: .destructive) {
                                         model.deleteTask(task.id)

@@ -17,18 +17,24 @@ final class MeldoUITests: XCTestCase {
         continueAfterFailure = true
     }
 
-    private func launch(seed: Bool, language: String = "de", theme: String = "system", dark: Bool = false) -> XCUIApplication {
+    /// Monday, 13:00: school is over, so Melden asks for the subject.
+    private let mondayAfterSchool = "2026-10-19T13:00"
+
+    private func launch(seed: Bool, language: String = "de", theme: String = "system",
+                        now: String? = nil, landscape: Bool = false) -> XCUIApplication {
+        XCUIDevice.shared.orientation = landscape ? .landscapeLeft : .portrait
         let app = XCUIApplication()
-        app.launchArguments = ["-uitest", "-uitest-now", mondayInLesson, "-uitest-language", language, "-uitest-theme", theme]
+        app.launchArguments = ["-uitest", "-uitest-now", now ?? mondayInLesson, "-uitest-language", language, "-uitest-theme", theme]
         if seed { app.launchArguments.append("-uitest-seed") }
-        if dark { app.launchArguments += ["-AppleInterfaceStyle", "Dark"] }
         app.launch()
-        XCUIDevice.shared.orientation = UIDevice.current.userInterfaceIdiom == .pad ? .landscapeLeft : .portrait
         return app
     }
 
+    /// Screenshot of the whole screen once animations have settled.
+    /// `XCUIScreen` captures rotated screens correctly; `app.screenshot()` does not.
     private func shot(_ app: XCUIApplication, _ name: String) {
-        let attachment = XCTAttachment(screenshot: app.screenshot())
+        RunLoop.current.run(until: Date().addingTimeInterval(0.8))
+        let attachment = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
         attachment.name = "\(device)-\(name)"
         attachment.lifetime = .keepAlways
         add(attachment)
@@ -57,9 +63,18 @@ final class MeldoUITests: XCTestCase {
         return true
     }
 
-    private func back(_ app: XCUIApplication) {
-        let button = app.navigationBars.buttons.element(boundBy: 0)
-        if button.exists { button.tap() }
+    /// Goes back one level; the back button carries the previous screen's title.
+    private func back(_ app: XCUIApplication, to title: String) {
+        let named = app.navigationBars.buttons[title]
+        if named.waitForExistence(timeout: 2) { named.tap(); return }
+        let first = app.navigationBars.buttons.element(boundBy: 0)
+        if first.exists { first.tap() } else { XCTFail("no back button to \(title)") }
+    }
+
+    /// Scrolling down minimizes the iPhone tab bar; scroll back so every tab is tappable.
+    private func scrollToTop(_ app: XCUIApplication) {
+        app.swipeDown()
+        app.swipeDown()
     }
 
     // MARK: - Flows
@@ -94,6 +109,7 @@ final class MeldoUITests: XCTestCase {
         shot(app, "10-start")
         app.swipeUp()
         shot(app, "11-start-scrolled")
+        scrollToTop(app)
 
         tab(app, "Stundenplan")
         shot(app, "12-timetable")
@@ -134,10 +150,10 @@ final class MeldoUITests: XCTestCase {
         if device == "iphone" {
             tap(app.buttons["Kalender"].firstMatch, "Kalender in Mehr")
             shot(app, "19-calendar")
-            back(app)
+            back(app, to: "Mehr")
             tap(app.buttons["Statistik"].firstMatch, "Statistik in Mehr")
             shot(app, "20-statistics")
-            back(app)
+            back(app, to: "Mehr")
         }
         for (label, name) in [("WebUntis", "22-webuntis"), ("Einstellungen", "23-settings"),
                               ("Status: Widgets, Mitteilungen", "24-status"), ("Fächer", "25-subjects"),
@@ -147,8 +163,10 @@ final class MeldoUITests: XCTestCase {
                 if name == "23-settings" {
                     app.swipeUp()
                     shot(app, "23b-settings-scrolled")
+                    app.swipeUp()
+                    shot(app, "23c-settings-bottom")
                 }
-                back(app)
+                back(app, to: "Mehr")
             }
         }
     }
@@ -163,7 +181,7 @@ final class MeldoUITests: XCTestCase {
     }
 
     func test04_darkMode() {
-        let app = launch(seed: true, dark: true)
+        let app = launch(seed: true, theme: "dark")
         shot(app, "40-dark-start")
         tab(app, "Stundenplan")
         shot(app, "41-dark-timetable")
@@ -184,5 +202,33 @@ final class MeldoUITests: XCTestCase {
     func test06_coloredTheme() {
         let app = launch(seed: true, theme: "purple")
         shot(app, "60-purple-start")
+    }
+
+    /// Outside a lesson Melden asks which subject the Meldung belongs to.
+    func test07_meldenAfterSchoolAsksForSubject() {
+        let app = launch(seed: true, now: mondayAfterSchool)
+        shot(app, "70-after-school-start")
+        tap(app.buttons["Meldung erfassen"].firstMatch, "Melden")
+        shot(app, "71-subject-picker")
+        if tap(app.buttons.containing(NSPredicate(format: "label CONTAINS 'Biologie'")).firstMatch, "Biologie in picker") {
+            shot(app, "72-after-picking-subject")
+        }
+    }
+
+    /// The iPad is mostly used sideways; the iPhone checks landscape too.
+    func test08_landscape() {
+        let app = launch(seed: true, landscape: true)
+        shot(app, "80-landscape-start")
+        tab(app, "Stundenplan")
+        shot(app, "81-landscape-timetable")
+        tab(app, "Aufgaben")
+        shot(app, "82-landscape-tasks")
+        if device == "ipad" {
+            tab(app, "Prüfungen")
+            shot(app, "83-landscape-exams")
+            tab(app, "Statistik")
+            shot(app, "84-landscape-statistics")
+        }
+        XCUIDevice.shared.orientation = .portrait
     }
 }

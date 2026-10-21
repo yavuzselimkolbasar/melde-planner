@@ -111,9 +111,9 @@ private struct DayColumn: View {
 
     var body: some View {
         let lessons = model.lessons(onWeekday: weekday)
-        TimelineView(.everyMinute) { context in
-            let isToday = model.calendar.mondayIndex(of: context.date) == weekday
-            let current = isToday ? model.currentLesson(at: context.date) : nil
+        TimelineView(.everyMinute) { _ in
+            let isToday = model.calendar.mondayIndex(of: model.currentDate) == weekday
+            let current = isToday ? model.currentLesson(at: model.currentDate) : nil
             ScrollView {
                 VStack(spacing: DS.spacingS) {
                     if lessons.isEmpty {
@@ -205,9 +205,9 @@ private struct WeekGrid: View {
     var onHomework: (Lesson) -> Void
 
     var body: some View {
-        TimelineView(.everyMinute) { context in
-            let today = model.calendar.mondayIndex(of: context.date)
-            let current = model.currentLesson(at: context.date)
+        TimelineView(.everyMinute) { _ in
+            let today = model.calendar.mondayIndex(of: model.currentDate)
+            let current = model.currentLesson(at: model.currentDate)
             ScrollView {
                 HStack(alignment: .top, spacing: DS.spacingM) {
                     ForEach(days, id: \.self) { day in

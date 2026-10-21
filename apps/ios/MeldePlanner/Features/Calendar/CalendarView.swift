@@ -7,7 +7,10 @@ import SwiftUI
 struct CalendarView: View {
     @Environment(AppModel.self) private var model
     @Environment(\.horizontalSizeClass) private var sizeClass
-    @State private var date = Date.now
+    /// The day the student picked; today (by the model's clock) until they pick one.
+    @State private var picked: Date?
+
+    private var date: Date { picked ?? model.currentDate }
 
     var body: some View {
         let layout = sizeClass == .regular
@@ -16,7 +19,7 @@ struct CalendarView: View {
         ScrollView {
             layout {
                 Card {
-                    DatePicker(L("Datum"), selection: $date, displayedComponents: .date)
+                    DatePicker(L("Datum"), selection: Binding(get: { date }, set: { picked = $0 }), displayedComponents: .date)
                         .datePickerStyle(.graphical)
                         .environment(\.locale, Localization.locale)
                 }
@@ -31,7 +34,7 @@ struct CalendarView: View {
         .navigationTitle(L("Kalender"))
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                Button(L("Heute")) { date = .now }
+                Button(L("Heute")) { picked = nil }
             }
         }
     }
