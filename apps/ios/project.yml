@@ -111,6 +111,22 @@ targets:
         GENERATE_INFOPLIST_FILE: YES
         SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
 
+  MeldePlannerUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: MeldePlannerUITests
+    dependencies:
+      - target: MeldePlanner
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.meldeplanner.ios.uitests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_TARGET_NAME: MeldePlanner
+        # XCUITest APIs are main-actor bound; Swift 5 mode keeps the tests simple.
+        SWIFT_VERSION: "5.0"
+        SWIFT_STRICT_CONCURRENCY: minimal
+
 schemes:
   MeldePlanner:
     build:
@@ -120,6 +136,7 @@ schemes:
     test:
       targets:
         - MeldePlannerTests
+        - MeldePlannerUITests
       gatherCoverageData: true
     run:
       config: Debug

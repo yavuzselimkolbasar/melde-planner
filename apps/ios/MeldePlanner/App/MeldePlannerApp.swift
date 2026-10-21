@@ -5,10 +5,7 @@ import UserNotifications
 struct MeldePlannerApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @Environment(\.scenePhase) private var scenePhase
-    @State private var model: AppModel = {
-        let store = try? LocalStore.standard()
-        return AppModel(store: store)
-    }()
+    @State private var model: AppModel = .makeForLaunch()
 
     var body: some Scene {
         WindowGroup {

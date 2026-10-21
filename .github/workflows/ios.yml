@@ -76,6 +76,7 @@ jobs:
           xcodebuild test -project MeldePlanner.xcodeproj -scheme MeldePlanner \
             -destination "${{ steps.sim.outputs.destination }}" \
             -resultBundlePath "$RUNNER_TEMP/MeldePlanner.xcresult" \
+            -skip-testing:MeldePlannerUITests \
             CODE_SIGNING_ALLOWED=NO | xcbeautify || exit ${PIPESTATUS[0]}
 
       # Unsigned device build for sideloading with a free Apple ID (AltStore / Sideloadly
