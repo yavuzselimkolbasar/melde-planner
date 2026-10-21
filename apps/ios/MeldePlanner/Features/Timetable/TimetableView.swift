@@ -4,6 +4,7 @@ import SwiftUI
 /// Weekly timetable: swipe between days or tap a weekday; the current lesson is highlighted.
 struct TimetableView: View {
     @Environment(AppModel.self) private var model
+    @Environment(\.horizontalSizeClass) private var sizeClass
     @State private var weekday = 0
     @State private var editing: Lesson?
     @State private var creating = false
@@ -16,17 +17,29 @@ struct TimetableView: View {
     }
 
     var body: some View {
-        VStack(spacing: 0) {
-            WeekdayBar(days: days, selection: $weekday)
-                .padding(.horizontal, DS.spacingL)
-                .padding(.vertical, DS.spacingS)
-            TabView(selection: $weekday) {
-                ForEach(days, id: \.self) { day in
-                    DayColumn(weekday: day, onSelect: { editing = $0 }, onAdd: { creating = true }, onHomework: { homeworkFor = HomeworkPrefill(subjectID: $0.subjectID) })
-                        .tag(day)
+        Group {
+            if sizeClass == .regular {
+                // iPad / wide windows: the whole week side by side.
+                WeekGrid(
+                    days: days,
+                    onSelect: { editing = $0 },
+                    onAdd: { day in weekday = day; creating = true },
+                    onHomework: { homeworkFor = HomeworkPrefill(subjectID: $0.subjectID) }
+                )
+            } else {
+                VStack(spacing: 0) {
+                    WeekdayBar(days: days, selection: $weekday)
+                        .padding(.horizontal, DS.spacingL)
+                        .padding(.vertical, DS.spacingS)
+                    TabView(selection: $weekday) {
+                        ForEach(days, id: \.self) { day in
+                            DayColumn(weekday: day, onSelect: { editing = $0 }, onAdd: { creating = true }, onHomework: { homeworkFor = HomeworkPrefill(subjectID: $0.subjectID) })
+                                .tag(day)
+                        }
+                    }
+                    .tabViewStyle(.page(indexDisplayMode: .never))
                 }
             }
-            .tabViewStyle(.page(indexDisplayMode: .never))
         }
         .background(ThemedBackground())
         .navigationTitle(L("Stundenplan"))
@@ -180,5 +193,52 @@ private struct LessonCard: View {
         }
         .accessibilityElement(children: .combine)
         .accessibilityHint(L("Zum Bearbeiten tippen"))
+    }
+}
+
+/// All school days as columns (iPad). Same cards and actions as the phone's day pages.
+private struct WeekGrid: View {
+    @Environment(AppModel.self) private var model
+    let days: [Int]
+    var onSelect: (Lesson) -> Void
+    var onAdd: (Int) -> Void
+    var onHomework: (Lesson) -> Void
+
+    var body: some View {
+        TimelineView(.everyMinute) { context in
+            let today = model.calendar.mondayIndex(of: context.date)
+            let current = model.currentLesson(at: context.date)
+            ScrollView {
+                HStack(alignment: .top, spacing: DS.spacingM) {
+                    ForEach(days, id: \.self) { day in
+                        VStack(alignment: .leading, spacing: DS.spacingS) {
+                            HStack {
+                                Text(WeekdayText.full(day))
+                                    .font(.headline)
+                                    .foregroundStyle(day == today ? Color.accentColor : Color.primary)
+                                Spacer()
+                                Button(L("Stunde hinzufügen"), systemImage: "plus") { onAdd(day) }
+                                    .labelStyle(.iconOnly)
+                                    .disabled(model.subjects.isEmpty)
+                            }
+                            .padding(.horizontal, DS.spacingXS)
+                            ForEach(model.lessons(onWeekday: day)) { lesson in
+                                Button { onSelect(lesson) } label: {
+                                    LessonCard(lesson: lesson, isCurrent: day == today && current?.lessonId == lesson.id.uuidString)
+                                }
+                                .buttonStyle(.plain)
+                                .contextMenu {
+                                    Button(L("Hausaufgabe eintragen"), systemImage: "book") { onHomework(lesson) }
+                                    Button(L("Bearbeiten"), systemImage: "pencil") { onSelect(lesson) }
+                                    Button(L("Löschen"), systemImage: "trash", role: .destructive) { model.deleteLesson(lesson.id) }
+                                }
+                            }
+                        }
+                        .frame(maxWidth: .infinity, alignment: .top)
+                    }
+                }
+                .padding(DS.spacingL)
+            }
+        }
     }
 }

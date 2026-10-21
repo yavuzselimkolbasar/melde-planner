@@ -4,23 +4,41 @@ import SwiftUI
 /// Home: adapts to the time of day and to what the student has set up.
 struct DashboardView: View {
     @Environment(AppModel.self) private var model
+    @Environment(\.horizontalSizeClass) private var sizeClass
     @State private var addingSubject = false
     @State private var addingLesson = false
+
+    /// Two columns on iPad and in landscape, one on iPhone.
+    private var columns: [GridItem] {
+        sizeClass == .regular
+            ? [GridItem(.adaptive(minimum: 340), spacing: DS.spacingL, alignment: .top)]
+            : [GridItem(.flexible())]
+    }
 
     var body: some View {
         TimelineView(.everyMinute) { context in
             ScrollView {
-                VStack(spacing: DS.spacingL) {
-                    if model.subjects.isEmpty {
-                        GettingStartedCard(addSubject: { addingSubject = true })
-                    } else {
+                if model.subjects.isEmpty {
+                    GettingStartedCard(addSubject: { addingSubject = true })
+                        .frame(maxWidth: 560)
+                        .padding(DS.spacingL)
+                } else {
+                    VStack(spacing: DS.spacingL) {
                         UnassignedCard(now: context.date)
-                        TodayCard(now: context.date, addLesson: { addingLesson = true })
-                        WeekParticipationCard(now: context.date)
-                        HomeworkCard(now: context.date)
+                        LazyVGrid(columns: columns, alignment: .leading, spacing: DS.spacingL) {
+                            ForEach(model.preferences.dashboardCards) { card in
+                                switch card {
+                                case .today: TodayCard(now: context.date, addLesson: { addingLesson = true })
+                                case .participation: WeekParticipationCard(now: context.date)
+                                case .homework: HomeworkCard(now: context.date)
+                                }
+                            }
+                        }
                     }
+                    .frame(maxWidth: 1100)
+                    .padding(DS.spacingL)
+                    .frame(maxWidth: .infinity)
                 }
-                .padding(DS.spacingL)
             }
             .background(ThemedBackground())
             .navigationTitle(greeting(for: context.date))
@@ -44,8 +62,11 @@ private struct GettingStartedCard: View {
 
     var body: some View {
         Card(title: L("Los geht's"), systemImage: "sparkles") {
-            Text(L("Lege deine Fächer und deinen Stundenplan an. Danach ordnet Melde Planner jede Meldung automatisch der laufenden Stunde zu."))
-                .foregroundStyle(.secondary)
+            HStack(alignment: .center, spacing: DS.spacingL) {
+                Mascot(mood: .wave, size: 88)
+                Text(L("Hi, ich bin Meldo! Lege deine Fächer und deinen Stundenplan an. Danach ordne ich jede Meldung automatisch der laufenden Stunde zu."))
+                    .foregroundStyle(.secondary)
+            }
             Button(action: addSubject) {
                 Label(L("Erstes Fach anlegen"), systemImage: "plus")
                     .frame(maxWidth: .infinity)
@@ -70,11 +91,14 @@ private struct TodayCard: View {
                     let name = model.subject(for: next)?.name ?? L("Unbekanntes Fach")
                     let day = nextDayText(next)
                     let time = TimeText.clock(next.startMinute)
-                    VStack(alignment: .leading, spacing: DS.spacingXS) {
-                        Text(L("Heute kein Unterricht."))
-                            .font(.headline)
-                        Text(L("Nächste Stunde: \(name), \(day) \(time)"))
-                            .foregroundStyle(.secondary)
+                    HStack(spacing: DS.spacingM) {
+                        Mascot(mood: .sleep, size: 56)
+                        VStack(alignment: .leading, spacing: DS.spacingXS) {
+                            Text(L("Heute kein Unterricht."))
+                                .font(.headline)
+                            Text(L("Nächste Stunde: \(name), \(day) \(time)"))
+                                .foregroundStyle(.secondary)
+                        }
                     }
                 } else {
                     Text(L("Noch keine Stunden im Stundenplan."))
@@ -144,6 +168,9 @@ private struct WeekParticipationCard: View {
                         let remaining = max(goal - total, 0)
                         Text(remaining == 0 ? L("Wochenziel erreicht.") : L("Noch \(remaining) bis zum Wochenziel."))
                             .foregroundStyle(.secondary)
+                        if remaining == 0 {
+                            Mascot(mood: .cheer, size: 52)
+                        }
                     }
                     Button(goal == nil ? L("Wochenziel festlegen") : L("Ziel ändern")) { editingGoal = true }
                         .buttonStyle(.glass)

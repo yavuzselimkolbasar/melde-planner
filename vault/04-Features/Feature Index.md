@@ -11,7 +11,7 @@ Status: `not started` · `in progress` · `implemented (unverified)` · `verifie
 
 | # | Feature | Phase | Status |
 |---|---|---|---|
-| 1 | Dashboard | 2 | in progress: today, current/next lesson, weekly Melde ring, streak, goal (no grades/exams/tasks yet) |
+| 1 | Dashboard | 2 | in progress: today, Melde ring + streak, homework card, unassigned Meldungen, reorderable cards, 2-column iPad grid, Meldo mascot; grades/exams/study time missing |
 | 2 | Stundenplan | 2 | in progress: subjects, lessons, A/B weeks, overlap validation in Rust; holidays/changes in Rust only, no UI yet |
 | 3 | Melde Tracker | 2 | in progress: 1-tap recording, auto lesson match with 5-min grace, manual subject, undo, delete; per-month view missing |
 | 4 | Wochenziele | 3 | in progress: overall weekly goal + Rust suggestion; per-subject goals missing |
@@ -24,7 +24,7 @@ Status: `not started` · `in progress` · `implemented (unverified)` · `verifie
 | 11 | Fokus Timer | 4 | not started |
 | 12 | Statistiken | 3 | in progress: Swift Charts per day, per subject, 8-week trend (participation only) |
 | 13 | Meine Ziele | 3 | not started |
-| 14 | Themes | 5 | in progress: all 6 themes selectable; needs accessibility review |
+| 14 | Themes | 5 | in progress: 6 themes, Meldo accent, 3 app icons (indigo/orange/night), mascot on/off, haptics, home card order; accessibility review pending |
 | 15 | Languages | 5 | in progress: de/tr/en catalog (126 strings) with in-app switching; native-speaker review of Turkish pending |
 | 16 | Cloud Sync | 5 | in progress: Supabase schema, RLS and pgTAP tests written; no client sync |
 | 17 | Benutzerkonto | 2 | not started |
@@ -35,3 +35,4 @@ Status: `not started` · `in progress` · `implemented (unverified)` · `verifie
 Create a note per feature from [[Templates/Feature]] when work starts.
 **Verification (2026-10-21):** Rust has 44 tests passing locally. The Swift app, Swift tests and pgTAP tests are written but have **not run yet** (no macOS CI run so far). Nothing is marked `verified`.
 | — | Widgets, Control, Live Activity (extra) | 4 | in progress: Home/Lock Screen widget with interactive Melden, Control Center/Lock Screen control, lesson Live Activity; needs App Group at install |
+| — | iPad layout (extra) | 5 | in progress: sidebar tabs, 2-column dashboard, full-week timetable grid, side-by-side calendar; Stage Manager/multiwindow untested |

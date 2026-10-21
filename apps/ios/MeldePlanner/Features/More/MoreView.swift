@@ -20,7 +20,7 @@ struct MoreView: View {
                     Label(L("Einstellungen"), systemImage: "gearshape")
                 }
                 NavigationLink { AboutView() } label: {
-                    Label(L("Über Melde Planner"), systemImage: "info.circle")
+                    Label(L("Über Meldo"), systemImage: "info.circle")
                 }
             }
         }
@@ -41,6 +41,16 @@ struct SettingsView: View {
                 }
                 .pickerStyle(.inline)
                 .labelsHidden()
+            }
+            Section(L("Anpassen")) {
+                Toggle(L("Meldo anzeigen"), isOn: Binding(get: { model.preferences.showMascot }, set: { model.setShowMascot($0) }))
+                Toggle(L("Haptisches Feedback"), isOn: Binding(get: { model.preferences.haptics }, set: { model.setHaptics($0) }))
+                NavigationLink { DashboardCardsView() } label: {
+                    Label(L("Startseite anordnen"), systemImage: "rectangle.3.group")
+                }
+                NavigationLink { AppIconPicker() } label: {
+                    Label(L("App-Symbol"), systemImage: "app.badge")
+                }
             }
             Section(L("Design")) {
                 Picker(L("Design"), selection: Binding(get: { model.preferences.theme }, set: { model.setTheme($0) })) {
@@ -131,10 +141,115 @@ struct AboutView: View {
                     .font(.subheadline)
             }
             Section(L("Hinweis")) {
-                Text(L("Melde Planner zählt deine Beteiligung und berechnet Durchschnitte. Offizielle Noten vergibt allein deine Schule."))
+                Text(L("Meldo zählt deine Beteiligung und berechnet Durchschnitte. Offizielle Noten vergibt allein deine Schule."))
                     .font(.subheadline)
             }
         }
-        .navigationTitle(L("Über Melde Planner"))
+        .navigationTitle(L("Über Meldo"))
+    }
+}
+
+/// Choose which home cards appear and in which order.
+struct DashboardCardsView: View {
+    @Environment(AppModel.self) private var model
+
+    private var cards: [DashboardCard] {
+        let visible = model.preferences.dashboardCards
+        return visible + DashboardCard.allCases.filter { !visible.contains($0) }
+    }
+
+    var body: some View {
+        List {
+            Section {
+                ForEach(cards) { card in
+                    Toggle(isOn: Binding(
+                        get: { model.preferences.dashboardCards.contains(card) },
+                        set: { on in
+                            var visible = model.preferences.dashboardCards
+                            if on { visible.append(card) } else { visible.removeAll { $0 == card } }
+                            model.setDashboardCards(visible)
+                        }
+                    )) {
+                        Label(Self.title(card), systemImage: Self.symbol(card))
+                    }
+                }
+                .onMove { from, to in
+                    var ordered = cards
+                    ordered.move(fromOffsets: from, toOffset: to)
+                    let visible = Set(model.preferences.dashboardCards)
+                    model.setDashboardCards(ordered.filter(visible.contains))
+                }
+            } footer: {
+                Text(L("Ziehen zum Sortieren, Schalter zum Ein- und Ausblenden."))
+            }
+        }
+        .environment(\.editMode, .constant(.active))
+        .navigationTitle(L("Startseite anordnen"))
+    }
+
+    static func title(_ card: DashboardCard) -> String {
+        switch card {
+        case .today: L("Heute")
+        case .participation: L("Meldungen diese Woche")
+        case .homework: L("Hausaufgaben")
+        }
+    }
+
+    static func symbol(_ card: DashboardCard) -> String {
+        switch card {
+        case .today: "sun.max"
+        case .participation: "hand.raised"
+        case .homework: "book"
+        }
+    }
+}
+
+/// Alternate app icons, rendered from the same Meldo artwork.
+struct AppIconPicker: View {
+    @Environment(AppModel.self) private var model
+    @State private var problem: String?
+
+    var body: some View {
+        List {
+            ForEach(AppIconChoice.allCases) { choice in
+                Button {
+                    Task { await apply(choice) }
+                } label: {
+                    HStack {
+                        Text(Self.title(choice)).foregroundStyle(.primary)
+                        Spacer()
+                        if model.preferences.appIcon == choice {
+                            Image(systemName: "checkmark").foregroundStyle(.tint)
+                        }
+                    }
+                }
+            }
+            if let problem {
+                Text(problem).foregroundStyle(.red)
+            }
+        }
+        .navigationTitle(L("App-Symbol"))
+    }
+
+    private func apply(_ choice: AppIconChoice) async {
+        guard UIApplication.shared.supportsAlternateIcons else {
+            problem = L("Dieses Gerät unterstützt keine anderen App-Symbole.")
+            return
+        }
+        do {
+            try await UIApplication.shared.setAlternateIconName(choice.assetName)
+            model.setAppIcon(choice)
+            problem = nil
+        } catch {
+            problem = L("Das App-Symbol konnte nicht geändert werden.")
+        }
+    }
+
+    static func title(_ choice: AppIconChoice) -> String {
+        switch choice {
+        case .standard: L("Indigo (Standard)")
+        case .orange: L("Orange")
+        case .night: L("Nacht")
+        }
     }
 }

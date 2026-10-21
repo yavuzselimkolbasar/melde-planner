@@ -27,7 +27,7 @@ struct MeldeAccessory: View {
             }
             .padding(.horizontal, DS.spacingM)
         }
-        .sensoryFeedback(.success, trigger: successCount)
+        .sensoryFeedback(.success, trigger: successCount) { _, _ in model.preferences.haptics }
         .task(id: lastEntry?.id) {
             guard lastEntry != nil else { return }
             try? await Task.sleep(for: .seconds(5))

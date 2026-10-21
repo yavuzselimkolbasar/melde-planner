@@ -551,6 +551,28 @@
         }
       }
     },
+    "Anpassen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anpassen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Özelleştir"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Customize"
+          }
+        }
+      }
+    },
     "Anzeigen": {
       "localizations": {
         "tr": {
@@ -569,6 +591,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Anzeigen"
+          }
+        }
+      }
+    },
+    "App-Symbol": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App-Symbol"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulama simgesi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App icon"
           }
         }
       }
@@ -811,6 +855,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Blau"
+          }
+        }
+      }
+    },
+    "Das App-Symbol konnte nicht geändert werden.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das App-Symbol konnte nicht geändert werden."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulama simgesi değiştirilemedi."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The app icon could not be changed."
           }
         }
       }
@@ -1119,6 +1185,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Diese Woche ist"
+          }
+        }
+      }
+    },
+    "Dieses Gerät unterstützt keine anderen App-Symbole.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dieses Gerät unterstützt keine anderen App-Symbole."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu cihaz başka uygulama simgelerini desteklemiyor."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This device doesn't support other app icons."
           }
         }
       }
@@ -1871,6 +1959,28 @@
         }
       }
     },
+    "Haptisches Feedback": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Haptisches Feedback"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dokunsal geri bildirim"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Haptic feedback"
+          }
+        }
+      }
+    },
     "Hast du dich gemeldet?": {
       "localizations": {
         "tr": {
@@ -2025,6 +2135,28 @@
         }
       }
     },
+    "Hi, ich bin Meldo! Lege deine Fächer und deinen Stundenplan an. Danach ordne ich jede Meldung automatisch der laufenden Stunde zu.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hi, ich bin Meldo! Lege deine Fächer und deinen Stundenplan an. Danach ordne ich jede Meldung automatisch der laufenden Stunde zu."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Merhaba, ben Meldo! Derslerini ve ders programını ekle. Sonra her parmak kaldırmayı otomatik olarak o anki derse atarım."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hi, I'm Meldo! Add your subjects and timetable. Then I'll assign every contribution to the lesson in progress."
+          }
+        }
+      }
+    },
     "Hinweis": {
       "localizations": {
         "tr": {
@@ -2087,6 +2219,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hoch"
+          }
+        }
+      }
+    },
+    "Indigo (Standard)": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Indigo (Standard)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çivit (varsayılan)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Indigo (default)"
           }
         }
       }
@@ -2377,28 +2531,6 @@
         }
       }
     },
-    "Lege deine Fächer und deinen Stundenplan an. Danach ordnet Melde Planner jede Meldung automatisch der laufenden Stunde zu.": {
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Derslerini ve ders programını ekle. Ardından Melde Planner her parmak kaldırmayı otomatik olarak o anki derse atar."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add your subjects and timetable. Melde Planner then assigns every contribution to the lesson in progress automatically."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lege deine Fächer und deinen Stundenplan an. Danach ordnet Melde Planner jede Meldung automatisch der laufenden Stunde zu."
-          }
-        }
-      }
-    },
     "Lege in den Einstellungen fest, welche Woche eine A-Woche ist. Bis dahin findet die Stunde jede Woche statt.": {
       "localizations": {
         "tr": {
@@ -2641,28 +2773,6 @@
         }
       }
     },
-    "Melde Planner zählt deine Beteiligung und berechnet Durchschnitte. Offizielle Noten vergibt allein deine Schule.": {
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Melde Planner derse katılımını sayar ve ortalamaları hesaplar. Resmî notları yalnızca okulun verir."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Melde Planner counts your participation and calculates averages. Only your school assigns official grades."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Melde Planner zählt deine Beteiligung und berechnet Durchschnitte. Offizielle Noten vergibt allein deine Schule."
-          }
-        }
-      }
-    },
     "Melde Tracker": {
       "localizations": {
         "tr": {
@@ -2703,6 +2813,50 @@
           "stringUnit": {
             "state": "translated",
             "value": "Melden"
+          }
+        }
+      }
+    },
+    "Meldo anzeigen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo anzeigen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo'yu göster"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show Meldo"
+          }
+        }
+      }
+    },
+    "Meldo zählt deine Beteiligung und berechnet Durchschnitte. Offizielle Noten vergibt allein deine Schule.": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo derse katılımını sayar ve ortalamaları hesaplar. Resmî notları yalnızca okulun verir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo counts your participation and calculates averages. Only your school assigns official grades."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo zählt deine Beteiligung und berechnet Durchschnitte. Offizielle Noten vergibt allein deine Schule."
           }
         }
       }
@@ -2945,6 +3099,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Nach jeder Stunde nachfragen"
+          }
+        }
+      }
+    },
+    "Nacht": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nacht"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gece"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Night"
           }
         }
       }
@@ -3917,6 +4093,28 @@
         }
       }
     },
+    "Startseite anordnen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Startseite anordnen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ana sayfayı düzenle"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arrange home"
+          }
+        }
+      }
+    },
     "Statistik": {
       "localizations": {
         "tr": {
@@ -4775,6 +4973,28 @@
         }
       }
     },
+    "Ziehen zum Sortieren, Schalter zum Ein- und Ausblenden.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ziehen zum Sortieren, Schalter zum Ein- und Ausblenden."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sıralamak için sürükle, göstermek veya gizlemek için anahtarı kullan."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drag to reorder, switch to show or hide."
+          }
+        }
+      }
+    },
     "Ziel entfernen": {
       "localizations": {
         "tr": {
@@ -4995,24 +5215,24 @@
         }
       }
     },
-    "Über Melde Planner": {
+    "Über Meldo": {
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Melde Planner hakkında"
+            "value": "Meldo hakkında"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "About Melde Planner"
+            "value": "About Meldo"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Über Melde Planner"
+            "value": "Über Meldo"
           }
         }
       }

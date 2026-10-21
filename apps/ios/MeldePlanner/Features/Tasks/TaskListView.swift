@@ -95,7 +95,7 @@ struct TaskRow: View {
             }
             .buttonStyle(.plain)
             .accessibilityLabel(task.isDone ? L("Als offen markieren") : L("Als erledigt markieren"))
-            .sensoryFeedback(.success, trigger: checks)
+            .sensoryFeedback(.success, trigger: checks) { _, _ in model.preferences.haptics }
 
             Button(action: onOpen) {
                 VStack(alignment: .leading, spacing: 2) {

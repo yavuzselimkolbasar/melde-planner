@@ -113,6 +113,26 @@ nonisolated struct ExamDocument: Identifiable, Codable, Hashable {
     var updatedAt = Date()
 }
 
+/// Cards on the home screen; order and visibility are customizable.
+nonisolated enum DashboardCard: String, Codable, CaseIterable, Identifiable {
+    case today, participation, homework
+    var id: String { rawValue }
+}
+
+/// Alternate app icons (work with free signing).
+nonisolated enum AppIconChoice: String, Codable, CaseIterable, Identifiable {
+    case standard, orange, night
+    var id: String { rawValue }
+    /// Asset catalog name for `setAlternateIconName`; `nil` is the default icon.
+    var assetName: String? {
+        switch self {
+        case .standard: nil
+        case .orange: "AppIcon-Orange"
+        case .night: "AppIcon-Night"
+        }
+    }
+}
+
 nonisolated struct Preferences: Codable, Hashable {
     var language: AppLanguage = .german
     var theme: AppTheme = .system
@@ -124,6 +144,11 @@ nonisolated struct Preferences: Codable, Hashable {
     var askAfterLesson = false
     /// Show a Live Activity during lessons.
     var liveActivities = true
+    var showMascot = true
+    var haptics = true
+    /// Visible cards in display order; cards not listed are hidden.
+    var dashboardCards: [DashboardCard] = DashboardCard.allCases
+    var appIcon: AppIconChoice = .standard
 
     init() {}
 
@@ -136,6 +161,10 @@ nonisolated struct Preferences: Codable, Hashable {
         weekAReference = try c.decodeIfPresent(Date.self, forKey: .weekAReference)
         askAfterLesson = try c.decodeIfPresent(Bool.self, forKey: .askAfterLesson) ?? false
         liveActivities = try c.decodeIfPresent(Bool.self, forKey: .liveActivities) ?? true
+        showMascot = try c.decodeIfPresent(Bool.self, forKey: .showMascot) ?? true
+        haptics = try c.decodeIfPresent(Bool.self, forKey: .haptics) ?? true
+        dashboardCards = try c.decodeIfPresent([DashboardCard].self, forKey: .dashboardCards) ?? DashboardCard.allCases
+        appIcon = try c.decodeIfPresent(AppIconChoice.self, forKey: .appIcon) ?? .standard
     }
 }
 

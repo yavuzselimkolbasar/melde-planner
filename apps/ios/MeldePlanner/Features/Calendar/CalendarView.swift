@@ -3,19 +3,41 @@ import SwiftUI
 
 /// Calendar with timetable integration: pick any date to see its lessons
 /// (with holidays applied) and the Meldungen recorded that day.
-/// Exams, homework and events are added in Phase 4.
+/// Homework due that day is listed too. On iPad the picker and the day sit side by side.
 struct CalendarView: View {
     @Environment(AppModel.self) private var model
+    @Environment(\.horizontalSizeClass) private var sizeClass
     @State private var date = Date.now
 
     var body: some View {
+        let layout = sizeClass == .regular
+            ? AnyLayout(HStackLayout(alignment: .top, spacing: DS.spacingL))
+            : AnyLayout(VStackLayout(spacing: DS.spacingL))
         ScrollView {
-            VStack(spacing: DS.spacingL) {
+            layout {
                 Card {
                     DatePicker(L("Datum"), selection: $date, displayedComponents: .date)
                         .datePickerStyle(.graphical)
                         .environment(\.locale, Localization.locale)
                 }
+                .frame(maxWidth: sizeClass == .regular ? 420 : .infinity)
+                VStack(spacing: DS.spacingL) {
+                    dayDetails
+                }
+            }
+            .padding(DS.spacingL)
+        }
+        .background(ThemedBackground())
+        .navigationTitle(L("Kalender"))
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button(L("Heute")) { date = .now }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var dayDetails: some View {
                 let occurrences = model.occurrences(on: date)
                 Card(title: date.formatted(.dateTime.weekday(.wide).day().month(.wide).locale(Localization.locale)), systemImage: "tablecells") {
                     if occurrences.isEmpty {
@@ -57,15 +79,5 @@ struct CalendarView: View {
                         }
                     }
                 }
-            }
-            .padding(DS.spacingL)
-        }
-        .background(ThemedBackground())
-        .navigationTitle(L("Kalender"))
-        .toolbar {
-            ToolbarItem(placement: .primaryAction) {
-                Button(L("Heute")) { date = .now }
-            }
-        }
     }
 }

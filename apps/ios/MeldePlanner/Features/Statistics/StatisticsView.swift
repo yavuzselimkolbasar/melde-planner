@@ -5,6 +5,7 @@ import SwiftUI
 /// Participation statistics from real entries only; empty data shows an empty state, never a sample chart.
 struct StatisticsView: View {
     @Environment(AppModel.self) private var model
+    @Environment(\.horizontalSizeClass) private var sizeClass
     @State private var weekOffset = 0
 
     private var referenceDate: Date {
@@ -22,12 +23,22 @@ struct StatisticsView: View {
                     }
                     .padding(.top, DS.spacingXL)
                 } else if let summary = model.weekSummary(containing: referenceDate) {
-                    WeekChartCard(summary: summary, weekOffset: $weekOffset)
-                    SubjectBreakdownCard(summary: summary)
+                    // Two columns on iPad: the week next to its subject breakdown.
+                    LazyVGrid(
+                        columns: sizeClass == .regular
+                            ? [GridItem(.flexible(), spacing: DS.spacingL, alignment: .top), GridItem(.flexible(), alignment: .top)]
+                            : [GridItem(.flexible())],
+                        spacing: DS.spacingL
+                    ) {
+                        WeekChartCard(summary: summary, weekOffset: $weekOffset)
+                        SubjectBreakdownCard(summary: summary)
+                    }
                     TrendCard(endingAt: referenceDate)
                 }
             }
+            .frame(maxWidth: 1100)
             .padding(DS.spacingL)
+            .frame(maxWidth: .infinity)
         }
         .background(ThemedBackground())
         .navigationTitle(L("Statistik"))

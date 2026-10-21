@@ -100,6 +100,22 @@ final class AppModel {
         mutate { $0.preferences.liveActivities = on }
     }
 
+    func setShowMascot(_ on: Bool) {
+        mutate { $0.preferences.showMascot = on }
+    }
+
+    func setHaptics(_ on: Bool) {
+        mutate { $0.preferences.haptics = on }
+    }
+
+    func setDashboardCards(_ cards: [DashboardCard]) {
+        mutate { $0.preferences.dashboardCards = cards }
+    }
+
+    func setAppIcon(_ icon: AppIconChoice) {
+        mutate { $0.preferences.appIcon = icon }
+    }
+
     func setWeekAReference(_ date: Date?) {
         mutate { $0.preferences.weekAReference = date }
     }
