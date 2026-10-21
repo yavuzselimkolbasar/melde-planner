@@ -152,18 +152,29 @@ private struct UnavailableView: View {
 
 /// The Melden button during a lesson; outside lessons a link that opens the subject picker.
 private struct MeldenButton: View {
+    @Environment(\.widgetRenderingMode) private var renderingMode
     let entry: TodayEntry
 
     var body: some View {
         if entry.current != nil {
+            // Clear and tinted home screens render widgets "accented": colors become
+            // white, so a filled indigo capsule would turn into a white blob that hides
+            // its white label. There the button is a translucent capsule with an
+            // accent-tinted label instead.
+            let accented = renderingMode == .accented
             Button(intent: LogParticipationIntent()) {
                 Label(L("Melden"), systemImage: "hand.raised.fill")
                     .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(accented ? AnyShapeStyle(.primary) : AnyShapeStyle(.white))
+                    .widgetAccentable()
                     .frame(maxWidth: .infinity)
+                    .padding(.vertical, 8)
+                    .background(
+                        accented ? AnyShapeStyle(.white.opacity(0.22)) : AnyShapeStyle(Color.meldoIndigo),
+                        in: .capsule
+                    )
             }
-            .buttonStyle(.borderedProminent)
-            .buttonBorderShape(.capsule)
-            .tint(Color.meldoIndigo)
+            .buttonStyle(.plain)
         } else {
             Link(destination: DeepLink.melden) {
                 Label(L("Melden"), systemImage: "hand.raised")
