@@ -419,6 +419,28 @@
         }
       }
     },
+    "Aktualisiert: %lld Stunden, %lld Änderungen.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktualisiert: %lld Stunden, %lld Änderungen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güncellendi: %lld ders, %lld değişiklik."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Updated: %lld lessons, %lld changes."
+          }
+        }
+      }
+    },
     "Alle": {
       "localizations": {
         "tr": {
@@ -547,6 +569,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Als offen markieren"
+          }
+        }
+      }
+    },
+    "Anmelden": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anmelden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Giriş yap"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign in"
           }
         }
       }
@@ -727,6 +771,28 @@
         }
       }
     },
+    "Ausfälle und Vertretungen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ausfälle und Vertretungen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İptaller ve yerine dersler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancellations and substitutions"
+          }
+        }
+      }
+    },
     "B-Woche": {
       "localizations": {
         "tr": {
@@ -793,6 +859,72 @@
         }
       }
     },
+    "Benutzer": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Benutzer"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kullanıcı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "User"
+          }
+        }
+      }
+    },
+    "Benutzername": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Benutzername"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kullanıcı adı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "User name"
+          }
+        }
+      }
+    },
+    "Benutzername oder Passwort ist falsch.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Benutzername oder Passwort ist falsch."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kullanıcı adı veya şifre yanlış."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "User name or password is wrong."
+          }
+        }
+      }
+    },
     "Bis zur nächsten Stunde (%@)": {
       "localizations": {
         "tr": {
@@ -833,6 +965,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bisherige Meldungen bleiben erhalten, aber ohne Fach."
+          }
+        }
+      }
+    },
+    "Bitte melde dich erneut an.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bitte melde dich erneut an."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lütfen tekrar giriş yap."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Please sign in again."
           }
         }
       }
@@ -947,6 +1101,50 @@
         }
       }
     },
+    "Dein Stundenplan bleibt erhalten, wird aber nicht mehr aktualisiert. Das Passwort wird gelöscht.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dein Stundenplan bleibt erhalten, wird aber nicht mehr aktualisiert. Das Passwort wird gelöscht."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ders programın kalır ama artık güncellenmez. Şifre silinir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your timetable stays but is no longer updated. The password is deleted."
+          }
+        }
+      }
+    },
+    "Dein WebUntis-Login der Schule. Er wird nur im Schlüsselbund dieses iPhones gespeichert. Schulen mit eigener Anmeldeseite (SSO) werden noch nicht unterstützt.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dein WebUntis-Login der Schule. Er wird nur im Schlüsselbund dieses iPhones gespeichert. Schulen mit eigener Anmeldeseite (SSO) werden noch nicht unterstützt."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Okulunun WebUntis girişi. Yalnızca bu iPhone'un anahtar zincirinde saklanır. Kendi giriş sayfası olan okullar (SSO) henüz desteklenmiyor."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your school's WebUntis login. It's stored only in this iPhone's Keychain. Schools with their own sign-in page (SSO) aren't supported yet."
+          }
+        }
+      }
+    },
     "Deine Daten bleiben auf diesem Gerät. Es gibt keine Werbung und kein Tracking. Die Synchronisierung mit einem Konto folgt in einer späteren Version und ist freiwillig.": {
       "localizations": {
         "tr": {
@@ -965,6 +1163,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Deine Daten bleiben auf diesem Gerät. Es gibt keine Werbung und kein Tracking. Die Synchronisierung mit einem Konto folgt in einer späteren Version und ist freiwillig."
+          }
+        }
+      }
+    },
+    "Deine Schule erlaubt diesen Zugriff gerade nicht, oder WebUntis wird gewartet.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deine Schule erlaubt diesen Zugriff gerade nicht, oder WebUntis wird gewartet."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Okulun şu anda bu erişime izin vermiyor ya da WebUntis bakımda."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your school doesn't allow this access right now, or WebUntis is under maintenance."
           }
         }
       }
@@ -2223,6 +2443,28 @@
         }
       }
     },
+    "Importiert": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importiert"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İçe aktarıldı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Imported"
+          }
+        }
+      }
+    },
     "Indigo (Standard)": {
       "localizations": {
         "de": {
@@ -2333,6 +2575,28 @@
         }
       }
     },
+    "Jetzt aktualisieren": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jetzt aktualisieren"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şimdi güncelle"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Update now"
+          }
+        }
+      }
+    },
     "Kalender": {
       "localizations": {
         "tr": {
@@ -2421,6 +2685,28 @@
         }
       }
     },
+    "Keine Schule gefunden. Versuche den Ort oder einen Teil des Namens.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Schule gefunden. Versuche den Ort oder einen Teil des Namens."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Okul bulunamadı. Şehri veya adın bir kısmını dene."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No school found. Try the town or part of the name."
+          }
+        }
+      }
+    },
     "Keine Stunden": {
       "localizations": {
         "tr": {
@@ -2439,6 +2725,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Keine Stunden"
+          }
+        }
+      }
+    },
+    "Keine Verbindung zu WebUntis. Prüfe dein Internet.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Verbindung zu WebUntis. Prüfe dein Internet."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis'e bağlanılamadı. İnternetini kontrol et."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Can't reach WebUntis. Check your internet."
           }
         }
       }
@@ -2817,6 +3125,28 @@
         }
       }
     },
+    "Meldo aktualisiert Ausfälle und Vertretungen automatisch, wenn du die App öffnest (höchstens alle drei Stunden).": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo aktualisiert Ausfälle und Vertretungen automatisch, wenn du die App öffnest (höchstens alle drei Stunden)."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo, uygulamayı açtığında iptalleri ve yerine dersleri otomatik günceller (en fazla üç saatte bir)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo updates cancellations and substitutions automatically when you open the app (at most every three hours)."
+          }
+        }
+      }
+    },
     "Meldo anzeigen": {
       "localizations": {
         "de": {
@@ -2857,6 +3187,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Meldo zählt deine Beteiligung und berechnet Durchschnitte. Offizielle Noten vergibt allein deine Schule."
+          }
+        }
+      }
+    },
+    "Meldo übernimmt deinen Stundenplan, Ausfälle und Vertretungen aus WebUntis. Dein Login bleibt auf diesem iPhone und geht nur an den WebUntis-Server deiner Schule.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo übernimmt deinen Stundenplan, Ausfälle und Vertretungen aus WebUntis. Dein Login bleibt auf diesem iPhone und geht nur an den WebUntis-Server deiner Schule."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo ders programını, iptalleri ve yerine dersleri WebUntis'ten alır. Girişin bu iPhone'da kalır ve yalnızca okulunun WebUntis sunucusuna gider."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo takes your timetable, cancellations and substitutions from WebUntis. Your login stays on this iPhone and only goes to your school's WebUntis server."
           }
         }
       }
@@ -3165,6 +3517,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Neue Aufgabe"
+          }
+        }
+      }
+    },
+    "Neue Fächer": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neue Fächer"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni dersler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New subjects"
           }
         }
       }
@@ -3697,6 +4071,28 @@
         }
       }
     },
+    "Passwort": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Passwort"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şifre"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Password"
+          }
+        }
+      }
+    },
     "Prüfung": {
       "localizations": {
         "tr": {
@@ -3913,6 +4309,50 @@
           "stringUnit": {
             "state": "translated",
             "value": "Scannen"
+          }
+        }
+      }
+    },
+    "Schule": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schule"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Okul"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "School"
+          }
+        }
+      }
+    },
+    "Schule oder Ort suchen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schule oder Ort suchen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Okul veya şehir ara"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search school or town"
           }
         }
       }
@@ -4247,6 +4687,28 @@
         }
       }
     },
+    "Stunden pro Woche": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stunden pro Woche"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Haftalık ders saati"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lessons per week"
+          }
+        }
+      }
+    },
     "Stundenplan": {
       "localizations": {
         "tr": {
@@ -4445,6 +4907,28 @@
         }
       }
     },
+    "Trennen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trennen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bağlantıyı kes"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disconnect"
+          }
+        }
+      }
+    },
     "Täglich": {
       "localizations": {
         "tr": {
@@ -4529,6 +5013,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Unterricht"
+          }
+        }
+      }
+    },
+    "Verbinden und importieren": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbinden und importieren"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bağlan ve içe aktar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect and import"
           }
         }
       }
@@ -4705,6 +5211,94 @@
           "stringUnit": {
             "state": "translated",
             "value": "Was lief gut, was üben?"
+          }
+        }
+      }
+    },
+    "WebUntis": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis"
+          }
+        }
+      }
+    },
+    "WebUntis hat die Anfrage abgelehnt (Code %lld).": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis hat die Anfrage abgelehnt (Code %lld)."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis isteği reddetti (kod %lld)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis rejected the request (code %lld)."
+          }
+        }
+      }
+    },
+    "WebUntis trennen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis trennen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis bağlantısını kes"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disconnect WebUntis"
+          }
+        }
+      }
+    },
+    "WebUntis trennen?": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis trennen?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis bağlantısı kesilsin mi?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disconnect WebUntis?"
           }
         }
       }
@@ -5035,6 +5629,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ziel ändern"
+          }
+        }
+      }
+    },
+    "Zuletzt aktualisiert": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zuletzt aktualisiert"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son güncelleme"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last updated"
           }
         }
       }

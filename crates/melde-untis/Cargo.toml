@@ -1,0 +1,20 @@
+[package]
+name = "melde-untis"
+description = "WebUntis JSON-RPC requests and responses, and derivation of a weekly Stundenplan from dated Untis periods."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+melde-core.workspace = true
+melde-scheduling.workspace = true
+chrono.workspace = true
+thiserror.workspace = true
+# Untis speaks JSON-RPC; serde keeps parsing strict and testable without a device.
+serde.workspace = true
+serde_json.workspace = true
+
+[lints]
+workspace = true

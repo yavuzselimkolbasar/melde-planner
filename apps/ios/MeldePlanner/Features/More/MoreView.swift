@@ -14,6 +14,9 @@ struct MoreView: View {
                 NavigationLink { SubjectListView() } label: {
                     Label(L("Fächer"), systemImage: "books.vertical")
                 }
+                NavigationLink { UntisConnectView() } label: {
+                    Label(L("WebUntis"), systemImage: "arrow.triangle.2.circlepath")
+                }
             }
             Section {
                 NavigationLink { SettingsView() } label: {

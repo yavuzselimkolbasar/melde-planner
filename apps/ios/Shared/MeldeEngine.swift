@@ -18,7 +18,15 @@ nonisolated enum MeldeEngine {
                     lastDay: FfiDate($0.lastDay, calendar: calendar)
                 )
             },
-            changes: [],
+            changes: data.changes.map {
+                FfiTimetableChange(
+                    lessonId: $0.lessonID.uuidString,
+                    date: FfiDate($0.date, calendar: calendar),
+                    kind: $0.kind == .cancelled
+                        ? .cancelled
+                        : .substituted(subjectId: $0.substituteSubjectID?.uuidString, room: $0.room)
+                )
+            },
             weekAReference: data.preferences.weekAReference.map { FfiDate($0, calendar: calendar) }
         )
     }

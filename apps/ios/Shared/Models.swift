@@ -10,6 +10,8 @@ nonisolated struct Subject: Identifiable, Codable, Hashable {
     var symbolName: String = "book.closed"
     var teacher: String = ""
     var updatedAt = Date()
+    /// Untis short name when imported from WebUntis; matches subjects across imports.
+    var untisKey: String?
 
     var displayShortName: String {
         shortName.isEmpty ? String(name.prefix(3)) : shortName
@@ -31,6 +33,31 @@ nonisolated struct Lesson: Identifiable, Codable, Hashable {
     var parity: WeekParity = .every
     var room: String = ""
     var updatedAt = Date()
+    /// `true` when this lesson came from WebUntis and is updated by later imports.
+    var fromUntis: Bool?
+}
+
+/// A change to one lesson on one date (Ausfall or Vertretung), e.g. from WebUntis.
+nonisolated struct TimetableChangeRecord: Identifiable, Codable, Hashable {
+    enum Kind: String, Codable { case cancelled, substituted }
+
+    var id = UUID()
+    var lessonID: UUID
+    /// The day (local midnight).
+    var date: Date
+    var kind: Kind
+    var substituteSubjectID: UUID?
+    var room: String?
+    var fromUntis: Bool?
+}
+
+/// The student's WebUntis connection. The password is kept in the Keychain, never here.
+nonisolated struct UntisLink: Codable, Hashable {
+    var server: String
+    var loginName: String
+    var schoolName: String
+    var user: String
+    var lastSync: Date?
 }
 
 nonisolated struct Holiday: Identifiable, Codable, Hashable {
@@ -181,6 +208,8 @@ nonisolated struct AppData: Codable {
     var participation: [ParticipationEntry] = []
     var tasks: [SchoolTask] = []
     var exams: [ExamDocument] = []
+    var changes: [TimetableChangeRecord] = []
+    var untis: UntisLink?
     var preferences = Preferences()
 
     init() {}
@@ -195,6 +224,8 @@ nonisolated struct AppData: Codable {
         participation = try c.decodeIfPresent([ParticipationEntry].self, forKey: .participation) ?? []
         tasks = try c.decodeIfPresent([SchoolTask].self, forKey: .tasks) ?? []
         exams = try c.decodeIfPresent([ExamDocument].self, forKey: .exams) ?? []
+        changes = try c.decodeIfPresent([TimetableChangeRecord].self, forKey: .changes) ?? []
+        untis = try c.decodeIfPresent(UntisLink.self, forKey: .untis)
         preferences = try c.decodeIfPresent(Preferences.self, forKey: .preferences) ?? Preferences()
     }
 }

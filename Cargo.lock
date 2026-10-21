@@ -387,6 +387,7 @@ dependencies = [
  "melde-scheduling",
  "melde-statistics",
  "melde-tasks",
+ "melde-untis",
  "thiserror",
  "uniffi",
 ]
@@ -425,6 +426,18 @@ dependencies = [
  "melde-core",
  "melde-scheduling",
  "proptest",
+]
+
+[[package]]
+name = "melde-untis"
+version = "0.1.0"
+dependencies = [
+ "chrono",
+ "melde-core",
+ "melde-scheduling",
+ "serde",
+ "serde_json",
+ "thiserror",
 ]
 
 [[package]]

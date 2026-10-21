@@ -164,6 +164,10 @@ final class AppModel {
             let lessonIDs = Set(data.lessons.filter { $0.subjectID == id }.map(\.id))
             data.subjects.removeAll { $0.id == id }
             data.lessons.removeAll { $0.subjectID == id }
+            data.changes.removeAll { lessonIDs.contains($0.lessonID) }
+            for i in data.changes.indices where data.changes[i].substituteSubjectID == id {
+                data.changes[i].substituteSubjectID = nil
+            }
             for i in data.participation.indices {
                 if data.participation[i].subjectID == id { data.participation[i].subjectID = nil }
                 if let lesson = data.participation[i].lessonID, lessonIDs.contains(lesson) {
@@ -198,6 +202,7 @@ final class AppModel {
     func deleteLesson(_ id: UUID) {
         mutate { data in
             data.lessons.removeAll { $0.id == id }
+            data.changes.removeAll { $0.lessonID == id }
             for i in data.participation.indices where data.participation[i].lessonID == id {
                 data.participation[i].lessonID = nil
             }
@@ -207,6 +212,8 @@ final class AppModel {
     func validate(lessons: [Lesson]) -> [FfiTimetableIssue] {
         var timetable = ffiTimetable
         timetable.lessons = lessons.map(MeldeEngine.ffiLesson)
+        // Only the weekly plan is validated here; per-date changes are managed separately.
+        timetable.changes = []
         return (try? timetableValidate(timetable: timetable)) ?? []
     }
 
