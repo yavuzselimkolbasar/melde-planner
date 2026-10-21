@@ -815,6 +815,28 @@
         }
       }
     },
+    "Bald": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bald"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yakında"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Soon"
+          }
+        }
+      }
+    },
     "Bearbeiten": {
       "localizations": {
         "tr": {
@@ -1053,6 +1075,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Das Ende muss nach dem Beginn liegen."
+          }
+        }
+      }
+    },
+    "Das iPad zeigt keine Live-Aktivitäten an. Sie erscheinen auf dem iPhone.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das iPad zeigt keine Live-Aktivitäten an. Sie erscheinen auf dem iPhone."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPad Canlı Etkinlik göstermez. iPhone'da görünürler."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPad doesn't show Live Activities. They appear on iPhone."
           }
         }
       }
@@ -4507,6 +4551,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Prüfung nicht gefunden"
+          }
+        }
+      }
+    },
+    "Prüfungen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prüfungen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sınavlar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exams"
           }
         }
       }

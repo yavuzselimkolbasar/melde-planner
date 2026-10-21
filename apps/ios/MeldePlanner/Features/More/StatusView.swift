@@ -26,7 +26,9 @@ struct StatusView: View {
                 row(L("Live-Aktivitäten"), ok: LessonActivity.isAvailable,
                     detail: LessonActivity.isAvailable
                         ? L("Erscheinen während einer Stunde, wenn du Meldo öffnest oder meldest.")
-                        : L("In den iOS-Einstellungen für Meldo ausgeschaltet."))
+                        : (UIDevice.current.userInterfaceIdiom == .pad
+                            ? L("Das iPad zeigt keine Live-Aktivitäten an. Sie erscheinen auf dem iPhone.")
+                            : L("In den iOS-Einstellungen für Meldo ausgeschaltet.")))
                 Button(L("Vorschau anzeigen")) {
                     Task {
                         switch await LessonActivity.preview(model.data, at: model.currentDate, calendar: model.calendar) {

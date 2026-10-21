@@ -2,15 +2,22 @@ import MeldeCore
 import SwiftUI
 
 struct MoreView: View {
+    @Environment(\.horizontalSizeClass) private var sizeClass
+
     var body: some View {
         List {
+            // On iPhone these have no tab of their own (iPad shows them in the sidebar).
+            if sizeClass != .regular {
+                Section {
+                    NavigationLink { CalendarView() } label: {
+                        Label(L("Kalender"), systemImage: "calendar")
+                    }
+                    NavigationLink { StatisticsView() } label: {
+                        Label(L("Statistik"), systemImage: "chart.bar")
+                    }
+                }
+            }
             Section {
-                NavigationLink { TaskListView() } label: {
-                    Label(L("Aufgaben"), systemImage: "checklist")
-                }
-                NavigationLink { ExamListView() } label: {
-                    Label(L("Prüfungen & Scans"), systemImage: "doc.viewfinder")
-                }
                 NavigationLink { SubjectListView() } label: {
                     Label(L("Fächer"), systemImage: "books.vertical")
                 }

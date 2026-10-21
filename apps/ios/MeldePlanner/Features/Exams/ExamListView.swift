@@ -16,6 +16,9 @@ struct ExamListView: View {
     @State private var importing = false
     @State private var pending: PendingExam?
     @State private var problem: String?
+    @Environment(\.horizontalSizeClass) private var sizeClass
+    /// iPad: the exam shown next to the list.
+    @State private var selected: UUID?
 
     private var groups: [(subject: Subject?, exams: [ExamDocument])] {
         let bySubject = Dictionary(grouping: model.exams, by: \.subjectID)
@@ -29,6 +32,21 @@ struct ExamListView: View {
     }
 
     var body: some View {
+        if sizeClass == .regular, let shown = selected ?? model.exams.first?.id {
+            // iPad: list and PDF side by side.
+            HStack(spacing: 0) {
+                examList.frame(width: 380)
+                Divider()
+                ExamDetailView(examID: shown)
+                    .id(shown)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
+        } else {
+            examList
+        }
+    }
+
+    private var examList: some View {
         List {
             if let problem {
                 Label(problem, systemImage: "exclamationmark.triangle.fill").foregroundStyle(.red)
@@ -46,11 +64,20 @@ struct ExamListView: View {
             ForEach(groups, id: \.subject?.id) { group in
                 Section {
                     ForEach(group.exams) { exam in
-                        NavigationLink { ExamDetailView(examID: exam.id) } label: {
-                            ExamRow(exam: exam)
+                        Group {
+                            if sizeClass == .regular {
+                                Button { selected = exam.id } label: { ExamRow(exam: exam) }
+                                    .buttonStyle(.plain)
+                                    .listRowBackground((selected ?? model.exams.first?.id) == exam.id ? Color.accentColor.opacity(0.15) : nil)
+                            } else {
+                                NavigationLink { ExamDetailView(examID: exam.id) } label: {
+                                    ExamRow(exam: exam)
+                                }
+                            }
                         }
                         .swipeActions {
                             Button(L("Löschen"), systemImage: "trash", role: .destructive) {
+                                if selected == exam.id { selected = nil }
                                 model.deleteExam(exam.id)
                             }
                         }

@@ -270,6 +270,16 @@ mod tests {
         assert_eq!(schools[0].login_name, "gym-muster");
     }
 
+    /// Real response shape from mobile.webuntis.com (2026-10-21), including fields we ignore.
+    #[test]
+    fn parses_live_school_search_shape() {
+        let body = r#"{"result":{"size":0,"schools":[{"server":"gym-koeln-pesch.webuntis.com","useMobileServiceUrlAndroid":false,"address":"50767, Köln, Schulstr. 18","displayName":"Gymnasium Köln-Pesch","loginName":"gym-koeln-pesch","schoolId":6524200,"useMobileServiceUrlIos":false,"serverUrl":"https:\/\/gym-koeln-pesch.webuntis.com\/WebUntis\/?school=gym-koeln-pesch","tenantId":"6524200","mobileServiceUrl":null}]},"id":"meldo","jsonrpc":"2.0"}"#;
+        let schools = parse_school_search(body).expect("valid");
+        assert_eq!(schools[0].server, "gym-koeln-pesch.webuntis.com");
+        assert_eq!(schools[0].login_name, "gym-koeln-pesch");
+        assert_eq!(schools[0].display_name, "Gymnasium Köln-Pesch");
+    }
+
     #[test]
     fn parses_timetable_periods() {
         let body = r#"{"jsonrpc":"2.0","id":"meldo","result":[
