@@ -51,19 +51,48 @@ nonisolated struct UntisClient: Sendable {
     /// Who is logged in, for a session that started in the browser (Microsoft 365 or
     /// another school login) instead of `authenticate`.
     func browserAuth(server: String, sessionID: String) async throws(Failure) -> FfiUntisAuth {
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = server
-        components.path = "/WebUntis/api/app/config"
-        guard let url = components.url else { throw .sessionExpired }
-        var request = URLRequest(url: url)
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        let body = try await send(request)
-        do {
-            return try untisParseAppConfig(body: body, sessionId: sessionID)
-        } catch {
-            throw .sessionExpired
+        let probe = await probeBrowserLogin(server: server, sessionID: sessionID)
+        guard let auth = probe.auth else { throw .sessionExpired }
+        return auth
+    }
+
+    /// Asks `/api/app/config`, then the newer `/api/rest/view/v1/app/data`.
+    /// `detail` says what WebUntis answered, for the login screen when it fails.
+    func probeBrowserLogin(server: String, sessionID: String) async -> (auth: FfiUntisAuth?, detail: String) {
+        var notes: [String] = []
+        func url(_ path: String) -> URL? {
+            var components = URLComponents()
+            components.scheme = "https"
+            components.host = server
+            components.path = path
+            return components.url
         }
+        // The newer REST API wants the session's JWT as well.
+        var token: String?
+        if let tokenURL = url("/WebUntis/api/token/new"),
+           let (status, body) = try? await sendWithStatus(URLRequest(url: tokenURL)),
+           status == 200, !body.isEmpty, !body.hasPrefix("<") {
+            token = body.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+        for path in ["/WebUntis/api/app/config", "/WebUntis/api/rest/view/v1/app/data"] {
+            guard let url = url(path) else { continue }
+            var request = URLRequest(url: url)
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            if let token, path.contains("/rest/") {
+                request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+            }
+            guard let (status, body) = try? await sendWithStatus(request) else {
+                notes.append("\(path): keine Verbindung")
+                continue
+            }
+            let auth = path.hasSuffix("config")
+                ? try? untisParseAppConfig(body: body, sessionId: sessionID)
+                : try? untisParseAppData(body: body, sessionId: sessionID)
+            if let auth { return (auth, "") }
+            let start = body.prefix(80).replacingOccurrences(of: "\n", with: " ")
+            notes.append("\(path): HTTP \(status) \(start)")
+        }
+        return (nil, ([server] + notes).joined(separator: "\n"))
     }
 
     /// Raw `getTimetable` JSON for `first...last`, parsed later by Rust.
@@ -94,11 +123,16 @@ nonisolated struct UntisClient: Sendable {
     }
 
     private func send(_ request: URLRequest) async throws(Failure) -> String {
+        try await sendWithStatus(request).body
+    }
+
+    private func sendWithStatus(_ request: URLRequest) async throws(Failure) -> (status: Int, body: String) {
         var request = request
         if let browserCookies { request.setValue(browserCookies, forHTTPHeaderField: "Cookie") }
         do {
-            let (data, _) = try await session.data(for: request)
-            return String(decoding: data, as: UTF8.self)
+            let (data, response) = try await session.data(for: request)
+            let status = (response as? HTTPURLResponse)?.statusCode ?? 0
+            return (status, String(decoding: data, as: UTF8.self))
         } catch {
             throw .network
         }

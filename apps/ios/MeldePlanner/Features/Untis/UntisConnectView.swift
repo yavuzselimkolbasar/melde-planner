@@ -193,19 +193,19 @@ private struct UntisLoginView: View {
         .navigationTitle(L("Anmelden"))
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $browserLogin) {
-            UntisWebLoginView(school: school) { cookies, sessionID in
+            UntisWebLoginView(school: school) { server, cookies, sessionID in
                 browserLogin = false
-                Task { await connectWithBrowser(cookies: cookies, sessionID: sessionID) }
+                Task { await connectWithBrowser(server: server, cookies: cookies, sessionID: sessionID) }
             }
         }
     }
 
-    private func connectWithBrowser(cookies: String, sessionID: String) async {
+    private func connectWithBrowser(server: String, cookies: String, sessionID: String) async {
         working = true
         problem = nil
         defer { working = false }
         do {
-            summary = try await model.connectUntisWithBrowser(school: school, cookies: cookies, sessionID: sessionID)
+            summary = try await model.connectUntisWithBrowser(school: school, server: server, cookies: cookies, sessionID: sessionID)
         } catch {
             problem = UntisMessages.text(for: error)
         }
@@ -287,13 +287,13 @@ private struct UntisStatusView: View {
         }
         .navigationTitle(L("WebUntis"))
         .sheet(isPresented: $browserLogin) {
-            UntisWebLoginView(school: school) { cookies, sessionID in
+            UntisWebLoginView(school: school) { server, cookies, sessionID in
                 browserLogin = false
                 Task {
                     working = true
                     defer { working = false }
                     do {
-                        let s = try await model.connectUntisWithBrowser(school: school, cookies: cookies, sessionID: sessionID)
+                        let s = try await model.connectUntisWithBrowser(school: school, server: server, cookies: cookies, sessionID: sessionID)
                         message = L("Aktualisiert: \(s.lessons) Stunden, \(s.changes) Änderungen.")
                     } catch {
                         message = UntisMessages.text(for: error)

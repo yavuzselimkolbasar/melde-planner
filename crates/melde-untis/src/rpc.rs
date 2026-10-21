@@ -222,6 +222,48 @@ pub fn parse_app_config(body: &str, session_id: &str) -> Result<Auth, UntisError
     })
 }
 
+/// Fallback for [`parse_app_config`]: the newer web app's
+/// `GET /WebUntis/api/rest/view/v1/app/data`. Students are type 5; a parent
+/// account (`LEGAL_GUARDIAN`/`PARENT`) uses its first child's timetable.
+pub fn parse_app_data(body: &str, session_id: &str) -> Result<Auth, UntisError> {
+    let v: Value = serde_json::from_str(body).map_err(|e| UntisError::Malformed(e.to_string()))?;
+    let user = v
+        .get("user")
+        .filter(|u| !u.is_null())
+        .ok_or_else(|| UntisError::Malformed("not logged in".into()))?;
+    let roles: Vec<&str> = user
+        .get("roles")
+        .and_then(Value::as_array)
+        .map(|r| r.iter().filter_map(Value::as_str).collect())
+        .unwrap_or_default();
+    let is_parent = roles
+        .iter()
+        .any(|r| *r == "LEGAL_GUARDIAN" || *r == "PARENT");
+    let id = if is_parent {
+        user.get("students")
+            .and_then(Value::as_array)
+            .and_then(|s| s.first())
+            .and_then(|s| s.get("id"))
+            .and_then(Value::as_i64)
+    } else {
+        user.get("person")
+            .and_then(|p| p.get("id"))
+            .and_then(Value::as_i64)
+    }
+    .ok_or_else(|| UntisError::Malformed("no person".into()))?;
+    let person_type = if roles.contains(&"TEACHER") && !is_parent {
+        2
+    } else {
+        5
+    };
+    Ok(Auth {
+        session_id: session_id.to_owned(),
+        person_id: id,
+        person_type,
+        klasse_id: None,
+    })
+}
+
 pub fn parse_timetable(body: &str) -> Result<Vec<Period>, UntisError> {
     #[derive(Deserialize)]
     struct Named {
@@ -371,5 +413,20 @@ mod tests {
             parse_app_config("<!DOCTYPE html>", "x"),
             Err(UntisError::Malformed(_))
         ));
+    }
+
+    #[test]
+    fn parses_app_data_for_students_and_parents() {
+        let student = r#"{"user":{"id":9,"person":{"id":4711,"displayName":"Max"},"roles":["STUDENT"],"students":[]}}"#;
+        let auth = parse_app_data(student, "S").expect("student");
+        assert_eq!((auth.person_id, auth.person_type), (4711, 5));
+
+        let parent =
+            r#"{"user":{"person":{"id":12},"roles":["LEGAL_GUARDIAN"],"students":[{"id":4711}]}}"#;
+        let auth = parse_app_data(parent, "S").expect("parent");
+        assert_eq!((auth.person_id, auth.person_type), (4711, 5));
+
+        assert!(parse_app_data(r#"{"user":null}"#, "S").is_err());
+        assert!(parse_app_data("<html>", "S").is_err());
     }
 }

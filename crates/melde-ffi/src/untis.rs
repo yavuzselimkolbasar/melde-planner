@@ -115,6 +115,18 @@ pub fn untis_parse_app_config(
     })
 }
 
+/// Fallback for `untis_parse_app_config`: `/WebUntis/api/rest/view/v1/app/data`.
+#[uniffi::export]
+pub fn untis_parse_app_data(body: String, session_id: String) -> Result<FfiUntisAuth, MeldeError> {
+    let a = u::parse_app_data(&body, &session_id)?;
+    Ok(FfiUntisAuth {
+        session_id: a.session_id,
+        person_id: a.person_id,
+        person_type: a.person_type,
+        klasse_id: a.klasse_id,
+    })
+}
+
 #[uniffi::export]
 pub fn untis_logout_request() -> String {
     u::logout_request()

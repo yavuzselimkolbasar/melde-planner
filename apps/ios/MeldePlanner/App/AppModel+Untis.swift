@@ -28,8 +28,9 @@ extension AppModel {
     /// Imports with a session the student logged in to on the school's own login
     /// page (Microsoft 365, IServ, …) inside Meldo. `cookies` is the `Cookie`
     /// header for the WebUntis server; Meldo never sees the school password.
-    func connectUntisWithBrowser(school: FfiUntisSchool, cookies: String, sessionID: String) async throws(UntisClient.Failure) -> UntisImportSummary {
-        let link = UntisLink(server: school.server, loginName: school.loginName, schoolName: school.displayName,
+    /// `server` is the WebUntis host the login ended on, which can differ from the search result.
+    func connectUntisWithBrowser(school: FfiUntisSchool, server: String, cookies: String, sessionID: String) async throws(UntisClient.Failure) -> UntisImportSummary {
+        let link = UntisLink(server: server, loginName: school.loginName, schoolName: school.displayName,
                              user: "", browserLogin: true)
         let client = UntisClient(browserCookies: cookies)
         let auth = try await client.browserAuth(server: link.server, sessionID: sessionID)

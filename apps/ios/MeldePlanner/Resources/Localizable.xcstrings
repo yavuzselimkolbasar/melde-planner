@@ -617,6 +617,28 @@
         }
       }
     },
+    "Angemeldet. Stundenplan wird geladen …": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Angemeldet. Stundenplan wird geladen …"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Giriş yapıldı. Ders programı yükleniyor …"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Signed in. Loading your timetable …"
+          }
+        }
+      }
+    },
     "Anmelden": {
       "localizations": {
         "de": {
@@ -2685,6 +2707,28 @@
         }
       }
     },
+    "Ich bin angemeldet": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ich bin angemeldet"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Giriş yaptım"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I'm signed in"
+          }
+        }
+      }
+    },
     "Importiert": {
       "localizations": {
         "de": {
@@ -3627,6 +3671,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Show Meldo"
+          }
+        }
+      }
+    },
+    "Meldo erkennt die Anmeldung noch nicht. Das hat WebUntis geantwortet:": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo erkennt die Anmeldung noch nicht. Das hat WebUntis geantwortet:"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo girişi henüz algılamıyor. WebUntis'in yanıtı:"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo doesn't detect the sign-in yet. This is what WebUntis answered:"
           }
         }
       }
@@ -4727,6 +4793,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Password"
+          }
+        }
+      }
+    },
+    "Prüfe die Anmeldung …": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prüfe die Anmeldung …"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Giriş kontrol ediliyor …"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checking the sign-in …"
           }
         }
       }
@@ -6685,6 +6773,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "morgen"
+          }
+        }
+      }
+    },
+    "noch keine Sitzung": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "noch keine Sitzung"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "henüz oturum yok"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "no session yet"
           }
         }
       }
