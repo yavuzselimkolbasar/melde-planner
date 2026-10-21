@@ -177,6 +177,28 @@
         }
       }
     },
+    "%lld Schultage in Folge": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Schultage in Folge"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ardışık %lld okul günü"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld school days in a row"
+          }
+        }
+      }
+    },
     "%lld Tage pünktlich in Folge": {
       "localizations": {
         "tr": {
@@ -349,6 +371,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld× gemeldet · bis %@"
+          }
+        }
+      }
+    },
+    "%lld× in dieser Stunde": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld× in dieser Stunde"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu derste %lld×"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld× this lesson"
           }
         }
       }
@@ -617,6 +661,28 @@
         }
       }
     },
+    "Alle Karten ausgeblendet": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alle Karten ausgeblendet"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tüm kartlar gizli"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All cards hidden"
+          }
+        }
+      }
+    },
     "Alle zwei Wochen": {
       "localizations": {
         "tr": {
@@ -723,6 +789,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Als offen markieren"
+          }
+        }
+      }
+    },
+    "Anderes Fach": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anderes Fach"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başka ders"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Other subject"
           }
         }
       }
@@ -1057,6 +1145,50 @@
         }
       }
     },
+    "Aus Dateien, iCloud Drive oder Mail": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aus Dateien, iCloud Drive oder Mail"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dosyalar, iCloud Drive veya Mail'den"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "From Files, iCloud Drive or Mail"
+          }
+        }
+      }
+    },
+    "Aus Fotos": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aus Fotos"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotoğraflardan"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "From Photos"
+          }
+        }
+      }
+    },
     "Aus dem Klassenbuch in WebUntis, dieses Schuljahr. Entschuldigungen reichst du weiter bei deiner Schule ein.": {
       "localizations": {
         "de": {
@@ -1163,28 +1295,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hidden"
-          }
-        }
-      }
-    },
-    "Ausgeblendete Karten": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ausgeblendete Karten"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gizli kartlar"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hidden cards"
           }
         }
       }
@@ -1365,6 +1475,28 @@
         }
       }
     },
+    "Bilder aus deiner Mediathek": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bilder aus deiner Mediathek"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotoğraf arşivinden resimler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pictures from your library"
+          }
+        }
+      }
+    },
     "Bis zur nächsten Stunde (%@)": {
       "localizations": {
         "tr": {
@@ -1519,6 +1651,28 @@
         }
       }
     },
+    "Dateien › Auf meinem iPhone › Meldo › Prüfungen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dateien › Auf meinem iPhone › Meldo › Prüfungen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dosyalar › iPhone'umda › Meldo › Prüfungen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Files › On My iPhone › Meldo › Prüfungen"
+          }
+        }
+      }
+    },
     "Datenschutz": {
       "localizations": {
         "tr": {
@@ -1581,6 +1735,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Your timetable stays but is no longer updated. The password is deleted."
+          }
+        }
+      }
+    },
+    "Deine Arbeiten an einem Ort": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deine Arbeiten an einem Ort"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sınav kağıtların tek bir yerde"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your papers in one place"
           }
         }
       }
@@ -1801,6 +1977,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Details"
+          }
+        }
+      }
+    },
+    "Die Fotos konnten nicht als PDF gespeichert werden.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Fotos konnten nicht als PDF gespeichert werden."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotoğraflar PDF olarak kaydedilemedi."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The photos couldn't be saved as a PDF."
           }
         }
       }
@@ -2641,28 +2839,6 @@
         }
       }
     },
-    "Für welches Fach?": {
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hangi ders için?"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Which subject?"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Für welches Fach?"
-          }
-        }
-      }
-    },
     "Gemeldet": {
       "localizations": {
         "tr": {
@@ -2751,6 +2927,50 @@
         }
       }
     },
+    "Gerade läuft keine Stunde. Wofür war die Meldung?": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gerade läuft keine Stunde. Wofür war die Meldung?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şu an ders yok. Parmak kaldırma hangi ders içindi?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No lesson is running. Which subject was it for?"
+          }
+        }
+      }
+    },
+    "Gerade vorbei": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gerade vorbei"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Az önce bitti"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Just ended"
+          }
+        }
+      }
+    },
     "Gib den Namen deiner Schule zusammen mit dem Ort ein, zum Beispiel „Gymnasium Köln-Pesch“. Bei zu allgemeinen Suchen zeigt WebUntis keine Liste an.": {
       "localizations": {
         "de": {
@@ -2835,6 +3055,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Size and position"
+          }
+        }
+      }
+    },
+    "Größe ändern": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Größe ändern"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Boyutu değiştir"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resize"
           }
         }
       }
@@ -3539,6 +3781,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kalender"
+          }
+        }
+      }
+    },
+    "Karten hinzufügen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Karten hinzufügen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kart ekle"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add cards"
           }
         }
       }
@@ -4841,6 +5105,28 @@
         }
       }
     },
+    "Mit der Kamera, Seite für Seite": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mit der Kamera, Seite für Seite"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kamerayla, sayfa sayfa"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "With the camera, page by page"
+          }
+        }
+      }
+    },
     "Mitteilungen": {
       "localizations": {
         "tr": {
@@ -5435,28 +5721,6 @@
         }
       }
     },
-    "Noch keine Prüfungen": {
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Henüz sınav yok"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No exams yet"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Noch keine Prüfungen"
-          }
-        }
-      }
-    },
     "Noch keine Stunden im Stundenplan.": {
       "localizations": {
         "tr": {
@@ -5699,6 +5963,50 @@
         }
       }
     },
+    "Nächste Ferien": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nächste Ferien"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonraki tatil"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next holidays"
+          }
+        }
+      }
+    },
+    "Nächste Stunde": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nächste Stunde"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonraki ders"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next lesson"
+          }
+        }
+      }
+    },
     "Nächste Stunde: %@, %@ %@": {
       "localizations": {
         "tr": {
@@ -5761,6 +6069,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Or with your WebUntis username"
+          }
+        }
+      }
+    },
+    "Oft gemeldet": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oft gemeldet"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sık kullanılan"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Often used"
           }
         }
       }
@@ -6183,24 +6513,24 @@
         }
       }
     },
-    "Scanne zurückgegebene Klassenarbeiten oder importiere PDFs. Alles bleibt auf diesem Gerät.": {
+    "Scanne zurückgegebene Klassenarbeiten oder lade Fotos und PDFs. Alles bleibt auf deinem Gerät und erscheint auch in der Dateien-App.": {
       "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scanne zurückgegebene Klassenarbeiten oder lade Fotos und PDFs. Alles bleibt auf deinem Gerät und erscheint auch in der Dateien-App."
+          }
+        },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Geri verilen sınavları tara veya PDF içe aktar. Her şey bu cihazda kalır."
+            "value": "Geri verilen sınav kağıtlarını tara veya fotoğraf ve PDF ekle. Her şey cihazında kalır ve Dosyalar uygulamasında da görünür."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Scan returned exams or import PDFs. Everything stays on this device."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Scanne zurückgegebene Klassenarbeiten oder importiere PDFs. Alles bleibt auf diesem Gerät."
+            "value": "Scan returned tests or add photos and PDFs. Everything stays on your device and also shows up in the Files app."
           }
         }
       }
@@ -6997,6 +7327,50 @@
         }
       }
     },
+    "Tage Ferien übrig": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tage Ferien übrig"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "gün tatil kaldı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "days of holidays left"
+          }
+        }
+      }
+    },
+    "Tage bis dahin": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tage bis dahin"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "gün kaldı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "days to go"
+          }
+        }
+      }
+    },
     "Teams ist in dieser Version noch nicht eingerichtet.": {
       "localizations": {
         "de": {
@@ -7147,6 +7521,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "To-do"
+          }
+        }
+      }
+    },
+    "To-do hinzufügen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To-do hinzufügen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yapılacak ekle"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add to-do"
           }
         }
       }
@@ -7323,6 +7719,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Connect WebUntis and your exam dates appear here."
+          }
+        }
+      }
+    },
+    "Verbinde WebUntis, dann erscheinen hier die Ferien deiner Schule.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbinde WebUntis, dann erscheinen hier die Ferien deiner Schule."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis'i bağla, okulunun tatilleri burada görünür."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect WebUntis and your school's holidays appear here."
           }
         }
       }
@@ -7811,6 +8229,28 @@
         }
       }
     },
+    "Weitere Karten": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weitere Karten"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diğer kartlar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "More cards"
+          }
+        }
+      }
+    },
     "Wichtig": {
       "localizations": {
         "tr": {
@@ -7983,6 +8423,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Woche"
+          }
+        }
+      }
+    },
+    "Wochenverlauf": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wochenverlauf"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Haftanın seyri"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This week"
           }
         }
       }
@@ -8295,6 +8757,50 @@
         }
       }
     },
+    "beginnt in": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "beginnt in"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "başlamasına"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "starts in"
+          }
+        }
+      }
+    },
+    "endet in": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "endet in"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "bitmesine"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ends in"
+          }
+        }
+      }
+    },
     "entschuldigt": {
       "localizations": {
         "de": {
@@ -8533,6 +9039,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "von %lld"
+          }
+        }
+      }
+    },
+    "Änderung": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Änderung"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Değişiklik"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change"
           }
         }
       }

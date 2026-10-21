@@ -24,7 +24,7 @@ struct DashboardView: View {
                         }
                         CustomizableCardGrid(
                             slots: model.preferences.homeLayout,
-                            editing: editing,
+                            editing: $editing,
                             title: { Self.title($0) },
                             symbol: { Self.symbol($0) },
                             save: { model.setHomeLayout($0) }
@@ -59,6 +59,10 @@ struct DashboardView: View {
         case .exams: UpcomingExamsCard(now: now, size: size)
         case .news: SchoolNewsCard(size: size)
         case .absences: AbsencesCard(size: size)
+        case .nextLesson: NextLessonCard(now: now, size: size)
+        case .weekChart: WeekChartMiniCard(now: now, size: size)
+        case .nextHoliday: NextHolidayCard(now: now, size: size)
+        case .todos: TodosCard(now: now, size: size)
         }
     }
 
@@ -72,6 +76,10 @@ struct DashboardView: View {
         case .exams: L("Prüfungen")
         case .news: L("Nachrichten")
         case .absences: L("Abwesenheiten")
+        case .nextLesson: L("Nächste Stunde")
+        case .weekChart: L("Wochenverlauf")
+        case .nextHoliday: L("Nächste Ferien")
+        case .todos: L("To-dos")
         }
     }
 
@@ -85,6 +93,10 @@ struct DashboardView: View {
         case .exams: "pencil.and.list.clipboard"
         case .news: "megaphone"
         case .absences: "person.crop.circle.badge.clock"
+        case .nextLesson: "clock"
+        case .weekChart: "chart.bar.xaxis"
+        case .nextHoliday: "sun.horizon"
+        case .todos: "checklist"
         }
     }
 

@@ -152,6 +152,7 @@ nonisolated struct ExamDocument: Identifiable, Codable, Hashable {
 /// Cards on the home screen; order and visibility are customizable.
 nonisolated enum DashboardCard: String, Codable, CaseIterable, Identifiable, Sendable {
     case today, weekPreview, participation, streak, homework, exams, news, absences
+    case nextLesson, weekChart, nextHoliday, todos
     var id: String { rawValue }
 }
 

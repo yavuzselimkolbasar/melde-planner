@@ -48,13 +48,16 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
         _ center: UNUserNotificationCenter,
         didReceive response: UNNotificationResponse
     ) async {
-        let changed = LessonCheckIns.handle(
+        // A plain tap only opens the app. Storage is touched only for answers,
+        // on the main actor, never while the app may still be launching.
+        guard let answer = LessonCheckIns.answer(
             actionIdentifier: response.actionIdentifier,
-            userInfo: response.notification.request.content.userInfo,
-            store: try? LocalStore.standard()
-        )
-        if changed {
-            await MainActor.run { NotificationCenter.default.post(name: .meldeDataChanged, object: nil) }
+            userInfo: response.notification.request.content.userInfo
+        ) else { return }
+        await MainActor.run {
+            if LessonCheckIns.handle(answer, store: try? LocalStore.standard()) {
+                NotificationCenter.default.post(name: .meldeDataChanged, object: nil)
+            }
         }
     }
 

@@ -51,6 +51,9 @@ targets:
             CFBundleURLSchemes: [meldeplanner]
         # AltStore rewrites this to the App Group names it registered for the user's team.
         ALTAppGroups: [group.app.meldeplanner.ios]
+        # Prüfungen (Documents/Prüfungen) appear in the Files app.
+        UIFileSharingEnabled: true
+        LSSupportsOpeningDocumentsInPlace: true
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: app.meldeplanner.ios

@@ -26,7 +26,7 @@ struct StatisticsView: View {
                 } else if let summary = model.weekSummary(containing: referenceDate) {
                     CustomizableCardGrid(
                         slots: model.preferences.statsLayout,
-                        editing: editing,
+                        editing: $editing,
                         title: { Self.title($0) },
                         symbol: { Self.symbol($0) },
                         save: { model.setStatsLayout($0) }

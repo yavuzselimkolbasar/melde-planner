@@ -1,4 +1,5 @@
 import PDFKit
+import PhotosUI
 import SwiftUI
 import UniformTypeIdentifiers
 
@@ -14,6 +15,8 @@ struct ExamListView: View {
     @Environment(AppModel.self) private var model
     @State private var scanning = false
     @State private var importing = false
+    @State private var choosingPhotos = false
+    @State private var photoItems: [PhotosPickerItem] = []
     @State private var pending: PendingExam?
     @State private var problem: String?
     @Environment(\.horizontalSizeClass) private var sizeClass
@@ -64,14 +67,14 @@ struct ExamListView: View {
                 }
             }
             if model.exams.isEmpty {
-                ContentUnavailableView {
-                    Label(L("Noch keine Prüfungen"), systemImage: "doc.viewfinder")
-                } description: {
-                    Text(L("Scanne zurückgegebene Klassenarbeiten oder importiere PDFs. Alles bleibt auf diesem Gerät."))
-                } actions: {
-                    actionButtons
-                }
+                ExamsWelcome(
+                    canScan: DocumentScanner.isSupported,
+                    scan: { problem = nil; scanning = true },
+                    photos: { problem = nil; choosingPhotos = true },
+                    files: { problem = nil; importing = true }
+                )
                 .listRowBackground(Color.clear)
+                .listRowInsets(EdgeInsets())
             }
             ForEach(groups, id: \.subject?.id) { group in
                 Section {
@@ -121,6 +124,11 @@ struct ExamListView: View {
         .fileImporter(isPresented: $importing, allowedContentTypes: [.pdf]) { result in
             importPDF(result)
         }
+        .photosPicker(isPresented: $choosingPhotos, selection: $photoItems, maxSelectionCount: 30, matching: .images)
+        .onChange(of: photoItems) { _, items in
+            guard !items.isEmpty else { return }
+            Task { await importPhotos(items) }
+        }
         .sheet(item: $pending) { item in
             ExamEditorView(mode: .new(item))
         }
@@ -131,7 +139,24 @@ struct ExamListView: View {
         if DocumentScanner.isSupported {
             Button(L("Scannen"), systemImage: "doc.viewfinder") { problem = nil; scanning = true }
         }
+        Button(L("Aus Fotos"), systemImage: "photo.on.rectangle") { problem = nil; choosingPhotos = true }
         Button(L("PDF importieren"), systemImage: "square.and.arrow.down") { problem = nil; importing = true }
+    }
+
+    /// Photos of a returned Klausur become one PDF, in the order picked.
+    private func importPhotos(_ items: [PhotosPickerItem]) async {
+        var images: [UIImage] = []
+        for item in items {
+            if let data = try? await item.loadTransferable(type: Data.self), let image = UIImage(data: data) {
+                images.append(image)
+            }
+        }
+        photoItems = []
+        if let pdf = ExamFiles.pdf(from: images) {
+            pending = PendingExam(pdf: pdf, pageCount: images.count)
+        } else {
+            problem = L("Die Fotos konnten nicht als PDF gespeichert werden.")
+        }
     }
 
     private func importPDF(_ result: Result<URL, Error>) {
@@ -293,5 +318,66 @@ struct ExamEditorView: View {
             model.update(exam)
             dismiss()
         }
+    }
+}
+
+/// First visit: what Prüfungen is for and the three ways to add one.
+private struct ExamsWelcome: View {
+    let canScan: Bool
+    var scan: () -> Void
+    var photos: () -> Void
+    var files: () -> Void
+
+    var body: some View {
+        VStack(spacing: DS.spacingL) {
+            VStack(spacing: DS.spacingS) {
+                Image(systemName: "doc.text.viewfinder")
+                    .font(.system(size: 44, weight: .light))
+                    .foregroundStyle(.tint)
+                    .symbolEffect(.pulse, options: .nonRepeating)
+                Text(L("Deine Arbeiten an einem Ort"))
+                    .font(.title2.weight(.bold))
+                    .multilineTextAlignment(.center)
+                Text(L("Scanne zurückgegebene Klassenarbeiten oder lade Fotos und PDFs. Alles bleibt auf deinem Gerät und erscheint auch in der Dateien-App."))
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+            }
+            .padding(.top, DS.spacingL)
+            VStack(spacing: DS.spacingS) {
+                if canScan {
+                    tile(L("Scannen"), L("Mit der Kamera, Seite für Seite"), "doc.viewfinder", prominent: true, action: scan)
+                }
+                tile(L("Aus Fotos"), L("Bilder aus deiner Mediathek"), "photo.on.rectangle", prominent: !canScan, action: photos)
+                tile(L("PDF importieren"), L("Aus Dateien, iCloud Drive oder Mail"), "square.and.arrow.down", prominent: false, action: files)
+            }
+            Label(L("Dateien › Auf meinem iPhone › Meldo › Prüfungen"), systemImage: "folder")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+        }
+        .padding(DS.spacingL)
+        .frame(maxWidth: 520)
+        .frame(maxWidth: .infinity)
+    }
+
+    private func tile(_ title: String, _ subtitle: String, _ symbol: String, prominent: Bool, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            HStack(spacing: DS.spacingM) {
+                Image(systemName: symbol)
+                    .font(.title3)
+                    .frame(width: 44, height: 44)
+                    .background(prominent ? Color.white.opacity(0.2) : Color.accentColor.opacity(0.12), in: .rect(cornerRadius: 12))
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(title).font(.headline)
+                    Text(subtitle).font(.caption).opacity(0.8)
+                }
+                Spacer()
+                Image(systemName: "chevron.right").font(.footnote.weight(.semibold)).opacity(0.6)
+            }
+            .foregroundStyle(prominent ? Color.white : Color.primary)
+            .padding(DS.spacingM)
+            .background(prominent ? Color.accentColor : Color(.secondarySystemGroupedBackground), in: .rect(cornerRadius: DS.rowRadius))
+        }
+        .buttonStyle(.plain)
     }
 }

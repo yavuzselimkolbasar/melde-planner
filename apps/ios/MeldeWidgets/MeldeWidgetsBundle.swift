@@ -5,6 +5,7 @@ import WidgetKit
 struct MeldeWidgetsBundle: WidgetBundle {
     var body: some Widget {
         MeldoTodayWidget()
+        MeldoStatsWidget()
         MeldenControl()
         LessonLiveActivity()
     }

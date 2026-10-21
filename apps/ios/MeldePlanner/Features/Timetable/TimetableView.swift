@@ -269,6 +269,7 @@ private struct TimetableWeekPage: View {
             }
         }
         .padding(.horizontal, DS.spacingS)
+        .frame(maxHeight: .infinity, alignment: .top)
     }
 }
 
@@ -292,6 +293,7 @@ private struct TimetableDayPage: View {
                 LimitNotice(limit: limit)
             }
         }
+        .frame(maxHeight: .infinity, alignment: .top)
     }
 }
 
@@ -341,7 +343,9 @@ private struct TimeAxis: View {
 
     var body: some View {
         ZStack(alignment: .top) {
-            ForEach(model.bellSchedule, id: \.self) { bell in
+            let bells = model.bellSchedule
+            ForEach(Array(bells.enumerated()), id: \.offset) { index, bell in
+                let next = index + 1 < bells.count ? bells[index + 1].startMinute : nil
                 if bell.startMinute >= metrics.start, bell.endMinute <= metrics.end {
                     VStack(spacing: 0) {
                         Text(TimeText.clock(bell.startMinute))
@@ -351,7 +355,7 @@ private struct TimeAxis: View {
                         Text(bell.name)
                             .font(.subheadline.weight(.semibold))
                         Spacer(minLength: 0)
-                        if !compact || metrics.pointsPerMinute * CGFloat(bell.endMinute - bell.startMinute) > 50 {
+                        if next != bell.endMinute {
                             Text(TimeText.clock(bell.endMinute))
                                 .font(.caption2)
                                 .foregroundStyle(.secondary)
@@ -512,7 +516,8 @@ private struct TimetableBlockView: View {
                     Text(room)
                         .font(.caption2.weight(block.kind == .roomChange ? .bold : .regular))
                         .padding(.horizontal, block.kind == .roomChange ? 3 : 0)
-                        .background(block.kind == .roomChange ? Color.green.opacity(0.35) : .clear, in: .rect(cornerRadius: 3))
+                        .foregroundStyle(block.kind == .roomChange ? Color.white : Color.primary)
+                        .background(block.kind == .roomChange ? Color.untisChange : .clear, in: .rect(cornerRadius: 3))
                         .strikethrough(block.kind == .cancelled)
                         .lineLimit(1)
                         .minimumScaleFactor(0.7)
@@ -562,18 +567,19 @@ struct BlockStyle {
     var stripe: Color
     var border: Color?
 
-    init(kind: TimetableBlock.Kind, subjectColor: Color) {
+    /// Like WebUntis: every lesson the same grey, only changes in color
+    /// (exam yellow, change green, cancelled red). `subjectColor` is kept for
+    /// callers but no longer tints lessons.
+    init(kind: TimetableBlock.Kind, subjectColor: Color = .gray) {
         switch kind {
         case .regular:
-            fill = subjectColor.opacity(0.16); stripe = subjectColor; border = nil
-        case .roomChange:
-            fill = subjectColor.opacity(0.16); stripe = subjectColor; border = .green
+            fill = .untisLesson; stripe = Color.secondary.opacity(0.5); border = nil
+        case .roomChange, .substitution:
+            fill = .untisLesson; stripe = .untisChange; border = .untisChange
         case .exam:
-            fill = Color.yellow.opacity(0.35); stripe = .yellow; border = .yellow
+            fill = .untisExam.opacity(0.28); stripe = .untisExam; border = .untisExam
         case .cancelled:
-            fill = Color.red.opacity(0.14); stripe = .red; border = .red
-        case .substitution:
-            fill = Color.orange.opacity(0.22); stripe = .orange; border = .orange
+            fill = .untisCancelled.opacity(0.12); stripe = .untisCancelled; border = .untisCancelled
         }
     }
 
@@ -583,12 +589,18 @@ struct BlockStyle {
         case .roomChange: L("Raumänderung")
         case .exam: L("Prüfung")
         case .cancelled: L("Entfall")
-        case .substitution: L("Vertretung")
+        case .substitution: L("Änderung")
         }
     }
 }
 
 extension Color {
+    /// Lesson grey, adapting to light and dark mode.
+    static let untisLesson = Color(.tertiarySystemFill)
+    /// WebUntis' change colors.
+    static let untisChange = Color(red: 0.0, green: 0.62, blue: 0.47)
+    static let untisExam = Color(red: 0.98, green: 0.76, blue: 0.0)
+    static let untisCancelled = Color(red: 0.90, green: 0.21, blue: 0.37)
     /// The blue WebUntis uses for holidays.
     static let untisHoliday = Color(red: 0.42, green: 0.52, blue: 0.77)
 }
@@ -596,16 +608,24 @@ extension Color {
 /// What the colors mean, like the bar at the bottom of Untis.
 private struct TimetableLegend: View {
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
+        ViewThatFits(in: .horizontal) {
             HStack(spacing: DS.spacingM) {
-                item(.yellow, L("Prüfung"))
-                item(.green, L("Raumänderung"))
-                item(.red, L("Entfall"))
-                item(.orange, L("Vertretung"))
+                item(.untisExam, L("Prüfung"))
+                item(.untisChange, L("Änderung"))
+                item(.untisCancelled, L("Entfall"))
                 item(.untisHoliday, L("Ferien"))
             }
             .font(.caption)
+            .fixedSize()
+            HStack(spacing: DS.spacingS) {
+                item(.untisExam, L("Prüfung"))
+                item(.untisChange, L("Änderung"))
+                item(.untisCancelled, L("Entfall"))
+                item(.untisHoliday, L("Ferien"))
+            }
+            .font(.caption2)
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
         .accessibilityElement(children: .combine)
     }
 

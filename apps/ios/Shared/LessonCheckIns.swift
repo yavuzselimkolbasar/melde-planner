@@ -84,6 +84,32 @@ nonisolated enum LessonCheckIns {
         )
     }
 
+    /// The answer from a check-in notification, copied out of `userInfo` so it
+    /// can cross threads safely.
+    nonisolated struct Answer: Sendable {
+        var actionIdentifier: String
+        var lessonID: String
+        var subjectID: String
+        var recordedAt: TimeInterval
+    }
+
+    /// `nil` for a plain tap or "Diesmal nicht": nothing to save.
+    static func answer(actionIdentifier: String, userInfo: [AnyHashable: Any]) -> Answer? {
+        guard actionIdentifier == Action.once.rawValue || actionIdentifier == Action.twice.rawValue,
+              let lessonID = userInfo["lessonID"] as? String,
+              let subjectID = userInfo["subjectID"] as? String,
+              let seconds = userInfo["recordedAt"] as? TimeInterval else { return nil }
+        return Answer(actionIdentifier: actionIdentifier, lessonID: lessonID, subjectID: subjectID, recordedAt: seconds)
+    }
+
+    static func handle(_ answer: Answer, store: LocalStore?) -> Bool {
+        handle(
+            actionIdentifier: answer.actionIdentifier,
+            userInfo: ["lessonID": answer.lessonID, "subjectID": answer.subjectID, "recordedAt": answer.recordedAt],
+            store: store
+        )
+    }
+
     /// Handles a tap on "Ja, einmal" / "Ja, zweimal". Returns whether data changed.
     @discardableResult
     static func handle(actionIdentifier: String, userInfo: [AnyHashable: Any], store: LocalStore?) -> Bool {
