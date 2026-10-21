@@ -14,13 +14,14 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SOURCES = ROOT / "apps/ios/MeldePlanner"
+SOURCE_DIRS = [SOURCES]
 CATALOG = SOURCES / "Resources/Localizable.xcstrings"
 LANGUAGES = ("de", "tr", "en")
 
 # Interpolated expressions that are integers (→ %lld); all others are strings (→ %@).
 INT_EXPRESSIONS = {
     "goal", "remaining", "streak", "suggestion", "-weekOffset",
-    "todayCount(for: current.subjectId)",
+    "todayCount(for: current.subjectId)", "exam.pageCount",
 }
 
 CALL = re.compile(r'\bL\("((?:[^"\\]|\\.)*)"\)')
@@ -46,7 +47,7 @@ def to_key(raw: str) -> str:
 
 def source_keys() -> dict[str, set[str]]:
     keys: dict[str, set[str]] = {}
-    for path in SOURCES.rglob("*.swift"):
+    for path in (p for d in SOURCE_DIRS for p in d.rglob("*.swift")):
         text = path.read_text(encoding="utf-8")
         for match in CALL.finditer(text):
             keys.setdefault(to_key(match.group(1)), set()).add(path.name)

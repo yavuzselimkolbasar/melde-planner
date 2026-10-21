@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a4253e7f`
+- Built from commit: `b83ace8b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -222,7 +222,7 @@ Cohesion: 0.67
 Nodes (3): Melde Planner, Quick start (Windows 11), Status
 
 ## Knowledge Gaps
-- **122 isolated node(s):** `PackageDescription`, `.mondayIndex`, `MeldePlanner`, `Observation`, `.currentDate` (+117 more)
+- **122 isolated node(s):** `PackageDescription`, `.mondayIndex`, `Observation`, `.currentDate`, `.preferences` (+117 more)
   These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 284 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -233,7 +233,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.111) - this node is a cross-community bridge._
 - **Are the 11 inferred relationships involving `AppModel` (e.g. with `.greeting()` and `.isOver()`) actually correct?**
   _`AppModel` has 11 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `PackageDescription`, `.mondayIndex`, `MeldePlanner` to the rest of the system?**
+- **What connects `PackageDescription`, `.mondayIndex`, `Observation` to the rest of the system?**
   _122 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Card` be split into smaller, more focused modules?**
   _Cohesion score 0.12681159420289856 - nodes in this community are weakly interconnected._

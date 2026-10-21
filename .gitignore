@@ -42,3 +42,6 @@ apps/ios/MeldeCore/.build/
 graphify-out/graph.html
 vault/07-Graph/*
 !vault/07-Graph/.gitkeep
+
+# Local downloads of CI artifacts
+build/

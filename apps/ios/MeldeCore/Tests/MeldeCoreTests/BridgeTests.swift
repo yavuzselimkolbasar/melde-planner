@@ -54,4 +54,16 @@ struct BridgeTests {
         #expect(current?.subjectId == "mathe")
         #expect(!coreVersion().isEmpty)
     }
+
+    @Test func taskGroupingAndStreakInRust() throws {
+        func day(_ d: UInt8) -> FfiDate { FfiDate(year: 2026, month: 10, day: d) }
+        let tasks = [
+            FfiTask(id: "a", title: "a", kind: .homework, due: day(20), completedOn: day(19), priority: .normal, recurrence: .never),
+            FfiTask(id: "b", title: "b", kind: .homework, due: day(22), completedOn: nil, priority: .high, recurrence: .weekly),
+        ]
+        let sections = try tasksGrouped(tasks: tasks, today: day(21))
+        #expect(sections.map(\.group) == [.tomorrow, .completed])
+        #expect(try tasksHomeworkStreak(tasks: tasks, today: day(21)) == 1)
+        #expect(try tasksNextDue(task: tasks[1], completedOn: day(22)) == day(29))
+    }
 }

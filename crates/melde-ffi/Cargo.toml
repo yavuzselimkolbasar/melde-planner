@@ -17,6 +17,7 @@ melde-core.workspace = true
 melde-grades.workspace = true
 melde-scheduling.workspace = true
 melde-statistics.workspace = true
+melde-tasks.workspace = true
 chrono.workspace = true
 thiserror.workspace = true
 uniffi.workspace = true

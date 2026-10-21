@@ -217,14 +217,14 @@
   },
   "supabase/migrations/20261021120000_initial_schema.sql": {
     "mtime": 1792584613.2476974,
-    "seen": 1792584647.3612468,
-    "ast_hash": "",
+    "seen": 1792585958.7952087,
+    "ast_hash": "dccd5a196415b59b47648dbb2b6b7aec",
     "semantic_hash": ""
   },
   "supabase/tests/database/rls_isolation.test.sql": {
     "mtime": 1792584621.8890479,
-    "seen": 1792584647.3612487,
-    "ast_hash": "",
+    "seen": 1792585958.7952101,
+    "ast_hash": "39141ebddeaab9546284aca4be3527cc",
     "semantic_hash": ""
   },
   "apps/ios/MeldeCore/Package.swift": {
@@ -384,15 +384,15 @@
     "semantic_hash": ""
   },
   ".github/workflows/ios.yml": {
-    "mtime": 1792585186.601089,
-    "seen": 1792585342.7311993,
-    "ast_hash": "eaa94a86a06f906c026216871c97283e",
+    "mtime": 1792585956.1935344,
+    "seen": 1792585958.7952144,
+    "ast_hash": "f58356e42a558555903c2a8a4fae2ca8",
     "semantic_hash": ""
   },
   ".github/workflows/testflight.yml": {
-    "mtime": 1792585178.5023012,
-    "seen": 1792585342.7312005,
-    "ast_hash": "b39471004ed77b13a2dbed43854da518",
+    "mtime": 1792585956.2261271,
+    "seen": 1792585958.7952156,
+    "ast_hash": "c5c2ff947f15385ee5ee617bca714eda",
     "semantic_hash": ""
   },
   "README.md": {

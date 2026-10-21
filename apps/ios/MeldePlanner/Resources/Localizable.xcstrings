@@ -1,6 +1,50 @@
 {
   "sourceLanguage": "de",
   "strings": {
+    "%@ · %lld Seiten": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %lld sayfa"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %lld pages"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %lld Seiten"
+          }
+        }
+      }
+    },
+    "%@ · noch offen": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · hâlâ açık"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · still open"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · noch offen"
+          }
+        }
+      }
+    },
     "%lld Meldungen pro Woche": {
       "localizations": {
         "tr": {
@@ -13,6 +57,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld contributions per week"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Meldungen pro Woche"
           }
         }
       }
@@ -30,6 +80,34 @@
             "state": "translated",
             "value": "%lld school days in a row"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Schultage in Folge"
+          }
+        }
+      }
+    },
+    "%lld Tage pünktlich in Folge": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Üst üste %lld gün zamanında"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld days on time in a row"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Tage pünktlich in Folge"
+          }
         }
       }
     },
@@ -45,6 +123,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld today"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld heute"
           }
         }
       }
@@ -62,6 +146,12 @@
             "state": "translated",
             "value": "Week A"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A-Woche"
+          }
         }
       }
     },
@@ -77,6 +167,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Use A/B weeks"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A/B-Wochen verwenden"
           }
         }
       }
@@ -94,6 +190,232 @@
             "state": "translated",
             "value": "Cancel"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abbrechen"
+          }
+        }
+      }
+    },
+    "Alle": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tümü"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alle"
+          }
+        }
+      }
+    },
+    "Alle zwei Wochen": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İki haftada bir"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Every two weeks"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alle zwei Wochen"
+          }
+        }
+      }
+    },
+    "Als erledigt markieren": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tamamlandı olarak işaretle"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mark as done"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Als erledigt markieren"
+          }
+        }
+      }
+    },
+    "Als offen markieren": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Açık olarak işaretle"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mark as open"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Als offen markieren"
+          }
+        }
+      }
+    },
+    "Anzeigen": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Göster"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anzeigen"
+          }
+        }
+      }
+    },
+    "Art": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tür"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Type"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Art"
+          }
+        }
+      }
+    },
+    "Aufgabe bearbeiten": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Görevi düzenle"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit task"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aufgabe bearbeiten"
+          }
+        }
+      }
+    },
+    "Aufgabe hinzufügen": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Görev ekle"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add task"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aufgabe hinzufügen"
+          }
+        }
+      }
+    },
+    "Aufgabe löschen": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Görevi sil"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete task"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aufgabe löschen"
+          }
+        }
+      }
+    },
+    "Aufgaben": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Görevler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tasks"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aufgaben"
+          }
         }
       }
     },
@@ -109,6 +431,34 @@
           "stringUnit": {
             "state": "translated",
             "value": "Week B"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "B-Woche"
+          }
+        }
+      }
+    },
+    "Bearbeiten": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Düzenle"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bearbeiten"
           }
         }
       }
@@ -126,6 +476,34 @@
             "state": "translated",
             "value": "Start"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beginn"
+          }
+        }
+      }
+    },
+    "Bis zur nächsten Stunde (%@)": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir sonraki derse kadar (%@)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "By the next lesson (%@)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bis zur nächsten Stunde (%@)"
+          }
         }
       }
     },
@@ -141,6 +519,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Existing contributions are kept, but without a subject."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bisherige Meldungen bleiben erhalten, aber ohne Fach."
           }
         }
       }
@@ -158,6 +542,12 @@
             "state": "translated",
             "value": "Blue"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Blau"
+          }
         }
       }
     },
@@ -173,6 +563,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "The end must be after the start."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Ende muss nach dem Beginn liegen."
           }
         }
       }
@@ -190,6 +586,12 @@
             "state": "translated",
             "value": "Privacy"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Datenschutz"
+          }
         }
       }
     },
@@ -205,6 +607,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Date"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Datum"
           }
         }
       }
@@ -222,6 +630,12 @@
             "state": "translated",
             "value": "Your data stays on this device. There are no ads and no tracking. Syncing with an account comes in a later version and is optional."
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deine Daten bleiben auf diesem Gerät. Es gibt keine Werbung und kein Tracking. Die Synchronisierung mit einem Konto folgt in einer späteren Version und ist freiwillig."
+          }
         }
       }
     },
@@ -237,6 +651,34 @@
           "stringUnit": {
             "state": "translated",
             "value": "Your saved data could not be read. A backup copy was kept."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deine gespeicherten Daten konnten nicht gelesen werden. Eine Sicherungskopie wurde behalten."
+          }
+        }
+      }
+    },
+    "Der Scan konnte nicht als PDF gespeichert werden.": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarama PDF olarak kaydedilemedi."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The scan could not be saved as a PDF."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Scan konnte nicht als PDF gespeichert werden."
           }
         }
       }
@@ -254,6 +696,78 @@
             "state": "translated",
             "value": "Appearance"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Design"
+          }
+        }
+      }
+    },
+    "Details": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayrıntılar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Details"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Details"
+          }
+        }
+      }
+    },
+    "Die Prüfung konnte nicht gespeichert werden.": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sınav kaydedilemedi."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The exam could not be saved."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Prüfung konnte nicht gespeichert werden."
+          }
+        }
+      }
+    },
+    "Diese Datei ist kein lesbares PDF.": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu dosya okunabilir bir PDF değil."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This file is not a readable PDF."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diese Datei ist kein lesbares PDF."
+          }
         }
       }
     },
@@ -269,6 +783,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "This lesson is invalid."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diese Stunde ist ungültig."
           }
         }
       }
@@ -286,6 +806,12 @@
             "state": "translated",
             "value": "This week"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diese Woche"
+          }
         }
       }
     },
@@ -301,6 +827,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "This week is"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diese Woche ist"
           }
         }
       }
@@ -318,6 +850,12 @@
             "state": "translated",
             "value": "Dark"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dunkel"
+          }
         }
       }
     },
@@ -333,6 +871,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Settings"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Einstellungen"
           }
         }
       }
@@ -350,6 +894,12 @@
             "state": "translated",
             "value": "End"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ende"
+          }
         }
       }
     },
@@ -365,6 +915,56 @@
           "stringUnit": {
             "state": "translated",
             "value": "Cancelled"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entfällt"
+          }
+        }
+      }
+    },
+    "Erinnerung": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hatırlatıcı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reminder"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erinnerung"
+          }
+        }
+      }
+    },
+    "Erledigt": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tamamlandı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erledigt"
           }
         }
       }
@@ -382,6 +982,12 @@
             "state": "translated",
             "value": "Add your first subject"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erstes Fach anlegen"
+          }
         }
       }
     },
@@ -397,6 +1003,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Subject"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fach"
           }
         }
       }
@@ -414,6 +1026,12 @@
             "state": "translated",
             "value": "Add subject"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fach anlegen"
+          }
         }
       }
     },
@@ -429,6 +1047,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Edit subject"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fach bearbeiten"
           }
         }
       }
@@ -446,6 +1070,12 @@
             "state": "translated",
             "value": "Delete subject?"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fach löschen?"
+          }
         }
       }
     },
@@ -461,6 +1091,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Color"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Farbe"
           }
         }
       }
@@ -478,6 +1114,12 @@
             "state": "translated",
             "value": "Done"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fertig"
+          }
         }
       }
     },
@@ -493,6 +1135,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Subjects"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fächer"
           }
         }
       }
@@ -510,6 +1158,56 @@
             "state": "translated",
             "value": "Subjects group lessons, contributions and, later, your grades."
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fächer bündeln Stunden, Meldungen und später deine Noten."
+          }
+        }
+      }
+    },
+    "Fällig": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Teslim"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Due"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fällig"
+          }
+        }
+      }
+    },
+    "Fällig am": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Teslim tarihi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Due on"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fällig am"
+          }
         }
       }
     },
@@ -525,6 +1223,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Add the lessons for %@."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Füge die Stunden für %@ hinzu."
           }
         }
       }
@@ -542,6 +1246,34 @@
             "state": "translated",
             "value": "For lessons that only take place every other week."
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Für Stunden, die nur jede zweite Woche stattfinden."
+          }
+        }
+      }
+    },
+    "Für heute und morgen ist alles erledigt.": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugün ve yarın için her şey tamam."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Everything for today and tomorrow is done."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Für heute und morgen ist alles erledigt."
+          }
         }
       }
     },
@@ -557,6 +1289,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Which subject?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Für welches Fach?"
           }
         }
       }
@@ -574,6 +1312,12 @@
             "state": "translated",
             "value": "Recorded"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gemeldet"
+          }
         }
       }
     },
@@ -589,6 +1333,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "No lesson right now"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gerade keine Stunde"
           }
         }
       }
@@ -606,6 +1356,12 @@
             "state": "translated",
             "value": "Green"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grün"
+          }
         }
       }
     },
@@ -621,6 +1377,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Good night"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gute Nacht"
           }
         }
       }
@@ -638,6 +1400,12 @@
             "state": "translated",
             "value": "Good evening"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guten Abend"
+          }
         }
       }
     },
@@ -653,6 +1421,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Good morning"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guten Morgen"
           }
         }
       }
@@ -670,6 +1444,78 @@
             "state": "translated",
             "value": "Hello"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hallo"
+          }
+        }
+      }
+    },
+    "Hausaufgabe": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ödev"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Homework"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hausaufgabe"
+          }
+        }
+      }
+    },
+    "Hausaufgabe eintragen": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ödev ekle"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add homework"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hausaufgabe eintragen"
+          }
+        }
+      }
+    },
+    "Hausaufgaben": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ödevler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Homework"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hausaufgaben"
+          }
         }
       }
     },
@@ -685,6 +1531,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Light"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hell"
           }
         }
       }
@@ -702,6 +1554,12 @@
             "state": "translated",
             "value": "Today"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heute"
+          }
         }
       }
     },
@@ -717,6 +1575,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "No lessons today."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heute kein Unterricht."
           }
         }
       }
@@ -734,6 +1598,56 @@
             "state": "translated",
             "value": "Note"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hinweis"
+          }
+        }
+      }
+    },
+    "Hinzufügen": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ekle"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hinzufügen"
+          }
+        }
+      }
+    },
+    "Hoch": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yüksek"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "High"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hoch"
+          }
         }
       }
     },
@@ -749,6 +1663,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Every week"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jede Woche"
           }
         }
       }
@@ -766,6 +1686,12 @@
             "state": "translated",
             "value": "Now"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jetzt"
+          }
         }
       }
     },
@@ -781,6 +1707,34 @@
           "stringUnit": {
             "state": "translated",
             "value": "Calendar"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalender"
+          }
+        }
+      }
+    },
+    "Kein Fach": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ders yok"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No subject"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kein Fach"
           }
         }
       }
@@ -798,6 +1752,12 @@
             "state": "translated",
             "value": "No lessons on this day."
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kein Unterricht an diesem Tag."
+          }
         }
       }
     },
@@ -813,6 +1773,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "No contributions this week."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Meldungen in dieser Woche."
           }
         }
       }
@@ -830,6 +1796,12 @@
             "state": "translated",
             "value": "No lessons"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Stunden"
+          }
         }
       }
     },
@@ -845,6 +1817,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "None"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keins"
           }
         }
       }
@@ -862,6 +1840,12 @@
             "state": "translated",
             "value": "Abbreviation, e.g. M"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kürzel, z. B. M"
+          }
         }
       }
     },
@@ -877,6 +1861,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Add your subjects and timetable. Melde Planner then assigns every contribution to the lesson in progress automatically."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lege deine Fächer und deinen Stundenplan an. Danach ordnet Melde Planner jede Meldung automatisch der laufenden Stunde zu."
           }
         }
       }
@@ -894,6 +1884,12 @@
             "state": "translated",
             "value": "Set which week is week A in Settings. Until then, the lesson takes place every week."
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lege in den Einstellungen fest, welche Woche eine A-Woche ist. Bis dahin findet die Stunde jede Woche statt."
+          }
         }
       }
     },
@@ -909,6 +1905,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Add subjects first so contributions can be assigned."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lege zuerst Fächer an, damit Meldungen zugeordnet werden können."
           }
         }
       }
@@ -926,6 +1928,12 @@
             "state": "translated",
             "value": "First add your subjects under “Subjects”."
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lege zuerst unter „Fächer“ deine Fächer an."
+          }
         }
       }
     },
@@ -941,6 +1949,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Teacher (optional)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lehrkraft (optional)"
           }
         }
       }
@@ -958,6 +1972,12 @@
             "state": "translated",
             "value": "Last 8 weeks"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Letzte 8 Wochen"
+          }
         }
       }
     },
@@ -973,6 +1993,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Last week"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Letzte Woche"
           }
         }
       }
@@ -990,6 +2016,12 @@
             "state": "translated",
             "value": "Purple"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lila"
+          }
         }
       }
     },
@@ -1005,6 +2037,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Let's get started"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los geht's"
           }
         }
       }
@@ -1022,6 +2060,12 @@
             "state": "translated",
             "value": "Delete"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Löschen"
+          }
         }
       }
     },
@@ -1037,6 +2081,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "More"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mehr"
           }
         }
       }
@@ -1054,6 +2104,12 @@
             "state": "translated",
             "value": "Melde Planner counts your participation and calculates averages. Only your school assigns official grades."
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Melde Planner zählt deine Beteiligung und berechnet Durchschnitte. Offizielle Noten vergibt allein deine Schule."
+          }
         }
       }
     },
@@ -1069,6 +2125,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Participation tracker"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Melde Tracker"
           }
         }
       }
@@ -1086,6 +2148,12 @@
             "state": "translated",
             "value": "Raise hand"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Melden"
+          }
         }
       }
     },
@@ -1101,6 +2169,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Record contribution"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldung erfassen"
           }
         }
       }
@@ -1118,6 +2192,12 @@
             "state": "translated",
             "value": "Contributions"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldungen"
+          }
         }
       }
     },
@@ -1133,6 +2213,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Contributions this week"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldungen diese Woche"
           }
         }
       }
@@ -1150,6 +2236,12 @@
             "state": "translated",
             "value": "Contributions per day"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldungen pro Tag"
+          }
         }
       }
     },
@@ -1165,6 +2257,56 @@
           "stringUnit": {
             "state": "translated",
             "value": "Contributions count your participation. Your teacher assigns the oral grade."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldungen zählen deine Beteiligung. Die mündliche Note vergibt deine Lehrkraft."
+          }
+        }
+      }
+    },
+    "Mitteilungen sind aus. Erlaube sie in den Einstellungen, damit Erinnerungen ankommen.": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildirimler kapalı. Hatırlatıcıların gelmesi için Ayarlar'dan izin ver."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notifications are off. Allow them in Settings so reminders arrive."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mitteilungen sind aus. Erlaube sie in den Einstellungen, damit Erinnerungen ankommen."
+          }
+        }
+      }
+    },
+    "Morgen": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yarın"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tomorrow"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Morgen"
           }
         }
       }
@@ -1182,6 +2324,12 @@
             "state": "translated",
             "value": "By subject"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nach Fach"
+          }
         }
       }
     },
@@ -1197,6 +2345,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "After a week with contributions, we'll suggest a realistic goal."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nach einer Woche mit Meldungen schlagen wir dir ein realistisches Ziel vor."
           }
         }
       }
@@ -1214,6 +2368,56 @@
             "state": "translated",
             "value": "Name, e.g. Mathematics"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name, z. B. Mathematik"
+          }
+        }
+      }
+    },
+    "Neue Aufgabe": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni görev"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New task"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neue Aufgabe"
+          }
+        }
+      }
+    },
+    "Neue Prüfung": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni sınav"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New exam"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neue Prüfung"
+          }
         }
       }
     },
@@ -1229,6 +2433,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "New lesson"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neue Stunde"
           }
         }
       }
@@ -1246,6 +2456,78 @@
             "state": "translated",
             "value": "New subject"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neues Fach"
+          }
+        }
+      }
+    },
+    "Nichts zu tun": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yapılacak bir şey yok"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nothing to do"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nichts zu tun"
+          }
+        }
+      }
+    },
+    "Nie": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asla"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Never"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nie"
+          }
+        }
+      }
+    },
+    "Niedrig": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Düşük"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Low"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Niedrig"
+          }
         }
       }
     },
@@ -1261,6 +2543,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld to go until your weekly goal."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noch %lld bis zum Wochenziel."
           }
         }
       }
@@ -1278,6 +2566,12 @@
             "state": "translated",
             "value": "No subjects yet"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noch keine Fächer"
+          }
         }
       }
     },
@@ -1293,6 +2587,34 @@
           "stringUnit": {
             "state": "translated",
             "value": "No contributions yet"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noch keine Meldungen"
+          }
+        }
+      }
+    },
+    "Noch keine Prüfungen": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Henüz sınav yok"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No exams yet"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noch keine Prüfungen"
           }
         }
       }
@@ -1310,6 +2632,100 @@
             "state": "translated",
             "value": "No lessons in your timetable yet."
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noch keine Stunden im Stundenplan."
+          }
+        }
+      }
+    },
+    "Noch offen": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hâlâ açık"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Still open"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noch offen"
+          }
+        }
+      }
+    },
+    "Normal": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Normal"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Normal"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Normal"
+          }
+        }
+      }
+    },
+    "Note, z. B. 2- oder 11 P.": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not, ör. 2- veya 11 P."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grade, e.g. 2- or 11 pts"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Note, z. B. 2- oder 11 P."
+          }
+        }
+      }
+    },
+    "Notizen": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notlar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notes"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notizen"
+          }
         }
       }
     },
@@ -1325,6 +2741,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Week A only"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nur A-Woche"
           }
         }
       }
@@ -1342,6 +2764,12 @@
             "state": "translated",
             "value": "Week B only"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nur B-Woche"
+          }
         }
       }
     },
@@ -1357,6 +2785,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Next lesson: %@, %@ %@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nächste Stunde: %@, %@ %@"
           }
         }
       }
@@ -1374,6 +2808,34 @@
             "state": "translated",
             "value": "Next week"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nächste Woche"
+          }
+        }
+      }
+    },
+    "Ohne Datum": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarihsiz"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No date"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ohne Datum"
+          }
         }
       }
     },
@@ -1389,6 +2851,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "No subject"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ohne Fach"
           }
         }
       }
@@ -1406,6 +2874,12 @@
             "state": "translated",
             "value": "Record without subject"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ohne Fach erfassen"
+          }
         }
       }
     },
@@ -1421,6 +2895,144 @@
           "stringUnit": {
             "state": "translated",
             "value": "Orange"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Orange"
+          }
+        }
+      }
+    },
+    "PDF importieren": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PDF içe aktar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import PDF"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PDF importieren"
+          }
+        }
+      }
+    },
+    "Prüfung": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sınav"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exam"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prüfung"
+          }
+        }
+      }
+    },
+    "Prüfung bearbeiten": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sınavı düzenle"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit exam"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prüfung bearbeiten"
+          }
+        }
+      }
+    },
+    "Prüfung löschen": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sınavı sil"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete exam"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prüfung löschen"
+          }
+        }
+      }
+    },
+    "Prüfung nicht gefunden": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sınav bulunamadı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exam not found"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prüfung nicht gefunden"
+          }
+        }
+      }
+    },
+    "Prüfungen & Scans": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sınavlar ve taramalar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exams & scans"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prüfungen & Scans"
           }
         }
       }
@@ -1438,6 +3050,12 @@
             "state": "translated",
             "value": "Room"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Raum"
+          }
         }
       }
     },
@@ -1453,6 +3071,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Rust core"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rust-Kern"
           }
         }
       }
@@ -1470,6 +3094,100 @@
             "state": "translated",
             "value": "Undo"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rückgängig"
+          }
+        }
+      }
+    },
+    "Scanne zurückgegebene Klassenarbeiten oder importiere PDFs. Alles bleibt auf diesem Gerät.": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geri verilen sınavları tara veya PDF içe aktar. Her şey bu cihazda kalır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan returned exams or import PDFs. Everything stays on this device."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scanne zurückgegebene Klassenarbeiten oder importiere PDFs. Alles bleibt auf diesem Gerät."
+          }
+        }
+      }
+    },
+    "Scannen": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tara"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scannen"
+          }
+        }
+      }
+    },
+    "Schultage (Mo–Fr)": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Okul günleri (Pzt–Cum)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "School days (Mon–Fri)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schultage (Mo–Fr)"
+          }
+        }
+      }
+    },
+    "Seite, Aufgabe, Details …": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sayfa, alıştırma, ayrıntılar …"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Page, exercise, details …"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seite, Aufgabe, Details …"
+          }
         }
       }
     },
@@ -1485,6 +3203,34 @@
           "stringUnit": {
             "state": "translated",
             "value": "Save"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sichern"
+          }
+        }
+      }
+    },
+    "So, wie sie auf der Arbeit steht. In den Notenrechner fließt sie erst, wenn du sie dort einträgst.": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kâğıtta yazdığı gibi. Not hesaplayıcıya ancak oraya girdiğinde eklenir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "As written on the paper. It only counts in the grade calculator once you enter it there."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "So, wie sie auf der Arbeit steht. In den Notenrechner fließt sie erst, wenn du sie dort einträgst."
           }
         }
       }
@@ -1502,6 +3248,34 @@
             "state": "translated",
             "value": "Language"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprache"
+          }
+        }
+      }
+    },
+    "Später": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daha sonra"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Later"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Später"
+          }
         }
       }
     },
@@ -1517,6 +3291,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Home"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start"
           }
         }
       }
@@ -1534,6 +3314,12 @@
             "state": "translated",
             "value": "Statistics"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Statistik"
+          }
         }
       }
     },
@@ -1549,6 +3335,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Edit lesson"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stunde bearbeiten"
           }
         }
       }
@@ -1566,6 +3358,12 @@
             "state": "translated",
             "value": "Add lesson"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stunde hinzufügen"
+          }
         }
       }
     },
@@ -1581,6 +3379,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Delete lesson"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stunde löschen"
           }
         }
       }
@@ -1598,6 +3402,12 @@
             "state": "translated",
             "value": "Delete lesson?"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stunde löschen?"
+          }
         }
       }
     },
@@ -1614,6 +3424,12 @@
             "state": "translated",
             "value": "Timetable"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stundenplan"
+          }
         }
       }
     },
@@ -1626,6 +3442,12 @@
           }
         },
         "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Symbol"
+          }
+        },
+        "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Symbol"
@@ -1646,6 +3468,12 @@
             "state": "translated",
             "value": "System"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System"
+          }
         }
       }
     },
@@ -1661,6 +3489,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Day"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tag"
           }
         }
       }
@@ -1678,6 +3512,144 @@
             "state": "translated",
             "value": "Tap “Raise hand” in class. You'll see your progress here."
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tippe im Unterricht auf „Melden“. Hier siehst du dann deine Entwicklung."
+          }
+        }
+      }
+    },
+    "Titel, z. B. 2. Klassenarbeit": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başlık, ör. 2. yazılı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Title, e.g. 2nd class test"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Titel, z. B. 2. Klassenarbeit"
+          }
+        }
+      }
+    },
+    "To-do": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yapılacak"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To-do"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To-do"
+          }
+        }
+      }
+    },
+    "To-dos": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yapılacaklar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To-dos"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To-dos"
+          }
+        }
+      }
+    },
+    "Trag Hausaufgaben direkt im Stundenplan ein: lange auf eine Stunde drücken.": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ödevleri doğrudan ders programından ekle: bir derse uzun bas."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add homework right from the timetable: long-press a lesson."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trag Hausaufgaben direkt im Stundenplan ein: lange auf eine Stunde drücken."
+          }
+        }
+      }
+    },
+    "Täglich": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Her gün"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daily"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Täglich"
+          }
+        }
+      }
+    },
+    "Um": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "At"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Um"
+          }
         }
       }
     },
@@ -1694,6 +3666,12 @@
             "state": "translated",
             "value": "Unknown subject"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unbekanntes Fach"
+          }
         }
       }
     },
@@ -1706,6 +3684,12 @@
           }
         },
         "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Version"
+          }
+        },
+        "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Version"
@@ -1726,6 +3710,12 @@
             "state": "translated",
             "value": "Substitution"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vertretung"
+          }
         }
       }
     },
@@ -1741,6 +3731,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld weeks ago"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vor %lld Wochen"
           }
         }
       }
@@ -1758,6 +3754,12 @@
             "state": "translated",
             "value": "Previous week"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vorherige Woche"
+          }
         }
       }
     },
@@ -1773,6 +3775,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Suggestion from your recent weeks: %lld"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vorschlag aus deinen letzten Wochen: %lld"
           }
         }
       }
@@ -1790,6 +3798,144 @@
             "state": "translated",
             "value": "Use suggestion"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vorschlag übernehmen"
+          }
+        }
+      }
+    },
+    "Was ist zu tun?": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ne yapılacak?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What needs doing?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Was ist zu tun?"
+          }
+        }
+      }
+    },
+    "Was lief gut, was üben?": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ne iyi gitti, neye çalışmalı?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What went well, what to practise?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Was lief gut, was üben?"
+          }
+        }
+      }
+    },
+    "Wichtig": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Önemli"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Important"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wichtig"
+          }
+        }
+      }
+    },
+    "Wichtigkeit": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Önem"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Priority"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wichtigkeit"
+          }
+        }
+      }
+    },
+    "Wiederholen": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tekrarla"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Repeat"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wiederholen"
+          }
+        }
+      }
+    },
+    "Wiederholt sich": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tekrarlanır"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Repeats"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wiederholt sich"
+          }
         }
       }
     },
@@ -1805,6 +3951,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Week"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Woche"
           }
         }
       }
@@ -1822,6 +3974,12 @@
             "state": "translated",
             "value": "Weekly goal"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wochenziel"
+          }
         }
       }
     },
@@ -1837,6 +3995,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Weekly goal reached."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wochenziel erreicht."
           }
         }
       }
@@ -1854,6 +4018,12 @@
             "state": "translated",
             "value": "Set weekly goal"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wochenziel festlegen"
+          }
         }
       }
     },
@@ -1869,6 +4039,34 @@
           "stringUnit": {
             "state": "translated",
             "value": "Weekly goal: %lld"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wochenziel: %lld"
+          }
+        }
+      }
+    },
+    "Wöchentlich": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Haftalık"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weekly"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wöchentlich"
           }
         }
       }
@@ -1886,6 +4084,12 @@
             "state": "translated",
             "value": "Remove goal"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ziel entfernen"
+          }
         }
       }
     },
@@ -1901,6 +4105,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Change goal"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ziel ändern"
           }
         }
       }
@@ -1918,6 +4128,56 @@
             "state": "translated",
             "value": "Tap to edit"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zum Bearbeiten tippen"
+          }
+        }
+      }
+    },
+    "gestern": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "dün"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "yesterday"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "gestern"
+          }
+        }
+      }
+    },
+    "heute": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "bugün"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "today"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "heute"
+          }
         }
       }
     },
@@ -1933,6 +4193,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "tomorrow"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "morgen"
           }
         }
       }
@@ -1950,6 +4216,12 @@
             "state": "translated",
             "value": "of %lld"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "von %lld"
+          }
         }
       }
     },
@@ -1965,6 +4237,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Changes could not be saved. Check your free storage."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Änderungen konnten nicht gespeichert werden. Prüfe den freien Speicher."
           }
         }
       }
@@ -1982,6 +4260,34 @@
             "state": "translated",
             "value": "About Melde Planner"
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Über Melde Planner"
+          }
+        }
+      }
+    },
+    "Überfällig": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gecikmiş"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Overdue"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Überfällig"
+          }
         }
       }
     },
@@ -1998,6 +4304,12 @@
             "state": "translated",
             "value": "Overlaps with %@."
           }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Überschneidet sich mit %@."
+          }
         }
       }
     },
@@ -2013,6 +4325,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Delete “%@” and its lessons"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "„%@“ und seine Stunden löschen"
           }
         }
       }

@@ -8,6 +8,7 @@ uniffi::setup_scaffolding!();
 
 mod grades;
 mod participation;
+mod tasks;
 mod timetable;
 
 use melde_core::{Date, LocalDateTime, LocalTime, ValidationError, Weekday};

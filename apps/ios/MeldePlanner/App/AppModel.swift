@@ -35,6 +35,12 @@ final class AppModel {
 
     // MARK: - Persistence
 
+    /// Applies a change and saves it. Feature extensions change data only through this.
+    func mutate(_ change: (inout AppData) -> Void) {
+        change(&data)
+        persist()
+    }
+
     private func persist() {
         guard let store else { return }
         do {

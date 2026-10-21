@@ -5,6 +5,12 @@ struct MoreView: View {
     var body: some View {
         List {
             Section {
+                NavigationLink { TaskListView() } label: {
+                    Label(L("Aufgaben"), systemImage: "checklist")
+                }
+                NavigationLink { ExamListView() } label: {
+                    Label(L("Prüfungen & Scans"), systemImage: "doc.viewfinder")
+                }
                 NavigationLink { SubjectListView() } label: {
                     Label(L("Fächer"), systemImage: "books.vertical")
                 }

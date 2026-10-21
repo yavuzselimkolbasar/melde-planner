@@ -386,6 +386,7 @@ dependencies = [
  "melde-grades",
  "melde-scheduling",
  "melde-statistics",
+ "melde-tasks",
  "thiserror",
  "uniffi",
 ]
@@ -413,6 +414,16 @@ version = "0.1.0"
 dependencies = [
  "chrono",
  "melde-core",
+ "proptest",
+]
+
+[[package]]
+name = "melde-tasks"
+version = "0.1.0"
+dependencies = [
+ "chrono",
+ "melde-core",
+ "melde-scheduling",
  "proptest",
 ]
 

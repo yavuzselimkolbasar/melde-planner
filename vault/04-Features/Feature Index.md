@@ -18,8 +18,8 @@ Status: `not started` · `in progress` · `implemented (unverified)` · `verifie
 | 5 | Notenrechner | 3 | in progress: Rust core + tests done (scales, weights, rounding, KMK table); no UI |
 | 6 | Notenprognose | 3 | in progress: Rust core + property tests done; no UI |
 | 7 | Kalender | 4 | in progress: date picker with lessons and Meldungen per day; exams/homework/events missing |
-| 8 | Prüfungen & PDF | 5 | not started |
-| 9 | Todo List | 4 | not started |
+| 8 | Prüfungen & PDF | 5 | in progress: camera scan to PDF (VisionKit), PDF import, viewer, share, by subject/date, grade text + notes; annotations and sync missing |
+| 9 | Todo List | 4 | in progress: homework/to-dos, priorities, due dates, subjects, recurrence, reminders (local), groups from Rust, 'due next lesson'; no sync |
 | 10 | Tagesplaner | 4 | not started |
 | 11 | Fokus Timer | 4 | not started |
 | 12 | Statistiken | 3 | in progress: Swift Charts per day, per subject, 8-week trend (participation only) |

@@ -29,6 +29,14 @@ struct CalendarView: View {
                         }
                     }
                 }
+                let due = model.tasks(dueOn: date)
+                if !due.isEmpty {
+                    Card(title: L("Fällig"), systemImage: "book") {
+                        ForEach(due) { task in
+                            TaskRow(task: task, today: model.currentDate) {}
+                        }
+                    }
+                }
                 let entries = model.entries(on: date)
                 if !entries.isEmpty {
                     Card(title: L("Meldungen"), systemImage: "hand.raised") {

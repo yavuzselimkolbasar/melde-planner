@@ -27,10 +27,12 @@ nonisolated struct LocalStore {
         }
         do {
             let data = try Data(contentsOf: url)
-            let decoded = try Self.decoder.decode(AppData.self, from: data)
+            var decoded = try Self.decoder.decode(AppData.self, from: data)
             if decoded.schemaVersion > AppData.currentSchemaVersion {
                 throw LoadError.newerSchema(decoded.schemaVersion)
             }
+            // Older files are migrated in memory; the next save writes the current version.
+            decoded.schemaVersion = AppData.currentSchemaVersion
             return decoded
         } catch let error as LoadError {
             throw error

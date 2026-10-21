@@ -5,6 +5,7 @@ members = [
     "crates/melde-grades",
     "crates/melde-scheduling",
     "crates/melde-statistics",
+    "crates/melde-tasks",
     "crates/melde-ffi",
     "tools/uniffi-bindgen",
 ]
@@ -21,6 +22,7 @@ melde-core = { path = "crates/melde-core" }
 melde-grades = { path = "crates/melde-grades" }
 melde-scheduling = { path = "crates/melde-scheduling" }
 melde-statistics = { path = "crates/melde-statistics" }
+melde-tasks = { path = "crates/melde-tasks" }
 # Calendar math (ISO weeks, weekdays). `std` only: no clock or timezone database,
 # the app passes local wall-clock values in. Keeps the crates wasm-friendly for the PWA.
 chrono = { version = "0.4.45", default-features = false, features = ["std"] }

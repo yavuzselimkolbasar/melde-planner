@@ -8,6 +8,7 @@ struct TimetableView: View {
     @State private var editing: Lesson?
     @State private var creating = false
     @State private var managingSubjects = false
+    @State private var homeworkFor: HomeworkPrefill?
 
     /// Monday–Friday, plus Saturday when the student has Saturday lessons.
     private var days: [Int] {
@@ -21,7 +22,7 @@ struct TimetableView: View {
                 .padding(.vertical, DS.spacingS)
             TabView(selection: $weekday) {
                 ForEach(days, id: \.self) { day in
-                    DayColumn(weekday: day, onSelect: { editing = $0 }, onAdd: { creating = true })
+                    DayColumn(weekday: day, onSelect: { editing = $0 }, onAdd: { creating = true }, onHomework: { homeworkFor = HomeworkPrefill(subjectID: $0.subjectID) })
                         .tag(day)
                 }
             }
@@ -44,10 +45,19 @@ struct TimetableView: View {
         }
         .sheet(item: $editing) { LessonEditorView(lesson: $0, weekday: $0.weekday) }
         .sheet(isPresented: $creating) { LessonEditorView(lesson: nil, weekday: weekday) }
+        .sheet(item: $homeworkFor) { prefill in
+            TaskEditorView(task: nil, kind: .homework, subjectID: prefill.subjectID)
+        }
         .sheet(isPresented: $managingSubjects) {
             NavigationStack { SubjectListView() }
         }
     }
+}
+
+/// Subject to preselect when adding homework from a lesson.
+private struct HomeworkPrefill: Identifiable {
+    let id = UUID()
+    let subjectID: UUID
 }
 
 /// Glass weekday selector; the selected day morphs between positions.
@@ -84,6 +94,7 @@ private struct DayColumn: View {
     let weekday: Int
     var onSelect: (Lesson) -> Void
     var onAdd: () -> Void
+    var onHomework: (Lesson) -> Void
 
     var body: some View {
         let lessons = model.lessons(onWeekday: weekday)
@@ -113,6 +124,8 @@ private struct DayColumn: View {
                         }
                         .buttonStyle(.plain)
                         .contextMenu {
+                            Button(L("Hausaufgabe eintragen"), systemImage: "book") { onHomework(lesson) }
+                            Button(L("Bearbeiten"), systemImage: "pencil") { onSelect(lesson) }
                             Button(L("Löschen"), systemImage: "trash", role: .destructive) {
                                 model.deleteLesson(lesson.id)
                             }

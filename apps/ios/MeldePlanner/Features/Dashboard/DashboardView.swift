@@ -16,6 +16,7 @@ struct DashboardView: View {
                     } else {
                         TodayCard(now: context.date, addLesson: { addingLesson = true })
                         WeekParticipationCard(now: context.date)
+                        HomeworkCard(now: context.date)
                     }
                 }
                 .padding(DS.spacingL)

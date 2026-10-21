@@ -90,6 +90,10 @@ jobs:
           app="$RUNNER_TEMP/device/Build/Products/Release-iphoneos/MeldePlanner.app"
           mkdir -p "$RUNNER_TEMP/ipa/Payload"
           cp -R "$app" "$RUNNER_TEMP/ipa/Payload/"
+          # Every supported language must ship, German included (it is the source language).
+          for lang in de tr en; do
+            test -f "$app/$lang.lproj/Localizable.strings" || { echo "::error::missing $lang.lproj in app bundle"; exit 1; }
+          done
           (cd "$RUNNER_TEMP/ipa" && zip -qry "MeldePlanner-unsigned-${GITHUB_SHA::7}.ipa" Payload)
 
       - name: Upload unsigned IPA
