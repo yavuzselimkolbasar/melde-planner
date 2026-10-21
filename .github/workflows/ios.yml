@@ -78,6 +78,27 @@ jobs:
             -resultBundlePath "$RUNNER_TEMP/MeldePlanner.xcresult" \
             CODE_SIGNING_ALLOWED=NO | xcbeautify || exit ${PIPESTATUS[0]}
 
+      # Unsigned device build for sideloading with a free Apple ID (AltStore / Sideloadly
+      # re-sign it on the user's PC). Not for distribution.
+      - name: Build unsigned device IPA
+        working-directory: apps/ios
+        run: |
+          xcodebuild build -project MeldePlanner.xcodeproj -scheme MeldePlanner \
+            -configuration Release -destination "generic/platform=iOS" \
+            -derivedDataPath "$RUNNER_TEMP/device" \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" | xcbeautify || exit ${PIPESTATUS[0]}
+          app="$RUNNER_TEMP/device/Build/Products/Release-iphoneos/MeldePlanner.app"
+          mkdir -p "$RUNNER_TEMP/ipa/Payload"
+          cp -R "$app" "$RUNNER_TEMP/ipa/Payload/"
+          (cd "$RUNNER_TEMP/ipa" && zip -qry "MeldePlanner-unsigned-${GITHUB_SHA::7}.ipa" Payload)
+
+      - name: Upload unsigned IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: MeldePlanner-unsigned-ipa
+          path: ${{ runner.temp }}/ipa/*.ipa
+          retention-days: 14
+
       - name: Upload test results
         if: failure()
         uses: actions/upload-artifact@v4
