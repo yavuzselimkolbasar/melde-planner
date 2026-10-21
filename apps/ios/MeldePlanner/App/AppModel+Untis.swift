@@ -9,6 +9,7 @@ extension AppModel {
         var lessons = 0
         var changes = 0
         var skippedExtra = 0
+        var holidays = 0
     }
 
     private static func keychainAccount(_ link: UntisLink) -> String {
@@ -87,40 +88,58 @@ extension AppModel {
     private func importFromUntis(link: UntisLink, client: UntisClient, auth: FfiUntisAuth, logout: Bool) async throws(UntisClient.Failure) -> UntisImportSummary {
         let today = FfiDate(currentDate, calendar: calendar)
         guard let thisWeek = try? untisWeekStart(date: today),
-              let thisMonday = thisWeek.date(in: calendar) else { throw .noAccess("date") }
-        // Two weeks at a time (A/B weeks), skipping holidays: in the Herbstferien
-        // the current fortnight has no lessons, so look up to eight weeks ahead.
-        var found: (schedule: FfiUntisSchedule, monday: Date)?
-        for offset in stride(from: 0, to: 56, by: 14) {
-            guard let monday = calendar.date(byAdding: .day, value: offset, to: thisMonday),
-                  let lastDay = calendar.date(byAdding: .day, value: 13, to: monday) else { continue }
-            let weekStart = FfiDate(monday, calendar: calendar)
-            let body = try await client.timetable(
-                server: link.server, loginName: link.loginName, auth: auth,
-                first: weekStart, last: FfiDate(lastDay, calendar: calendar)
-            )
-            let schedule: FfiUntisSchedule
-            do {
-                schedule = try untisDeriveSchedule(timetableBody: body, weekAStart: weekStart)
-            } catch let MeldeError.UntisServer(code, message) {
-                throw code == -8520 ? (link.browserLogin == true ? .sessionExpired : .wrongCredentials)
-                    : .server(code: code, message: message)
-            } catch {
-                throw .noAccess("\(error)")
-            }
-            if !schedule.lessons.isEmpty {
-                found = (schedule, monday)
-                break
-            }
-        }
+              let thisMonday = thisWeek.date(in: calendar),
+              let lastDay = calendar.date(byAdding: .day, value: 8 * 7 - 1, to: thisMonday) else { throw .noAccess("date") }
+        // Holidays are a bonus: an import still works when a school hides them.
+        let holidays = (try? await client.holidays(server: link.server, loginName: link.loginName)) ?? []
+        // Eight weeks in one request. The weekly timetable starts at the first
+        // week with lessons, so the Herbstferien don't hide it; Ausfälle and
+        // Vertretungen come from all eight weeks.
+        let body = try await client.timetable(
+            server: link.server, loginName: link.loginName, auth: auth,
+            first: thisWeek, last: FfiDate(lastDay, calendar: calendar)
+        )
         if logout { await client.logout(server: link.server, loginName: link.loginName) }
-        // Never replace the timetable with an empty one.
-        guard let found else { throw .noLessons }
-        let schedule = found.schedule
-        let monday = found.monday
+        let schedule: FfiUntisSchedule
+        let monday: Date
+        do {
+            guard let firstWeek = try untisFirstTeachingWeek(timetableBody: body, from: thisWeek),
+                  let firstMonday = firstWeek.date(in: calendar) else {
+                // Never replace the timetable with an empty one; keep the holidays.
+                applyUntisHolidays(holidays)
+                throw UntisClient.Failure.noLessons
+            }
+            schedule = try untisDeriveSchedule(timetableBody: body, weekAStart: firstWeek)
+            monday = firstMonday
+        } catch let failure as UntisClient.Failure {
+            throw failure
+        } catch let MeldeError.UntisServer(code, message) {
+            throw code == -8520 ? (link.browserLogin == true ? .sessionExpired : .wrongCredentials)
+                : .server(code: code, message: message)
+        } catch {
+            throw .noAccess("\(error)")
+        }
+        applyUntisHolidays(holidays)
         var syncedLink = link
         syncedLink.lastSync = currentDate
-        return applyUntis(schedule, weekAStart: monday, link: syncedLink)
+        var summary = applyUntis(schedule, weekAStart: monday, link: syncedLink)
+        summary.holidays = holidays.count
+        return summary
+    }
+
+    /// Replaces the holidays from an earlier WebUntis import; ones the student
+    /// added by hand stay.
+    func applyUntisHolidays(_ holidays: [FfiUntisHoliday]) {
+        guard !holidays.isEmpty else { return }
+        let calendar = calendar
+        mutate { data in
+            data.holidays.removeAll { $0.fromUntis == true }
+            for h in holidays {
+                guard let first = h.firstDay.date(in: calendar), let last = h.lastDay.date(in: calendar) else { continue }
+                data.holidays.append(Holiday(name: h.name, firstDay: first, lastDay: last, fromUntis: true))
+            }
+            data.holidays.sort { $0.firstDay < $1.firstDay }
+        }
     }
 
     /// Merges an Untis schedule. Existing subjects are matched by Untis key or

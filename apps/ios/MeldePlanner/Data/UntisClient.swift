@@ -97,6 +97,12 @@ nonisolated struct UntisClient: Sendable {
         return (nil, ([server] + notes).joined(separator: "\n"))
     }
 
+    /// The school year's holidays (Herbstferien, Weihnachtsferien, …).
+    func holidays(server: String, loginName: String) async throws(Failure) -> [FfiUntisHoliday] {
+        let body = try await post(endpoint(server, loginName), body: untisHolidaysRequest())
+        return try map { try untisParseHolidays(body: body) }
+    }
+
     /// Raw `getTimetable` JSON for `first...last`, parsed later by Rust.
     func timetable(server: String, loginName: String, auth: FfiUntisAuth, first: FfiDate, last: FfiDate) async throws(Failure) -> String {
         let request = try map { try untisTimetableRequest(personId: auth.personId, personType: auth.personType, first: first, last: last) }

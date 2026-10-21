@@ -41,6 +41,13 @@ struct TimetableView: View {
                 }
             }
         }
+        .safeAreaInset(edge: .top, spacing: 0) {
+            if let holiday = model.holiday(inWeekOf: model.currentDate) {
+                HolidayBanner(holiday: holiday)
+                    .padding(.horizontal, DS.spacingL)
+                    .padding(.top, DS.spacingS)
+            }
+        }
         .background(ThemedBackground())
         .navigationTitle(L("Stundenplan"))
         .toolbar {

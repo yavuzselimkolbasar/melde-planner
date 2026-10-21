@@ -176,6 +176,7 @@ private struct UntisLoginView: View {
                     LabeledContent(L("Neue Fächer"), value: "\(summary.newSubjects)")
                     LabeledContent(L("Stunden pro Woche"), value: "\(summary.lessons)")
                     LabeledContent(L("Ausfälle und Vertretungen"), value: "\(summary.changes)")
+                    LabeledContent(L("Ferien"), value: "\(summary.holidays)")
                 }
             }
             Section {

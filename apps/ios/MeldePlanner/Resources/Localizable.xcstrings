@@ -1981,6 +1981,28 @@
         }
       }
     },
+    "Ferien": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ferien"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tatil"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Holidays"
+          }
+        }
+      }
+    },
     "Fertig": {
       "localizations": {
         "tr": {
@@ -2751,6 +2773,28 @@
         }
       }
     },
+    "In den Ferien fallen alle Stunden aus und Meldo fragt nicht nach Meldungen.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In den Ferien fallen alle Stunden aus und Meldo fragt nicht nach Meldungen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tatilde tüm dersler iptal olur ve Meldo parmak kaldırmayı sormaz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "During holidays all lessons are off and Meldo doesn't ask about raising your hand."
+          }
+        }
+      }
+    },
     "In den iOS-Einstellungen für Meldo ausgeschaltet.": {
       "localizations": {
         "de": {
@@ -3011,6 +3055,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "No App Group in this install. Install Meldo with AltStore and widgets will work."
+          }
+        }
+      }
+    },
+    "Keine Ferien eingetragen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Ferien eingetragen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tatil girilmedi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No holidays yet"
           }
         }
       }
@@ -5959,6 +6025,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Unterricht"
+          }
+        }
+      }
+    },
+    "Verbinde WebUntis, dann erscheinen hier die Ferien deiner Schule. In den Ferien fragt Meldo nicht nach Meldungen.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbinde WebUntis, dann erscheinen hier die Ferien deiner Schule. In den Ferien fragt Meldo nicht nach Meldungen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis'i bağla, okulunun tatilleri burada görünür. Tatilde Meldo parmak kaldırmayı sormaz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect WebUntis and your school's holidays appear here. During holidays Meldo doesn't ask about raising your hand."
           }
         }
       }

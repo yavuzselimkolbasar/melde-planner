@@ -214,6 +214,17 @@ fn most_common(values: Vec<String>) -> Option<String> {
     counts.into_iter().max_by_key(|(_, n)| *n).map(|(v, _)| v)
 }
 
+/// Monday of the first week from `from` on that has regular lessons, e.g. the
+/// week after the Herbstferien. `None` when the periods contain no lessons.
+pub fn first_teaching_week(periods: &[Period], from: Date) -> Option<Date> {
+    periods
+        .iter()
+        .filter(|p| !p.irregular && !p.cancelled && p.date >= from)
+        .map(|p| p.date)
+        .min()
+        .map(monday_of)
+}
+
 /// Monday of the week containing `date`.
 pub fn monday_of(date: Date) -> Date {
     date - Days::new(u64::from(Weekday::of(date).index()))
@@ -353,5 +364,24 @@ mod tests {
     fn monday_of_week() {
         assert_eq!(monday_of(d(22)), d(19));
         assert_eq!(monday_of(d(19)), d(19));
+    }
+
+    #[test]
+    fn first_teaching_week_skips_holiday_weeks() {
+        let mut periods = vec![period(1, d(19), t(8, 0), t(8, 45), "M", "Mathematik")];
+        periods[0].cancelled = true;
+        assert_eq!(first_teaching_week(&periods, d(19)), None);
+        periods.push(period(
+            2,
+            Date::from_ymd_opt(2026, 11, 4).expect("valid"),
+            t(8, 0),
+            t(8, 45),
+            "M",
+            "Mathematik",
+        ));
+        assert_eq!(
+            first_teaching_week(&periods, d(19)),
+            Some(Date::from_ymd_opt(2026, 11, 2).expect("valid"))
+        );
     }
 }

@@ -31,6 +31,14 @@ pub struct Auth {
     pub klasse_id: Option<i64>,
 }
 
+/// A holiday from `getHolidays` (e.g. Herbstferien), both days inclusive.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct SchoolHoliday {
+    pub name: String,
+    pub first: Date,
+    pub last: Date,
+}
+
 /// One dated period from `getTimetable`.
 #[derive(Debug, Clone, PartialEq)]
 pub struct Period {
@@ -80,6 +88,45 @@ pub fn timetable_request(person_id: i64, person_type: i64, first: Date, last: Da
             "roomFields": ["id", "name"],
         }}),
     )
+}
+
+/// Body for the school year's holidays.
+pub fn holidays_request() -> String {
+    rpc("getHolidays", json!({}))
+}
+
+/// Holidays sorted by start; entries with invalid dates are dropped.
+pub fn parse_holidays(body: &str) -> Result<Vec<SchoolHoliday>, UntisError> {
+    #[derive(Deserialize)]
+    #[serde(rename_all = "camelCase")]
+    struct Raw {
+        #[serde(default)]
+        name: String,
+        #[serde(default)]
+        long_name: String,
+        start_date: i64,
+        end_date: i64,
+    }
+    let raw: Vec<Raw> =
+        serde_json::from_value(result(body)?).map_err(|e| UntisError::Malformed(e.to_string()))?;
+    let mut holidays: Vec<SchoolHoliday> = raw
+        .into_iter()
+        .filter_map(|h| {
+            let first = parse_date(h.start_date)?;
+            let last = parse_date(h.end_date)?;
+            (first <= last).then_some(SchoolHoliday {
+                name: if h.long_name.is_empty() {
+                    h.name
+                } else {
+                    h.long_name
+                },
+                first,
+                last,
+            })
+        })
+        .collect();
+    holidays.sort_by_key(|h| h.first);
+    Ok(holidays)
 }
 
 fn untis_date(d: Date) -> i64 {
@@ -428,5 +475,22 @@ mod tests {
 
         assert!(parse_app_data(r#"{"user":null}"#, "S").is_err());
         assert!(parse_app_data("<html>", "S").is_err());
+    }
+
+    #[test]
+    fn parses_holidays_sorted_with_long_names() {
+        let body = r#"{"result":[
+            {"id":2,"name":"Weihn","longName":"Weihnachtsferien","startDate":20261223,"endDate":20270106},
+            {"id":1,"name":"Herbst","longName":"Herbstferien","startDate":20261019,"endDate":20261101},
+            {"id":3,"name":"Kaputt","longName":"","startDate":20261399,"endDate":20261401}
+        ]}"#;
+        let holidays = parse_holidays(body).expect("valid");
+        assert_eq!(holidays.len(), 2);
+        assert_eq!(holidays[0].name, "Herbstferien");
+        assert_eq!(
+            holidays[0].last,
+            Date::from_ymd_opt(2026, 11, 1).expect("valid")
+        );
+        assert!(holidays_request().contains("getHolidays"));
     }
 }

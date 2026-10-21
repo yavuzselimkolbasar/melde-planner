@@ -40,6 +40,14 @@ pub struct FfiUntisLesson {
     pub parity: FfiWeekParity,
 }
 
+/// A school holiday from WebUntis, both days inclusive.
+#[derive(Debug, Clone, PartialEq, Eq, uniffi::Record)]
+pub struct FfiUntisHoliday {
+    pub name: String,
+    pub first_day: FfiDate,
+    pub last_day: FfiDate,
+}
+
 #[derive(Debug, Clone, PartialEq, Eq, uniffi::Enum)]
 pub enum FfiUntisChangeKind {
     Cancelled,
@@ -125,6 +133,34 @@ pub fn untis_parse_app_data(body: String, session_id: String) -> Result<FfiUntis
         person_type: a.person_type,
         klasse_id: a.klasse_id,
     })
+}
+
+#[uniffi::export]
+pub fn untis_holidays_request() -> String {
+    u::holidays_request()
+}
+
+#[uniffi::export]
+pub fn untis_parse_holidays(body: String) -> Result<Vec<FfiUntisHoliday>, MeldeError> {
+    Ok(u::parse_holidays(&body)?
+        .into_iter()
+        .map(|h| FfiUntisHoliday {
+            name: h.name,
+            first_day: h.first.into(),
+            last_day: h.last.into(),
+        })
+        .collect())
+}
+
+/// Monday of the first week from `from` on with regular lessons in a
+/// `getTimetable` response, or `None` (e.g. only holidays).
+#[uniffi::export]
+pub fn untis_first_teaching_week(
+    timetable_body: String,
+    from: FfiDate,
+) -> Result<Option<FfiDate>, MeldeError> {
+    let periods = u::parse_timetable(&timetable_body)?;
+    Ok(u::first_teaching_week(&periods, from.try_into()?).map(Into::into))
 }
 
 #[uniffi::export]

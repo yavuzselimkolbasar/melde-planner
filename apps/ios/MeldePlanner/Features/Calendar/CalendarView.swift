@@ -42,6 +42,9 @@ struct CalendarView: View {
     @ViewBuilder
     private var dayDetails: some View {
                 let occurrences = model.occurrences(on: date)
+                if let holiday = model.holiday(on: date) {
+                    HolidayBanner(holiday: holiday)
+                }
                 Card(title: date.formatted(.dateTime.weekday(.wide).day().month(.wide).locale(Localization.locale)), systemImage: "tablecells") {
                     if occurrences.isEmpty {
                         Text(L("Kein Unterricht an diesem Tag."))

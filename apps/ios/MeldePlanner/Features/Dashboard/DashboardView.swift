@@ -87,7 +87,26 @@ private struct TodayCard: View {
         let today = model.occurrences(on: now)
         let current = model.currentLesson(at: now)
         Card(title: now.formatted(.dateTime.weekday(.wide).day().month(.wide).locale(Localization.locale)), systemImage: "sun.max") {
-            if today.isEmpty {
+            if today.isEmpty, let holiday = model.holiday(on: now) {
+                HStack(spacing: DS.spacingM) {
+                    Mascot(mood: .sleep, size: 56)
+                    VStack(alignment: .leading, spacing: DS.spacingXS) {
+                        Text(holiday.name)
+                            .font(.headline)
+                        Text(HolidayText.range(holiday))
+                            .monospacedDigit()
+                            .foregroundStyle(.secondary)
+                        if let next = model.nextLesson(after: now) {
+                            let name = model.subject(for: next)?.name ?? L("Unbekanntes Fach")
+                            let day = nextDayText(next)
+                            let time = TimeText.clock(next.startMinute)
+                            Text(L("Nächste Stunde: \(name), \(day) \(time)"))
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                }
+            } else if today.isEmpty {
                 if let next = model.nextLesson(after: now) {
                     let name = model.subject(for: next)?.name ?? L("Unbekanntes Fach")
                     let day = nextDayText(next)

@@ -68,6 +68,8 @@ nonisolated struct Holiday: Identifiable, Codable, Hashable {
     var name: String
     var firstDay: Date
     var lastDay: Date
+    /// Imported from WebUntis; replaced on every import.
+    var fromUntis: Bool?
 }
 
 /// One recorded Meldung. An activity count, never a grade.

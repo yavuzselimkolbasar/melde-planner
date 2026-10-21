@@ -24,6 +24,9 @@ struct MoreView: View {
                 NavigationLink { UntisConnectView() } label: {
                     Label(L("WebUntis"), systemImage: "arrow.triangle.2.circlepath")
                 }
+                NavigationLink { HolidayListView() } label: {
+                    Label(L("Ferien"), systemImage: "sun.horizon")
+                }
             }
             Section {
                 NavigationLink { SettingsView() } label: {
