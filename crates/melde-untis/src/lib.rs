@@ -13,9 +13,10 @@ pub use derive::{
     derive_schedule, first_teaching_week, monday_of,
 };
 pub use rpc::{
-    Auth, Period, School, SchoolHoliday, authenticate_request, holidays_request, logout_request,
-    parse_app_config, parse_app_data, parse_auth, parse_holidays, parse_school_search,
-    parse_timetable, school_search_request, timetable_request,
+    Auth, Period, School, SchoolHoliday, TimeUnit, authenticate_request, holidays_request,
+    logout_request, parse_app_config, parse_app_data, parse_auth, parse_holidays,
+    parse_school_search, parse_timegrid, parse_timetable, school_search_request, timegrid_request,
+    timetable_request,
 };
 
 /// Errors from Untis responses.

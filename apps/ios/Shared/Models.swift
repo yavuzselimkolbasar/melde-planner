@@ -203,6 +203,44 @@ nonisolated struct Preferences: Codable, Hashable {
     }
 }
 
+/// One dated period exactly as WebUntis shows it (Untis-style timetable).
+nonisolated struct UntisPeriodRecord: Codable, Hashable, Identifiable {
+    var id: Int64
+    var date: Date
+    var startMinute: Int
+    var endMinute: Int
+    var subjectShort: String
+    var subjectLong: String
+    var teacher: String
+    var room: String?
+    /// Planned room when the period moved (Raumänderung).
+    var originalRoom: String?
+    var cancelled: Bool
+    /// Vertretung or extra period.
+    var irregular: Bool
+    var exam: Bool
+    var info: String?
+
+    /// Matches `Subject.untisKey`.
+    var subjectKey: String { subjectShort.isEmpty ? subjectLong : subjectShort }
+}
+
+/// One period of the school's bell schedule; breaks are the gaps between them.
+nonisolated struct BellPeriod: Codable, Hashable {
+    var name: String
+    var startMinute: Int
+    var endMinute: Int
+}
+
+/// The weeks WebUntis lets the student see, refreshed on every import.
+nonisolated struct UntisTimetable: Codable, Hashable {
+    var periods: [UntisPeriodRecord]
+    var firstDay: Date
+    /// Last day WebUntis returned; schools can limit how far ahead students see.
+    var lastDay: Date
+    var bells: [BellPeriod]
+}
+
 /// Everything persisted on device. Versioned so later migrations
 /// (Rust-owned SQLite + Supabase sync) can import it.
 nonisolated struct AppData: Codable {
@@ -218,6 +256,7 @@ nonisolated struct AppData: Codable {
     var exams: [ExamDocument] = []
     var changes: [TimetableChangeRecord] = []
     var untis: UntisLink?
+    var untisTimetable: UntisTimetable?
     var preferences = Preferences()
 
     init() {}
@@ -234,6 +273,7 @@ nonisolated struct AppData: Codable {
         exams = try c.decodeIfPresent([ExamDocument].self, forKey: .exams) ?? []
         changes = try c.decodeIfPresent([TimetableChangeRecord].self, forKey: .changes) ?? []
         untis = try c.decodeIfPresent(UntisLink.self, forKey: .untis)
+        untisTimetable = try c.decodeIfPresent(UntisTimetable.self, forKey: .untisTimetable)
         preferences = try c.decodeIfPresent(Preferences.self, forKey: .preferences) ?? Preferences()
     }
 }

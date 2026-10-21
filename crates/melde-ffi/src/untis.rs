@@ -40,6 +40,33 @@ pub struct FfiUntisLesson {
     pub parity: FfiWeekParity,
 }
 
+/// One dated period as WebUntis shows it, for the Untis-style timetable.
+#[derive(Debug, Clone, PartialEq, Eq, uniffi::Record)]
+pub struct FfiUntisPeriod {
+    pub id: i64,
+    pub date: FfiDate,
+    pub start_minute: u16,
+    pub end_minute: u16,
+    pub subject_short: String,
+    pub subject_long: String,
+    pub teacher: String,
+    pub room: Option<String>,
+    /// Planned room when the period moved (Raumänderung).
+    pub original_room: Option<String>,
+    pub cancelled: bool,
+    pub irregular: bool,
+    pub exam: bool,
+    pub info: Option<String>,
+}
+
+/// One period of the bell schedule; breaks are the gaps between them.
+#[derive(Debug, Clone, PartialEq, Eq, uniffi::Record)]
+pub struct FfiTimeUnit {
+    pub name: String,
+    pub start_minute: u16,
+    pub end_minute: u16,
+}
+
 /// A school holiday from WebUntis, both days inclusive.
 #[derive(Debug, Clone, PartialEq, Eq, uniffi::Record)]
 pub struct FfiUntisHoliday {
@@ -161,6 +188,46 @@ pub fn untis_first_teaching_week(
 ) -> Result<Option<FfiDate>, MeldeError> {
     let periods = u::parse_timetable(&timetable_body)?;
     Ok(u::first_teaching_week(&periods, from.try_into()?).map(Into::into))
+}
+
+/// Every dated period of a `getTimetable` response, sorted by time.
+#[uniffi::export]
+pub fn untis_parse_periods(timetable_body: String) -> Result<Vec<FfiUntisPeriod>, MeldeError> {
+    Ok(u::parse_timetable(&timetable_body)?
+        .into_iter()
+        .map(|p| FfiUntisPeriod {
+            id: p.id,
+            date: p.date.into(),
+            start_minute: p.start.minutes(),
+            end_minute: p.end.minutes(),
+            subject_short: p.subject_short,
+            subject_long: p.subject_long,
+            teacher: p.teacher,
+            room: p.room,
+            original_room: p.original_room,
+            cancelled: p.cancelled,
+            irregular: p.irregular,
+            exam: p.exam,
+            info: p.info,
+        })
+        .collect())
+}
+
+#[uniffi::export]
+pub fn untis_timegrid_request() -> String {
+    u::timegrid_request()
+}
+
+#[uniffi::export]
+pub fn untis_parse_timegrid(body: String) -> Result<Vec<FfiTimeUnit>, MeldeError> {
+    Ok(u::parse_timegrid(&body)?
+        .into_iter()
+        .map(|t| FfiTimeUnit {
+            name: t.name,
+            start_minute: t.start.minutes(),
+            end_minute: t.end.minutes(),
+        })
+        .collect())
 }
 
 #[uniffi::export]

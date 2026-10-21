@@ -117,8 +117,8 @@ final class MeldoUITests: XCTestCase {
         _ = app.buttons["Stunde hinzufügen"].firstMatch.waitForExistence(timeout: 2)
         let firstLesson = app.buttons.containing(NSPredicate(format: "label CONTAINS 'Mathematik'")).firstMatch
         if firstLesson.waitForExistence(timeout: 3) {
-            firstLesson.press(forDuration: 1.2)
-            shot(app, "13-lesson-context-menu")
+            firstLesson.tap()
+            shot(app, "13-lesson-detail")
             if app.buttons["Hausaufgabe eintragen"].waitForExistence(timeout: 2) {
                 app.buttons["Hausaufgabe eintragen"].tap()
                 shot(app, "14-homework-from-lesson")

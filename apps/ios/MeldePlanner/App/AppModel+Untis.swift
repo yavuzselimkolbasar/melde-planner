@@ -72,6 +72,7 @@ extension AppModel {
         if let link = data.untis { Keychain.delete(account: Self.keychainAccount(link)) }
         mutate { data in
             data.untis = nil
+            data.untisTimetable = nil
             data.changes.removeAll { $0.fromUntis == true }
             for i in data.lessons.indices { data.lessons[i].fromUntis = nil }
         }
@@ -90,15 +91,26 @@ extension AppModel {
         guard let thisWeek = try? untisWeekStart(date: today),
               let thisMonday = thisWeek.date(in: calendar),
               let lastDay = calendar.date(byAdding: .day, value: 8 * 7 - 1, to: thisMonday) else { throw .noAccess("date") }
-        // Holidays are a bonus: an import still works when a school hides them.
+        // Holidays and the bell schedule are a bonus: an import still works
+        // when a school hides them.
         let holidays = (try? await client.holidays(server: link.server, loginName: link.loginName)) ?? []
-        // Eight weeks in one request. The weekly timetable starts at the first
-        // week with lessons, so the Herbstferien don't hide it; Ausfälle and
-        // Vertretungen come from all eight weeks.
-        let body = try await client.timetable(
-            server: link.server, loginName: link.loginName, auth: auth,
-            first: thisWeek, last: FfiDate(lastDay, calendar: calendar)
-        )
+        let bells = (try? await client.timegrid(server: link.server, loginName: link.loginName)) ?? []
+        // Eight weeks in one request. Schools can limit how far ahead students
+        // see; then WebUntis refuses the request, so ask for fewer weeks.
+        var body = ""
+        var fetchedLastDay = lastDay
+        for weeks in [8, 4, 2, 1] {
+            guard let last = calendar.date(byAdding: .day, value: weeks * 7 - 1, to: thisMonday) else { continue }
+            body = try await client.timetable(
+                server: link.server, loginName: link.loginName, auth: auth,
+                first: thisWeek, last: FfiDate(last, calendar: calendar)
+            )
+            fetchedLastDay = last
+            if (try? untisParsePeriods(timetableBody: body)) != nil { break }
+        }
+        if let periods = try? untisParsePeriods(timetableBody: body) {
+            storeUntisWeeks(periods, bells: bells, firstDay: thisMonday, lastDay: fetchedLastDay)
+        }
         if logout { await client.logout(server: link.server, loginName: link.loginName) }
         let schedule: FfiUntisSchedule
         let monday: Date
@@ -125,6 +137,28 @@ extension AppModel {
         var summary = applyUntis(schedule, weekAStart: monday, link: syncedLink)
         summary.holidays = holidays.count
         return summary
+    }
+
+    /// Keeps the dated periods for the Untis-style timetable. `lastDay` is the
+    /// end of the window WebUntis accepted, so a school's look-ahead limit shows.
+    func storeUntisWeeks(_ periods: [FfiUntisPeriod], bells: [FfiTimeUnit], firstDay: Date, lastDay: Date) {
+        let calendar = calendar
+        let records = periods.compactMap { p -> UntisPeriodRecord? in
+            guard let date = p.date.date(in: calendar) else { return nil }
+            return UntisPeriodRecord(
+                id: p.id, date: date, startMinute: Int(p.startMinute), endMinute: Int(p.endMinute),
+                subjectShort: p.subjectShort, subjectLong: p.subjectLong, teacher: p.teacher,
+                room: p.room, originalRoom: p.originalRoom,
+                cancelled: p.cancelled, irregular: p.irregular, exam: p.exam, info: p.info
+            )
+        }
+        let bellPeriods = bells.map { BellPeriod(name: $0.name, startMinute: Int($0.startMinute), endMinute: Int($0.endMinute)) }
+        mutate { data in
+            data.untisTimetable = UntisTimetable(
+                periods: records, firstDay: firstDay, lastDay: lastDay,
+                bells: bellPeriods.isEmpty ? (data.untisTimetable?.bells ?? []) : bellPeriods
+            )
+        }
     }
 
     /// Replaces the holidays from an earlier WebUntis import; ones the student

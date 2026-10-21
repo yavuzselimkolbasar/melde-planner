@@ -50,9 +50,26 @@ pub struct Period {
     pub subject_short: String,
     pub subject_long: String,
     pub room: Option<String>,
+    /// The planned room when Untis moved the period (Raumänderung).
+    pub original_room: Option<String>,
+    /// Teacher short name (e.g. "PL"); empty when the school hides teachers.
+    pub teacher: String,
     pub cancelled: bool,
     /// Vertretung or extra period ("irregular" in Untis).
     pub irregular: bool,
+    /// A Klausur or test (`lstype` "ex").
+    pub exam: bool,
+    /// Lesson, substitution and info texts, joined.
+    pub info: Option<String>,
+}
+
+/// One period of the school's bell schedule (`getTimegridUnits`).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct TimeUnit {
+    /// Period label, usually its number ("1", "2", …).
+    pub name: String,
+    pub start: LocalTime,
+    pub end: LocalTime,
 }
 
 fn rpc(method: &str, params: Value) -> String {
@@ -86,8 +103,54 @@ pub fn timetable_request(person_id: i64, person_type: i64, first: Date, last: Da
             "endDate": untis_date(last),
             "subjectFields": ["id", "name", "longname"],
             "roomFields": ["id", "name"],
+            "teacherFields": ["id", "name"],
+            "showLsText": true,
+            "showSubstText": true,
+            "showInfo": true,
         }}),
     )
+}
+
+/// Body for the school's bell schedule.
+pub fn timegrid_request() -> String {
+    rpc("getTimegridUnits", json!({}))
+}
+
+/// The bell schedule as one list: the units of all school days merged,
+/// sorted by start. Breaks are the gaps between consecutive units.
+pub fn parse_timegrid(body: &str) -> Result<Vec<TimeUnit>, UntisError> {
+    #[derive(Deserialize)]
+    #[serde(rename_all = "camelCase")]
+    struct Unit {
+        #[serde(default)]
+        name: String,
+        start_time: i64,
+        end_time: i64,
+    }
+    #[derive(Deserialize)]
+    #[serde(rename_all = "camelCase")]
+    struct Day {
+        #[serde(default)]
+        time_units: Vec<Unit>,
+    }
+    let days: Vec<Day> =
+        serde_json::from_value(result(body)?).map_err(|e| UntisError::Malformed(e.to_string()))?;
+    let mut units: Vec<TimeUnit> = Vec::new();
+    for unit in days.into_iter().flat_map(|d| d.time_units) {
+        let (Some(start), Some(end)) = (parse_time(unit.start_time), parse_time(unit.end_time))
+        else {
+            continue;
+        };
+        if start < end && !units.iter().any(|u| u.start == start && u.end == end) {
+            units.push(TimeUnit {
+                name: unit.name,
+                start,
+                end,
+            });
+        }
+    }
+    units.sort_by_key(|u| u.start);
+    Ok(units)
 }
 
 /// Body for the school year's holidays.
@@ -318,6 +381,9 @@ pub fn parse_timetable(body: &str) -> Result<Vec<Period>, UntisError> {
         name: String,
         #[serde(default)]
         longname: String,
+        /// Set when Untis changed this element; holds the planned one.
+        #[serde(default)]
+        orgname: Option<String>,
     }
     #[derive(Deserialize)]
     #[serde(rename_all = "camelCase")]
@@ -331,7 +397,17 @@ pub fn parse_timetable(body: &str) -> Result<Vec<Period>, UntisError> {
         #[serde(default)]
         ro: Vec<Named>,
         #[serde(default)]
+        te: Vec<Named>,
+        #[serde(default)]
         code: Option<String>,
+        #[serde(default)]
+        lstype: Option<String>,
+        #[serde(default)]
+        lstext: Option<String>,
+        #[serde(default)]
+        subst_text: Option<String>,
+        #[serde(default)]
+        info: Option<String>,
     }
     let raw: Vec<Raw> =
         serde_json::from_value(result(body)?).map_err(|e| UntisError::Malformed(e.to_string()))?;
@@ -351,8 +427,23 @@ pub fn parse_timetable(body: &str) -> Result<Vec<Period>, UntisError> {
                     .first()
                     .map(|r| r.name.clone())
                     .filter(|r| !r.is_empty()),
+                original_room: p
+                    .ro
+                    .first()
+                    .and_then(|r| r.orgname.clone())
+                    .filter(|r| !r.is_empty()),
+                teacher: p.te.first().map(|t| t.name.clone()).unwrap_or_default(),
                 cancelled: p.code.as_deref() == Some("cancelled"),
                 irregular: p.code.as_deref() == Some("irregular"),
+                exam: p.lstype.as_deref() == Some("ex"),
+                info: {
+                    let texts: Vec<&str> = [&p.lstext, &p.subst_text, &p.info]
+                        .into_iter()
+                        .filter_map(|t| t.as_deref().map(str::trim))
+                        .filter(|t| !t.is_empty())
+                        .collect();
+                    (!texts.is_empty()).then(|| texts.join(" · "))
+                },
             })
         })
         .collect();
@@ -492,5 +583,34 @@ mod tests {
             Date::from_ymd_opt(2026, 11, 1).expect("valid")
         );
         assert!(holidays_request().contains("getHolidays"));
+    }
+
+    #[test]
+    fn parses_room_changes_exams_teachers_and_info() {
+        let body = r#"{"result":[
+            {"id":7,"date":20261102,"startTime":1125,"endTime":1255,"lstype":"ex",
+             "su":[{"id":1,"name":"MAT","longname":"Mathematik"}],
+             "ro":[{"id":5,"name":"A108","orgname":"B111"}],"te":[{"id":9,"name":"SW"}],
+             "lstext":"Klausur","substText":" ","info":"Taschenrechner"}
+        ]}"#;
+        let p = &parse_timetable(body).expect("valid")[0];
+        assert!(p.exam);
+        assert_eq!(p.room.as_deref(), Some("A108"));
+        assert_eq!(p.original_room.as_deref(), Some("B111"));
+        assert_eq!(p.teacher, "SW");
+        assert_eq!(p.info.as_deref(), Some("Klausur · Taschenrechner"));
+    }
+
+    #[test]
+    fn merges_timegrid_days_into_one_bell_schedule() {
+        let body = r#"{"result":[
+            {"day":2,"timeUnits":[{"name":"1","startTime":745,"endTime":830},{"name":"2","startTime":830,"endTime":915},{"name":"3","startTime":935,"endTime":1020}]},
+            {"day":3,"timeUnits":[{"name":"1","startTime":745,"endTime":830},{"name":"10","startTime":1550,"endTime":1635}]}
+        ]}"#;
+        let units = parse_timegrid(body).expect("valid");
+        assert_eq!(units.len(), 4);
+        assert_eq!(units[2].start, LocalTime::from_hm(9, 35).expect("valid"));
+        assert_eq!(units[3].name, "10");
+        assert!(timegrid_request().contains("getTimegridUnits"));
     }
 }

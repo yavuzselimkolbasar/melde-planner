@@ -258,8 +258,12 @@ mod tests {
             subject_short: short.into(),
             subject_long: long.into(),
             room: Some("A1".into()),
+            original_room: None,
+            teacher: String::new(),
             cancelled: false,
             irregular: false,
+            exam: false,
+            info: None,
         }
     }
 

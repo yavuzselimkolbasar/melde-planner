@@ -23,6 +23,28 @@
         }
       }
     },
+    "%@ statt %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ statt %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ (%@ yerine)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ instead of %@"
+          }
+        }
+      }
+    },
     "%@ · %lld Seiten": {
       "localizations": {
         "tr": {
@@ -683,6 +705,28 @@
         }
       }
     },
+    "Ansicht": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ansicht"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Görünüm"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "View"
+          }
+        }
+      }
+    },
     "Anzeigen": {
       "localizations": {
         "tr": {
@@ -1299,6 +1343,28 @@
         }
       }
     },
+    "Deine Schule zeigt den Stundenplan nur bis %@.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deine Schule zeigt den Stundenplan nur bis %@."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Okulun ders programını yalnızca %@ tarihine kadar gösteriyor."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your school only shows the timetable until %@."
+          }
+        }
+      }
+    },
     "Deine WebUntis-Anmeldung ist abgelaufen. Melde dich erneut an.": {
       "localizations": {
         "de": {
@@ -1669,6 +1735,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ende"
+          }
+        }
+      }
+    },
+    "Entfall": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entfall"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İptal"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelled"
           }
         }
       }
@@ -2971,6 +3059,28 @@
         }
       }
     },
+    "KW %lld": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KW %lld"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld. hafta"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Week %lld"
+          }
+        }
+      }
+    },
     "Kalender": {
       "localizations": {
         "tr": {
@@ -3363,6 +3473,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Lege zuerst unter „Fächer“ deine Fächer an."
+          }
+        }
+      }
+    },
+    "Lehrkraft": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lehrkraft"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öğretmen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Teacher"
           }
         }
       }
@@ -4511,6 +4643,28 @@
         }
       }
     },
+    "Noch nicht freigegeben": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noch nicht freigegeben"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Henüz yayınlanmadı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not released yet"
+          }
+        }
+      }
+    },
     "Noch nicht gefragt.": {
       "localizations": {
         "de": {
@@ -4863,6 +5017,28 @@
         }
       }
     },
+    "Pause · %lld min": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pause · %lld min"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Teneffüs · %lld dk"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Break · %lld min"
+          }
+        }
+      }
+    },
     "Prüfe die Anmeldung …": {
       "localizations": {
         "de": {
@@ -5035,6 +5211,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Raum"
+          }
+        }
+      }
+    },
+    "Raumänderung": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Raumänderung"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sınıf değişikliği"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Room change"
           }
         }
       }
@@ -6403,6 +6601,28 @@
         }
       }
     },
+    "Weiter": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weiter"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İleri"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next"
+          }
+        }
+      }
+    },
     "Wichtig": {
       "localizations": {
         "tr": {
@@ -6689,6 +6909,28 @@
         }
       }
     },
+    "Zeit": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zeit"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Time"
+          }
+        }
+      }
+    },
     "Ziehen zum Sortieren, Schalter zum Ein- und Ausblenden.": {
       "localizations": {
         "de": {
@@ -6817,6 +7059,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Zum Bearbeiten tippen"
+          }
+        }
+      }
+    },
+    "Zurück": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zurück"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geri"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Back"
           }
         }
       }

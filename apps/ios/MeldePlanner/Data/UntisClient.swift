@@ -97,6 +97,12 @@ nonisolated struct UntisClient: Sendable {
         return (nil, ([server] + notes).joined(separator: "\n"))
     }
 
+    /// The school's bell schedule (periods; breaks are the gaps).
+    func timegrid(server: String, loginName: String) async throws(Failure) -> [FfiTimeUnit] {
+        let body = try await post(endpoint(server, loginName), body: untisTimegridRequest())
+        return try map { try untisParseTimegrid(body: body) }
+    }
+
     /// The school year's holidays (Herbstferien, Weihnachtsferien, …).
     func holidays(server: String, loginName: String) async throws(Failure) -> [FfiUntisHoliday] {
         let body = try await post(endpoint(server, loginName), body: untisHolidaysRequest())
