@@ -25,7 +25,7 @@ jobs:
         with:
           targets: aarch64-apple-ios, aarch64-apple-ios-sim, x86_64-apple-ios
       - uses: Swatinem/rust-cache@v2
-      - run: scripts/build-rust-ios.sh
+      - run: bash scripts/build-rust-ios.sh
       - run: brew install xcodegen
       - working-directory: apps/ios
         run: xcodegen generate

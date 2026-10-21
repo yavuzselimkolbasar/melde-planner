@@ -40,7 +40,7 @@ jobs:
       - uses: Swatinem/rust-cache@v2
 
       - name: Build Rust core XCFramework and Swift bindings
-        run: PROFILE=debug scripts/build-rust-ios.sh
+        run: PROFILE=debug bash scripts/build-rust-ios.sh
 
       - name: Install XcodeGen and xcbeautify
         run: brew install xcodegen xcbeautify
