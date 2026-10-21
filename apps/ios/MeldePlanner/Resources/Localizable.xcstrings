@@ -221,28 +221,6 @@
         }
       }
     },
-    "%lld heute": {
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "bugün %lld"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld today"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld heute"
-          }
-        }
-      }
-    },
     "%lld von %lld": {
       "localizations": {
         "tr": {
@@ -415,6 +393,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Abbrechen"
+          }
+        }
+      }
+    },
+    "Abgelehnt. Erlaube sie in den iOS-Einstellungen unter Mitteilungen → Meldo.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abgelehnt. Erlaube sie in den iOS-Einstellungen unter Mitteilungen → Meldo."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reddedildi. iOS Ayarları → Bildirimler → Meldo'dan izin ver."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Denied. Allow them in iOS Settings → Notifications → Meldo."
           }
         }
       }
@@ -1585,6 +1585,28 @@
         }
       }
     },
+    "Erlaubt.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erlaubt."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İzin verildi."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allowed."
+          }
+        }
+      }
+    },
     "Erledigt": {
       "localizations": {
         "tr": {
@@ -1603,6 +1625,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Erledigt"
+          }
+        }
+      }
+    },
+    "Erscheinen während einer Stunde, wenn du Meldo öffnest oder meldest.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erscheinen während einer Stunde, wenn du Meldo öffnest oder meldest."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ders sırasında Meldo'yu açtığında veya parmak kaldırdığında görünür."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Appear during a lesson when you open Meldo or raise your hand."
           }
         }
       }
@@ -2047,24 +2091,24 @@
         }
       }
     },
-    "Gerade keine Stunde": {
+    "Geplante Nachfragen": {
       "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geplante Nachfragen"
+          }
+        },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Şu an ders yok"
+            "value": "Planlanan sorular"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "No lesson right now"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gerade keine Stunde"
+            "value": "Scheduled check-ins"
           }
         }
       }
@@ -2465,6 +2509,28 @@
         }
       }
     },
+    "In den iOS-Einstellungen für Meldo ausgeschaltet.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In den iOS-Einstellungen für Meldo ausgeschaltet."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS Ayarları'nda Meldo için kapalı."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turned off for Meldo in iOS Settings."
+          }
+        }
+      }
+    },
     "Indigo (Standard)": {
       "localizations": {
         "de": {
@@ -2505,6 +2571,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ja, einmal"
+          }
+        }
+      }
+    },
+    "Ja, einschalten": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ja, einschalten"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Evet, aç"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yes, turn on"
           }
         }
       }
@@ -2663,6 +2751,28 @@
         }
       }
     },
+    "Keine App-Gruppe in dieser Installation. Installiere Meldo mit AltStore, dann funktionieren Widgets.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine App-Gruppe in dieser Installation. Installiere Meldo mit AltStore, dann funktionieren Widgets."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu kurulumda uygulama grubu yok. Meldo'yu AltStore ile yükle, widget'lar çalışır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No App Group in this install. Install Meldo with AltStore and widgets will work."
+          }
+        }
+      }
+    },
     "Keine Meldungen in dieser Woche.": {
       "localizations": {
         "tr": {
@@ -2795,6 +2905,28 @@
         }
       }
     },
+    "Konnte nicht starten: %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konnte nicht starten: %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başlatılamadı: %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn't start: %@"
+          }
+        }
+      }
+    },
     "Kürzel, z. B. M": {
       "localizations": {
         "tr": {
@@ -2879,6 +3011,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Lege zuerst Fächer an, damit Meldungen zugeordnet werden können."
+          }
+        }
+      }
+    },
+    "Lege zuerst Stunden im Stundenplan an.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lege zuerst Stunden im Stundenplan an."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Önce ders programına ders ekle."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add lessons to your timetable first."
           }
         }
       }
@@ -2993,6 +3147,28 @@
         }
       }
     },
+    "Live-Aktivität": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Live-Aktivität"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Canlı Etkinlik"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Live Activity"
+          }
+        }
+      }
+    },
     "Live-Aktivität während der Stunde": {
       "localizations": {
         "tr": {
@@ -3011,6 +3187,50 @@
           "stringUnit": {
             "state": "translated",
             "value": "Live-Aktivität während der Stunde"
+          }
+        }
+      }
+    },
+    "Live-Aktivitäten": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Live-Aktivitäten"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Canlı Etkinlikler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Live Activities"
+          }
+        }
+      }
+    },
+    "Live-Aktivitäten sind in den iOS-Einstellungen aus.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Live-Aktivitäten sind in den iOS-Einstellungen aus."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Canlı Etkinlikler iOS Ayarları'nda kapalı."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Live Activities are off in iOS Settings."
           }
         }
       }
@@ -3121,6 +3341,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Melden"
+          }
+        }
+      }
+    },
+    "Meldo": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo"
           }
         }
       }
@@ -3345,6 +3587,28 @@
         }
       }
     },
+    "Mitteilungen erlaubt": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mitteilungen erlaubt"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildirimlere izin verildi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notifications allowed"
+          }
+        }
+      }
+    },
     "Mitteilungen sind aus. Erlaube sie in den Einstellungen, damit Erinnerungen ankommen.": {
       "localizations": {
         "tr": {
@@ -3451,6 +3715,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Nach jeder Stunde nachfragen"
+          }
+        }
+      }
+    },
+    "Nach jeder Stunde nachfragen einschalten": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nach jeder Stunde nachfragen einschalten"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Her dersten sonra sormayı aç"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn on asking after every lesson"
           }
         }
       }
@@ -3653,6 +3939,28 @@
         }
       }
     },
+    "Nie mehr vergessen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nie mehr vergessen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir daha unutma"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Never forget again"
+          }
+        }
+      }
+    },
     "Niedrig": {
       "localizations": {
         "tr": {
@@ -3781,6 +4089,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Noch keine Stunden im Stundenplan."
+          }
+        }
+      }
+    },
+    "Noch nicht gefragt.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noch nicht gefragt."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Henüz sorulmadı."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not asked yet."
           }
         }
       }
@@ -4313,6 +4643,28 @@
         }
       }
     },
+    "Schau auf deinen Sperrbildschirm.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schau auf deinen Sperrbildschirm."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kilit ekranına bak."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check your Lock Screen."
+          }
+        }
+      }
+    },
     "Schule": {
       "localizations": {
         "de": {
@@ -4445,6 +4797,50 @@
         }
       }
     },
+    "Soll ich dich nach jeder Stunde fragen, ob du dich gemeldet hast? Du antwortest direkt in der Mitteilung.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Soll ich dich nach jeder Stunde fragen, ob du dich gemeldet hast? Du antwortest direkt in der Mitteilung."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Her dersten sonra parmak kaldırıp kaldırmadığını sorayım mı? Doğrudan bildirimden yanıtlarsın."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shall I ask after every lesson whether you raised your hand? You answer right in the notification."
+          }
+        }
+      }
+    },
+    "Sperre jetzt dein iPhone oder wechsle zum Home-Bildschirm.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sperre jetzt dein iPhone oder wechsle zum Home-Bildschirm."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şimdi iPhone'unu kilitle veya ana ekrana geç."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lock your iPhone or go to the Home Screen now."
+          }
+        }
+      }
+    },
     "Sprache": {
       "localizations": {
         "tr": {
@@ -4573,6 +4969,50 @@
           "stringUnit": {
             "state": "translated",
             "value": "Statistik"
+          }
+        }
+      }
+    },
+    "Status": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Status"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Durum"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Status"
+          }
+        }
+      }
+    },
+    "Status: Widgets, Mitteilungen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Status: Widgets, Mitteilungen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Durum: Widget'lar, bildirimler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Status: widgets, notifications"
           }
         }
       }
@@ -4793,6 +5233,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tag"
+          }
+        }
+      }
+    },
+    "Test-Mitteilung in 5 Sekunden": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Test-Mitteilung in 5 Sekunden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 saniye içinde test bildirimi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Test notification in 5 seconds"
           }
         }
       }
@@ -5039,6 +5501,28 @@
         }
       }
     },
+    "Verbunden über %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbunden über %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ üzerinden bağlı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connected via %@"
+          }
+        }
+      }
+    },
     "Version": {
       "localizations": {
         "tr": {
@@ -5123,6 +5607,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Vorherige Woche"
+          }
+        }
+      }
+    },
+    "Vorschau anzeigen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vorschau anzeigen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Önizlemeyi göster"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show preview"
           }
         }
       }
@@ -5365,6 +5871,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Widgets"
+          }
+        }
+      }
+    },
+    "Widgets und Melden-Knopf": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widgets und Melden-Knopf"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widget'lar ve parmak kaldır düğmesi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widgets and Raise hand button"
           }
         }
       }

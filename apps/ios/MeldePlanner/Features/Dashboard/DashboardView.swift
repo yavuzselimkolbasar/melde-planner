@@ -25,6 +25,7 @@ struct DashboardView: View {
                 } else {
                     VStack(spacing: DS.spacingL) {
                         UnassignedCard(now: context.date)
+                        CheckInPromptCard()
                         LazyVGrid(columns: columns, alignment: .leading, spacing: DS.spacingL) {
                             ForEach(model.preferences.dashboardCards) { card in
                                 switch card {

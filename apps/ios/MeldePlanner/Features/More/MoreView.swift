@@ -22,6 +22,9 @@ struct MoreView: View {
                 NavigationLink { SettingsView() } label: {
                     Label(L("Einstellungen"), systemImage: "gearshape")
                 }
+                NavigationLink { StatusView() } label: {
+                    Label(L("Status: Widgets, Mitteilungen"), systemImage: "stethoscope")
+                }
                 NavigationLink { AboutView() } label: {
                     Label(L("Über Meldo"), systemImage: "info.circle")
                 }

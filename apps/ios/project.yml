@@ -49,6 +49,8 @@ targets:
         CFBundleURLTypes:
           - CFBundleURLName: app.meldeplanner.ios
             CFBundleURLSchemes: [meldeplanner]
+        # AltStore rewrites this to the App Group names it registered for the user's team.
+        ALTAppGroups: [group.app.meldeplanner.ios]
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: app.meldeplanner.ios
@@ -87,6 +89,7 @@ targets:
       properties:
         NSExtension:
           NSExtensionPointIdentifier: com.apple.widgetkit-extension
+        ALTAppGroups: [group.app.meldeplanner.ios]
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: app.meldeplanner.ios.widgets

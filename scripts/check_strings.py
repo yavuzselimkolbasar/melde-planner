@@ -65,6 +65,7 @@ def source_keys() -> dict[str, set[str]]:
 
 
 def main() -> int:
+    sys.stdout.reconfigure(encoding="utf-8")  # German/Turkish text on any console
     keys = source_keys()
     if "--list" in sys.argv:
         for key in sorted(keys):

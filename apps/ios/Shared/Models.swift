@@ -176,6 +176,8 @@ nonisolated struct Preferences: Codable, Hashable {
     /// Visible cards in display order; cards not listed are hidden.
     var dashboardCards: [DashboardCard] = DashboardCard.allCases
     var appIcon: AppIconChoice = .standard
+    /// The start screen stops suggesting after-lesson check-ins once answered.
+    var checkInPromptDismissed = false
 
     init() {}
 
@@ -192,6 +194,7 @@ nonisolated struct Preferences: Codable, Hashable {
         haptics = try c.decodeIfPresent(Bool.self, forKey: .haptics) ?? true
         dashboardCards = try c.decodeIfPresent([DashboardCard].self, forKey: .dashboardCards) ?? DashboardCard.allCases
         appIcon = try c.decodeIfPresent(AppIconChoice.self, forKey: .appIcon) ?? .standard
+        checkInPromptDismissed = try c.decodeIfPresent(Bool.self, forKey: .checkInPromptDismissed) ?? false
     }
 }
 

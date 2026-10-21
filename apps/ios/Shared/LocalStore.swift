@@ -14,8 +14,6 @@ nonisolated struct LocalStore: Sendable {
         case newerSchema(Int)
     }
 
-    static let appGroup = "group.app.meldeplanner.ios"
-
     let url: URL
     /// `false` when the App Group is unavailable (some sideloading tools strip it);
     /// the app then keeps its data privately and widgets show a hint instead.
@@ -30,7 +28,7 @@ nonisolated struct LocalStore: Sendable {
     /// the first time the App Group is available.
     static func standard() throws -> LocalStore {
         let privateURL = try privateFolder().appending(path: "data.json")
-        guard let group = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) else {
+        guard let group = AppGroup.containerURL else {
             return LocalStore(url: privateURL)
         }
         let folder = group.appending(path: "MeldePlanner", directoryHint: .isDirectory)
@@ -48,7 +46,7 @@ nonisolated struct LocalStore: Sendable {
 
     /// For widgets and intents: the shared store only, `nil` without the App Group.
     static func sharedIfAvailable() -> LocalStore? {
-        guard let group = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) else { return nil }
+        guard let group = AppGroup.containerURL else { return nil }
         return LocalStore(url: group.appending(path: "MeldePlanner/data.json"), isShared: true)
     }
 

@@ -93,7 +93,14 @@ final class AppModel {
     }
 
     func setAskAfterLesson(_ on: Bool) {
-        mutate { $0.preferences.askAfterLesson = on }
+        mutate {
+            $0.preferences.askAfterLesson = on
+            $0.preferences.checkInPromptDismissed = true
+        }
+    }
+
+    func dismissCheckInPrompt() {
+        mutate { $0.preferences.checkInPromptDismissed = true }
     }
 
     func setLiveActivities(_ on: Bool) {

@@ -29,7 +29,8 @@ nonisolated enum LessonActivity {
     static func refresh(_ data: AppData, at now: Date = Date(), calendar: Calendar = .current) async {
         let current = MeldeEngine.currentLesson(data, at: now, calendar: calendar)
         for activity in Activity<LessonActivityAttributes>.activities
-        where activity.attributes.lessonID != current?.lessonId || activity.attributes.end <= now {
+        where !activity.attributes.lessonID.hasPrefix("preview-")
+            && (activity.attributes.lessonID != current?.lessonId || activity.attributes.end <= now) {
             await activity.end(nil, dismissalPolicy: .immediate)
         }
         guard data.preferences.liveActivities, isAvailable, let current else { return }
@@ -55,5 +56,49 @@ nonisolated enum LessonActivity {
             end: end
         )
         _ = try? Activity<LessonActivityAttributes>.request(attributes: attributes, content: content, pushType: nil)
+    }
+}
+
+extension LessonActivity {
+    enum PreviewResult {
+        case shown
+        case disabledInSettings
+        case noLessons
+        case failed(String)
+    }
+
+    /// Shows the current or next lesson as a Live Activity for two minutes, so
+    /// students can see it without waiting for a lesson.
+    static func preview(_ data: AppData, at now: Date = Date(), calendar: Calendar = .current) async -> PreviewResult {
+        guard isAvailable else { return .disabledInSettings }
+        guard let lesson = MeldeEngine.currentLesson(data, at: now, calendar: calendar)
+                ?? MeldeEngine.nextLesson(data, after: now, calendar: calendar),
+              let day = lesson.date.date(in: calendar),
+              let start = calendar.date(byAdding: .minute, value: Int(lesson.startMinute), to: day),
+              let end = calendar.date(byAdding: .minute, value: Int(lesson.endMinute), to: day)
+        else { return .noLessons }
+        let subject = MeldeEngine.subject(data, id: lesson.subjectId)
+        let attributes = LessonActivityAttributes(
+            lessonID: "preview-\(lesson.lessonId)",
+            subjectName: subject?.name ?? L("Unterricht"),
+            colorKey: subject?.color.rawValue ?? SubjectColor.blue.rawValue,
+            symbolName: subject?.symbolName ?? "book.closed",
+            start: start,
+            end: end
+        )
+        let state = LessonActivityAttributes.ContentState(
+            count: MeldeEngine.count(data, lessonID: lesson.lessonId, on: day, calendar: calendar),
+            weekTotal: Int(MeldeEngine.weekSummary(data, containing: now, calendar: calendar)?.total ?? 0)
+        )
+        do {
+            let activity = try Activity<LessonActivityAttributes>.request(
+                attributes: attributes, content: ActivityContent(state: state, staleDate: nil), pushType: nil
+            )
+            // Ended right away but kept visible for two minutes.
+            await activity.end(ActivityContent(state: state, staleDate: nil), dismissalPolicy: .after(now.addingTimeInterval(120)))
+            return .shown
+        } catch {
+            return .failed(error.localizedDescription)
+        }
     }
 }
