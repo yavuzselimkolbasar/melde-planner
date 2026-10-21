@@ -9,10 +9,17 @@
     },
     "thedotmack": {
       "source": { "source": "github", "repo": "thedotmack/claude-mem" }
+    },
+    "ponytail": {
+      "source": { "source": "github", "repo": "DietrichGebert/ponytail" }
     }
+  },
+  "env": {
+    "PONYTAIL_DEFAULT_MODE": "lite"
   },
   "enabledPlugins": {
     "apple-skills@indie-apple-stack": true,
+    "ponytail@ponytail": true,
     "claude-mem@thedotmack": true,
     "rust-review@trailofbits": true,
     "property-based-testing@trailofbits": true,
@@ -59,6 +66,16 @@
   },
   "hooks": {
     "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude",
+            "timeout": 10
+          }
+        ]
+      },
       {
         "matcher": "Bash|Grep",
         "hooks": [

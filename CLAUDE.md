@@ -22,7 +22,8 @@ Premium native iOS (SwiftUI, iOS 26 Liquid Glass) academic planner for German st
 3. **graphify** — code/doc knowledge graph (rules below). Export to Obsidian with `graphify export obsidian --dir vault/07-Graph`. `vault/07-Graph/` and `graphify-out/` are generated; never hand-edit.
 
 ## Skills
-Project skills live in `.claude/skills/` (Apple design, SwiftUI, Swift concurrency/testing, Rust, Supabase, web design for the PWA, graphify, skill-inspector). Plugins: Apple skills (indie-apple-stack), claude-mem, Trail of Bits security plugins.
+Project skills live in `.claude/skills/` (Apple design, SwiftUI, Swift concurrency/testing, Rust, Supabase, web design for the PWA, graphify, skill-inspector). Plugins: Apple skills (indie-apple-stack), claude-mem, Trail of Bits security plugins, Ponytail (YAGNI mode, default `lite`; it never overrides the spec's "no mock/placeholder" quality bar).
+RTK compresses Bash output through a PreToolUse hook (`rtk hook claude`); see the rtk section below.
 **Before adding any new skill or plugin, scan it:** `skillspector scan <path> --no-llm` and record the result in `vault/03-Architecture/Skill Security Scan.md`.
 
 ## Commands (Windows)
@@ -40,3 +41,14 @@ Rules:
 - Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
 - After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
 - A committed graphify-out/graph.json is rewritten whole on every build, so a large diff to it in a pull request is expected. Do not flag it as churn or suggest skipping the graph rebuild or its hooks.
+
+<!-- rtk-instructions v2 -->
+# Command output
+
+Command output here is condensed to save tokens, keeping every signal and
+dropping costly noise. Treat it as the complete result: run commands
+normally, and batch related commands into one call to avoid extra turns.
+Truncated results state their recovery path in their own output. Re-run a
+command as `rtk bypass <cmd>` only when its result is unusable: empty when
+output was clearly expected, contradicting its exit code, or garbled.
+<!-- /rtk-instructions -->
