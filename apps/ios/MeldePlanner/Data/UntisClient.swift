@@ -17,6 +17,8 @@ nonisolated struct UntisClient: Sendable {
         case network
         /// A browser (SSO) session that has expired or was never logged in.
         case sessionExpired
+        /// No lessons in the next eight weeks (holidays or an empty timetable).
+        case noLessons
     }
 
     private static let searchURL = URL(string: "https://mobile.webuntis.com/ms/schoolquery2")!

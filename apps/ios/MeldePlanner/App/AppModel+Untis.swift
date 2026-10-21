@@ -86,22 +86,38 @@ extension AppModel {
     /// next refresh can reuse them.
     private func importFromUntis(link: UntisLink, client: UntisClient, auth: FfiUntisAuth, logout: Bool) async throws(UntisClient.Failure) -> UntisImportSummary {
         let today = FfiDate(currentDate, calendar: calendar)
-        guard let weekStart = try? untisWeekStart(date: today),
-              let monday = weekStart.date(in: calendar),
-              let lastDay = calendar.date(byAdding: .day, value: 13, to: monday) else { throw .noAccess("date") }
-        let body = try await client.timetable(
-            server: link.server, loginName: link.loginName, auth: auth,
-            first: weekStart, last: FfiDate(lastDay, calendar: calendar)
-        )
-        if logout { await client.logout(server: link.server, loginName: link.loginName) }
-        let schedule: FfiUntisSchedule
-        do {
-            schedule = try untisDeriveSchedule(timetableBody: body, weekAStart: weekStart)
-        } catch let MeldeError.UntisServer(code, message) {
-            throw code == -8520 ? .wrongCredentials : .server(code: code, message: message)
-        } catch {
-            throw .noAccess("\(error)")
+        guard let thisWeek = try? untisWeekStart(date: today),
+              let thisMonday = thisWeek.date(in: calendar) else { throw .noAccess("date") }
+        // Two weeks at a time (A/B weeks), skipping holidays: in the Herbstferien
+        // the current fortnight has no lessons, so look up to eight weeks ahead.
+        var found: (schedule: FfiUntisSchedule, monday: Date)?
+        for offset in stride(from: 0, to: 56, by: 14) {
+            guard let monday = calendar.date(byAdding: .day, value: offset, to: thisMonday),
+                  let lastDay = calendar.date(byAdding: .day, value: 13, to: monday) else { continue }
+            let weekStart = FfiDate(monday, calendar: calendar)
+            let body = try await client.timetable(
+                server: link.server, loginName: link.loginName, auth: auth,
+                first: weekStart, last: FfiDate(lastDay, calendar: calendar)
+            )
+            let schedule: FfiUntisSchedule
+            do {
+                schedule = try untisDeriveSchedule(timetableBody: body, weekAStart: weekStart)
+            } catch let MeldeError.UntisServer(code, message) {
+                throw code == -8520 ? (link.browserLogin == true ? .sessionExpired : .wrongCredentials)
+                    : .server(code: code, message: message)
+            } catch {
+                throw .noAccess("\(error)")
+            }
+            if !schedule.lessons.isEmpty {
+                found = (schedule, monday)
+                break
+            }
         }
+        if logout { await client.logout(server: link.server, loginName: link.loginName) }
+        // Never replace the timetable with an empty one.
+        guard let found else { throw .noLessons }
+        let schedule = found.schedule
+        let monday = found.monday
         var syncedLink = link
         syncedLink.lastSync = currentDate
         return applyUntis(schedule, weekAStart: monday, link: syncedLink)

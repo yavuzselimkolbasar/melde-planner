@@ -6293,6 +6293,28 @@
         }
       }
     },
+    "WebUntis zeigt in den nächsten acht Wochen keinen Unterricht für dich, zum Beispiel wegen Ferien. Versuche es später noch einmal.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis zeigt in den nächsten acht Wochen keinen Unterricht für dich, zum Beispiel wegen Ferien. Versuche es später noch einmal."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis önümüzdeki sekiz hafta için sana ders göstermiyor, örneğin tatil nedeniyle. Daha sonra tekrar dene."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis shows no lessons for you in the next eight weeks, for example because of holidays. Try again later."
+          }
+        }
+      }
+    },
     "Wichtig": {
       "localizations": {
         "tr": {

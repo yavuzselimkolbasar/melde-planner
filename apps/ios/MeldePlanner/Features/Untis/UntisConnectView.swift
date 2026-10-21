@@ -316,6 +316,7 @@ enum UntisMessages {
         case .tooManyResults: L("Zu viele Schulen gefunden. Gib mehr vom Namen und den Ort ein, zum Beispiel „Gymnasium Köln-Pesch“.")
         case .network: L("Keine Verbindung zu WebUntis. Prüfe dein Internet.")
         case .sessionExpired: L("Deine WebUntis-Anmeldung ist abgelaufen. Melde dich erneut an.")
+        case .noLessons: L("WebUntis zeigt in den nächsten acht Wochen keinen Unterricht für dich, zum Beispiel wegen Ferien. Versuche es später noch einmal.")
         case .server(let code, _): L("WebUntis hat die Anfrage abgelehnt (Code \(code)).")
         case .noAccess, .none: L("Deine Schule erlaubt diesen Zugriff gerade nicht, oder WebUntis wird gewartet.")
         }
