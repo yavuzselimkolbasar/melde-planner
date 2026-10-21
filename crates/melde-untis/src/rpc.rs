@@ -192,12 +192,12 @@ pub fn parse_holidays(body: &str) -> Result<Vec<SchoolHoliday>, UntisError> {
     Ok(holidays)
 }
 
-fn untis_date(d: Date) -> i64 {
+pub(crate) fn untis_date(d: Date) -> i64 {
     use chrono::Datelike;
     i64::from(d.year()) * 10_000 + i64::from(d.month()) * 100 + i64::from(d.day())
 }
 
-fn parse_date(v: i64) -> Option<Date> {
+pub(crate) fn parse_date(v: i64) -> Option<Date> {
     let (y, m, d) = (v / 10_000, (v / 100) % 100, v % 100);
     Date::from_ymd_opt(
         i32::try_from(y).ok()?,
@@ -207,7 +207,7 @@ fn parse_date(v: i64) -> Option<Date> {
 }
 
 /// Untis times are `hhmm` integers (`745` = 07:45).
-fn parse_time(v: i64) -> Option<LocalTime> {
+pub(crate) fn parse_time(v: i64) -> Option<LocalTime> {
     LocalTime::from_hm(u16::try_from(v / 100).ok()?, u16::try_from(v % 100).ok()?).ok()
 }
 

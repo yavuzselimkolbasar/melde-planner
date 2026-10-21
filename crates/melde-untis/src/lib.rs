@@ -6,11 +6,16 @@
 //! per-date changes (Ausfall, Vertretung). Everything is pure and testable.
 
 mod derive;
+mod rest;
 mod rpc;
 
 pub use derive::{
     DerivedChange, DerivedChangeKind, DerivedLesson, DerivedSchedule, DerivedSubject,
     derive_schedule, first_teaching_week, monday_of,
+};
+pub use rest::{
+    Absence, Exam, Homework, NewsMessage, is_logged_out, parse_absences, parse_exams,
+    parse_homework, parse_news, range_query,
 };
 pub use rpc::{
     Auth, Period, School, SchoolHoliday, TimeUnit, authenticate_request, holidays_request,

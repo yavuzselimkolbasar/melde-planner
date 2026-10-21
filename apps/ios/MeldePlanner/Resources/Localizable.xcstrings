@@ -177,28 +177,6 @@
         }
       }
     },
-    "%lld Schultage in Folge": {
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Üst üste %lld okul günü"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld school days in a row"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld Schultage in Folge"
-          }
-        }
-      }
-    },
     "%lld Tage pünktlich in Folge": {
       "localizations": {
         "tr": {
@@ -239,6 +217,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld diese Woche"
+          }
+        }
+      }
+    },
+    "%lld nicht entschuldigt": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld nicht entschuldigt"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld mazeretsiz"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld unexcused"
           }
         }
       }
@@ -349,6 +349,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld× gemeldet · bis %@"
+          }
+        }
+      }
+    },
+    "+%lld weitere": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "+%lld weitere"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "+%lld tane daha"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "+%lld more"
           }
         }
       }
@@ -485,6 +507,50 @@
         }
       }
     },
+    "Abwesend": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abwesend"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Devamsız"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Absent"
+          }
+        }
+      }
+    },
+    "Abwesenheiten": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abwesenheiten"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Devamsızlıklar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Absences"
+          }
+        }
+      }
+    },
     "Aktualisiert: %lld Stunden, %lld Änderungen.": {
       "localizations": {
         "de": {
@@ -503,6 +569,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Updated: %lld lessons, %lld changes."
+          }
+        }
+      }
+    },
+    "Aktualisiert: %lld neue Aufgaben.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktualisiert: %lld neue Aufgaben."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güncellendi: %lld yeni görev."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Updated: %lld new assignments."
           }
         }
       }
@@ -683,6 +771,28 @@
         }
       }
     },
+    "Anmeldung abgebrochen.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anmeldung abgebrochen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Giriş iptal edildi."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign-in cancelled."
+          }
+        }
+      }
+    },
     "Anpassen": {
       "localizations": {
         "de": {
@@ -727,6 +837,28 @@
         }
       }
     },
+    "Anstehend": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anstehend"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yaklaşan"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Upcoming"
+          }
+        }
+      }
+    },
     "Anzeigen": {
       "localizations": {
         "tr": {
@@ -745,6 +877,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Anzeigen"
+          }
+        }
+      }
+    },
+    "App": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulama"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App"
           }
         }
       }
@@ -881,6 +1035,94 @@
         }
       }
     },
+    "Aufgaben aus Microsoft Teams": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aufgaben aus Microsoft Teams"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Microsoft Teams'ten görevler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Assignments from Microsoft Teams"
+          }
+        }
+      }
+    },
+    "Aus dem Klassenbuch in WebUntis, dieses Schuljahr. Entschuldigungen reichst du weiter bei deiner Schule ein.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aus dem Klassenbuch in WebUntis, dieses Schuljahr. Entschuldigungen reichst du weiter bei deiner Schule ein."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis sınıf defterinden, bu öğretim yılı. Mazeretlerini yine okuluna iletirsin."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "From the WebUntis class register, this school year. You still hand in excuses at your school."
+          }
+        }
+      }
+    },
+    "Ausblenden": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ausblenden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gizle"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hide"
+          }
+        }
+      }
+    },
+    "Ausfälle": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ausfälle"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İptaller"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancellations"
+          }
+        }
+      }
+    },
     "Ausfälle und Vertretungen": {
       "localizations": {
         "de": {
@@ -899,6 +1141,50 @@
           "stringUnit": {
             "state": "translated",
             "value": "Cancellations and substitutions"
+          }
+        }
+      }
+    },
+    "Ausgeblendet": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ausgeblendet"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gizli"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hidden"
+          }
+        }
+      }
+    },
+    "Ausgeblendete Karten": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ausgeblendete Karten"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gizli kartlar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hidden cards"
           }
         }
       }
@@ -1317,6 +1603,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Deine Daten bleiben auf diesem Gerät. Es gibt keine Werbung und kein Tracking. Die Synchronisierung mit einem Konto folgt in einer späteren Version und ist freiwillig."
+          }
+        }
+      }
+    },
+    "Deine Microsoft-Anmeldung ist abgelaufen. Melde dich erneut an.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deine Microsoft-Anmeldung ist abgelaufen. Melde dich erneut an."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Microsoft oturumunun süresi doldu. Tekrar giriş yap."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your Microsoft sign-in has expired. Please sign in again."
           }
         }
       }
@@ -2289,6 +2597,28 @@
         }
       }
     },
+    "Für Teams braucht Meldo eine App-Registrierung bei Microsoft (Azure). Sobald sie eingetragen ist, kannst du dich hier anmelden. Manche Schulen müssen Meldo außerdem freigeben.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Für Teams braucht Meldo eine App-Registrierung bei Microsoft (Azure). Sobald sie eingetragen ist, kannst du dich hier anmelden. Manche Schulen müssen Meldo außerdem freigeben."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Teams için Meldo'nun Microsoft'ta (Azure) bir uygulama kaydına ihtiyacı var. Kayıt eklenince buradan giriş yapabilirsin. Bazı okulların ayrıca Meldo'ya izin vermesi gerekir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Teams needs an app registration for Meldo at Microsoft (Azure). Once it is added, you can sign in here. Some schools also have to approve Meldo."
+          }
+        }
+      }
+    },
     "Für heute und morgen ist alles erledigt.": {
       "localizations": {
         "tr": {
@@ -2439,6 +2769,72 @@
           "stringUnit": {
             "state": "translated",
             "value": "Enter your school's name together with the town, for example “Gymnasium Köln-Pesch”. WebUntis shows no list for searches that are too general."
+          }
+        }
+      }
+    },
+    "Groß": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Groß"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Büyük"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Large"
+          }
+        }
+      }
+    },
+    "Größe": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Größe"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Boyut"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Size"
+          }
+        }
+      }
+    },
+    "Größe und Position": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Größe und Position"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Boyut ve konum"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Size and position"
           }
         }
       }
@@ -2641,6 +3037,28 @@
         }
       }
     },
+    "Hausaufgabe fällig": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hausaufgabe fällig"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ödev teslimi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Homework due"
+          }
+        }
+      }
+    },
     "Hausaufgaben": {
       "localizations": {
         "tr": {
@@ -2725,6 +3143,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Heute kein Unterricht."
+          }
+        }
+      }
+    },
+    "Heute keine Nachrichten von der Schule.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heute keine Nachrichten von der Schule."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugün okuldan mesaj yok."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No messages from school today."
           }
         }
       }
@@ -3147,6 +3587,28 @@
         }
       }
     },
+    "Keine Abwesenheiten.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Abwesenheiten."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Devamsızlık yok."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No absences."
+          }
+        }
+      }
+    },
     "Keine App-Gruppe in dieser Installation. Installiere Meldo mit AltStore, dann funktionieren Widgets.": {
       "localizations": {
         "de": {
@@ -3213,6 +3675,28 @@
         }
       }
     },
+    "Keine Prüfungen eingetragen.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Prüfungen eingetragen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kayıtlı sınav yok."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No exams scheduled."
+          }
+        }
+      }
+    },
     "Keine Schule gefunden. Prüfe die Schreibweise oder versuche nur Schulart und Ort.": {
       "localizations": {
         "de": {
@@ -3253,6 +3737,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Keine Stunden"
+          }
+        }
+      }
+    },
+    "Keine Verbindung zu Microsoft. Prüfe dein Internet.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Verbindung zu Microsoft. Prüfe dein Internet."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Microsoft'a bağlanılamıyor. İnternetini kontrol et."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Can't reach Microsoft. Check your internet."
           }
         }
       }
@@ -3301,6 +3807,28 @@
         }
       }
     },
+    "Keine Änderungen.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Änderungen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Değişiklik yok."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No changes."
+          }
+        }
+      }
+    },
     "Keins": {
       "localizations": {
         "tr": {
@@ -3323,6 +3851,28 @@
         }
       }
     },
+    "Klein": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Klein"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Küçük"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Small"
+          }
+        }
+      }
+    },
     "Konnte nicht starten: %@": {
       "localizations": {
         "de": {
@@ -3341,6 +3891,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Couldn't start: %@"
+          }
+        }
+      }
+    },
+    "Konto": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konto"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesap"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Account"
           }
         }
       }
@@ -3539,6 +4111,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Letzte 8 Wochen"
+          }
+        }
+      }
+    },
+    "Letzte Meldung löschen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Letzte Meldung löschen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son kaydı sil"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete last entry"
           }
         }
       }
@@ -3961,6 +4555,28 @@
         }
       }
     },
+    "Meldo übernimmt die Aufgaben deiner Teams-Kurse als Hausaufgaben. Du meldest dich direkt bei Microsoft an; dein Passwort sieht Meldo nie.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo übernimmt die Aufgaben deiner Teams-Kurse als Hausaufgaben. Du meldest dich direkt bei Microsoft an; dein Passwort sieht Meldo nie."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo, Teams derslerindeki görevleri ödev olarak alır. Doğrudan Microsoft'ta giriş yaparsın; Meldo şifreni asla görmez."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldo turns the assignments of your Teams classes into homework. You sign in directly at Microsoft; Meldo never sees your password."
+          }
+        }
+      }
+    },
     "Meldung erfassen": {
       "localizations": {
         "tr": {
@@ -4071,6 +4687,72 @@
         }
       }
     },
+    "Microsoft Teams": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Microsoft Teams"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Microsoft Teams"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Microsoft Teams"
+          }
+        }
+      }
+    },
+    "Microsoft hat die Anfrage abgelehnt. Eventuell muss deine Schule Meldo erst freigeben.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Microsoft hat die Anfrage abgelehnt. Eventuell muss deine Schule Meldo erst freigeben."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Microsoft isteği reddetti. Okulunun önce Meldo'ya izin vermesi gerekebilir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Microsoft refused the request. Your school may have to approve Meldo first."
+          }
+        }
+      }
+    },
+    "Microsoft hat die Anfrage abgelehnt: %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Microsoft hat die Anfrage abgelehnt: %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Microsoft isteği reddetti: %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Microsoft refused the request: %@"
+          }
+        }
+      }
+    },
     "Mit Microsoft 365 oder Schul-Login anmelden": {
       "localizations": {
         "de": {
@@ -4089,6 +4771,50 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sign in with Microsoft 365 or school login"
+          }
+        }
+      }
+    },
+    "Mit Microsoft anmelden": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mit Microsoft anmelden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Microsoft ile giriş yap"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign in with Microsoft"
+          }
+        }
+      }
+    },
+    "Mit WebUntis verbinden": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mit WebUntis verbinden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis'e bağlan"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect WebUntis"
           }
         }
       }
@@ -4181,6 +4907,28 @@
         }
       }
     },
+    "Mittel": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mittel"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Orta"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Medium"
+          }
+        }
+      }
+    },
     "Morgen": {
       "localizations": {
         "tr": {
@@ -4247,6 +4995,28 @@
         }
       }
     },
+    "Nach hinten": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nach hinten"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geriye taşı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move back"
+          }
+        }
+      }
+    },
     "Nach jeder Stunde nachfragen": {
       "localizations": {
         "tr": {
@@ -4287,6 +5057,50 @@
           "stringUnit": {
             "state": "translated",
             "value": "Turn on asking after every lesson"
+          }
+        }
+      }
+    },
+    "Nach vorne": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nach vorne"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öne taşı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move forward"
+          }
+        }
+      }
+    },
+    "Nachrichten": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nachrichten"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mesajlar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Messages"
           }
         }
       }
@@ -4353,6 +5167,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Neue Aufgabe"
+          }
+        }
+      }
+    },
+    "Neue Aufgaben kommen automatisch dazu, wenn du die App öffnest (höchstens alle drei Stunden).": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neue Aufgaben kommen automatisch dazu, wenn du die App öffnest (höchstens alle drei Stunden)."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulamayı açtığında yeni görevler otomatik eklenir (en fazla üç saatte bir)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New assignments are added automatically when you open the app (at most every three hours)."
           }
         }
       }
@@ -4643,6 +5479,28 @@
         }
       }
     },
+    "Noch nicht eingerichtet": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noch nicht eingerichtet"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Henüz kurulmadı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not set up yet"
+          }
+        }
+      }
+    },
     "Noch nicht freigegeben": {
       "localizations": {
         "de": {
@@ -4815,6 +5673,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Nur B-Woche"
+          }
+        }
+      }
+    },
+    "Nur nicht entschuldigte": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nur nicht entschuldigte"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sadece mazeretsizler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only unexcused"
           }
         }
       }
@@ -5237,6 +6117,28 @@
         }
       }
     },
+    "Raumänderungen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Raumänderungen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sınıf değişiklikleri"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Room changes"
+          }
+        }
+      }
+    },
     "Rust-Kern": {
       "localizations": {
         "tr": {
@@ -5435,6 +6337,28 @@
         }
       }
     },
+    "Schulschluss für heute.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schulschluss für heute."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugünlük okul bitti."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "School's out for today."
+          }
+        }
+      }
+    },
     "Schultage (Mo–Fr)": {
       "localizations": {
         "tr": {
@@ -5453,6 +6377,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Schultage (Mo–Fr)"
+          }
+        }
+      }
+    },
+    "Schultage in Folge": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schultage in Folge"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ardışık okul günü"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "school days in a row"
           }
         }
       }
@@ -5479,6 +6425,28 @@
         }
       }
     },
+    "Serie": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Serie"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seri"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Streak"
+          }
+        }
+      }
+    },
     "Sichern": {
       "localizations": {
         "tr": {
@@ -5497,6 +6465,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sichern"
+          }
+        }
+      }
+    },
+    "Sichtbar": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sichtbar"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Görünür"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Visible"
           }
         }
       }
@@ -5633,6 +6623,28 @@
         }
       }
     },
+    "Standard wiederherstellen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Standard wiederherstellen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Varsayılana dön"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore default"
+          }
+        }
+      }
+    },
     "Start": {
       "localizations": {
         "tr": {
@@ -5655,12 +6667,12 @@
         }
       }
     },
-    "Startseite anordnen": {
+    "Startseite anpassen": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Startseite anordnen"
+            "value": "Startseite anpassen"
           }
         },
         "tr": {
@@ -5672,7 +6684,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Arrange home"
+            "value": "Customize home"
           }
         }
       }
@@ -5985,6 +6997,72 @@
         }
       }
     },
+    "Teams ist in dieser Version noch nicht eingerichtet.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Teams ist in dieser Version noch nicht eingerichtet."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Teams bu sürümde henüz kurulmadı."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Teams isn't set up in this version yet."
+          }
+        }
+      }
+    },
+    "Teams trennen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Teams trennen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Teams bağlantısını kes"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disconnect Teams"
+          }
+        }
+      }
+    },
+    "Termine aus WebUntis. Zurückgegebene Arbeiten scannst du unten ein.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Termine aus WebUntis. Zurückgegebene Arbeiten scannst du unten ein."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis'ten tarihler. Geri verilen sınav kağıtlarını aşağıda tarayabilirsin."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dates from WebUntis. Scan returned papers below."
+          }
+        }
+      }
+    },
     "Test-Mitteilung in 5 Sekunden": {
       "localizations": {
         "de": {
@@ -6227,6 +7305,28 @@
         }
       }
     },
+    "Verbinde WebUntis, dann erscheinen hier deine Prüfungstermine.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbinde WebUntis, dann erscheinen hier deine Prüfungstermine."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis'i bağla, sınav tarihlerin burada görünür."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect WebUntis and your exam dates appear here."
+          }
+        }
+      }
+    },
     "Verbinde WebUntis, dann erscheinen hier die Ferien deiner Schule. In den Ferien fragt Meldo nicht nach Meldungen.": {
       "localizations": {
         "de": {
@@ -6245,6 +7345,50 @@
           "stringUnit": {
             "state": "translated",
             "value": "Connect WebUntis and your school's holidays appear here. During holidays Meldo doesn't ask about raising your hand."
+          }
+        }
+      }
+    },
+    "Verbinde WebUntis, um Nachrichten deiner Schule zu sehen.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbinde WebUntis, um Nachrichten deiner Schule zu sehen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Okulunun mesajlarını görmek için WebUntis'i bağla."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect WebUntis to see your school's messages."
+          }
+        }
+      }
+    },
+    "Verbinde WebUntis, um deine Fehlzeiten zu sehen.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbinde WebUntis, um deine Fehlzeiten zu sehen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Devamsızlıklarını görmek için WebUntis'i bağla."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect WebUntis to see your absences."
           }
         }
       }
@@ -6289,6 +7433,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Connected via %@"
+          }
+        }
+      }
+    },
+    "Verbunden: %lld Aufgaben übernommen.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbunden: %lld Aufgaben übernommen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bağlandı: %lld görev alındı."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connected: %lld assignments imported."
           }
         }
       }
@@ -6575,6 +7741,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Disconnect WebUntis?"
+          }
+        }
+      }
+    },
+    "WebUntis verbinden": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis verbinden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WebUntis'i bağla"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect WebUntis"
           }
         }
       }
@@ -6931,24 +8119,24 @@
         }
       }
     },
-    "Ziehen zum Sortieren, Schalter zum Ein- und Ausblenden.": {
+    "Ziehen zum Sortieren. Tipp: Auf der Startseite kannst du Karten auch mit „Anpassen“ verschieben.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ziehen zum Sortieren, Schalter zum Ein- und Ausblenden."
+            "value": "Ziehen zum Sortieren. Tipp: Auf der Startseite kannst du Karten auch mit „Anpassen“ verschieben."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sıralamak için sürükle, göstermek veya gizlemek için anahtarı kullan."
+            "value": "Sıralamak için sürükle. İpucu: Ana sayfada „Düzenle“ ile kartları da taşıyabilirsin."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Drag to reorder, switch to show or hide."
+            "value": "Drag to sort. Tip: on the home screen you can also move cards with “Customize”."
           }
         }
       }
@@ -7085,6 +8273,72 @@
         }
       }
     },
+    "bald fällig": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "bald fällig"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "yakında teslim"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "due soon"
+          }
+        }
+      }
+    },
+    "entschuldigt": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "entschuldigt"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "mazeretli"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "excused"
+          }
+        }
+      }
+    },
+    "gesamt": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "gesamt"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "toplam"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "total"
+          }
+        }
+      }
+    },
     "gestern": {
       "localizations": {
         "tr": {
@@ -7129,6 +8383,50 @@
         }
       }
     },
+    "in %lld Tagen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "in %lld Tagen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld gün sonra"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "in %lld days"
+          }
+        }
+      }
+    },
+    "in diesem Schuljahr": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "in diesem Schuljahr"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "bu öğretim yılında"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "this school year"
+          }
+        }
+      }
+    },
     "morgen": {
       "localizations": {
         "tr": {
@@ -7151,6 +8449,28 @@
         }
       }
     },
+    "nicht entschuldigt": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "nicht entschuldigt"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "mazeretsiz"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "unexcused"
+          }
+        }
+      }
+    },
     "noch keine Sitzung": {
       "localizations": {
         "de": {
@@ -7169,6 +8489,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "no session yet"
+          }
+        }
+      }
+    },
+    "offen": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "offen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "açık"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "open"
           }
         }
       }

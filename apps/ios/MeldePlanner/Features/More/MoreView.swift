@@ -1,6 +1,7 @@
 import MeldeCore
 import SwiftUI
 
+/// iPhone's Mehr tab. The iPad sidebar lists the same destinations directly.
 struct MoreView: View {
     @Environment(\.horizontalSizeClass) private var sizeClass
 
@@ -17,18 +18,24 @@ struct MoreView: View {
                     }
                 }
             }
-            Section {
-                NavigationLink { SubjectListView() } label: {
-                    Label(L("Fächer"), systemImage: "books.vertical")
-                }
-                NavigationLink { UntisConnectView() } label: {
-                    Label(L("WebUntis"), systemImage: "arrow.triangle.2.circlepath")
+            Section(L("Schule")) {
+                NavigationLink { AbsencesView() } label: {
+                    Label(L("Abwesenheiten"), systemImage: "person.crop.circle.badge.clock")
                 }
                 NavigationLink { HolidayListView() } label: {
                     Label(L("Ferien"), systemImage: "sun.horizon")
                 }
+                NavigationLink { UntisConnectView() } label: {
+                    Label(L("WebUntis"), systemImage: "arrow.triangle.2.circlepath")
+                }
+                NavigationLink { TeamsConnectView() } label: {
+                    Label(L("Microsoft Teams"), systemImage: "person.3")
+                }
             }
-            Section {
+            Section(L("App")) {
+                NavigationLink { SubjectListView() } label: {
+                    Label(L("Fächer"), systemImage: "books.vertical")
+                }
                 NavigationLink { SettingsView() } label: {
                     Label(L("Einstellungen"), systemImage: "gearshape")
                 }
@@ -62,7 +69,7 @@ struct SettingsView: View {
                 Toggle(L("Meldo anzeigen"), isOn: Binding(get: { model.preferences.showMascot }, set: { model.setShowMascot($0) }))
                 Toggle(L("Haptisches Feedback"), isOn: Binding(get: { model.preferences.haptics }, set: { model.setHaptics($0) }))
                 NavigationLink { DashboardCardsView() } label: {
-                    Label(L("Startseite anordnen"), systemImage: "rectangle.3.group")
+                    Label(L("Startseite anpassen"), systemImage: "rectangle.3.group")
                 }
                 NavigationLink { AppIconPicker() } label: {
                     Label(L("App-Symbol"), systemImage: "app.badge")
@@ -165,58 +172,71 @@ struct AboutView: View {
     }
 }
 
-/// Choose which home cards appear and in which order.
+/// The Start cards as a list: show, hide, sort and size them. Same layout as
+/// "Anpassen" on the Start screen, easier with VoiceOver.
 struct DashboardCardsView: View {
     @Environment(AppModel.self) private var model
 
-    private var cards: [DashboardCard] {
-        let visible = model.preferences.dashboardCards
-        return visible + DashboardCard.allCases.filter { !visible.contains($0) }
+    private var layout: [CardSlot<DashboardCard>] { model.preferences.homeLayout }
+
+    private var hidden: [DashboardCard] {
+        DashboardCard.allCases.filter { kind in !layout.contains { $0.kind == kind } }
     }
 
     var body: some View {
         List {
             Section {
-                ForEach(cards) { card in
-                    Toggle(isOn: Binding(
-                        get: { model.preferences.dashboardCards.contains(card) },
-                        set: { on in
-                            var visible = model.preferences.dashboardCards
-                            if on { visible.append(card) } else { visible.removeAll { $0 == card } }
-                            model.setDashboardCards(visible)
+                ForEach(layout, id: \.kind) { slot in
+                    HStack {
+                        Label(DashboardView.title(slot.kind), systemImage: DashboardView.symbol(slot.kind))
+                        Spacer()
+                        Picker(L("Größe"), selection: Binding(
+                            get: { slot.size },
+                            set: { size in
+                                var list = layout
+                                if let i = list.firstIndex(where: { $0.kind == slot.kind }) { list[i].size = size }
+                                model.setHomeLayout(list)
+                            }
+                        )) {
+                            ForEach(CardSize.allCases) { Text($0.title).tag($0) }
                         }
-                    )) {
-                        Label(Self.title(card), systemImage: Self.symbol(card))
+                        .labelsHidden()
                     }
                 }
                 .onMove { from, to in
-                    var ordered = cards
-                    ordered.move(fromOffsets: from, toOffset: to)
-                    let visible = Set(model.preferences.dashboardCards)
-                    model.setDashboardCards(ordered.filter(visible.contains))
+                    var list = layout
+                    list.move(fromOffsets: from, toOffset: to)
+                    model.setHomeLayout(list)
                 }
+                .onDelete { offsets in
+                    var list = layout
+                    list.remove(atOffsets: offsets)
+                    model.setHomeLayout(list)
+                }
+            } header: {
+                Text(L("Sichtbar"))
             } footer: {
-                Text(L("Ziehen zum Sortieren, Schalter zum Ein- und Ausblenden."))
+                Text(L("Ziehen zum Sortieren. Tipp: Auf der Startseite kannst du Karten auch mit „Anpassen“ verschieben."))
+            }
+            if !hidden.isEmpty {
+                Section(L("Ausgeblendet")) {
+                    ForEach(hidden) { kind in
+                        Button {
+                            model.setHomeLayout(layout + [CardSlot(kind: kind, size: .medium)])
+                        } label: {
+                            Label(DashboardView.title(kind), systemImage: DashboardView.symbol(kind))
+                        }
+                    }
+                }
+            }
+            Section {
+                Button(L("Standard wiederherstellen")) {
+                    model.setHomeLayout(CardSlot<DashboardCard>.defaultHome)
+                }
             }
         }
         .environment(\.editMode, .constant(.active))
-        .navigationTitle(L("Startseite anordnen"))
-    }
-
-    static func title(_ card: DashboardCard) -> String {
-        switch card {
-        case .today: L("Heute")
-        case .participation: L("Meldungen diese Woche")
-        case .homework: L("Hausaufgaben")
-        }
-    }
-
-    static func symbol(_ card: DashboardCard) -> String {
-        switch card {
-        case .today: "sun.max"
-        case .participation: "hand.raised"
-        case .homework: "book"
-        }
+        .navigationTitle(L("Startseite anpassen"))
     }
 }
 

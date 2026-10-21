@@ -59,6 +59,54 @@ pub struct FfiUntisPeriod {
     pub info: Option<String>,
 }
 
+/// An absence from the class register.
+#[derive(Debug, Clone, PartialEq, Eq, uniffi::Record)]
+pub struct FfiUntisAbsence {
+    pub id: i64,
+    pub first_day: FfiDate,
+    pub last_day: FfiDate,
+    pub start_minute: u16,
+    pub end_minute: u16,
+    pub reason: String,
+    pub text: String,
+    pub excused: bool,
+}
+
+/// An exam as WebUntis lists it.
+#[derive(Debug, Clone, PartialEq, Eq, uniffi::Record)]
+pub struct FfiUntisExam {
+    pub id: i64,
+    pub date: FfiDate,
+    pub start_minute: u16,
+    pub end_minute: u16,
+    pub subject: String,
+    pub name: String,
+    pub exam_type: String,
+    pub teachers: Vec<String>,
+    pub rooms: Vec<String>,
+    pub text: String,
+}
+
+/// Homework a teacher entered in WebUntis.
+#[derive(Debug, Clone, PartialEq, Eq, uniffi::Record)]
+pub struct FfiUntisHomework {
+    pub id: i64,
+    pub subject: String,
+    pub given: FfiDate,
+    pub due: FfiDate,
+    pub text: String,
+    pub remark: String,
+    pub completed: bool,
+}
+
+/// A message of the day from the school, as plain text.
+#[derive(Debug, Clone, PartialEq, Eq, uniffi::Record)]
+pub struct FfiUntisNews {
+    pub id: i64,
+    pub subject: String,
+    pub text: String,
+}
+
 /// One period of the bell schedule; breaks are the gaps between them.
 #[derive(Debug, Clone, PartialEq, Eq, uniffi::Record)]
 pub struct FfiTimeUnit {
@@ -226,6 +274,76 @@ pub fn untis_parse_timegrid(body: String) -> Result<Vec<FfiTimeUnit>, MeldeError
             name: t.name,
             start_minute: t.start.minutes(),
             end_minute: t.end.minutes(),
+        })
+        .collect())
+}
+
+/// `startDate=…&endDate=…` for the WebUntis web API.
+#[uniffi::export]
+pub fn untis_range_query(first: FfiDate, last: FfiDate) -> Result<String, MeldeError> {
+    Ok(u::range_query(first.try_into()?, last.try_into()?))
+}
+
+#[uniffi::export]
+pub fn untis_parse_absences(body: String) -> Result<Vec<FfiUntisAbsence>, MeldeError> {
+    Ok(u::parse_absences(&body)?
+        .into_iter()
+        .map(|a| FfiUntisAbsence {
+            id: a.id,
+            first_day: a.first_day.into(),
+            last_day: a.last_day.into(),
+            start_minute: a.start.minutes(),
+            end_minute: a.end.minutes(),
+            reason: a.reason,
+            text: a.text,
+            excused: a.excused,
+        })
+        .collect())
+}
+
+#[uniffi::export]
+pub fn untis_parse_exams(body: String) -> Result<Vec<FfiUntisExam>, MeldeError> {
+    Ok(u::parse_exams(&body)?
+        .into_iter()
+        .map(|e| FfiUntisExam {
+            id: e.id,
+            date: e.date.into(),
+            start_minute: e.start.minutes(),
+            end_minute: e.end.minutes(),
+            subject: e.subject,
+            name: e.name,
+            exam_type: e.exam_type,
+            teachers: e.teachers,
+            rooms: e.rooms,
+            text: e.text,
+        })
+        .collect())
+}
+
+#[uniffi::export]
+pub fn untis_parse_homework(body: String) -> Result<Vec<FfiUntisHomework>, MeldeError> {
+    Ok(u::parse_homework(&body)?
+        .into_iter()
+        .map(|h| FfiUntisHomework {
+            id: h.id,
+            subject: h.subject,
+            given: h.given.into(),
+            due: h.due.into(),
+            text: h.text,
+            remark: h.remark,
+            completed: h.completed,
+        })
+        .collect())
+}
+
+#[uniffi::export]
+pub fn untis_parse_news(body: String) -> Result<Vec<FfiUntisNews>, MeldeError> {
+    Ok(u::parse_news(&body)?
+        .into_iter()
+        .map(|n| FfiUntisNews {
+            id: n.id,
+            subject: n.subject,
+            text: n.text,
         })
         .collect())
 }

@@ -51,6 +51,18 @@ struct ExamListView: View {
             if let problem {
                 Label(problem, systemImage: "exclamationmark.triangle.fill").foregroundStyle(.red)
             }
+            let upcoming = model.upcomingUntisExams(from: model.currentDate)
+            if !upcoming.isEmpty {
+                Section {
+                    ForEach(upcoming) { exam in
+                        UntisExamRow(exam: exam, now: model.currentDate)
+                    }
+                } header: {
+                    Text(L("Anstehend"))
+                } footer: {
+                    Text(L("Termine aus WebUntis. Zurückgegebene Arbeiten scannst du unten ein."))
+                }
+            }
             if model.exams.isEmpty {
                 ContentUnavailableView {
                     Label(L("Noch keine Prüfungen"), systemImage: "doc.viewfinder")

@@ -73,6 +73,7 @@ extension AppModel {
         mutate { data in
             data.untis = nil
             data.untisTimetable = nil
+            data.untisExtras = nil
             data.changes.removeAll { $0.fromUntis == true }
             for i in data.lessons.indices { data.lessons[i].fromUntis = nil }
         }
@@ -111,6 +112,7 @@ extension AppModel {
         if let periods = try? untisParsePeriods(timetableBody: body) {
             storeUntisWeeks(periods, bells: bells, firstDay: thisMonday, lastDay: fetchedLastDay)
         }
+        await importUntisExtras(client: client, server: link.server, auth: auth)
         if logout { await client.logout(server: link.server, loginName: link.loginName) }
         let schedule: FfiUntisSchedule
         let monday: Date
@@ -137,6 +139,59 @@ extension AppModel {
         var summary = applyUntis(schedule, weekAStart: monday, link: syncedLink)
         summary.holidays = holidays.count
         return summary
+    }
+
+    /// Absences (this school year), exams (next four months), homework (two
+    /// weeks back to eight ahead) and today's school messages. Each part is
+    /// optional: schools decide what students may see.
+    private func importUntisExtras(client: UntisClient, server: String, auth: FfiUntisAuth) async {
+        let calendar = calendar
+        let today = calendar.startOfDay(for: currentDate)
+        let year = calendar.component(.year, from: today) - (calendar.component(.month, from: today) < 8 ? 1 : 0)
+        let schoolYearStart = calendar.date(from: DateComponents(year: year, month: 8, day: 1)) ?? today
+        func day(_ offset: Int) -> FfiDate {
+            FfiDate(calendar.date(byAdding: .day, value: offset, to: today) ?? today, calendar: calendar)
+        }
+        let todayFfi = FfiDate(today, calendar: calendar)
+        let absences = try? await client.absences(server: server, auth: auth, first: FfiDate(schoolYearStart, calendar: calendar), last: todayFfi)
+        let exams = try? await client.exams(server: server, auth: auth, first: todayFfi, last: day(120))
+        let homework = try? await client.homework(server: server, first: day(-14), last: day(56))
+        let news = try? await client.news(server: server, date: todayFfi)
+
+        let previous = data.untisExtras
+        var extras = UntisExtras(updated: currentDate)
+        extras.absences = absences.map { list in
+            list.compactMap { a -> UntisAbsenceRecord? in
+                guard let first = a.firstDay.date(in: calendar), let last = a.lastDay.date(in: calendar) else { return nil }
+                return UntisAbsenceRecord(id: a.id, firstDay: first, lastDay: last,
+                                          startMinute: Int(a.startMinute), endMinute: Int(a.endMinute),
+                                          reason: a.reason, text: a.text, excused: a.excused)
+            }
+        } ?? previous?.absences ?? []
+        extras.exams = exams.map { list in
+            list.compactMap { e -> UntisExamRecord? in
+                guard let date = e.date.date(in: calendar) else { return nil }
+                return UntisExamRecord(id: e.id, date: date, startMinute: Int(e.startMinute), endMinute: Int(e.endMinute),
+                                       subject: e.subject, name: e.name, examType: e.examType,
+                                       teachers: e.teachers, rooms: e.rooms, text: e.text)
+            }
+        } ?? previous?.exams ?? []
+        extras.news = news.map { list in list.map { UntisNewsRecord(id: $0.id, subject: $0.subject, text: $0.text) } } ?? []
+        let tasks = (homework ?? []).compactMap { h -> SchoolTask? in
+            guard let due = h.due.date(in: calendar) else { return nil }
+            let subject = data.subjects.first { $0.untisKey == h.subject || $0.name == h.subject }
+            let title = h.text.isEmpty ? h.remark : h.text
+            guard !title.isEmpty else { return nil }
+            return SchoolTask(title: title, notes: h.text.isEmpty ? "" : h.remark, kind: .homework,
+                              subjectID: subject?.id, dueDate: due,
+                              completedAt: h.completed ? currentDate : nil, untisID: h.id)
+        }
+        mutate { data in
+            data.untisExtras = extras
+            // New WebUntis homework only; what the student already has stays as they left it.
+            let known = Set(data.tasks.compactMap(\.untisID))
+            data.tasks.append(contentsOf: tasks.filter { !known.contains($0.untisID ?? 0) })
+        }
     }
 
     /// Keeps the dated periods for the Untis-style timetable. `lastDay` is the

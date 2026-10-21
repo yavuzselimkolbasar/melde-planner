@@ -126,6 +126,10 @@ nonisolated struct SchoolTask: Identifiable, Codable, Hashable {
     var recurrence: TaskRecurrence = .never
     var reminderAt: Date?
     var updatedAt = Date()
+    /// Homework imported from WebUntis; keeps it from being added twice.
+    var untisID: Int64?
+    /// Assignment imported from Microsoft Teams (Graph id).
+    var teamsID: String?
 
     var isDone: Bool { completedAt != nil }
 }
@@ -146,9 +150,48 @@ nonisolated struct ExamDocument: Identifiable, Codable, Hashable {
 }
 
 /// Cards on the home screen; order and visibility are customizable.
-nonisolated enum DashboardCard: String, Codable, CaseIterable, Identifiable {
-    case today, participation, homework
+nonisolated enum DashboardCard: String, Codable, CaseIterable, Identifiable, Sendable {
+    case today, weekPreview, participation, streak, homework, exams, news, absences
     var id: String { rawValue }
+}
+
+/// Cards on the Statistik tab.
+nonisolated enum StatsCard: String, Codable, CaseIterable, Identifiable, Sendable {
+    case perDay, bySubject, trend
+    var id: String { rawValue }
+}
+
+/// How much room a card takes, like tiles on a console home screen.
+nonisolated enum CardSize: String, Codable, CaseIterable, Identifiable, Sendable {
+    case small, medium, large
+    var id: String { rawValue }
+}
+
+/// A visible card and its size, in display order.
+nonisolated struct CardSlot<Kind: Codable & Hashable & Sendable>: Codable, Hashable, Sendable {
+    var kind: Kind
+    var size: CardSize
+}
+
+nonisolated extension CardSlot where Kind == DashboardCard {
+    static var defaultHome: [CardSlot<DashboardCard>] { [
+        .init(kind: .today, size: .large),
+        .init(kind: .participation, size: .small),
+        .init(kind: .streak, size: .small),
+        .init(kind: .weekPreview, size: .medium),
+        .init(kind: .homework, size: .medium),
+        .init(kind: .exams, size: .medium),
+        .init(kind: .news, size: .medium),
+        .init(kind: .absences, size: .small),
+    ] }
+}
+
+nonisolated extension CardSlot where Kind == StatsCard {
+    static var defaultStats: [CardSlot<StatsCard>] { [
+        .init(kind: .perDay, size: .medium),
+        .init(kind: .bySubject, size: .medium),
+        .init(kind: .trend, size: .large),
+    ] }
 }
 
 /// Alternate app icons (work with free signing).
@@ -178,13 +221,22 @@ nonisolated struct Preferences: Codable, Hashable {
     var liveActivities = true
     var showMascot = true
     var haptics = true
-    /// Visible cards in display order; cards not listed are hidden.
-    var dashboardCards: [DashboardCard] = DashboardCard.allCases
+    /// Start screen cards with their sizes, in display order; missing cards are hidden.
+    var homeLayout: [CardSlot<DashboardCard>] = CardSlot<DashboardCard>.defaultHome
+    /// Statistik cards with their sizes.
+    var statsLayout: [CardSlot<StatsCard>] = CardSlot<StatsCard>.defaultStats
     var appIcon: AppIconChoice = .standard
     /// The start screen stops suggesting after-lesson check-ins once answered.
     var checkInPromptDismissed = false
 
     init() {}
+
+    enum CodingKeys: String, CodingKey {
+        case language, theme, weeklyGoal, weekAReference, askAfterLesson, liveActivities
+        case showMascot, haptics, homeLayout, statsLayout, appIcon, checkInPromptDismissed
+        /// Read only, to migrate layouts from version 0.2.
+        case dashboardCards
+    }
 
     // Every field is optional when decoding, so files from older versions keep loading.
     init(from decoder: Decoder) throws {
@@ -197,9 +249,36 @@ nonisolated struct Preferences: Codable, Hashable {
         liveActivities = try c.decodeIfPresent(Bool.self, forKey: .liveActivities) ?? true
         showMascot = try c.decodeIfPresent(Bool.self, forKey: .showMascot) ?? true
         haptics = try c.decodeIfPresent(Bool.self, forKey: .haptics) ?? true
-        dashboardCards = try c.decodeIfPresent([DashboardCard].self, forKey: .dashboardCards) ?? DashboardCard.allCases
+        if let layout = try c.decodeIfPresent([CardSlot<DashboardCard>].self, forKey: .homeLayout) {
+            homeLayout = layout
+        } else if let old = try? c.decodeIfPresent([String].self, forKey: .dashboardCards) {
+            // Version 0.2 stored only the order; keep the student's choice, add the new cards.
+            let kept: [DashboardCard] = old.compactMap(DashboardCard.init(rawValue:))
+            let legacy: [DashboardCard] = [.today, .participation, .homework]
+            let defaults: [CardSlot<DashboardCard>] = CardSlot<DashboardCard>.defaultHome
+            let keptSlots: [CardSlot<DashboardCard>] = kept.compactMap { kind in defaults.first { $0.kind == kind } }
+            let added: [CardSlot<DashboardCard>] = defaults.filter { !kept.contains($0.kind) && !legacy.contains($0.kind) }
+            homeLayout = keptSlots + added
+        }
+        statsLayout = try c.decodeIfPresent([CardSlot<StatsCard>].self, forKey: .statsLayout) ?? CardSlot<StatsCard>.defaultStats
         appIcon = try c.decodeIfPresent(AppIconChoice.self, forKey: .appIcon) ?? .standard
         checkInPromptDismissed = try c.decodeIfPresent(Bool.self, forKey: .checkInPromptDismissed) ?? false
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var c = encoder.container(keyedBy: CodingKeys.self)
+        try c.encode(language, forKey: .language)
+        try c.encode(theme, forKey: .theme)
+        try c.encodeIfPresent(weeklyGoal, forKey: .weeklyGoal)
+        try c.encodeIfPresent(weekAReference, forKey: .weekAReference)
+        try c.encode(askAfterLesson, forKey: .askAfterLesson)
+        try c.encode(liveActivities, forKey: .liveActivities)
+        try c.encode(showMascot, forKey: .showMascot)
+        try c.encode(haptics, forKey: .haptics)
+        try c.encode(homeLayout, forKey: .homeLayout)
+        try c.encode(statsLayout, forKey: .statsLayout)
+        try c.encode(appIcon, forKey: .appIcon)
+        try c.encode(checkInPromptDismissed, forKey: .checkInPromptDismissed)
     }
 }
 
@@ -241,6 +320,54 @@ nonisolated struct UntisTimetable: Codable, Hashable {
     var bells: [BellPeriod]
 }
 
+/// An absence from the WebUntis class register.
+nonisolated struct UntisAbsenceRecord: Codable, Hashable, Identifiable {
+    var id: Int64
+    var firstDay: Date
+    var lastDay: Date
+    var startMinute: Int
+    var endMinute: Int
+    var reason: String
+    var text: String
+    var excused: Bool
+}
+
+/// An exam WebUntis lists for the student (Klausur, Test).
+nonisolated struct UntisExamRecord: Codable, Hashable, Identifiable {
+    var id: Int64
+    var date: Date
+    var startMinute: Int
+    var endMinute: Int
+    var subject: String
+    var name: String
+    var examType: String
+    var teachers: [String]
+    var rooms: [String]
+    var text: String
+}
+
+/// A message of the day from the school.
+nonisolated struct UntisNewsRecord: Codable, Hashable, Identifiable {
+    var id: Int64
+    var subject: String
+    var text: String
+}
+
+/// Data from the WebUntis web API, refreshed on every import. Each list stays
+/// empty when the school hides it.
+nonisolated struct UntisExtras: Codable, Hashable {
+    var absences: [UntisAbsenceRecord] = []
+    var exams: [UntisExamRecord] = []
+    var news: [UntisNewsRecord] = []
+    var updated: Date
+}
+
+/// The Microsoft Teams connection. The refresh token lives in the Keychain.
+nonisolated struct TeamsLink: Codable, Hashable {
+    var account: String
+    var lastSync: Date?
+}
+
 /// Everything persisted on device. Versioned so later migrations
 /// (Rust-owned SQLite + Supabase sync) can import it.
 nonisolated struct AppData: Codable {
@@ -257,6 +384,8 @@ nonisolated struct AppData: Codable {
     var changes: [TimetableChangeRecord] = []
     var untis: UntisLink?
     var untisTimetable: UntisTimetable?
+    var untisExtras: UntisExtras?
+    var teams: TeamsLink?
     var preferences = Preferences()
 
     init() {}
@@ -274,6 +403,8 @@ nonisolated struct AppData: Codable {
         changes = try c.decodeIfPresent([TimetableChangeRecord].self, forKey: .changes) ?? []
         untis = try c.decodeIfPresent(UntisLink.self, forKey: .untis)
         untisTimetable = try c.decodeIfPresent(UntisTimetable.self, forKey: .untisTimetable)
+        untisExtras = try c.decodeIfPresent(UntisExtras.self, forKey: .untisExtras)
+        teams = try c.decodeIfPresent(TeamsLink.self, forKey: .teams)
         preferences = try c.decodeIfPresent(Preferences.self, forKey: .preferences) ?? Preferences()
     }
 }

@@ -6,20 +6,22 @@ struct HolidayBanner: View {
 
     var body: some View {
         HStack(spacing: DS.spacingM) {
-            Image(systemName: "sun.horizon.fill")
+            Image(systemName: "lock.fill")
                 .font(.title3)
-                .foregroundStyle(Color.meldoOrange)
+                .foregroundStyle(.white)
             VStack(alignment: .leading, spacing: 2) {
                 Text(holiday.name).font(.headline)
                 Text(HolidayText.range(holiday))
                     .font(.subheadline)
                     .monospacedDigit()
-                    .foregroundStyle(.secondary)
+                    .opacity(0.85)
             }
             Spacer(minLength: 0)
         }
+        .foregroundStyle(.white)
         .padding(DS.spacingM)
-        .background(Color.meldoOrange.opacity(0.12), in: .rect(cornerRadius: DS.rowRadius, style: .continuous))
+        // Blue like WebUntis, so holidays look the same everywhere.
+        .background(Color.untisHoliday, in: .rect(cornerRadius: DS.rowRadius, style: .continuous))
         .accessibilityElement(children: .combine)
     }
 }

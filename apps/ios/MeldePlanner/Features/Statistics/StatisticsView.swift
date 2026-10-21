@@ -7,6 +7,7 @@ struct StatisticsView: View {
     @Environment(AppModel.self) private var model
     @Environment(\.horizontalSizeClass) private var sizeClass
     @State private var weekOffset = 0
+    @State private var editing = false
 
     private var referenceDate: Date {
         model.calendar.date(byAdding: .weekOfYear, value: weekOffset, to: model.currentDate) ?? model.currentDate
@@ -23,25 +24,46 @@ struct StatisticsView: View {
                     }
                     .padding(.top, DS.spacingXL)
                 } else if let summary = model.weekSummary(containing: referenceDate) {
-                    // Two columns on iPad: the week next to its subject breakdown.
-                    LazyVGrid(
-                        columns: sizeClass == .regular
-                            ? [GridItem(.flexible(), spacing: DS.spacingL, alignment: .top), GridItem(.flexible(), alignment: .top)]
-                            : [GridItem(.flexible())],
-                        spacing: DS.spacingL
-                    ) {
-                        WeekChartCard(summary: summary, weekOffset: $weekOffset)
-                        SubjectBreakdownCard(summary: summary)
+                    CustomizableCardGrid(
+                        slots: model.preferences.statsLayout,
+                        editing: editing,
+                        title: { Self.title($0) },
+                        symbol: { Self.symbol($0) },
+                        save: { model.setStatsLayout($0) }
+                    ) { card, _ in
+                        switch card {
+                        case .perDay: WeekChartCard(summary: summary, weekOffset: $weekOffset)
+                        case .bySubject: SubjectBreakdownCard(summary: summary)
+                        case .trend: TrendCard(endingAt: referenceDate)
+                        }
                     }
-                    TrendCard(endingAt: referenceDate)
                 }
             }
-            .frame(maxWidth: 1100)
             .padding(DS.spacingL)
-            .frame(maxWidth: .infinity)
         }
         .background(ThemedBackground())
         .navigationTitle(L("Statistik"))
+        .toolbar {
+            if !model.data.participation.isEmpty {
+                ToolbarItem(placement: .primaryAction) { CustomizeButton(editing: $editing) }
+            }
+        }
+    }
+
+    static func title(_ card: StatsCard) -> String {
+        switch card {
+        case .perDay: L("Meldungen pro Tag")
+        case .bySubject: L("Nach Fach")
+        case .trend: L("Letzte 8 Wochen")
+        }
+    }
+
+    static func symbol(_ card: StatsCard) -> String {
+        switch card {
+        case .perDay: "chart.bar"
+        case .bySubject: "books.vertical"
+        case .trend: "chart.line.uptrend.xyaxis"
+        }
     }
 }
 

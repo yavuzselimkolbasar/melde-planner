@@ -146,6 +146,15 @@ final class MeldoUITests: XCTestCase {
             shot(app, "20-statistics")
         }
 
+        if device == "ipad" {
+            // iPad has no Mehr tab: every destination sits in the sidebar.
+            for (label, name) in [("Abwesenheiten", "21-absences"), ("Ferien", "21b-holidays"), ("WebUntis", "22-webuntis"),
+                                  ("Microsoft Teams", "22b-teams"), ("Einstellungen", "23-settings"), ("Fächer", "25-subjects"),
+                                  ("Über Meldo", "26-about")] {
+                if tab(app, label) { shot(app, name) }
+            }
+            return
+        }
         tab(app, "Mehr")
         shot(app, "21-more")
         if device == "iphone" {
@@ -156,7 +165,8 @@ final class MeldoUITests: XCTestCase {
             shot(app, "20-statistics")
             back(app, to: "Mehr")
         }
-        for (label, name) in [("WebUntis", "22-webuntis"), ("Einstellungen", "23-settings"),
+        for (label, name) in [("Abwesenheiten", "21-absences"), ("Microsoft Teams", "22b-teams"),
+                              ("WebUntis", "22-webuntis"), ("Einstellungen", "23-settings"),
                               ("Status: Widgets, Mitteilungen", "24-status"), ("Fächer", "25-subjects"),
                               ("Über Meldo", "26-about")] {
             if tap(app.buttons[label].firstMatch, label) {
@@ -220,8 +230,12 @@ final class MeldoUITests: XCTestCase {
     /// its login form. No credentials are entered.
     func test09_webUntisSchoolSearch() {
         let app = launch(seed: true)
-        tab(app, "Mehr")
-        tap(app.buttons["WebUntis"].firstMatch, "WebUntis")
+        if device == "ipad" {
+            tab(app, "WebUntis")
+        } else {
+            tab(app, "Mehr")
+            tap(app.buttons["WebUntis"].firstMatch, "WebUntis")
+        }
         shot(app, "90-webuntis-empty")
         // Too general: WebUntis refuses it (-6003) and Meldo must explain why.
         let field = app.textFields["untis-school-search"]

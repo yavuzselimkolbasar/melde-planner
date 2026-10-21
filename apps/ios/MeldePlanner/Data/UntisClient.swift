@@ -97,6 +97,45 @@ nonisolated struct UntisClient: Sendable {
         return (nil, ([server] + notes).joined(separator: "\n"))
     }
 
+    /// GET on the WebUntis web API with this client's session.
+    private func webGet(server: String, path: String, query: String) async throws(Failure) -> String {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = server
+        components.path = path
+        components.percentEncodedQuery = query
+        guard let url = components.url else { throw .network }
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        return try await send(request)
+    }
+
+    func absences(server: String, auth: FfiUntisAuth, first: FfiDate, last: FfiDate) async throws(Failure) -> [FfiUntisAbsence] {
+        let range = try map { try untisRangeQuery(first: first, last: last) }
+        let body = try await webGet(server: server, path: "/WebUntis/api/classreg/absences/students",
+                                    query: range + "&studentId=\(auth.personId)&excuseStatusId=-1")
+        return try map { try untisParseAbsences(body: body) }
+    }
+
+    func exams(server: String, auth: FfiUntisAuth, first: FfiDate, last: FfiDate) async throws(Failure) -> [FfiUntisExam] {
+        let range = try map { try untisRangeQuery(first: first, last: last) }
+        let body = try await webGet(server: server, path: "/WebUntis/api/exams",
+                                    query: range + "&studentId=\(auth.personId)&klasseId=\(auth.klasseId ?? -1)&withGrades=false")
+        return try map { try untisParseExams(body: body) }
+    }
+
+    func homework(server: String, first: FfiDate, last: FfiDate) async throws(Failure) -> [FfiUntisHomework] {
+        let range = try map { try untisRangeQuery(first: first, last: last) }
+        let body = try await webGet(server: server, path: "/WebUntis/api/homeworks/lessons", query: range)
+        return try map { try untisParseHomework(body: body) }
+    }
+
+    func news(server: String, date: FfiDate) async throws(Failure) -> [FfiUntisNews] {
+        let day = String(format: "%04d%02d%02d", Int(date.year), Int(date.month), Int(date.day))
+        let body = try await webGet(server: server, path: "/WebUntis/api/public/news/newsWidgetData", query: "date=\(day)")
+        return try map { try untisParseNews(body: body) }
+    }
+
     /// The school's bell schedule (periods; breaks are the gaps).
     func timegrid(server: String, loginName: String) async throws(Failure) -> [FfiTimeUnit] {
         let body = try await post(endpoint(server, loginName), body: untisTimegridRequest())

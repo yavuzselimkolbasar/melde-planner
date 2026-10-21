@@ -4,13 +4,25 @@ import SwiftUI
 struct HomeworkCard: View {
     @Environment(AppModel.self) private var model
     var now: Date
+    var size: CardSize = .medium
     @State private var adding = false
 
     var body: some View {
-        let upcoming = model.upcomingHomework(today: now)
+        let upcoming = model.upcomingHomework(today: now, limit: size == .large ? 8 : 3)
         let streak = model.homeworkStreak(asOf: now)
         Card(title: L("Hausaufgaben"), systemImage: "book") {
-            if upcoming.isEmpty {
+            if size == .small {
+                HStack(alignment: .firstTextBaseline, spacing: DS.spacingS) {
+                    Text(upcoming.count, format: .number)
+                        .font(.title.weight(.bold))
+                        .monospacedDigit()
+                    Text(L("bald fällig"))
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                NavigationLink(L("Alle")) { TaskListView() }
+                    .font(.subheadline.weight(.semibold))
+            } else if upcoming.isEmpty {
                 Text(L("Für heute und morgen ist alles erledigt."))
                     .foregroundStyle(.secondary)
             } else {
@@ -20,17 +32,19 @@ struct HomeworkCard: View {
                     }
                 }
             }
-            HStack {
-                Label(L("\(streak) Tage pünktlich in Folge"), systemImage: "flame")
-                    .foregroundStyle(streak > 0 ? Color.orange : Color.secondary)
-                    .font(.subheadline)
-                Spacer()
-                NavigationLink(L("Alle")) { TaskListView() }
-                    .font(.subheadline.weight(.semibold))
+            if size != .small {
+                HStack {
+                    Label(L("\(streak) Tage pünktlich in Folge"), systemImage: "flame")
+                        .foregroundStyle(streak > 0 ? Color.orange : Color.secondary)
+                        .font(.subheadline)
+                    Spacer()
+                    NavigationLink(L("Alle")) { TaskListView() }
+                        .font(.subheadline.weight(.semibold))
+                }
+                Button(L("Hausaufgabe eintragen"), systemImage: "plus") { adding = true }
+                    .buttonStyle(.glass)
+                    .controlSize(.small)
             }
-            Button(L("Hausaufgabe eintragen"), systemImage: "plus") { adding = true }
-                .buttonStyle(.glass)
-                .controlSize(.small)
         }
         .sheet(isPresented: $adding) { TaskEditorView(task: nil, kind: .homework) }
     }

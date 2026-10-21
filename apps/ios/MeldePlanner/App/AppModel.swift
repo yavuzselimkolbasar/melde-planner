@@ -115,8 +115,12 @@ final class AppModel {
         mutate { $0.preferences.haptics = on }
     }
 
-    func setDashboardCards(_ cards: [DashboardCard]) {
-        mutate { $0.preferences.dashboardCards = cards }
+    func setHomeLayout(_ layout: [CardSlot<DashboardCard>]) {
+        mutate { $0.preferences.homeLayout = layout }
+    }
+
+    func setStatsLayout(_ layout: [CardSlot<StatsCard>]) {
+        mutate { $0.preferences.statsLayout = layout }
     }
 
     func setAppIcon(_ icon: AppIconChoice) {

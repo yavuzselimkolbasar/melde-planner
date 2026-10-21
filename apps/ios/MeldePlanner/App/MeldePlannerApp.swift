@@ -25,7 +25,10 @@ struct MeldePlannerApp: App {
             guard phase == .active else { return }
             model.reloadFromDisk()
             model.refreshSchedules()
-            Task { await model.refreshUntisIfStale() }
+            Task {
+                await model.refreshUntisIfStale()
+                await model.refreshTeamsIfStale()
+            }
         }
     }
 }

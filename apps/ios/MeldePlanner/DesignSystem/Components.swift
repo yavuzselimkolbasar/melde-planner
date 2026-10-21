@@ -16,7 +16,8 @@ struct Card<Content: View>: View {
             content
         }
         .padding(DS.spacingL)
-        .frame(maxWidth: .infinity, alignment: .leading)
+        // Fills its grid cell, so cards in one row line up at the bottom.
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .background(
             Color(.secondarySystemGroupedBackground),
             in: .rect(cornerRadius: DS.cardRadius, style: .continuous)
