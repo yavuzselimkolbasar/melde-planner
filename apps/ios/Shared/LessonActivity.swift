@@ -24,10 +24,15 @@ nonisolated struct LessonActivityAttributes: ActivityAttributes {
 nonisolated enum LessonActivity {
     static var isAvailable: Bool { ActivityAuthorizationInfo().areActivitiesEnabled }
 
-    /// Shows the current lesson's activity, starting it if needed, and ends
-    /// activities of lessons that are over.
+    /// Shows the current lesson, or else the next lesson later today, as a Live
+    /// Activity (counting down to its start, then to its end), and ends
+    /// activities of lessons that are over. Called whenever the app becomes
+    /// active and after every Meldung, so the activity moves on to the next lesson.
     static func refresh(_ data: AppData, at now: Date = Date(), calendar: Calendar = .current) async {
         let current = MeldeEngine.currentLesson(data, at: now, calendar: calendar)
+            ?? MeldeEngine.nextLesson(data, after: now, calendar: calendar).flatMap { next in
+                next.date.date(in: calendar).map { calendar.isDate($0, inSameDayAs: now) } == true ? next : nil
+            }
         for activity in Activity<LessonActivityAttributes>.activities
         where !activity.attributes.lessonID.hasPrefix("preview-")
             && (activity.attributes.lessonID != current?.lessonId || activity.attributes.end <= now) {

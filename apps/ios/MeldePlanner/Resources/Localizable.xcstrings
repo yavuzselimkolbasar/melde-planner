@@ -881,6 +881,28 @@
         }
       }
     },
+    "Beginnt in": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beginnt in"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başlamasına"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Starts in"
+          }
+        }
+      }
+    },
     "Benutzer": {
       "localizations": {
         "de": {

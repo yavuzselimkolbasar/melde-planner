@@ -63,6 +63,15 @@ private struct LessonActivityView: View {
                 Text(context.attributes.subjectName).font(.headline)
                 if context.isStale {
                     Text(L("Stunde vorbei")).font(.subheadline).foregroundStyle(.secondary)
+                } else if Date() < context.attributes.start {
+                    // Next lesson: count down to its start.
+                    HStack(spacing: 4) {
+                        Text(L("Beginnt in"))
+                        Text(timerInterval: Date()...context.attributes.start, countsDown: true)
+                            .monospacedDigit()
+                    }
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
                 } else {
                     Text(timerInterval: context.attributes.start...context.attributes.end, countsDown: true)
                         .font(.subheadline)
