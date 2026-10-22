@@ -21,7 +21,8 @@ Xcode and the iOS Simulator **do not run on Windows**. Everything that needs the
 | `cargo test` / `clippy` / `fmt` (all business logic) | ✅ | ✅ |
 | Generate Swift bindings (`uniffi-bindgen … --language swift`) | ✅ (for inspection) | ✅ |
 | Build XCFramework, compile Swift, run iOS tests | ❌ | ✅ `ios.yml` |
-| Supabase pgTAP tests | ✅ with Docker Desktop | ✅ `core.yml` (Ubuntu) |
+| Supabase pgTAP tests (schema unused, ADR-0006) | ✅ with Docker Desktop | ✅ `core.yml` (Ubuntu) |
+| UI screenshots (iPhone + iPad) | ❌ | ✅ `ui-review.yml` (manual) |
 | TestFlight upload | ❌ | ✅ `testflight.yml` (manual) |
 | Interactive Simulator / UI review | ❌ | Rented Mac (see below) or TestFlight on a real iPhone |
 
@@ -53,11 +54,15 @@ python -I scripts/check_strings.py
 5. GitHub repository secrets (Settings → Secrets → Actions, environment `testflight`):
    - `APPLE_TEAM_ID`, `ASC_KEY_ID`, `ASC_ISSUER_ID`
    - `ASC_PRIVATE_KEY_BASE64`: run `base64 -w0 AuthKey_XXXX.p8` in Git Bash.
-6. Sign in with Apple and Google sign-in (Phase 2) need their own configuration in the Apple Developer portal, Google Cloud and Supabase Auth.
+6. iCloud sync (planned once the paid account exists, see ADR-0006 update) needs an iCloud container and the CloudKit capability on the App ID. There is no Supabase Auth or account sign-in.
 
 ## Interactive macOS when needed
 GitHub runners cannot show a live Simulator. For design review sessions, rent a Mac by the hour (e.g. MacinCloud, AWS EC2 Mac, Scaleway Mac mini), `git clone`, then run `scripts/build-rust-ios.sh && cd apps/ios && xcodegen generate && open MeldePlanner.xcodeproj`.
 
-## Status
-- ✅ Verified on Windows: Rust workspace builds, 44 tests (unit + property) pass, clippy clean, Swift bindings generate.
-- ⏳ Not yet verified: `ios.yml`, `core.yml` and `testflight.yml` have never run, because the repository has no GitHub remote yet. The Swift code has not been compiled. Expect a first round of fixes on the first macOS run.
+## Status (checked 2026-10-22 with `gh run list`)
+- Remote: `github.com/yavuzselimkolbasar/melde-planner` (`origin`).
+- ✅ `core.yml` green on `fc22606` (2026-10-21): 77 Rust tests pass on Ubuntu and Windows.
+- ✅ `ios.yml` green on `fc22606`: XCFramework, app and widget extension build on `macos-26`; the Swift Testing suites "Rust core through UniFFI", "AppModel", "Shared store, engine and check-ins", "Tasks, exams and data migration" and "WebUntis import merge" pass on the simulator.
+- ✅ `ui-review.yml` (manual) has run green (last on `2169b1d`); it exports simulator screenshots from `MeldePlannerUITests` for iPhone and iPad as the `ui-review-screens` artifact.
+- ⏳ `testflight.yml` has never run (needs the paid Apple Developer account and the secrets above).
+- ⏳ Not yet tried on a real device with a real WebUntis/SSO or Teams account.
