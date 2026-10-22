@@ -31,6 +31,9 @@ jobs:
           distribution: temurin
           java-version: 21
       - uses: android-actions/setup-android@v3
+        with:
+          # The default also asks for the removed "tools" package, which fails.
+          packages: platform-tools
       - name: Android SDK packages
         run: sdkmanager "platforms;android-37.0" "build-tools;37.0.0" "ndk;29.0.14206865"
       - uses: dtolnay/rust-toolchain@stable
