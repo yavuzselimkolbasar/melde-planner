@@ -301,22 +301,46 @@ pub fn untis_parse_absences(body: String) -> Result<Vec<FfiUntisAbsence>, MeldeE
         .collect())
 }
 
+fn ffi_exam(e: u::Exam) -> FfiUntisExam {
+    FfiUntisExam {
+        id: e.id,
+        date: e.date.into(),
+        start_minute: e.start.minutes(),
+        end_minute: e.end.minutes(),
+        subject: e.subject,
+        name: e.name,
+        exam_type: e.exam_type,
+        teachers: e.teachers,
+        rooms: e.rooms,
+        text: e.text,
+    }
+}
+
 #[uniffi::export]
 pub fn untis_parse_exams(body: String) -> Result<Vec<FfiUntisExam>, MeldeError> {
-    Ok(u::parse_exams(&body)?
+    Ok(u::parse_exams(&body)?.into_iter().map(ffi_exam).collect())
+}
+
+/// Path and query of the REST timetable for one student (send with the session's JWT).
+#[uniffi::export]
+pub fn untis_timetable_entries_query(
+    person_id: i64,
+    first: FfiDate,
+    last: FfiDate,
+) -> Result<String, MeldeError> {
+    Ok(u::timetable_entries_query(
+        person_id,
+        first.try_into()?,
+        last.try_into()?,
+    ))
+}
+
+/// Exams marked in the REST timetable, for schools that refuse `/api/exams` to students.
+#[uniffi::export]
+pub fn untis_parse_timetable_exams(body: String) -> Result<Vec<FfiUntisExam>, MeldeError> {
+    Ok(u::parse_timetable_exams(&body)?
         .into_iter()
-        .map(|e| FfiUntisExam {
-            id: e.id,
-            date: e.date.into(),
-            start_minute: e.start.minutes(),
-            end_minute: e.end.minutes(),
-            subject: e.subject,
-            name: e.name,
-            exam_type: e.exam_type,
-            teachers: e.teachers,
-            rooms: e.rooms,
-            text: e.text,
-        })
+        .map(ffi_exam)
         .collect())
 }
 

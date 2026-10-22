@@ -3,6 +3,11 @@ import AppIntents
 import SwiftUI
 import WidgetKit
 
+extension LessonActivityAttributes {
+    /// Started by "Vorschau anzeigen" in Status (`LessonActivity.preview`).
+    var isPreview: Bool { lessonID.hasPrefix("preview-") }
+}
+
 /// Lock Screen / Dynamic Island view of the running lesson.
 struct LessonLiveActivity: Widget {
     var body: some WidgetConfiguration {
@@ -31,10 +36,17 @@ struct LessonLiveActivity: Widget {
                             .monospacedDigit()
                             .foregroundStyle(.secondary)
                         Spacer()
-                        Button(intent: LogParticipationIntent()) {
-                            Label(L("Melden"), systemImage: "hand.raised.fill")
+                        if context.attributes.isPreview {
+                            // The preview from Status must not record real Meldungen.
+                            Label(L("Vorschau – nichts gespeichert."), systemImage: "hand.raised.fill")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        } else {
+                            Button(intent: LogParticipationIntent()) {
+                                Label(L("Melden"), systemImage: "hand.raised.fill")
+                            }
+                            .tint(Color.meldoOrange)
                         }
-                        .tint(Color.meldoOrange)
                     }
                 }
             } compactLeading: {
@@ -78,20 +90,30 @@ private struct LessonActivityView: View {
                         .monospacedDigit()
                         .foregroundStyle(.secondary)
                 }
-                Text(L("\(context.state.count)× gemeldet · \(context.state.weekTotal) diese Woche"))
+                Text(context.attributes.isPreview ? L("Vorschau – nichts gespeichert.") : L("\(context.state.count)× gemeldet · \(context.state.weekTotal) diese Woche"))
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
             Spacer(minLength: 0)
-            Button(intent: LogParticipationIntent()) {
+            if context.attributes.isPreview {
+                // Same look, but not a button: the preview from Status must not record real Meldungen.
                 Image(systemName: "hand.raised.fill")
                     .font(.title2)
+                    .foregroundStyle(.white)
                     .frame(width: 52, height: 52)
+                    .background(Color.meldoOrange.opacity(0.5), in: .circle)
+                    .accessibilityLabel(L("Vorschau – nichts gespeichert."))
+            } else {
+                Button(intent: LogParticipationIntent()) {
+                    Image(systemName: "hand.raised.fill")
+                        .font(.title2)
+                        .frame(width: 52, height: 52)
+                }
+                .buttonStyle(.borderedProminent)
+                .buttonBorderShape(.circle)
+                .tint(Color.meldoOrange)
+                .accessibilityLabel(L("Meldung erfassen"))
             }
-            .buttonStyle(.borderedProminent)
-            .buttonBorderShape(.circle)
-            .tint(Color.meldoOrange)
-            .accessibilityLabel(L("Meldung erfassen"))
         }
     }
 }

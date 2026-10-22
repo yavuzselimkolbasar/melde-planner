@@ -12,6 +12,9 @@ nonisolated struct LogParticipationIntent: AppIntent, LiveActivityIntent {
     static let description = IntentDescription("Erfasst eine Meldung für die laufende Stunde.")
     static let supportedModes: IntentModes = .background
 
+    /// Taps closer together than this count once.
+    static let doubleTap: TimeInterval = 2
+
     init() {}
 
     func perform() async throws -> some IntentResult & ProvidesDialog {
@@ -21,7 +24,13 @@ nonisolated struct LogParticipationIntent: AppIntent, LiveActivityIntent {
             return .result(dialog: "\(L("Öffne Meldo einmal, damit Melden hier funktioniert."))")
         }
         var entry: ParticipationEntry?
+        var duplicate = false
         let data = try store.update { data in
+            // A double tap on a widget, the Control or the Live Activity is one Meldung, not two.
+            if let last = data.participation.map(\.recordedAt).max(), now.timeIntervalSince(last) < Self.doubleTap {
+                duplicate = true
+                return
+            }
             if let recorded = MeldeEngine.recordForLesson(in: &data, at: now, calendar: calendar) {
                 entry = recorded
             } else {
@@ -29,6 +38,7 @@ nonisolated struct LogParticipationIntent: AppIntent, LiveActivityIntent {
             }
         }
         Localization.apply(data.preferences.language)
+        if duplicate { return .result(dialog: "\(L("Schon gemeldet."))") }
         Surfaces.reload()
         if let entry {
             LessonCheckIns.didRecord(entry, calendar: calendar)

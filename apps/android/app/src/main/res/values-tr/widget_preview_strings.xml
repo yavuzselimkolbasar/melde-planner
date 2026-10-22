@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Example content of the static widget previews. -->
+<resources>
+    <string name="wp_next">Sıradaki</string>
+    <string name="wp_subject_math">Matematik</string>
+    <string name="wp_in_minutes">10 dakika sonra</string>
+    <string name="wp_week_count">Bu hafta 9</string>
+    <string name="wp_meldungen">Parmak kaldırmalar</string>
+    <string name="wp_nine">9</string>
+    <string name="wp_of_twelve">12 üzerinden</string>
+    <string name="wp_streak">Ardışık 4 okul günü</string>
+    <string name="wp_today_lessons">Bugün</string>
+    <string name="wp_lesson1">08:00  Almanca</string>
+    <string name="wp_lesson2">09:35  Matematik</string>
+    <string name="wp_lesson3">11:25  İngilizce</string>
+    <string name="wp_hw1">Çalışma kâğıdı s. 12</string>
+    <string name="wp_hw1_due">Matematik · yarın</string>
+    <string name="wp_hw2">Kelimeler Ünite 3</string>
+    <string name="wp_hw2_due">İngilizce · cuma</string>
+    <string name="wp_holidays">Tatil</string>
+    <string name="wp_days">12</string>
+    <string name="wp_days_until">gün kaldı</string>
+    <string name="wp_holiday_name">Kış tatili</string>
+</resources>

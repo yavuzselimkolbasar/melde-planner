@@ -36,9 +36,9 @@
     "semantic_hash": ""
   },
   "crates/melde-ffi/src/lib.rs": {
-    "mtime": 1792591818.3132217,
-    "seen": 1792592052.623612,
-    "ast_hash": "f42cbd3d45541b08a623cdfec08fc793",
+    "mtime": 1792688652.0708644,
+    "seen": 1792690818.571439,
+    "ast_hash": "0cc86fd851f60ee0fd686b7ffd189ff8",
     "semantic_hash": ""
   },
   "crates/melde-ffi/src/participation.rs": {
@@ -156,15 +156,15 @@
     "semantic_hash": ""
   },
   "vault/02-Decisions/Decision Log.md": {
-    "mtime": 1792593181.7224498,
-    "seen": 1792593193.809279,
-    "ast_hash": "089c8c03380cf18c184b8986ad2cee4d",
+    "mtime": 1792689576.3042433,
+    "seen": 1792690818.5756524,
+    "ast_hash": "6e624b2005dcea7a993b6b469b96a1f3",
     "semantic_hash": ""
   },
   "vault/03-Architecture/Architecture Overview.md": {
-    "mtime": 1792585283.9727423,
-    "seen": 1792585342.7314477,
-    "ast_hash": "0137d5cf6d52cdcf75cf5683884b8435",
+    "mtime": 1792689576.297733,
+    "seen": 1792690818.5756536,
+    "ast_hash": "b8a2e43ea4f44d1327b577794c5d9585",
     "semantic_hash": ""
   },
   "vault/03-Architecture/Skill Security Scan.md": {
@@ -174,9 +174,9 @@
     "semantic_hash": ""
   },
   "vault/04-Features/Feature Index.md": {
-    "mtime": 1792607372.723343,
-    "seen": 1792608144.3277276,
-    "ast_hash": "9d0a890e4c87f7d62536b67953ab6ac7",
+    "mtime": 1792700225.481516,
+    "seen": 1792700245.3905082,
+    "ast_hash": "13fbf9dc109ede42c6e2ffc25332b71a",
     "semantic_hash": ""
   },
   "vault/05-Glossary/Glossary.md": {
@@ -186,9 +186,9 @@
     "semantic_hash": ""
   },
   "vault/06-Sessions/Session Log.md": {
-    "mtime": 1792617922.2652676,
-    "seen": 1792617926.079483,
-    "ast_hash": "8097524ea5911792434476cac1243786",
+    "mtime": 1792704681.5990248,
+    "seen": 1792704689.0237849,
+    "ast_hash": "a88604f2db5bfd03fc195d055733a635",
     "semantic_hash": ""
   },
   "vault/Home.md": {
@@ -218,13 +218,13 @@
   "supabase/migrations/20261021120000_initial_schema.sql": {
     "mtime": 1792584613.2476974,
     "seen": 1792585958.7952087,
-    "ast_hash": "dccd5a196415b59b47648dbb2b6b7aec",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/tests/database/rls_isolation.test.sql": {
     "mtime": 1792584621.8890479,
     "seen": 1792585958.7952101,
-    "ast_hash": "39141ebddeaab9546284aca4be3527cc",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "apps/ios/MeldeCore/Package.swift": {
@@ -402,9 +402,9 @@
     "semantic_hash": ""
   },
   "vault/03-Architecture/Windows Dev Workflow.md": {
-    "mtime": 1792585286.5773928,
-    "seen": 1792585342.73145,
-    "ast_hash": "b6fba2e13587d832ff2750d2a3cce7fa",
+    "mtime": 1792686594.433498,
+    "seen": 1792686662.6377454,
+    "ast_hash": "7b1cecf6c17e040eee961d3146d0afd2",
     "semantic_hash": ""
   },
   "apps/ios/MeldePlannerTests/TaskAndExamTests.swift": {
@@ -510,15 +510,15 @@
     "semantic_hash": ""
   },
   "apps/ios/MeldePlanner/Features/Dashboard/UnassignedCard.swift": {
-    "mtime": 1792590791.0026555,
-    "seen": 1792590907.8635163,
-    "ast_hash": "f6de442633d6963d0f79ec54deb428d4",
+    "mtime": 1792697531.7089393,
+    "seen": 1792698296.56394,
+    "ast_hash": "b299dec8c2d078dc8216ed3c35d78931",
     "semantic_hash": ""
   },
   "apps/ios/MeldeWidgets/LessonLiveActivity.swift": {
-    "mtime": 1792614604.1362307,
-    "seen": 1792615213.7623425,
-    "ast_hash": "91efab5a523e2672025aac86ccfa4a76",
+    "mtime": 1792704300.269628,
+    "seen": 1792704689.0171216,
+    "ast_hash": "04e05076fb8d94623024292b324c1bd4",
     "semantic_hash": ""
   },
   "apps/ios/MeldeWidgets/MeldeWidgetsBundle.swift": {
@@ -564,9 +564,9 @@
     "semantic_hash": ""
   },
   "apps/ios/Shared/LogParticipationIntent.swift": {
-    "mtime": 1792590592.2581384,
-    "seen": 1792590907.8635364,
-    "ast_hash": "2ff240278305a13d340dd36e11615454",
+    "mtime": 1792704300.269628,
+    "seen": 1792704689.0178473,
+    "ast_hash": "bdd57124b82dc193e0cb55620ee745a2",
     "semantic_hash": ""
   },
   "apps/ios/Shared/MeldeEngine.swift": {
@@ -732,9 +732,9 @@
     "semantic_hash": ""
   },
   "apps/ios/MeldePlanner/App/AppModel+Untis.swift": {
-    "mtime": 1792612469.069291,
-    "seen": 1792612520.0788062,
-    "ast_hash": "90c10302e1203c7f37d0d27dd4b4b6fa",
+    "mtime": 1792697291.840601,
+    "seen": 1792698296.5628211,
+    "ast_hash": "86b084633a5cd7390ec8430a97f0057c",
     "semantic_hash": ""
   },
   "apps/ios/MeldePlanner/Data/Keychain.swift": {
@@ -744,9 +744,9 @@
     "semantic_hash": ""
   },
   "apps/ios/MeldePlanner/Data/UntisClient.swift": {
-    "mtime": 1792606667.3690736,
-    "seen": 1792608144.3275228,
-    "ast_hash": "fc7fb00ac2345e6572acd49af55fd01e",
+    "mtime": 1792697291.8390946,
+    "seen": 1792698296.5632687,
+    "ast_hash": "200f46de4acbad320d5e17a61f742a06",
     "semantic_hash": ""
   },
   "apps/ios/MeldePlanner/Features/Untis/UntisConnectView.swift": {
@@ -756,9 +756,9 @@
     "semantic_hash": ""
   },
   "crates/melde-ffi/src/untis.rs": {
-    "mtime": 1792606594.948602,
-    "seen": 1792608144.3276772,
-    "ast_hash": "f54d739921d6da4238b9ccd7cd05e5bd",
+    "mtime": 1792696950.4306211,
+    "seen": 1792698296.5687985,
+    "ast_hash": "201dd7cb5ff17252cea3d4243be81816",
     "semantic_hash": ""
   },
   "crates/melde-untis/Cargo.toml": {
@@ -774,9 +774,9 @@
     "semantic_hash": ""
   },
   "crates/melde-untis/src/lib.rs": {
-    "mtime": 1792606572.4577096,
-    "seen": 1792608144.3276927,
-    "ast_hash": "d0d034e3314789a0ff3188d4bffe2dd2",
+    "mtime": 1792696951.2241201,
+    "seen": 1792698296.5698066,
+    "ast_hash": "fc982e2ce4cf1d62e4368b6832ec68db",
     "semantic_hash": ""
   },
   "crates/melde-untis/src/rpc.rs": {
@@ -846,9 +846,9 @@
     "semantic_hash": ""
   },
   "apps/ios/MeldePlanner/Features/Holidays/HolidayViews.swift": {
-    "mtime": 1792607043.495362,
-    "seen": 1792608144.327542,
-    "ast_hash": "ad3ad3d2ea820297a97f9ddd0b793214",
+    "mtime": 1792703167.40543,
+    "seen": 1792703829.2552366,
+    "ast_hash": "1de17fb70cbc5d31a019ef84b4d2cfa1",
     "semantic_hash": ""
   },
   "apps/ios/MeldePlanner/App/AppModel+Week.swift": {
@@ -894,9 +894,9 @@
     "semantic_hash": ""
   },
   "crates/melde-untis/src/rest.rs": {
-    "mtime": 1792606572.6741498,
-    "seen": 1792608144.327694,
-    "ast_hash": "2e92232775e4a1f41967461d4d3071ae",
+    "mtime": 1792696969.0052967,
+    "seen": 1792698296.5698078,
+    "ast_hash": "c6a88171c5d7120238c6a229de30f70c",
     "semantic_hash": ""
   },
   "vault/02-Decisions/ADR-0008 Teams assignments via Graph.md": {
@@ -945,6 +945,588 @@
     "mtime": 1792614397.0172918,
     "seen": 1792615213.7623465,
     "ast_hash": "195e830510ed5d7bc59c70eabeccd483",
+    "semantic_hash": ""
+  },
+  "apps/android/app/build.gradle.kts": {
+    "mtime": 1792698450.8859465,
+    "seen": 1792700245.3755488,
+    "ast_hash": "587ec462c079f7e987dddecd29e7949a",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/MainActivity.kt": {
+    "mtime": 1792690651.0463388,
+    "seen": 1792690818.564627,
+    "ast_hash": "23c9656ff6d3d3b8c51372926627bc8f",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/MeldoApp.kt": {
+    "mtime": 1792697337.1884882,
+    "seen": 1792698296.5553603,
+    "ast_hash": "800a54763bf7fc67f90fef3a33955197",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/core/Localization.kt": {
+    "mtime": 1792697337.1869855,
+    "seen": 1792698296.5553634,
+    "ast_hash": "4b4578a62301a3e7dd6a3011b0c04fa0",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/core/MeldeEngine.kt": {
+    "mtime": 1792688863.4059412,
+    "seen": 1792690818.5646305,
+    "ast_hash": "213e6a3010bdc3343a1fc9fd3b1238fb",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/core/MeldoCalendar.kt": {
+    "mtime": 1792688804.4338384,
+    "seen": 1792690818.5646315,
+    "ast_hash": "187cacd72bbdfc611208aa6576a389d9",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/data/Json.kt": {
+    "mtime": 1792688783.5670729,
+    "seen": 1792690818.5646327,
+    "ast_hash": "46a2a526fa8db6699d975fe9b6023a52",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/data/LocalStore.kt": {
+    "mtime": 1792688783.6278782,
+    "seen": 1792690818.5646336,
+    "ast_hash": "a934679add15d4a4f9b6e5b92ffccf53",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/data/Models.kt": {
+    "mtime": 1792688765.8036726,
+    "seen": 1792690818.5646346,
+    "ast_hash": "f58b6fc9b2985d6500a4b3095dfe0dae",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/data/SecureStore.kt": {
+    "mtime": 1792690225.985968,
+    "seen": 1792690818.564636,
+    "ast_hash": "b6d65118996dd94bd2f741d901201cf8",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/data/TeamsClient.kt": {
+    "mtime": 1792689712.9187536,
+    "seen": 1792690818.5646367,
+    "ast_hash": "50c3f73314b91fd98130bf34bdc85aba",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/data/UntisClient.kt": {
+    "mtime": 1792697090.954913,
+    "seen": 1792698296.5561612,
+    "ast_hash": "eacc5dca4b6d377768074210dd8961e9",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/model/AppModel.kt": {
+    "mtime": 1792697337.1884882,
+    "seen": 1792698296.5561626,
+    "ast_hash": "9d8b8ba7e3328b887eaf2bcf7cabe59b",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/model/AppModelExams.kt": {
+    "mtime": 1792689861.4747236,
+    "seen": 1792690818.5646417,
+    "ast_hash": "0ef71a66c126906e953bd56c96bca585",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/model/AppModelSchool.kt": {
+    "mtime": 1792689015.7950926,
+    "seen": 1792690818.5646434,
+    "ast_hash": "d1276806616446e225c1165d77b19e18",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/model/AppModelTasks.kt": {
+    "mtime": 1792688951.9112878,
+    "seen": 1792690818.564644,
+    "ast_hash": "30b7793acd7c92f080435134e3612baf",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/model/AppModelTeams.kt": {
+    "mtime": 1792689848.8573413,
+    "seen": 1792690818.564645,
+    "ast_hash": "f5834a1d0fb39838ed56c3fe31ccd8db",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/model/AppModelUntis.kt": {
+    "mtime": 1792697024.3919091,
+    "seen": 1792698296.5564742,
+    "ast_hash": "e4b519dab3976e3da4087a504a52aa6c",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/model/AppModelWeek.kt": {
+    "mtime": 1792688951.8341086,
+    "seen": 1792690818.564647,
+    "ast_hash": "390c72d469913a07c70f771b6196254a",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/model/BackgroundRefresh.kt": {
+    "mtime": 1792689867.1045947,
+    "seen": 1792690818.5646477,
+    "ast_hash": "3797d94e43014e6283410bc9bc15cc63",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/surfaces/Alarms.kt": {
+    "mtime": 1792689871.4426682,
+    "seen": 1792690818.5646498,
+    "ast_hash": "b2c640123e4e44ae79156e75e0769c2d",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/surfaces/LessonCheckIns.kt": {
+    "mtime": 1792690427.7415986,
+    "seen": 1792690818.5646508,
+    "ast_hash": "635aff657d1a6f22d1ea9c032446c22e",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/surfaces/LiveLesson.kt": {
+    "mtime": 1792704244.3716767,
+    "seen": 1792704689.0044236,
+    "ast_hash": "6ebae892117ea8b1cc916201c179eef8",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/surfaces/LogParticipation.kt": {
+    "mtime": 1792704200.1056185,
+    "seen": 1792704689.0044272,
+    "ast_hash": "bacabd056dbd07aa8a08f1da7634ab19",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/surfaces/MeldenTileService.kt": {
+    "mtime": 1792690048.7511446,
+    "seen": 1792690818.5646536,
+    "ast_hash": "5e0177df0d2607c09d280c6591b837b8",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/surfaces/Notifications.kt": {
+    "mtime": 1792689858.2646391,
+    "seen": 1792690818.5646548,
+    "ast_hash": "288bad98bbd20db3a79bd63f19a065a8",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/surfaces/Reminders.kt": {
+    "mtime": 1792689890.2504075,
+    "seen": 1792690818.5646555,
+    "ast_hash": "e23d8a5ad935efbb52edd0a5b519c55d",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/surfaces/Surfaces.kt": {
+    "mtime": 1792704244.3726761,
+    "seen": 1792704689.0047054,
+    "ast_hash": "3aa718714f2db772c0f6855604d7c5bc",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/surfaces/SurfacesReceiver.kt": {
+    "mtime": 1792704278.1913674,
+    "seen": 1792704689.004707,
+    "ast_hash": "77e90d86a3fc9f16735a6aa87bbbae36",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/surfaces/SymbolBitmaps.kt": {
+    "mtime": 1792689943.773174,
+    "seen": 1792690818.564658,
+    "ast_hash": "8d38a4a4ea36c4f831f17bfd3223708c",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/surfaces/widgets/MoreWidgets.kt": {
+    "mtime": 1792690427.7390728,
+    "seen": 1792690818.5646586,
+    "ast_hash": "1947d31509bc8633f7301f620cd1020e",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/surfaces/widgets/StatsWidget.kt": {
+    "mtime": 1792690427.7390728,
+    "seen": 1792690818.5646594,
+    "ast_hash": "464a3428e75b180b9d88835267ad7ffe",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/surfaces/widgets/TodayWidget.kt": {
+    "mtime": 1792690427.7400894,
+    "seen": 1792690818.5646603,
+    "ast_hash": "53a8712397f6e27a7625ad57bf090041",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/surfaces/widgets/WidgetKit.kt": {
+    "mtime": 1792690427.7410924,
+    "seen": 1792690818.564661,
+    "ast_hash": "0665565fb431d96d5f14cb75d100027a",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/components/CardGrid.kt": {
+    "mtime": 1792702425.973977,
+    "seen": 1792702778.3489864,
+    "ast_hash": "e9a34d008b3ec450073c862d5fab39d2",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/components/Components.kt": {
+    "mtime": 1792703500.5679762,
+    "seen": 1792703829.2480383,
+    "ast_hash": "e9d668df76287e38235de9dd20d86956",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/components/Mascot.kt": {
+    "mtime": 1792699314.7141147,
+    "seen": 1792700245.378715,
+    "ast_hash": "84496d16b292628ed0383da3ca44ae58",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/components/Symbols.kt": {
+    "mtime": 1792700993.9625258,
+    "seen": 1792701477.3062112,
+    "ast_hash": "4910d7991a779531af5c17aaecab6ff7",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/calendar/CalendarScreen.kt": {
+    "mtime": 1792702500.9811156,
+    "seen": 1792702778.349445,
+    "ast_hash": "1c2ad90b2ea2eb9fb5b0aa2e212c7af7",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/dashboard/CheckInPromptCard.kt": {
+    "mtime": 1792699235.9789207,
+    "seen": 1792700245.378804,
+    "ast_hash": "423d0ff4c7a2cb6f60c8bab116dab47f",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/dashboard/DashboardScreen.kt": {
+    "mtime": 1792703438.6359477,
+    "seen": 1792703829.2488005,
+    "ast_hash": "987c880913897688dbe51b0c67ec9001",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/dashboard/DashboardSupport.kt": {
+    "mtime": 1792699235.979916,
+    "seen": 1792700245.3788064,
+    "ast_hash": "c482a0ef32522f927d460237dbfe487e",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/dashboard/HomeworkCard.kt": {
+    "mtime": 1792699235.9789207,
+    "seen": 1792700245.3788075,
+    "ast_hash": "c96cad2128b7e19bcde0d580114e4663",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/dashboard/MoreCards.kt": {
+    "mtime": 1792699386.2013133,
+    "seen": 1792700245.3788083,
+    "ast_hash": "f433241a416c2b1c95904daa2cee82b8",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/dashboard/UnassignedCard.kt": {
+    "mtime": 1792699235.979916,
+    "seen": 1792700245.3788095,
+    "ast_hash": "be5356e9d26c4240666f9e19bb519918",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/exams/DocumentImport.kt": {
+    "mtime": 1792690151.5166717,
+    "seen": 1792690818.564671,
+    "ast_hash": "b0fb812566949cbcb0925e33d16179b5",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/exams/ExamDetailScreen.kt": {
+    "mtime": 1792699680.2777371,
+    "seen": 1792700245.3788958,
+    "ast_hash": "05f03b1b93664d17e053903938b3228f",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/exams/ExamEditorScreen.kt": {
+    "mtime": 1792699661.6236155,
+    "seen": 1792700245.3788972,
+    "ast_hash": "df66b5c02dcc97f212889f87a04ce338",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/exams/ExamListScreen.kt": {
+    "mtime": 1792700005.5438766,
+    "seen": 1792700245.3788981,
+    "ast_hash": "1699e842b0a0dbeaecf4940b0701ffed",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/grades/GradesScreen.kt": {
+    "mtime": 1792703438.64297,
+    "seen": 1792703829.2496214,
+    "ast_hash": "2b545c30a0fc9e0b5f862b5f62b7e999",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/more/AppIcons.kt": {
+    "mtime": 1792689914.3893185,
+    "seen": 1792690818.5646753,
+    "ast_hash": "270a14338110e5ce00eb7f35b4d99aaf",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/more/FormRows.kt": {
+    "mtime": 1792703500.569983,
+    "seen": 1792703829.2497203,
+    "ast_hash": "2057b92117b8e6cf08424657c2e960d8",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/more/MoreScreen.kt": {
+    "mtime": 1792703438.6474853,
+    "seen": 1792703829.2497215,
+    "ast_hash": "a545138d088e5281a4785f4b1b95b1e2",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/more/StatusScreen.kt": {
+    "mtime": 1792699472.6394632,
+    "seen": 1792700245.3789842,
+    "ast_hash": "c72df810e3f1d021abaa7ad4399071b1",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/participation/MeldenButton.kt": {
+    "mtime": 1792703438.650493,
+    "seen": 1792703829.2498038,
+    "ast_hash": "f828440bd50504f7ee7ad653bdf99c93",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/statistics/Charts.kt": {
+    "mtime": 1792699363.7213175,
+    "seen": 1792700245.3789864,
+    "ast_hash": "b13e920048463a4b3458139924e83905",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/statistics/StatisticsScreen.kt": {
+    "mtime": 1792699386.2013133,
+    "seen": 1792700245.3789873,
+    "ast_hash": "60017d665ee828c1f8c61dc1663b7799",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/subjects/SubjectListScreen.kt": {
+    "mtime": 1792703438.653491,
+    "seen": 1792703829.2499676,
+    "ast_hash": "f2c6a7c97873a7027c9c8d7d48b83dd8",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/tasks/FormParts.kt": {
+    "mtime": 1792703598.5874348,
+    "seen": 1792703829.249969,
+    "ast_hash": "8d55081f4cbc24f3f81f0bc4a72ae4da",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/tasks/TaskEditorScreen.kt": {
+    "mtime": 1792699263.708258,
+    "seen": 1792700245.3789902,
+    "ast_hash": "208421b9248ce7440d43b650832b6f11",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/tasks/TaskListScreen.kt": {
+    "mtime": 1792702120.9862356,
+    "seen": 1792702778.3516939,
+    "ast_hash": "82c1fe2b87f0c0efb4bdb10b61318055",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/timetable/HolidayViews.kt": {
+    "mtime": 1792703167.4064424,
+    "seen": 1792703829.2501357,
+    "ast_hash": "766ecfd38d08f49c92b3fb32a59d1db9",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/timetable/LessonEditorScreen.kt": {
+    "mtime": 1792703438.6600137,
+    "seen": 1792703829.2501369,
+    "ast_hash": "ecabc5dc574e567d1758df329b739fcb",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/timetable/TimetableBlockSheet.kt": {
+    "mtime": 1792703438.6610155,
+    "seen": 1792703829.250138,
+    "ast_hash": "8227f1058e3de5d1b3a8780234d34c52",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/timetable/TimetableGrid.kt": {
+    "mtime": 1792699528.5580337,
+    "seen": 1792700245.3789954,
+    "ast_hash": "dc302185b597837a49a12ba15d54c9dd",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/timetable/TimetableScreen.kt": {
+    "mtime": 1792703438.6640072,
+    "seen": 1792703829.250224,
+    "ast_hash": "7b343136f7204aa6e089ca2927874e75",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/timetable/TimetableStyle.kt": {
+    "mtime": 1792689707.3322709,
+    "seen": 1792690818.5646884,
+    "ast_hash": "f9e3c2723f506f6eebbca6e5142d24f1",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/untis/AbsencesScreen.kt": {
+    "mtime": 1792699979.2428987,
+    "seen": 1792700245.37909,
+    "ast_hash": "4b8ce088fa58ebe89fa4203eca1ecd00",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/untis/ExcuseNoteScreen.kt": {
+    "mtime": 1792699979.2569518,
+    "seen": 1792700245.3790915,
+    "ast_hash": "2f79b0cec89a8d68f6a30a1ec0ac0c98",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/untis/TeamsAuthActivity.kt": {
+    "mtime": 1792699979.2749815,
+    "seen": 1792700245.3790925,
+    "ast_hash": "b6742743a05078d432315e89ea4254de",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/untis/TeamsConnectScreen.kt": {
+    "mtime": 1792699979.2845109,
+    "seen": 1792700245.3790934,
+    "ast_hash": "1bcbe14b7794f2422f703fc0bc98c617",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/untis/UntisConnectScreen.kt": {
+    "mtime": 1792703438.6695182,
+    "seen": 1792703829.2506385,
+    "ast_hash": "c30074a4501a83e245158f7a940693ec",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/features/untis/UntisWebLoginScreen.kt": {
+    "mtime": 1792699979.3181105,
+    "seen": 1792700245.3790953,
+    "ast_hash": "5cb67c966596b0b23083ad3cab90196e",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/navigation/Navigator.kt": {
+    "mtime": 1792703527.3514001,
+    "seen": 1792703829.2507212,
+    "ast_hash": "11b7877ee71bba811411737f91491216",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/navigation/RootScreen.kt": {
+    "mtime": 1792703727.1067417,
+    "seen": 1792703829.250723,
+    "ast_hash": "eef78e6d9d266dce2ab18de09dc39908",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/theme/MeldoTheme.kt": {
+    "mtime": 1792703515.594363,
+    "seen": 1792703829.2507267,
+    "ast_hash": "a6bba0994a157e2628f19466f52ee3d7",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/theme/Type.kt": {
+    "mtime": 1792698609.2049184,
+    "seen": 1792700245.379101,
+    "ast_hash": "22345fbd2a5598a4316c2f9b5391c3bd",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/test/java/app/meldeplanner/android/data/ModelsJsonTest.kt": {
+    "mtime": 1792689513.1098077,
+    "seen": 1792690818.564697,
+    "ast_hash": "d1647a65ed46843a278b567f46ca965c",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/test/java/app/meldeplanner/android/model/UntisMergeTest.kt": {
+    "mtime": 1792690175.1972985,
+    "seen": 1792690818.5646977,
+    "ast_hash": "20c29b1db9e65ff3b3af4bfd50e31e06",
+    "semantic_hash": ""
+  },
+  "apps/android/build.gradle.kts": {
+    "mtime": 1792688220.8146627,
+    "seen": 1792690818.5646987,
+    "ast_hash": "2f1df9005df7916217db80a27fac621e",
+    "semantic_hash": ""
+  },
+  "apps/android/gradlew": {
+    "mtime": 1792688297.2397678,
+    "seen": 1792690818.5646994,
+    "ast_hash": "a43be8432bac3ffd05b3769aa42fe996",
+    "semantic_hash": ""
+  },
+  "apps/android/settings.gradle.kts": {
+    "mtime": 1792688220.7960978,
+    "seen": 1792690818.5647001,
+    "ast_hash": "dca4f6748fb56a17b8bf06eac9b227f4",
+    "semantic_hash": ""
+  },
+  "apps/android/strings/common.json": {
+    "mtime": 1792688722.6584854,
+    "seen": 1792690818.5647008,
+    "ast_hash": "b0d5e1cc6ad380a5d9d4fb10c7873050",
+    "semantic_hash": ""
+  },
+  "apps/android/strings/dashboard.json": {
+    "mtime": 1792697509.1338632,
+    "seen": 1792698296.561322,
+    "ast_hash": "3564dadd3a2adc3d6c8579708fafbf56",
+    "semantic_hash": ""
+  },
+  "apps/android/strings/documents.json": {
+    "mtime": 1792690124.5226336,
+    "seen": 1792690818.5647027,
+    "ast_hash": "36330cf5ecd7ced5511d02549c01ec1d",
+    "semantic_hash": ""
+  },
+  "apps/android/strings/more.json": {
+    "mtime": 1792697509.1338632,
+    "seen": 1792698296.5613942,
+    "ast_hash": "daf373100b51d1a26b3a409f46985bd1",
+    "semantic_hash": ""
+  },
+  "apps/android/strings/surfaces.json": {
+    "mtime": 1792690408.830892,
+    "seen": 1792690818.5647044,
+    "ast_hash": "237499d00d3abd4c2ea2bb192c904489",
+    "semantic_hash": ""
+  },
+  "apps/android/strings/untis.json": {
+    "mtime": 1792689898.3938892,
+    "seen": 1792690818.5647054,
+    "ast_hash": "b9436560a0923a10dd4de2702d0ba167",
+    "semantic_hash": ""
+  },
+  ".github/workflows/android.yml": {
+    "mtime": 1792689525.2197888,
+    "seen": 1792690818.5738945,
+    "ast_hash": "e1cf63168b4749e72f1d5a4c6de9ecdb",
+    "semantic_hash": ""
+  },
+  "apps/android/docs/PORTING.md": {
+    "mtime": 1792689322.344168,
+    "seen": 1792690818.5744073,
+    "ast_hash": "9834f199bba02d281f79cd185dc3ef2f",
+    "semantic_hash": ""
+  },
+  "apps/android/docs/core-api.kt.txt": {
+    "mtime": 1792688834.0905948,
+    "seen": 1792690818.574409,
+    "ast_hash": "c9dc2741d573f891be354738a583a8a1",
+    "semantic_hash": ""
+  },
+  "vault/02-Decisions/ADR-0009 Native Android port.md": {
+    "mtime": 1792689512.9897764,
+    "seen": 1792690818.5756497,
+    "ast_hash": "0db177a6ec0acf6e032d5e3cb96b51f7",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/components/Expressive.kt": {
+    "mtime": 1792703727.1052318,
+    "seen": 1792703829.2480433,
+    "ast_hash": "66ecabab6dbc30f70308eecdf9b886e2",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/theme/Chrome.kt": {
+    "mtime": 1792703500.5709782,
+    "seen": 1792703829.250724,
+    "ast_hash": "8dce842251d9e11990bdff0d5185a9c4",
+    "semantic_hash": ""
+  },
+  "apps/android/docs/DESIGN.md": {
+    "mtime": 1792698919.971938,
+    "seen": 1792700245.388739,
+    "ast_hash": "be6d2b51bddc1cd3c19a8371ba91ed71",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/navigation/FloatingTabBar.kt": {
+    "mtime": 1792703570.391068,
+    "seen": 1792703829.2507193,
+    "ast_hash": "3b782ab1585fcafb14982429cb5d504b",
+    "semantic_hash": ""
+  },
+  "apps/android/app/src/main/java/app/meldeplanner/android/ui/theme/Frosted.kt": {
+    "mtime": 1792703727.1052318,
+    "seen": 1792703829.2507253,
+    "ast_hash": "71b0a267d6cbeac8df5eff5343daba78",
     "semantic_hash": ""
   }
 }

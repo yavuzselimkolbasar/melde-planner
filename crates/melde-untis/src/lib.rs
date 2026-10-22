@@ -15,7 +15,7 @@ pub use derive::{
 };
 pub use rest::{
     Absence, Exam, Homework, NewsMessage, is_logged_out, parse_absences, parse_exams,
-    parse_homework, parse_news, range_query,
+    parse_homework, parse_news, parse_timetable_exams, range_query, timetable_entries_query,
 };
 pub use rpc::{
     Auth, Period, School, SchoolHoliday, TimeUnit, authenticate_request, holidays_request,

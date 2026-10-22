@@ -507,6 +507,28 @@
         }
       }
     },
+    "1 Meldung von heute hat noch kein Fach.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 Meldung von heute hat noch kein Fach."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugünkü 1 parmak kaldırmanın henüz dersi yok."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 contribution from today has no subject yet."
+          }
+        }
+      }
+    },
     "1. Schule finden": {
       "localizations": {
         "de": {
@@ -2417,6 +2439,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Die Stunde"
+          }
+        }
+      }
+    },
+    "Die nächsten Ferien erscheinen hier, sobald deine Schule sie in WebUntis einträgt.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die nächsten Ferien erscheinen hier, sobald deine Schule sie in WebUntis einträgt."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Okulun sonraki tatilleri WebUntis'e girdiğinde burada görünür."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your next holidays appear here as soon as your school adds them in WebUntis."
           }
         }
       }
@@ -4859,6 +4903,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Can't reach WebUntis. Check your internet."
+          }
+        }
+      }
+    },
+    "Keine kommenden Ferien": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine kommenden Ferien"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yaklaşan tatil yok"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No upcoming holidays"
           }
         }
       }
@@ -7921,6 +7987,28 @@
         }
       }
     },
+    "Schon gemeldet.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schon gemeldet."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zaten kaydedildi."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Already recorded."
+          }
+        }
+      }
+    },
     "Schriftlich": {
       "localizations": {
         "de": {
@@ -9567,6 +9655,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Show preview"
+          }
+        }
+      }
+    },
+    "Vorschau – nichts gespeichert.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vorschau – nichts gespeichert."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Önizleme – hiçbir şey kaydedilmedi."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preview – nothing saved."
           }
         }
       }

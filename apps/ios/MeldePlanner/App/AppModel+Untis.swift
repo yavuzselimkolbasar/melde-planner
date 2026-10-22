@@ -119,8 +119,21 @@ extension AppModel {
         if let periods = try? untisParsePeriods(timetableBody: body) {
             storeUntisWeeks(periods, bells: bells, firstDay: thisMonday, lastDay: fetchedLastDay)
         }
+        let outcome: Result<UntisImportSummary, UntisClient.Failure>
+        do {
+            outcome = .success(try importSchedule(link: link, body: body, thisWeek: thisWeek, holidays: holidays))
+        } catch {
+            outcome = .failure(error)
+        }
+        // After the subjects exist (applyUntis), so homework finds the subject it belongs to;
+        // also when the weeks hold no lessons, so absences and homework stay current.
         await importUntisExtras(client: client, server: link.server, auth: auth)
         if logout { await client.logout(server: link.server, loginName: link.loginName) }
+        return try outcome.get()
+    }
+
+    /// Derives the weekly plan from the dated periods and applies it.
+    private func importSchedule(link: UntisLink, body: String, thisWeek: FfiDate, holidays: [FfiUntisHoliday]) throws(UntisClient.Failure) -> UntisImportSummary {
         let schedule: FfiUntisSchedule
         let monday: Date
         do {
@@ -161,7 +174,11 @@ extension AppModel {
         }
         let todayFfi = FfiDate(today, calendar: calendar)
         let absences = try? await client.absences(server: server, auth: auth, first: FfiDate(schoolYearStart, calendar: calendar), last: todayFfi)
-        let exams = try? await client.exams(server: server, auth: auth, first: todayFfi, last: day(120))
+        // Some schools refuse the exam list to students but mark exams in the timetable.
+        var exams = try? await client.exams(server: server, auth: auth, first: todayFfi, last: day(120))
+        if exams == nil {
+            exams = try? await client.timetableExams(server: server, auth: auth, first: todayFfi, last: day(120))
+        }
         let homework = try? await client.homework(server: server, first: day(-14), last: day(56))
         let news = try? await client.news(server: server, date: todayFfi)
 
@@ -198,6 +215,11 @@ extension AppModel {
             // New WebUntis homework only; what the student already has stays as they left it.
             let known = Set(data.tasks.compactMap(\.untisID))
             data.tasks.append(contentsOf: tasks.filter { !known.contains($0.untisID ?? 0) })
+            // Homework imported before its subject existed gets it now; a subject the student set stays.
+            let subjects = Dictionary(tasks.compactMap { t in t.untisID.map { ($0, t.subjectID) } }, uniquingKeysWith: { first, _ in first })
+            for i in data.tasks.indices where data.tasks[i].subjectID == nil {
+                if let id = data.tasks[i].untisID, let subject = subjects[id] { data.tasks[i].subjectID = subject }
+            }
         }
     }
 

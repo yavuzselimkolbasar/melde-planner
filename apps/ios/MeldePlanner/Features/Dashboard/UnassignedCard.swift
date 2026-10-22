@@ -11,7 +11,9 @@ struct UnassignedCard: View {
         let unassigned = model.unassignedEntries(on: now)
         if !unassigned.isEmpty {
             Card(title: L("Ohne Fach"), systemImage: "questionmark.circle") {
-                Text(L("\(unassigned.count) Meldungen von heute haben noch kein Fach."))
+                Text(unassigned.count == 1
+                     ? L("1 Meldung von heute hat noch kein Fach.")
+                     : L("\(unassigned.count) Meldungen von heute haben noch kein Fach."))
                     .foregroundStyle(.secondary)
                 Button(L("Fach zuordnen")) { assigning = true }
                     .buttonStyle(.glassProminent)

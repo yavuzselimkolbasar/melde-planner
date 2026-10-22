@@ -24,8 +24,10 @@ python -I scripts/check_strings.py
 The iOS app builds only on macOS. CI does that: [`.github/workflows/ios.yml`](.github/workflows/ios.yml). On a Mac:
 
 ```bash
-scripts/build-rust-ios.sh && cd apps/ios && xcodegen generate && open MeldePlanner.xcodeproj
+bash scripts/setup-mac.sh
 ```
+
+It checks Xcode 26, Homebrew, XcodeGen and Rust, builds the Rust core for iOS, generates the Xcode project and opens it. Re-run it after pulling changes.
 
 ## Status
 Phase 1 (foundation) is in progress. See the [feature index](vault/04-Features/Feature%20Index.md) for what is implemented, verified or missing.

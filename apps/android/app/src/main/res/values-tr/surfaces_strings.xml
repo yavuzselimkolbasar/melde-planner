@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="surfaces_widget_today">Meldo</string>
+    <string name="surfaces_widget_today_description">Şu anki ders, bu haftaki parmak kaldırmalar ve tek dokunuşla kayıt.</string>
+    <string name="surfaces_widget_stats">Meldo İstatistik</string>
+    <string name="surfaces_widget_stats_description">Bu haftaki parmak kaldırmaların.</string>
+    <string name="surfaces_widget_schedule">Bugünkü ders programı</string>
+    <string name="surfaces_widget_schedule_description">Bugünkü derslerin, iptal edilenlerin üstü çizili.</string>
+    <string name="surfaces_widget_homework">Ödevler</string>
+    <string name="surfaces_widget_homework_description">Yakında teslim edilecekler.</string>
+    <string name="surfaces_widget_holidays">Tatil geri sayımı</string>
+    <string name="surfaces_widget_holidays_description">Bir sonraki tatile kalan günler.</string>
+
+    <string name="surfaces_tile_melden">Parmak kaldır</string>
+    <string name="surfaces_shortcut_melden">Parmak kaldır</string>
+    <string name="surfaces_shortcut_melden_long">Parmak kaldırmayı kaydet</string>
+</resources>

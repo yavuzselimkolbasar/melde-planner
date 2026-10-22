@@ -1,0 +1,27 @@
+{
+  "Dateien › Dokumente › Meldo › Scans": {
+    "de": "Dateien › Dokumente › Meldo › Scans",
+    "tr": "Dosyalar › Belgeler › Meldo › Scans",
+    "en": "Files › Documents › Meldo › Scans"
+  },
+  "Aus Dateien, Google Drive oder Mail": {
+    "de": "Aus Dateien, Google Drive oder Mail",
+    "tr": "Dosyalar, Google Drive veya postadan",
+    "en": "From Files, Google Drive or Mail"
+  },
+  "Bilder aus deiner Galerie": {
+    "de": "Bilder aus deiner Galerie",
+    "tr": "Galerindeki resimler",
+    "en": "Pictures from your gallery"
+  },
+  "Der Scanner ist auf diesem Gerät nicht verfügbar.": {
+    "de": "Der Scanner ist auf diesem Gerät nicht verfügbar.",
+    "tr": "Tarayıcı bu cihazda kullanılamıyor.",
+    "en": "The scanner isn't available on this device."
+  },
+  "Teilen": {
+    "de": "Teilen",
+    "tr": "Paylaş",
+    "en": "Share"
+  }
+}

@@ -76,5 +76,8 @@ scripts/                  build-rust-ios.sh (macOS), check_strings.py, scan-skil
 vault/                    this knowledge base
 ```
 
+## Android app (ADR-0009)
+`apps/android` is a native Kotlin + Jetpack Compose (Material 3) port of the iOS app for Android 16–17 (minSdk 36, target 37). It uses the same Rust core through UniFFI's Kotlin bindings (`libmelde_ffi.so` via `cargo-ndk`, built by Gradle), the same `data.json` model (`data/Models.kt` mirrors `Shared/Models.swift`) and the same String Catalog (`L()` reads it from a generated `assets/strings.json`). Platform equivalents: Glance widgets, Quick Settings tile, Android 16 Live Updates, ML Kit document scanner, Keystore, Custom Tabs, WebView SSO, WorkManager. Porting conventions: `apps/android/docs/PORTING.md`. CI: `.github/workflows/android.yml` (unit tests + APK artifact).
+
 ## PWA path (Phase 19, later)
 `melde-grades`, `melde-scheduling` and `melde-statistics` depend only on `chrono` (no clock, `std` only) and compile to `wasm32-unknown-unknown`. A `melde-wasm` crate with `wasm-bindgen` will mirror `melde-ffi`. How the PWA gets the student's data is open now that there is no Supabase backend (iCloud is not reachable from a PWA without CloudKit JS). Not started.

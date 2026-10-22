@@ -54,14 +54,17 @@ nonisolated struct UntisClient: Sendable {
     /// another school login) instead of `authenticate`.
     func browserAuth(server: String, sessionID: String) async throws(Failure) -> FfiUntisAuth {
         let probe = await probeBrowserLogin(server: server, sessionID: sessionID)
-        guard let auth = probe.auth else { throw .sessionExpired }
+        // No answer at all means offline, not an expired session.
+        guard let auth = probe.auth else { throw probe.reachable ? .sessionExpired : .network }
         return auth
     }
 
     /// Asks `/api/app/config`, then the newer `/api/rest/view/v1/app/data`.
-    /// `detail` says what WebUntis answered, for the login screen when it fails.
-    func probeBrowserLogin(server: String, sessionID: String) async -> (auth: FfiUntisAuth?, detail: String) {
+    /// `detail` says what WebUntis answered, for the login screen when it fails;
+    /// `reachable` is false when no request got an answer.
+    func probeBrowserLogin(server: String, sessionID: String) async -> (auth: FfiUntisAuth?, detail: String, reachable: Bool) {
         var notes: [String] = []
+        var answered = false
         func url(_ path: String) -> URL? {
             var components = URLComponents()
             components.scheme = "https"
@@ -87,14 +90,15 @@ nonisolated struct UntisClient: Sendable {
                 notes.append("\(path): keine Verbindung")
                 continue
             }
+            answered = true
             let auth = path.hasSuffix("config")
                 ? try? untisParseAppConfig(body: body, sessionId: sessionID)
                 : try? untisParseAppData(body: body, sessionId: sessionID)
-            if let auth { return (auth, "") }
+            if let auth { return (auth, "", true) }
             let start = body.prefix(80).replacingOccurrences(of: "\n", with: " ")
             notes.append("\(path): HTTP \(status) \(start)")
         }
-        return (nil, ([server] + notes).joined(separator: "\n"))
+        return (nil, ([server] + notes).joined(separator: "\n"), answered)
     }
 
     /// GET on the WebUntis web API with this client's session.
@@ -122,6 +126,21 @@ nonisolated struct UntisClient: Sendable {
         let body = try await webGet(server: server, path: "/WebUntis/api/exams",
                                     query: range + "&studentId=\(auth.personId)&klasseId=\(auth.klasseId ?? -1)&withGrades=false")
         return try map { try untisParseExams(body: body) }
+    }
+
+    /// Exams marked in the REST timetable, which the web app and the Untis apps use.
+    /// For schools that refuse `/api/exams` to students (HTTP 403).
+    func timetableExams(server: String, auth: FfiUntisAuth, first: FfiDate, last: FfiDate) async throws(Failure) -> [FfiUntisExam] {
+        guard let tokenURL = URL(string: "https://\(server)/WebUntis/api/token/new") else { throw .network }
+        let token = try await sendWithStatus(URLRequest(url: tokenURL)).body.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !token.isEmpty, !token.hasPrefix("<") else { throw .sessionExpired }
+        let query = try map { try untisTimetableEntriesQuery(personId: auth.personId, first: first, last: last) }
+        guard let url = URL(string: "https://\(server)\(query)") else { throw .network }
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        let body = try await send(request)
+        return try map { try untisParseTimetableExams(body: body) }
     }
 
     func homework(server: String, first: FfiDate, last: FfiDate) async throws(Failure) -> [FfiUntisHomework] {

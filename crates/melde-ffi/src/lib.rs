@@ -15,26 +15,30 @@ mod untis;
 use melde_core::{Date, LocalDateTime, LocalTime, ValidationError, Weekday};
 
 /// Every error crossing the FFI boundary. Messages are developer-facing;
-/// the app maps them to localized UI text.
+/// the app maps them to localized UI text. The field is `detail`, not
+/// `message`, because Kotlin exceptions already have a `message` property.
 #[derive(Debug, thiserror::Error, uniffi::Error)]
 pub enum MeldeError {
-    #[error("invalid input: {message}")]
-    InvalidInput { message: String },
+    #[error("invalid input: {detail}")]
+    InvalidInput { detail: String },
     /// WebUntis answered with an error (e.g. code -8504 = wrong user name or password).
-    #[error("WebUntis error {code}: {message}")]
-    UntisServer { code: i64, message: String },
+    #[error("WebUntis error {code}: {detail}")]
+    UntisServer { code: i64, detail: String },
     /// The response was not what WebUntis normally sends (school blocks access, maintenance page).
-    #[error("unexpected WebUntis response: {message}")]
-    UntisMalformed { message: String },
+    #[error("unexpected WebUntis response: {detail}")]
+    UntisMalformed { detail: String },
 }
 
 impl From<melde_untis::UntisError> for MeldeError {
     fn from(e: melde_untis::UntisError) -> Self {
         match e {
-            melde_untis::UntisError::Server { code, message } => {
-                MeldeError::UntisServer { code, message }
+            melde_untis::UntisError::Server { code, message } => MeldeError::UntisServer {
+                code,
+                detail: message,
+            },
+            melde_untis::UntisError::Malformed(message) => {
+                MeldeError::UntisMalformed { detail: message }
             }
-            melde_untis::UntisError::Malformed(message) => MeldeError::UntisMalformed { message },
         }
     }
 }
@@ -42,14 +46,14 @@ impl From<melde_untis::UntisError> for MeldeError {
 impl From<ValidationError> for MeldeError {
     fn from(e: ValidationError) -> Self {
         MeldeError::InvalidInput {
-            message: e.to_string(),
+            detail: e.to_string(),
         }
     }
 }
 
 fn invalid(message: impl Into<String>) -> MeldeError {
     MeldeError::InvalidInput {
-        message: message.into(),
+        detail: message.into(),
     }
 }
 

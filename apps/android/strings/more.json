@@ -1,0 +1,147 @@
+{
+  "Drucken": {
+    "de": "Drucken",
+    "tr": "Yazdır",
+    "en": "Print"
+  },
+  "Teilen": {
+    "de": "Teilen",
+    "tr": "Paylaş",
+    "en": "Share"
+  },
+  "Live-Update während der Stunde": {
+    "de": "Live-Update während der Stunde",
+    "tr": "Ders sırasında canlı güncelleme",
+    "en": "Live Update during the lesson"
+  },
+  "Mit den Pfeilen sortieren. Tipp: Auf der Startseite kannst du Karten auch mit „Anpassen“ verschieben.": {
+    "de": "Mit den Pfeilen sortieren. Tipp: Auf der Startseite kannst du Karten auch mit „Anpassen“ verschieben.",
+    "tr": "Oklarla sırala. İpucu: Başlangıç ekranında kartları „Düzenle“ ile de taşıyabilirsin.",
+    "en": "Sort with the arrows. Tip: On the Start screen you can also move cards with “Customize”."
+  },
+  "Nach oben": {
+    "de": "Nach oben",
+    "tr": "Yukarı taşı",
+    "en": "Move up"
+  },
+  "Nach unten": {
+    "de": "Nach unten",
+    "tr": "Aşağı taşı",
+    "en": "Move down"
+  },
+  "Sperre jetzt dein Handy oder wechsle zum Startbildschirm.": {
+    "de": "Sperre jetzt dein Handy oder wechsle zum Startbildschirm.",
+    "tr": "Şimdi telefonunu kilitle ya da ana ekrana geç.",
+    "en": "Lock your phone now or go to the home screen."
+  },
+  "Widgets auf dem Startbildschirm: %lld. Sie lesen dieselben Daten wie die App.": {
+    "de": "Widgets auf dem Startbildschirm: %lld. Sie lesen dieselben Daten wie die App.",
+    "tr": "Ana ekrandaki widget'lar: %lld. Uygulamayla aynı verileri okurlar.",
+    "en": "Widgets on the home screen: %lld. They read the same data as the app."
+  },
+  "Noch kein Widget platziert. Halte den Startbildschirm gedrückt und wähle Widgets → Meldo.": {
+    "de": "Noch kein Widget platziert. Halte den Startbildschirm gedrückt und wähle Widgets → Meldo.",
+    "tr": "Henüz widget eklenmedi. Ana ekrana basılı tut ve Widget'lar → Meldo'yu seç.",
+    "en": "No widget placed yet. Touch and hold the home screen and choose Widgets → Meldo."
+  },
+  "Live-Update": {
+    "de": "Live-Update",
+    "tr": "Canlı güncelleme",
+    "en": "Live Update"
+  },
+  "Live-Updates": {
+    "de": "Live-Updates",
+    "tr": "Canlı güncellemeler",
+    "en": "Live Updates"
+  },
+  "In den Meldo-Einstellungen unter Mitteilungen ausgeschaltet.": {
+    "de": "In den Meldo-Einstellungen unter Mitteilungen ausgeschaltet.",
+    "tr": "Meldo ayarlarında Bildirimler altında kapalı.",
+    "en": "Turned off in Meldo's settings under Notifications."
+  },
+  "In den Android-Einstellungen für Meldo ausgeschaltet.": {
+    "de": "In den Android-Einstellungen für Meldo ausgeschaltet.",
+    "tr": "Android ayarlarında Meldo için kapalı.",
+    "en": "Turned off for Meldo in Android settings."
+  },
+  "Schau in die Statusleiste oder auf den Sperrbildschirm.": {
+    "de": "Schau in die Statusleiste oder auf den Sperrbildschirm.",
+    "tr": "Durum çubuğuna ya da kilit ekranına bak.",
+    "en": "Look at the status bar or your lock screen."
+  },
+  "Live-Updates sind in den Android-Einstellungen aus.": {
+    "de": "Live-Updates sind in den Android-Einstellungen aus.",
+    "tr": "Canlı güncellemeler Android ayarlarında kapalı.",
+    "en": "Live Updates are off in Android settings."
+  },
+  "Android-Einstellungen öffnen": {
+    "de": "Android-Einstellungen öffnen",
+    "tr": "Android ayarlarını aç",
+    "en": "Open Android settings"
+  },
+  "Aus. Erlaube sie in den Android-Einstellungen unter Apps → Meldo → Benachrichtigungen.": {
+    "de": "Aus. Erlaube sie in den Android-Einstellungen unter Apps → Meldo → Benachrichtigungen.",
+    "tr": "Kapalı. Android ayarlarında Uygulamalar → Meldo → Bildirimler altından izin ver.",
+    "en": "Off. Allow them in Android settings under Apps → Meldo → Notifications."
+  },
+  "Pünktliche Erinnerungen": {
+    "de": "Pünktliche Erinnerungen",
+    "tr": "Zamanında hatırlatmalar",
+    "en": "On-time reminders"
+  },
+  "Nachfragen und Erinnerungen kommen auf die Minute.": {
+    "de": "Nachfragen und Erinnerungen kommen auf die Minute.",
+    "tr": "Sorular ve hatırlatmalar tam zamanında gelir.",
+    "en": "Check-ins and reminders arrive on the minute."
+  },
+  "Ohne „Wecker und Erinnerungen“ kommen Nachfragen bis zu zehn Minuten später.": {
+    "de": "Ohne „Wecker und Erinnerungen“ kommen Nachfragen bis zu zehn Minuten später.",
+    "tr": "„Alarmlar ve hatırlatıcılar“ izni olmadan sorular on dakikaya kadar geç gelebilir.",
+    "en": "Without “Alarms & reminders”, check-ins can arrive up to ten minutes late."
+  },
+  "Wecker und Erinnerungen erlauben": {
+    "de": "Wecker und Erinnerungen erlauben",
+    "tr": "Alarmlar ve hatırlatıcılara izin ver",
+    "en": "Allow alarms & reminders"
+  },
+  "Verbindungen": {
+    "de": "Verbindungen",
+    "tr": "Bağlantılar",
+    "en": "Connections"
+  },
+  "Zuletzt: %@": {
+    "de": "Zuletzt: %@",
+    "tr": "Son: %@",
+    "en": "Last: %@"
+  },
+  "Nicht verbunden.": {
+    "de": "Nicht verbunden.",
+    "tr": "Bağlı değil.",
+    "en": "Not connected."
+  },
+  "Daten": {
+    "de": "Daten",
+    "tr": "Veriler",
+    "en": "Data"
+  },
+  "Datendatei": {
+    "de": "Datendatei",
+    "tr": "Veri dosyası",
+    "en": "Data file"
+  },
+  "Melden-Kachel hinzufügen": {
+    "de": "Melden-Kachel hinzufügen",
+    "tr": "Parmak kaldır kutucuğunu ekle",
+    "en": "Add the Melden tile"
+  },
+  "Die Melden-Kachel ist in den Schnelleinstellungen.": {
+    "de": "Die Melden-Kachel ist in den Schnelleinstellungen.",
+    "tr": "Parmak kaldır kutucuğu Hızlı Ayarlar'da.",
+    "en": "The Melden tile is in Quick Settings."
+  },
+  "Wische zweimal von oben nach unten und tippe auf den Stift, um die Kachel selbst hinzuzufügen.": {
+    "de": "Wische zweimal von oben nach unten und tippe auf den Stift, um die Kachel selbst hinzuzufügen.",
+    "tr": "Kutucuğu kendin eklemek için yukarıdan iki kez aşağı kaydır ve kaleme dokun.",
+    "en": "Swipe down twice from the top and tap the pencil to add the tile yourself."
+  }
+}
