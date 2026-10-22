@@ -217,14 +217,14 @@
   },
   "supabase/migrations/20261021120000_initial_schema.sql": {
     "mtime": 1792584613.2476974,
-    "seen": 1792585958.7952087,
-    "ast_hash": "",
+    "seen": 1792707133.9489625,
+    "ast_hash": "dccd5a196415b59b47648dbb2b6b7aec",
     "semantic_hash": ""
   },
   "supabase/tests/database/rls_isolation.test.sql": {
     "mtime": 1792584621.8890479,
-    "seen": 1792585958.7952101,
-    "ast_hash": "",
+    "seen": 1792707133.9489634,
+    "ast_hash": "39141ebddeaab9546284aca4be3527cc",
     "semantic_hash": ""
   },
   "apps/ios/MeldeCore/Package.swift": {
@@ -372,9 +372,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1792585326.031011,
-    "seen": 1792585342.731278,
-    "ast_hash": "9c488c1c38e718e9aa1c09864b257641",
+    "mtime": 1792706646.1057906,
+    "seen": 1792707133.948973,
+    "ast_hash": "dc2d9eb105b57fa37383d83d4fc66097",
     "semantic_hash": ""
   },
   "apps/ios/project.yml": {
@@ -1128,27 +1128,27 @@
     "semantic_hash": ""
   },
   "apps/android/app/src/main/java/app/meldeplanner/android/surfaces/widgets/MoreWidgets.kt": {
-    "mtime": 1792690427.7390728,
-    "seen": 1792690818.5646586,
-    "ast_hash": "1947d31509bc8633f7301f620cd1020e",
+    "mtime": 1792706353.765884,
+    "seen": 1792707133.9487953,
+    "ast_hash": "9e1ccda9d20c6230f5c915e766fc36cd",
     "semantic_hash": ""
   },
   "apps/android/app/src/main/java/app/meldeplanner/android/surfaces/widgets/StatsWidget.kt": {
-    "mtime": 1792690427.7390728,
-    "seen": 1792690818.5646594,
-    "ast_hash": "464a3428e75b180b9d88835267ad7ffe",
+    "mtime": 1792706041.9132748,
+    "seen": 1792707133.948797,
+    "ast_hash": "453426e4478a65c11eb59c18ae61263f",
     "semantic_hash": ""
   },
   "apps/android/app/src/main/java/app/meldeplanner/android/surfaces/widgets/TodayWidget.kt": {
-    "mtime": 1792690427.7400894,
-    "seen": 1792690818.5646603,
-    "ast_hash": "53a8712397f6e27a7625ad57bf090041",
+    "mtime": 1792706323.34399,
+    "seen": 1792707133.9487977,
+    "ast_hash": "e09e63af71d8ac74e24387d81f7761f1",
     "semantic_hash": ""
   },
   "apps/android/app/src/main/java/app/meldeplanner/android/surfaces/widgets/WidgetKit.kt": {
-    "mtime": 1792690427.7410924,
-    "seen": 1792690818.564661,
-    "ast_hash": "0665565fb431d96d5f14cb75d100027a",
+    "mtime": 1792705360.106369,
+    "seen": 1792707133.9487987,
+    "ast_hash": "e305cde678d02960c2ba2347bcf67339",
     "semantic_hash": ""
   },
   "apps/android/app/src/main/java/app/meldeplanner/android/ui/components/CardGrid.kt": {
@@ -1527,6 +1527,12 @@
     "mtime": 1792703727.1052318,
     "seen": 1792703829.2507253,
     "ast_hash": "71b0a267d6cbeac8df5eff5343daba78",
+    "semantic_hash": ""
+  },
+  "scripts/setup-mac.sh": {
+    "mtime": 1792706635.7265966,
+    "seen": 1792707133.9489596,
+    "ast_hash": "1e3ea9379caf65e697ef601ac024929c",
     "semantic_hash": ""
   }
 }
