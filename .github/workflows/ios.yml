@@ -12,6 +12,8 @@ on:
       - "scripts/build-rust-ios.sh"
       - ".github/workflows/ios.yml"
   workflow_dispatch:
+  # Also run by release.yml, which publishes the build as a GitHub Release.
+  workflow_call:
 
 concurrency:
   group: ios-${{ github.ref }}

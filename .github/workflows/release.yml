@@ -1,0 +1,65 @@
+name: Release
+
+# Builds the Android APK and the unsigned iOS IPA with the regular build workflows
+# (including their tests) and publishes both as a GitHub Release.
+#   git tag v0.1.0 && git push origin v0.1.0
+# or run it from the Actions tab with a tag name.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag, e.g. v0.1.0 (created on the selected branch if missing)"
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  android:
+    uses: ./.github/workflows/android.yml
+
+  ios:
+    uses: ./.github/workflows/ios.yml
+
+  publish:
+    name: Publish GitHub Release
+    needs: [android, ios]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      TAG: ${{ inputs.tag || github.ref_name }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: meldo-android-apk
+          path: dist/android
+      - uses: actions/download-artifact@v4
+        with:
+          name: MeldePlanner-unsigned-ipa
+          path: dist/ios
+
+      - name: Name the files after the release
+        run: |
+          mkdir -p release
+          cp dist/android/*.apk "release/Meldo-$TAG.apk"
+          cp dist/ios/*.ipa "release/Meldo-$TAG-unsigned.ipa"
+          ls -l release
+
+      - name: Create the release
+        run: |
+          notes=$(cat <<'NOTES'
+          **Android:** install `Meldo-*.apk` directly (Android 16+). Allow installs from unknown sources if asked.
+
+          **iOS:** `Meldo-*-unsigned.ipa` is not signed. Sideload it with AltStore or Sideloadly, which sign it with your Apple ID (iOS 26+).
+          NOTES
+          )
+          gh release create "$TAG" release/* \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" \
+            --title "Meldo $TAG" \
+            --notes "$notes" \
+            --generate-notes

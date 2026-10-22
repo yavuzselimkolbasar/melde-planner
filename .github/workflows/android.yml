@@ -7,6 +7,8 @@ on:
   pull_request:
     paths: [apps/android/**, crates/**, tools/**, Cargo.lock, apps/ios/MeldePlanner/Resources/Localizable.xcstrings, .github/workflows/android.yml]
   workflow_dispatch:
+  # Also run by release.yml, which publishes the build as a GitHub Release.
+  workflow_call:
 
 concurrency:
   group: android-${{ github.ref }}
