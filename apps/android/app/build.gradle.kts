@@ -32,7 +32,11 @@ android {
         release {
             // Side-loaded builds: signed with the debug key so the APK installs directly.
             signingConfig = signingConfigs.getByName("debug")
-            isMinifyEnabled = false
+            // R8: drops unused library code (Compose, the extended icon set) and resources;
+            // without it the APK is ~58 MB, almost all of it dex.
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
 
