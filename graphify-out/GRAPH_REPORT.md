@@ -1,9 +1,9 @@
 # Graph Report - Mledeapp  (2026-10-23)
 
 ## Corpus Check
-- 232 files · ~162,637 words
+- 232 files · ~162,715 words
 - Verdict: corpus is large enough that graph structure adds value.
-- Unclassified: 73 file(s) not represented in the graph (top: .xml 59, (none) 7, .properties 2)
+- Unclassified: 74 file(s) not represented in the graph (top: .xml 59, (none) 7, .properties 2)
 
 ## Summary
 - 4407 nodes · 11605 edges · 208 communities (141 shown, 67 thin omitted)
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `8bcaf437`
+- Built from commit: `bff3ac13`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -206,12 +206,12 @@
   vault/03-Architecture/Architecture Overview.md → apps/ios/MeldeCore/Sources/MeldeCore/CalendarBridge.swift
 - `Rules that keep the architecture honest` --references--> `FfiDateTime`  [INFERRED]
   vault/03-Architecture/Architecture Overview.md → apps/ios/MeldeCore/Sources/MeldeCore/CalendarBridge.swift
-- `Rules (from the project CLAUDE.md, they apply here too)` --references--> `L()`  [INFERRED]
-  apps/android/docs/PORTING.md → apps/android/app/src/main/java/app/meldeplanner/android/core/Localization.kt
 - `Glossary` --references--> `State`  [INFERRED]
   vault/05-Glossary/Glossary.md → apps/ios/Shared/Localization.swift
-- `Architecture (already in place — read these files first)` --references--> `newID()`  [INFERRED]
-  apps/android/docs/PORTING.md → apps/android/app/src/main/java/app/meldeplanner/android/data/Models.kt
+- `Rules (from the project CLAUDE.md, they apply here too)` --references--> `L()`  [INFERRED]
+  apps/android/docs/PORTING.md → apps/android/app/src/main/java/app/meldeplanner/android/core/Localization.kt
+- `Architecture (already in place — read these files first)` --references--> `MeldoColors`  [INFERRED]
+  apps/android/docs/PORTING.md → apps/android/app/src/main/java/app/meldeplanner/android/ui/theme/MeldoTheme.kt
 
 ## Import Cycles
 - 2-file cycle: `crates/melde-untis/src/lib.rs -> crates/melde-untis/src/rest.rs -> crates/melde-untis/src/lib.rs`
@@ -784,7 +784,7 @@ Cohesion: 0.50
 Nodes (4): Conventions, Generated (do not hand-edit), Melde Planner — Project Brain, Start here
 
 ## Knowledge Gaps
-- **456 isolated node(s):** `orange`, `indigo`, `green`, `system`, `light` (+451 more)
+- **456 isolated node(s):** `WrongCredentials`, `noLessons`, `shown`, `.id`, `.referenceDate` (+451 more)
   These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 1428 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **67 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -792,15 +792,15 @@ Nodes (4): Conventions, Generated (do not hand-edit), Melde Planner — Project 
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `AppModel` connect `AppModel` to `AppModel`, `.importTeams`, `Failure`, `AppModelSchool.kt`, `.addExam`, `.toggleDone`, `Foundation`, `.gradeNeeded`, `.untisExams`, `AppearanceChoice`, `.preview`, `AppModel+Exams.swift`, `SharedStoreTests`, `TimetableBlock`, `.mergesIntoExistingData`, `AppModel+Holidays.swift`?**
-  _High betweenness centrality (0.263) - this node is a cross-community bridge._
+  _High betweenness centrality (0.247) - this node is a cross-community bridge._
 - **Are the 150 inferred relationships involving `L()` (e.g. with `.init()` and `.mutate()`) actually correct?**
   _`L()` has 150 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `orange`, `indigo`, `green` to the rest of the system?**
+- **What connects `WrongCredentials`, `noLessons`, `shown` to the rest of the system?**
   _456 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `StatsEntry` be split into smaller, more focused modules?**
   _Cohesion score 0.13768115942028986 - nodes in this community are weakly interconnected._
 - **Why does `L()` connect `L` to `L`, `.build`, `sfSymbol`, `Date`, `UntisConnectScreen.kt`, `Reminders.kt`, `TimetableStyle.kt`, `AppModelTeams.kt`, `TaskListScreen.kt`, `LogParticipation.kt`, `TimetableScreen`, `SubjectIcon`, `DayGrid`, `RootScreen.kt`, `FormParts.kt`, `CalendarScreen.kt`, `AppModel`, `AbsencesScreen`, `AppModel.kt`, `ExcuseNoteScreen.kt`, `AppModelExams.kt`, `WidgetKit.kt`, `AppModelSchool.kt`, `MeldeEngine`, `LessonCheckIns.kt`, `WidgetStyle`, `Localization.kt`, `AppModelWeek.kt`, `.content`, `StatusScreen`, `MoreWidgets.kt`, `SymbolLabel`, `Surfaces.kt`, `UntisLoginWatcher`?**
-  _High betweenness centrality (0.169) - this node is a cross-community bridge._
+  _High betweenness centrality (0.147) - this node is a cross-community bridge._
 - **Are the 3 inferred relationships involving `AppModel` (e.g. with `.widgetWriteIsNotLostWhenAppSaves()` and `.mergesIntoExistingData()`) actually correct?**
   _`AppModel` has 3 INFERRED edges - model-reasoned connections that need verification._
 - **Should `Results` be split into smaller, more focused modules?**
